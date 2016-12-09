@@ -1,0 +1,55 @@
+<!doctype>
+<html>
+<head>
+    <base href="/">
+    <title>Créer Un Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- Load libraries -->
+    <!-- IE required polyfills, in this exact order -->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ -->
+  <script src="vendors/jquery/dist/jquery.min.js"></script>
+
+  <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="build/js/custom.min.js"></script>
+  <link rel="stylesheet" href="src/css/app.css">
+
+</head>
+
+
+<my-app></my-app>
+
+<script>
+    System.config({
+        packages: {
+            app: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+        }
+    });
+    System.import('app/component/boot')
+            .then(null, console.error.bind(console));
+</script>
+</body>
+</html>
