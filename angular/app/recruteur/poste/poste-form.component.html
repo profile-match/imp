@@ -19,9 +19,10 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="reference">Reference <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="reference" required="required" class="form-control col-md-7 col-xs-12">
+                    <input type="text" id="reference" [value]="reference" [(ngModel)]="reference" required="required" name="reference" class="form-control col-md-7 col-xs-12"/>
                 </div>
             </div>
+
 
             <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="intitule">Intitule <span class="required">*</span>
@@ -166,17 +167,17 @@
                     <input type="text" id="savoir_faire" name="savoir_faire" class="form-control col-md-7 col-xs-12">
                 </div>
             </div>         
-                        
+
             <div class="form-inline">
-                  <div class="form-group">
+                <div class="form-group">
                     <label for="savoir-etre">Savoir être</label>
-                    <input type="text" id="savoir-etre" class="form-control" placeholder=" ">
-                  </div>
-                  <div class="form-group">
-                     <button type="button" class="btn btn-round btn-success">Ajouter</button>
-                  </div>
+                    <input type="text" id="savoir-etre" class="form-control" placeholder=" " ngModel>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-round btn-success">Ajouter</button>
+                </div>
             </div>
-            
+
             <div class="x_title">
                 <h2>Connaissances requises   <small>different form elements</small></h2>
                 <div class="clearfix">
@@ -190,7 +191,9 @@
                     <input type="text" id="metier" name="metier" class="form-control col-md-7 col-xs-12">
                 </div>
             </div>            
-            
-            <button type="submit" class="btn btn-default">Valider</button>
+            <div style="text-align: center; ">
+                <button type="button" class="btn btn-default">Retour</button>
+                <button type="submit" class="btn btn-default" (click)="addPoste()">Submit</button>
+            </div>
         </form>
     </div>
