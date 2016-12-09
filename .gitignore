@@ -10,7 +10,7 @@
 
 
 #angular's modules
-angular/node_module
+angular/node_modules
 
 #webapp
 src/main/webapp
