@@ -1,14 +1,7 @@
-# Angular 2 Beta Boilerplate
+# Créer Profil Candidat
 
 ## Description
-This repository acts as a very simple Angular 2 Beta Boilerplate with which you can get started developing Angular 2 immediately.
-It is derived from the official Angular 2 Documentation which can be found [here](https://angular.io/docs/ts/latest/quickstart.html).
-## Usage
-Follow the following steps and you're good to go! Important: Typescript and npm has to be installed on your machine!
-
-1: Clone repo
-```
-git clone https://github.com/mschwarzmueller/angular-2-beta-boilerplate.git
+IMP, or iMatchProfile is the web interface for the profile-match API
 ```
 2: Install packages
 ```
