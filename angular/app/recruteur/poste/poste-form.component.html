@@ -1,0 +1,196 @@
+<div class="x_panel">
+
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Nouveau poste à pourvoir</h3>
+        </div>
+    </div>
+
+    <div class="x_content">
+        <form id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
+
+            <div class="x_title">
+                <h2>Caractéristique du poste   <small>different form elements</small></h2>
+                <div class="clearfix">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="reference">Reference <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="reference" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="intitule">Intitule <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="intitule" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="indice_salaire">Indice salaire <span class="required">*</span>
+                </label>    
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="indice_salaire" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salaire_min">Salaire Minimun Annuel <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="salaire_min" name="salaire_min" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salaire_max">Salaire Maximum Annuel <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="salaire_max" name="salaire_max" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Affichage de la moyenne</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="">
+                        <label>
+                            <input type="checkbox" id="afficher_moyenne" name="afficher_moyenne" class="switchery-default" checked />
+                        </label>
+                    </div>
+                </div>
+            </div>         
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Type de contrat</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select id="type_contrat" class="form-control" required>
+                        <option value="">Choix..</option>
+                        <option value="cdi">CDI</option>
+                        <option value="cdd">CDD</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+            </div> 
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Resume (1 caractère min, 1000 max) :</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="">
+                        <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="1" data-parsley-maxlength="1000" data-parsley-minlength-message="Commentaire d'un caractère minimum" 
+                                  data-parsley-validation-threshold="10"></textarea>
+                        <br/>
+                    </div> 
+                </div>
+            </div> 
+
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="point_attention">Point d'attention<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="salaire_max" name="salaire_max" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="x_title">
+                <h2>Contexte du poste   <small>different form elements</small></h2>
+                <div class="clearfix">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lieu_travail">Lieu de Travail <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="lieu_travail" name="lieu_travail" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="organisation">Organisation demandeuse <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="organisation" name="organisation" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="departement">Département
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="departement" name="departement" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="equipe">Equipe
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="equipe" name="equipe" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="service">Service
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="service" name="service" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="x_title">
+                <h2>Capacités et compétences   <small>different form elements</small></h2>
+                <div class="clearfix">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="savoir_specifiques">Savoir spécifiques
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="savoir" name="savoir" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="savoir_faire">Savoir-faire
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="savoir_faire" name="savoir_faire" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>         
+                        
+            <div class="form-inline">
+                  <div class="form-group">
+                    <label for="savoir-etre">Savoir être</label>
+                    <input type="text" id="savoir-etre" class="form-control" placeholder=" ">
+                  </div>
+                  <div class="form-group">
+                     <button type="button" class="btn btn-round btn-success">Ajouter</button>
+                  </div>
+            </div>
+            
+            <div class="x_title">
+                <h2>Connaissances requises   <small>different form elements</small></h2>
+                <div class="clearfix">
+                </div>
+            </div>            
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="metier">Métier
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="metier" name="metier" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>            
+            
+            <button type="submit" class="btn btn-default">Valider</button>
+        </form>
+    </div>
