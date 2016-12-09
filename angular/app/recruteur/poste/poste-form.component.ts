@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Http,Headers} from 'angular2/http';
 
 import { Poste }    from './poste';
 
@@ -11,15 +10,12 @@ import { Poste }    from './poste';
 
 export class PosteFormComponent {
 
-    poste = new Poste("","",0,0,0,0,"","","","","","","","");
     
-    public http: Http;
-        constructor(http: Http){
-        this.http = http;
-    }
+    poste = new Poste("","",0,0,0,0,"","","","","","","","");
     
     public addPoste(){
         
+        alert("valeur "+this.poste.reference);
     }
 
 

@@ -9,14 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var http_1 = require("angular2/http");
 var poste_1 = require("./poste");
 var PosteFormComponent = (function () {
-    function PosteFormComponent(http) {
+    function PosteFormComponent() {
         this.poste = new poste_1.Poste("", "", 0, 0, 0, 0, "", "", "", "", "", "", "", "");
-        this.http = http;
     }
     PosteFormComponent.prototype.addPoste = function () {
+        alert("valeur " + this.poste.reference);
     };
     return PosteFormComponent;
 }());
@@ -26,8 +25,7 @@ PosteFormComponent = __decorate([
         selector: 'poste-form',
         templateUrl: 'poste-form.component.html'
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object])
+    __metadata("design:paramtypes", [])
 ], PosteFormComponent);
 exports.PosteFormComponent = PosteFormComponent;
-var _a;
 //# sourceMappingURL=poste-form.component.js.map
