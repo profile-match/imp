@@ -41,7 +41,7 @@
 	    <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-		<version>LATEST_VERSION</version>
+				<version>LATEST_VERSION</version>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -56,8 +56,19 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
             </plugin>
-
-            <!-- Plugin to execute command  "npm install" and "npm run build" inside /angular directory -->
+        </plugins>
+    </build>
+	<profiles>
+<profile>
+    <id>unix</id>
+    <activation>
+        <os>
+            <family>unix</family>
+        </os>
+    </activation>
+    <build>
+        <plugins>
+           <!-- Plugin to execute command  "npm install" and "npm run build" inside /angular directory -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
@@ -68,7 +79,7 @@
                 </configuration>
                 <executions>
                     <!-- It will install nodejs and npm -->
-		    <execution>
+					<execution>
                         <id>install node and npm</id>
                         <goals>
                             <goal>install-node-and-npm</goal>
@@ -85,12 +96,13 @@
                             <goal>npm</goal>
                         </goals>
                     </execution>
-		    <execution>
+					<!--it will install angular-cli to build the project-->
+					<execution>
                         <id>angular-cli install</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>
-			<configuration>
+							<configuration>
                             <arguments>install --no-optional -g angular-cli</arguments>
                         </configuration>
                     </execution>
@@ -107,7 +119,7 @@
                 </executions>
             </plugin>
 
-            <!-- Plugin to copy the content of /angular/dist/ directory to output directory (ie/ /target/transactionManager-1.0/) -->
+            <!-- Plugin to copy the content of /angular/dist/ directory to output directory (ie/ /target/imp-1.0/) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -133,4 +145,94 @@
             </plugin>
         </plugins>
     </build>
+</profile>
+<profile>
+    <id>windows</id>
+    <activation>
+        <os>
+        <name>Windows XP</name>
+        <family>Windows</family>
+        </os>
+    </activation>
+    <build>
+        <plugins>
+            <!-- Plugin to execute command  "npm install" and "npm run build" inside /angular directory -->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <workingDirectory>angular</workingDirectory>
+                    <installDirectory>temp</installDirectory>
+                </configuration>
+                <executions>
+                    <!-- It will install nodejs and npm -->
+					<execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v7.2.0</nodeVersion>
+                            <npmVersion>4.0.3</npmVersion>
+                        </configuration>
+                    </execution>
+                    <!-- It will execute command "npm install" inside "/angular" directory -->
+                    <execution>
+                        <id>npm install --no-optional</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                    </execution>
+					<!--it will install angular-cli to build the project-->
+					<execution>
+                        <id>angular-cli install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+							<configuration>
+                            <arguments>install --no-optional -g angular-cli</arguments>
+                        </configuration>
+                    </execution>
+                    <!-- It will execute command "npm build" inside "/angular" directory to clean and create "/dist" directory-->
+                    <execution>
+                        <id>npm buildWindows</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Plugin to copy the content of /angular/dist/ directory to output directory (ie/ /target/imp-1.0/) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.2</version>
+                <executions>
+                    <execution>
+                        <id>default-copy-resources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>${project.basedir}/src/main/webapp</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/angular</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</profile>
+	</profiles>
 </project>
