@@ -11,9 +11,12 @@ To run your code, you just have to  :
 
 ## packaging
 To build a web archive, you need to :
-* run command : "mvn clean package"
-* run command : "java -jar /target/imp.war"
+* run command in the folder "imp": "mvn clean package"
+* run command in the folder "imp" : "java -jar /target/imp.war"
 * open your favorite browser and go to "http://localhost:8080"
 
 PS : if you want to change the port of your web application, use the following command :
-* "java -Dserver.port=9090 -jar /target/imp.war"
+* "java -Dserver.port=9090 -jar /target/imp.war"  
+
+Works on Windows and Linux.  
+If you have any questions or issues, please feel free to report them on Jira (https://profile-match.atlassian.net/wiki/display/IM/iMatchProfile) or to contact Mathieu Jeanmougin on HiPChat.
