@@ -19,31 +19,33 @@ var PosteFormComponent = (function () {
         this.class = "icheckbox_flat-green";
         this.poste = new poste_1.Poste("ref", "sdq", "qsd", 5, 2, 0, "tz", "qdqs", "test", "lux", "orga", "dep", "serv", "equipe", ["test"]);
         this.query = '';
-        this.savoirSpe = ["test", "test2"];
+        this.result = '';
+        this.savoirSpe = [""];
     }
     //"","","","",""
     PosteFormComponent.prototype.onSubmit = function () {
-        alert(this.poste.reference + "ref");
-        alert(this.poste.intitule + "int");
-        alert(this.poste.indice_salaire + "indsal");
-        alert(this.poste.salaire_min + "min");
-        alert(this.poste.salaire_max + "max");
-        alert(this.poste.afficher_moyenne + "affmoy");
-        alert(this.poste.type_contrat + "typecontrat");
-        alert(this.poste.resume + "resumé");
-        alert(this.poste.point_attention + "ptsattention");
-        alert(this.poste.lieu_travail + "lieutrav");
-        alert(this.poste.organisation + "orga");
-        alert(this.poste.departement + "departement");
-        alert(this.poste.service + "service");
-        alert(this.poste.equipe + "equipeee");
+        /*alert(this.poste.reference + "ref");
+         alert(this.poste.intitule + "int");
+         alert(this.poste.indice_salaire + "indsal");
+        
+         alert(this.poste.salaire_min + "min");
+         alert(this.poste.salaire_max + "max");
+         alert(this.poste.afficher_moyenne + "affmoy");
+         alert(this.poste.type_contrat + "typecontrat");
+         alert(this.poste.resume + "resumé");
+         alert(this.poste.point_attention + "ptsattention");
+         alert(this.poste.lieu_travail + "lieutrav");
+         alert(this.poste.organisation + "orga");
+         alert(this.poste.departement + "departement");
+         alert(this.poste.service + "service");
+         alert(this.poste.equipe + "equipeee");*/
     };
     PosteFormComponent.prototype.filter = function (term) {
-        alert(term);
+        var _this = this;
         if (term != "") {
-            this.http.get("https://jsonplaceholder.typicode.com/posts")
+            this.http.get("https://jsonplaceholder.typicode.com/posts/" + term)
                 .map(function (response) { return response.json(); })
-                .subscribe(function (r) { return console.log(r); });
+                .subscribe(function (result) { return _this.result = result; });
         }
     };
     PosteFormComponent.prototype.searchSavoirSpecifique = function () {

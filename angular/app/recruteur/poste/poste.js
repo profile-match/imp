@@ -20,5 +20,4 @@ var Poste = (function () {
     return Poste;
 }());
 exports.Poste = Poste;
-
 //# sourceMappingURL=poste.js.map

@@ -16,26 +16,25 @@ import 'rxjs/add/operator/map';
 
 export class PosteFormComponent{
 
-
   class: string = "icheckbox_flat-green";
   private poste = new Poste("ref", "sdq", "qsd", 5, 2, 0, "tz", "qdqs", "test", "lux", "orga", "dep", "serv", "equipe",["test"]);
 //"","","","",""
   onSubmit(): void {
-    alert(this.poste.reference + "ref");
-    alert(this.poste.intitule + "int");
-    alert(this.poste.indice_salaire + "indsal");
+/*alert(this.poste.reference + "ref");
+ alert(this.poste.intitule + "int");
+ alert(this.poste.indice_salaire + "indsal");
 
-    alert(this.poste.salaire_min + "min");
-    alert(this.poste.salaire_max + "max");
-    alert(this.poste.afficher_moyenne + "affmoy");
-    alert(this.poste.type_contrat + "typecontrat");
-    alert(this.poste.resume + "resumé");
-    alert(this.poste.point_attention + "ptsattention");
-    alert(this.poste.lieu_travail + "lieutrav");
-    alert(this.poste.organisation + "orga");
-    alert(this.poste.departement + "departement");
-    alert(this.poste.service + "service");
-    alert(this.poste.equipe + "equipeee");
+ alert(this.poste.salaire_min + "min");
+ alert(this.poste.salaire_max + "max");
+ alert(this.poste.afficher_moyenne + "affmoy");
+ alert(this.poste.type_contrat + "typecontrat");
+ alert(this.poste.resume + "resumé");
+ alert(this.poste.point_attention + "ptsattention");
+ alert(this.poste.lieu_travail + "lieutrav");
+ alert(this.poste.organisation + "orga");
+ alert(this.poste.departement + "departement");
+ alert(this.poste.service + "service");
+ alert(this.poste.equipe + "equipeee");*/
   }
 
   constructor(private http: Http){
@@ -43,14 +42,14 @@ export class PosteFormComponent{
   }
 
   public query= '';
-  public savoirSpe=["test","test2"];
+  public result='';
+  public savoirSpe=[""];
 
   filter(term: string) {
-    alert(term);
     if(term !="") {
-      this.http.get("https://jsonplaceholder.typicode.com/posts")
+      this.http.get("https://jsonplaceholder.typicode.com/posts/"+term)
         .map(response => response.json())
-        .subscribe(r =>  console.log(r));
+        .subscribe(result => this.result =result);
     }
   }
 
