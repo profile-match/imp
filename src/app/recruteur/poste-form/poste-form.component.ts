@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
+import {PosteService} from './poste.service';
 
 @Component({
   selector: 'app-poste-form',
   templateUrl: './poste-form.component.html',
-  styleUrls: ['./poste-form.component.css']
+  styleUrls: ['./poste-form.component.css'],
+  providers: [PosteService]
 })
 export class PosteFormComponent implements OnInit {
 
@@ -12,10 +14,10 @@ export class PosteFormComponent implements OnInit {
   class: string;
   query:string;
   result:string;
-  savoirSpe= new Array(100);
+  savoirSpe: string[];
   poste = <Poste>{};
 
-  constructor() {
+  constructor(private posteServ: PosteService) {
 
     this.poste.reference = "ref";
     this.poste.intitule = "int";
@@ -29,7 +31,7 @@ export class PosteFormComponent implements OnInit {
     this.poste.lieu_travail = "lieut";
     this.poste.organisation = "orga";
     this.poste.equipe_concernee = "equipe";
-    this.poste.savoirSpe = ["test", "savoir2"];
+    this.poste.savoirSpe = this.posteServ.getSavoirSpe();
 
     this.class = "icheckbox_flat-green";
     this.query= '';
@@ -65,9 +67,8 @@ export class PosteFormComponent implements OnInit {
   }
 */
 
-  searchSavoirSpecifique() {
-
-
+  getSavoirSpe(): void {
+    this.poste.savoirSpe = this.posteService.getSavoirSpe();
   }
 
   getClass() {
@@ -81,6 +82,7 @@ export class PosteFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getHeroes();
   }
 
 }
