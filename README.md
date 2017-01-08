@@ -1,22 +1,31 @@
-# imp
-IMP, or iMatchProfile is the web interface for the profile-match API  
-This repository contains the angular's base project
+# Imp
 
-## angular 
-To run your code, you just have to  : 
-* go to the folder "/angular".
-* run command : "npm install"
-* run command : "npm start"
-* open your favorite browser and go to "http://localhost:8080"
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
 
-## packaging
-To build a web archive, you need to :
-* run command in the folder "imp": "mvn clean package"
-* run command in the folder "imp" : "java -jar /target/imp.war"
-* open your favorite browser and go to "http://localhost:8080"
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-PS : if you want to change the port of your web application, use the following command :
-* "java -Dserver.port=9090 -jar /target/imp.war"  
+## Code scaffolding
 
-Works on Windows and Linux.  
-If you have any questions or issues, please feel free to report them on Jira (https://profile-match.atlassian.net/wiki/display/IM/iMatchProfile) or to contact Mathieu Jeanmougin on HiPChat.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
+
+## Deploying to Github Pages
+
+Run `ng github-pages:deploy` to deploy to Github Pages.
+
+## Further help
+
+To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

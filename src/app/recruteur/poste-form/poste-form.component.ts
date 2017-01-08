@@ -1,0 +1,89 @@
+import {Component, OnInit} from '@angular/core';
+import {Poste}    from '../interfaces/poste';
+
+@Component({
+  selector: 'app-poste-form',
+  templateUrl: './poste-form.component.html',
+  styleUrls: ['./poste-form.component.css']
+})
+export class PosteFormComponent implements OnInit {
+
+  //TODO : à mettre en private et ajouter des get
+  class: string;
+  query:string;
+  result:string;
+  savoirSpe= new Array(100);
+  poste = <Poste>{};
+
+  constructor() {
+
+    this.poste.reference = "ref";
+    this.poste.intitule = "int";
+    this.poste.indice_salaire = "ind";
+    this.poste.salaire_min = 5;
+    this.poste.salaire_max = 2;
+    this.poste.afficher_moyenne = 0;
+    this.poste.type_contrat = "tc";
+    this.poste.resume = "res";
+    this.poste.point_attention = "pa";
+    this.poste.lieu_travail = "lieut";
+    this.poste.organisation = "orga";
+    this.poste.equipe_concernee = "equipe";
+    this.poste.savoirSpe = ["test", "savoir2"];
+
+    this.class = "icheckbox_flat-green";
+    this.query= '';
+    this.result = '';
+    this.savoirSpe = [""];
+  }
+
+
+  onSubmit(): void {
+    /*alert(this.poste.reference + "ref");
+     alert(this.poste.intitule + "int");
+     alert(this.poste.indice_salaire + "indsal");
+
+     alert(this.poste.salaire_min + "min");
+     alert(this.poste.salaire_max + "max");
+     alert(this.poste.afficher_moyenne + "affmoy");
+     alert(this.poste.type_contrat + "typecontrat");
+     alert(this.poste.resume + "resumé");
+     alert(this.poste.point_attention + "ptsattention");
+     alert(this.poste.lieu_travail + "lieutrav");
+     alert(this.poste.organisation + "orga");
+     alert(this.poste.departement + "departement");
+     alert(this.poste.service + "service");
+     alert(this.poste.equipe + "equipeee");*/
+  }
+/*
+  filter(term: string) {
+    if (term != "") {
+      this.http.get("https://jsonplaceholder.typicode.com/posts/" + term)
+        .map(response => response.json())
+        .subscribe(result => this.result = result);
+    }
+  }
+*/
+
+  searchSavoirSpecifique() {
+
+
+  }
+
+  getClass() {
+    if (this.poste.afficher_moyenne == 0) {
+      this.poste.afficher_moyenne = 1;
+      this.class = "icheckbox_flat-green checked";
+    } else {
+      this.poste.afficher_moyenne = 0;
+      this.class = "icheckbox_flat-green form-group";
+    }
+  }
+
+  ngOnInit() {
+  }
+
+}
+
+
+
