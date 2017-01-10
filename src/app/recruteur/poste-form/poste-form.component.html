@@ -42,7 +42,8 @@
                  name="indice_salaire" class="form-control col-md-7 col-xs-12">
         </div>
         <span title="Cette information permet d’indiquer le niveau où se situe le salaire du poste
-à pourvoir dans la grille de salaires au sein de l’entreprise"><img style="margin-top: 7px;" src="./assets/information.png"
+à pourvoir dans la grille de salaires au sein de l’entreprise"><img style="margin-top: 7px;"
+                                                                    src="./assets/information.png"
                                                                     height="20" width="20"/></span>
       </div>
 
@@ -71,7 +72,8 @@
 
       <label style="position: relative; left: 6%;">Cocher pour afficher la moyenne du salaire min et max
       </label>
-      <div [className]="class" (click)="getClass()" style="margin-left: 7%">
+      <div class="icheckbox_flat-green form-group" [class.checked]="isChecked" (click)="getClass()"
+           style="margin-left: 7%">
 
         <div>
           <input type="checkbox" checked="checked" style="opacity:0; cursor: pointer; ">
@@ -82,7 +84,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_contrat">Type de contrat <span
           class="required">*</span>
         </label>
-        <div class="col-md-3 col-sm-3 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-2">
           <input type="text" id="type_contrat" style="text-align:center;" [value]="type_contrat"
                  [(ngModel)]="poste.type_contrat" name="type_contrat" required="required"
                  class="form-control col-md-7 col-xs-12">
@@ -149,28 +151,26 @@
 
 
       <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir  spécifiques</label>
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir spécifiques</label>
         <div class="col-md-4 col-sm-4 col-xs-4">
-          <input #term type="text"
-                 class="form-control col-md-7 col-xs-12" (keyup)="filter(term.value)">
-          <input type="text" list="savoirSpecifique" id="searchSpe" name="searchSpe" autocomplete="on" [value]="this.result.title"
-                 class="form-control col-md-7 col-xs-12" >
-          <datalist *ngFor="let item of savoirSpe" id="savoirSpecifique">
-            <option value="{{item.title}}" ></option>
-            <option value="{{item.id}}" ></option>
-            <option value="{{item.userid}}" ></option>
-          </datalist>
+          <input #inputspe id="tags_1" type="text" class="tags form-control" (keyup.enter)="onEnter(inputspe.value)" >
 
-          <input id="tags_1" type="text" class="tags form-control" value="social, adverts, sales" data-tagsinput-init="true" style="display: none;"><div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;"><span class="tag"><span>social&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><span class="tag"><span>adverts&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><span class="tag"><span>sales&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span><div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 72px;"></div><div class="tags_clear"></div></div>
+          <div *ngFor="let savoir of savoirAdded" id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            {{savoir}}
+            <span class="tag"><span>social&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
+            <span class="tag"><span>adverts&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
+            <span class="tag"><span>sales&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
+            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 72px;"></div>
+            <div class="tags_clear"></div>
+          </div>
           <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
         </div>
       </div>
 
 
-
       <div style="text-align: center; ">
         <button type="button" class="btn btn-default">Retour</button>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-success">Valider</button>
       </div>
     </form>
   </div>

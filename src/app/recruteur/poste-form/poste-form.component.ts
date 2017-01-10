@@ -12,10 +12,12 @@ export class PosteFormComponent implements OnInit {
 
   //TODO : à mettre en private et ajouter des get
   class: string;
-  query:string;
-  result:string;
-  savoirSpe: string[];
+  query: string;
+  result: string;
+  private isChecked: boolean;
+  //savoirSpe: string[];
   poste = <Poste>{};
+  savoirAdded:any[]
 
   constructor(private posteServ: PosteService) {
 
@@ -31,12 +33,14 @@ export class PosteFormComponent implements OnInit {
     this.poste.lieu_travail = "lieut";
     this.poste.organisation = "orga";
     this.poste.equipe_concernee = "equipe";
-    this.poste.savoirSpe = this.posteServ.getSavoirSpe();
+    //this.poste.savoirSpe = this.posteServ.getSavoirSpe();
 
     this.class = "icheckbox_flat-green";
-    this.query= '';
+    this.query = '';
     this.result = '';
-    this.savoirSpe = [""];
+    this.savoirAdded = [""];
+    //this.savoirSpe = [""];
+    this.isChecked = false;
   }
 
 
@@ -57,32 +61,43 @@ export class PosteFormComponent implements OnInit {
      alert(this.poste.service + "service");
      alert(this.poste.equipe + "equipeee");*/
   }
-/*
-  filter(term: string) {
-    if (term != "") {
-      this.http.get("https://jsonplaceholder.typicode.com/posts/" + term)
-        .map(response => response.json())
-        .subscribe(result => this.result = result);
-    }
+
+  /*
+   filter(term: string) {
+   if (term != "") {
+   this.http.get("https://jsonplaceholder.typicode.com/posts/" + term)
+   .map(response => response.json())
+   .subscribe(result => this.result = result);
+   }
+   }
+   */
+
+  addSavoirSpe(): void {
+
+
   }
-*/
+
+  onEnter(value: string) {
+    this.savoirAdded.push("<span class=\"tag\"><span>"+value+"</span><a href=\"#\" title=\"Removing tag\">x</a></span>");
+  }
+
 
   getSavoirSpe(): void {
-    this.poste.savoirSpe = this.posteService.getSavoirSpe();
+    //this.poste.savoirSpe = this.posteService.getSavoirSpe();
   }
 
   getClass() {
     if (this.poste.afficher_moyenne == 0) {
+      this.isChecked = true;
       this.poste.afficher_moyenne = 1;
-      this.class = "icheckbox_flat-green checked";
     } else {
+      this.isChecked = false;
       this.poste.afficher_moyenne = 0;
-      this.class = "icheckbox_flat-green form-group";
     }
   }
 
   ngOnInit() {
-    this.getHeroes();
+    // this.getHeroes();
   }
 
 }
