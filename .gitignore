@@ -8,8 +8,7 @@
 *.war
 *.ear
 
-#Exception css gentelella with errors
-!node_modules/gentelella/build/css/custom.min.css
+
 
 #webapp
 src/main/webapp
@@ -114,8 +113,23 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules
+
 jspm_packages
+
+#Exception css gentelella with errors
+!node_modules/	
+
+node_modules/*
+!node_modules/gentelella
+
+node_modules/gentelella/*
+!node_modules/gentelella/build
+
+node_modules/gentelella/build/*
+!node_modules/gentelella/build/css
+
+node_modules/gentelella/build/css/*
+!node_modules/gentelella/build/css/custom.min.css
 
 # Optional npm cache directory
 .npm
