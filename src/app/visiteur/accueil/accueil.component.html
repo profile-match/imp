@@ -1,0 +1,132 @@
+
+
+		        <!-- page content -->
+        <div class="x_content" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" *ngFor="let menu of menuList">
+              <span class="count_top"><i class="fa fa-user"></i> {{menu.name}}</span>
+              <div class="count">{{menu.value}}</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{menu.croissance}}% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
+              <div class="count">4,567</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+				<br>
+                <h1 ALIGN="CENTER">Because find relevent candidates is not a game of CHANCE!</h1>
+				<br>
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+
+
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <div class="row">
+
+			<!-- bouton je suis candidat -->
+			<a href="form_candidat.html">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Je suis à la recherche d'un emploi</h2>
+
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+					<img src="../../../assets/candidat.jpg" alt="..." class="img-circle profile_img">
+                </div>
+              </div>
+            </div>
+			</a>
+			<!-- /bouton je suis candidat -->
+
+			<!-- données pour les lieux d'activité-->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Visitors location <small>geo-presentation</small></h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+
+                    <div class="x_content">
+                      <div class="dashboard-widget-content">
+
+                          <h2 class="line_30">{{views}}k Views from {{nbCountries}} countries</h2>
+
+                          <table class="countries_list">
+                            <tbody>
+
+							  <tr *ngFor="let countrie of countriesList">
+								<td>{{countrie.name}}</td>
+								<td class="fs15 fw700 text-right">{{countrie.value}}%</td>
+							  </tr>
+
+                            </tbody>
+                          </table>
+
+
+                      </div>
+                    </div>
+
+                  </div>
+				  <br>
+              <span ALIGN="CENTER"><a href="recherche.html" class="blue"><h3>Visiter le site</h3></a></span>
+			  <br>
+            </div>
+			<!-- /données pour les lieux d'activité-->
+
+			<!-- bouton je suis recruteur -->
+			<a routerLink="/poste-form">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Je suis à la recherche d'un employé</h2>
+
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+					<img src="../../../assets/recruteur2.png" alt="..." >
+                </div>
+              </div>
+            </div>
+			</a>  <router-outlet></router-outlet>
+			<!-- /bouton je suis recruteur -->
+
+          </div>
+
+        </div>
+        <!-- /page content -->
+
