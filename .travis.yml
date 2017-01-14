@@ -1,4 +1,6 @@
 language: node_js
 node_js:
 - '7.4'
-script: npm install;ng build
+before_script:
+- npm install
+script: ng build
