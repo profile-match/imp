@@ -10,7 +10,7 @@ export const environment = {
   },
   backend: {
     protocol: 'http',
-    host: '127.0.0.1',
+    host: 'localhost',
     port: '8080',
     endpoints: {
       creerCandidat: '/rest/candidat/create',

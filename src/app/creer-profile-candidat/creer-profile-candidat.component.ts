@@ -98,13 +98,14 @@ export class CreerProfileCandidatComponent implements OnInit {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append("Access-Control-Allow-Origin", "*");
-    headers.append("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-    headers.append("Access-Control-Allow-Headers", "Content-Type");
+    headers.append('Accept','application/json')
 
     this._http.post(this._backendURL.creerCandidat, this._data, {
       headers: headers
     }).subscribe();
+    // this._http.post(this._backendURL.creerCandidat, this._data, {
+    //   headers: headers
+    // }).subscribe();
   };
 
 }
