@@ -11,8 +11,3 @@ To run your code, you just have to  :
 ## packaging
 To build a web archive, you need to :
 * run command : "ng build"
-
-## problems with CORS
-For security reasons, browsers don't allow you to send requests to an other domain than the one from which you received your web page.  
-This means that if your node server is running on port 4200 and your wildfly on port 8080 on the same machine, you won't be able to send request to each other.
-In order to be able to make both projects communicate together, you'll need to disable CORS in your browser.
