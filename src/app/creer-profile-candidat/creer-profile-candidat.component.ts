@@ -93,6 +93,7 @@ export class CreerProfileCandidatComponent implements OnInit {
     this._exp["nom_entreprise"] = this.nom_entreprise;
     this._exp["description_entreprise"] = this.description_entreprise;
     this._exp["missions_effectuees"] = this.missions_effectuees;
+    this._data["experiencePro"] = this._exp;
 
     this._data = (JSON.stringify(this._data));
 
