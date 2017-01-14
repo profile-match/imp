@@ -1,0 +1,5 @@
+language: node_js
+node_js:
+- '7.4'
+npm install
+ng build
