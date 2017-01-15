@@ -3,13 +3,52 @@
 
   <div class="tab-content clearfix">
     <div class="tab-pane active" id="1a">
-      <h3>Informations Générales</h3>
-      <hr>
       <form (ngSubmit)="onSubmit()" class="form-horizontal" id="candidat_form">
+        <h3>Informations Générales</h3>
+        <hr>
+        <div align="center" class="form-group">
+          <label class="col-md-3 control-label">Nom</label>
+          <div class="col-md-4">
+            <input [value]="nom" class="form-control" [(ngModel)]="nom"
+                   name="nom"/>
+          </div>
+        </div>
+        <div align="center" class="form-group">
+          <label class="col-md-3 control-label">Prenom</label>
+          <div class="col-md-4">
+            <input [value]="prenom" class="form-control" [(ngModel)]="prenom"
+                   name="prenom"/>
+          </div>
+        </div>
+        <div align="center" class="form-group">
+          <label class="col-md-3 control-label">Email</label>
+          <div class="col-md-4">
+            <input [value]="email" class="form-control" [(ngModel)]="email"
+                   name="email"/>
+          </div>
+        </div>
+        <div class="tab-pane" id="4a">
+          <br/><br/>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Loisirs</label>
+            <div class="col-md-4">
+              <select name="loisirs" [value]="loisirs" [(ngModel)]="loisirs" name="loisirs">
+                <option value="Music" selected="selected">Music</option>
+                <option value="Sports">Sports</option>
+                <option value="Cinema">Cinéma</option>
+                <option value="Jeux Video">Jeux Video</option>
+                <option value="Voyage">Voyage</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <h3>Expérience</h3>
+        <hr>
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Intitulé De Poste</label>
           <div class="col-md-4">
-            <input [value]="intitule_de_poste" class="form-control" [(ngModel)]="intitule_de_poste" name="intitule_de_poste"/>
+            <input [value]="intitule_de_poste" class="form-control" [(ngModel)]="intitule_de_poste"
+                   name="intitule_de_poste"/>
           </div>
         </div>
         <div class="form-group">
@@ -272,8 +311,7 @@
 
         <br/>
 
-        <h3>Entreprise</h3>
-        <hr>
+
         <div class="form-group">
           <label class="col-md-3 control-label">Nom De l'entreprise *</label>
           <div class="col-md-4">
@@ -284,25 +322,28 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Description De l'entreprise</label>
           <div class="col-md-4">
-            <input [value]="description_entreprise" class="form-control" [(ngModel)]="description_entreprise" name="description_entreprise"/>
+            <input [value]="description_entreprise" class="form-control" [(ngModel)]="description_entreprise"
+                   name="description_entreprise"/>
           </div>
         </div>
 
-        <h3>Expérience</h3>
-        <hr>
         <div class="form-group">
           <label class="col-md-3 control-label">Missions effectuées</label>
           <div class="col-md-4">
-            <input [value]="missions_effectuees" class="form-control" [(ngModel)]="missions_effectuees" name="missions_effectuees"/>
+            <input [value]="missions_effectuees" class="form-control" [(ngModel)]="missions_effectuees"
+                   name="missions_effectuees"/>
           </div>
         </div>
 
+        <h3>Formation</h3>
+        <hr>
         <div class="tab-pane" id="2a">
           <br/>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Intitulé De Formation *</label>
             <div class="col-md-4">
-              <input [value]="intitule_de_formation" class="form-control" [(ngModel)]="intitule_de_formation" name="intitule_de_formation"/>
+              <input [value]="intitule_de_formation" class="form-control" [(ngModel)]="intitule_de_formation"
+                     name="intitule_de_formation"/>
             </div>
           </div>
           <div align="center" class="form-group">
@@ -314,31 +355,37 @@
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Description de la formation</label>
             <div class="col-md-4">
-              <input [value]="description_formation" class="form-control" [(ngModel)]="description_formation" name="description_formation"/>
+              <input [value]="description_formation" class="form-control" [(ngModel)]="description_formation"
+                     name="description_formation"/>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-md-3 control-label">Date de début </label>
             <div class="col-md-4">
-              <input [value]="date_debut_format" type="date" class="form-control" [(ngModel)]="date_debut_format" name="date_debut_format"/>
+              <input [value]="date_debut_format" type="date" class="form-control" [(ngModel)]="date_debut_format"
+                     name="date_debut_format"/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Date de fin </label>
             <div class="col-md-4">
-              <input [value]="date_fin_format" type="date" class="form-control" [(ngModel)]="date_fin_format" name="date_fin_format"/>
+              <input [value]="date_fin_format" type="date" class="form-control" [(ngModel)]="date_fin_format"
+                     name="date_fin_format"/>
             </div>
           </div>
 
         </div>
 
+        <h3>Competences</h3>
+        <hr>
         <div class="tab-pane" id="3a">
           <br/>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Domaine de compétence *</label>
             <div class="col-md-4">
-              <input [value]="domaine_de_competence" class="form-control" [(ngModel)]="domaine_de_competence" name="domaine_de_competence"/>
+              <input [value]="domaine_de_competence" class="form-control" [(ngModel)]="domaine_de_competence"
+                     name="domaine_de_competence"/>
             </div>
           </div>
           <div align="center" class="form-group">
@@ -349,21 +396,6 @@
           </div>
         </div>
 
-        <div class="tab-pane" id="4a">
-          <br/><br/>
-          <div class="form-group">
-            <label class="col-md-3 control-label">Loisirs</label>
-            <div class="col-md-4">
-              <select name="loisirs" [value]="loisirs" [(ngModel)]="loisirs" name="loisirs">
-                <option value="Music" selected="selected">Music</option>
-                <option value="Sports">Sports</option>
-                <option value="Cinema">Cinéma</option>
-                <option value="Jeux Video">Jeux Video</option>
-                <option value="Voyage">Voyage</option>
-              </select>
-            </div>
-          </div>
-        </div>
 
         <div class="form-group">
           <div class="col-md-offset-3 col-md-9">

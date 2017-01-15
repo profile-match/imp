@@ -17,6 +17,9 @@ export class CreerProfileCandidatComponent implements OnInit {
 
   private _backendURL: any;
 
+  public nom = "";
+  public prenom = "";
+  public email = "";
   public intitule_de_poste = "abcdef";
   public date_debut;
   public date_fin;
@@ -44,23 +47,6 @@ export class CreerProfileCandidatComponent implements OnInit {
     this._exp = {};
     this._backendURL = {};
 
-    this.intitule_de_poste = "";
-    this.date_debut;
-    this.date_fin;
-    this.pays = "";
-    this.ville = "";
-    this.nom_entreprise = "";
-    this.description_entreprise = "";
-    this.missions_effectuees = "";
-    this.intitule_de_formation = "";
-    this.etablissement = "";
-    this.description_formation = "";
-    this.date_debut_format;
-    this.date_fin_format;
-    this.domaine_de_competence = "";
-    this.competences = "";
-    this.loisirs = "";
-
     // TY Jessel
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
@@ -73,9 +59,9 @@ export class CreerProfileCandidatComponent implements OnInit {
 
   onSubmit(): void {
 
-    this._data["nom"] = "Jean-claude";
-    this._data["prenom"] = "Van damme";
-    this._data["email"] = "oui@non.pe"
+    this._data["nom"] = this.nom;
+    this._data["prenom"] = this.prenom;
+    this._data["email"] = this.email;
     this._data["loisirs"] = this.loisirs;
     this._format["intitule_de_formation"] = this.intitule_de_formation;
     this._format["etablissement"] = this.etablissement;
@@ -99,14 +85,11 @@ export class CreerProfileCandidatComponent implements OnInit {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Accept','application/json')
+    headers.append('Accept', 'application/json')
 
     this._http.post(this._backendURL.creerCandidat, this._data, {
       headers: headers
     }).subscribe();
-    // this._http.post(this._backendURL.creerCandidat, this._data, {
-    //   headers: headers
-    // }).subscribe();
   };
 
 }
