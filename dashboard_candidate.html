@@ -1,0 +1,240 @@
+<div class="nav_menu">
+  <nav class="navbar navbar-default" role="navigation">
+    <ul class="nav navbar-nav navbar-left">
+      <li><a href="#"><h2>iMatch-Profile</h2></a></li>
+      <li><a href="#">Votre profil</a></li>
+      <li><a href="#">Générez votre CV</a></li>
+      <li><a href="#">Parcourir les offres</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
+      <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+      <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="x_panel">
+  <div class="x_title">
+    <h1>Dashboard</h1>
+    <div class="clearfix"></div>
+  </div>
+  <div class="row">
+    <div class="x_title">
+      <h2>Vos offres :</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="dataTables_length" id="datatable_length">
+              <label>Show <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select> entries</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div id="datatable_filter" class="dataTables_filter">
+              <label>Search:<input class="form-control input-sm" placeholder="" aria-controls="datatable" type="search">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <table id="datatable" class="table table-striped table-hover table-bordered dataTable no-footer" role="grid"
+                   aria-describedby="datatable_info">
+              <thead>
+              <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;"></th>
+                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Entreprise</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Poste</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Lieu</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Date d'ajout</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr role="row" class="odd">
+                <td><i class="fa fa-google" style="font-size: 1.5em;"></i></td>
+                <td>Google</td>
+                <td>CEO</td>
+                <td>New York</td>
+                <td>8/10/2015</td>
+              </tr><tr role="row" class="even">
+                <td><i class="fa fa-facebook" style="font-size: 1.5em;"></i></td>
+                <td>FACEBOOK</td>
+                <td>CEO</td>
+                <td>Paris</td>
+                <td>15/7/2015</td>
+              </tr><tr role="row" class="odd">
+                <td><i class="fa fa-amazon" style="font-size: 1.5em;"></i></td>
+                <td>Amazon</td>
+                <td>DevMobil</td>
+                <td>Tourcoins</td>
+                <td>25/12/2017</td>
+              </tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+              Showing 1 to 3 of 57 entries
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+              <ul class="pagination">
+                <li class="paginate_button previous disabled" id="datatable_previous">
+                  <a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0">Previous</a>
+                </li>
+                <li class="paginate_button active">
+                  <a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a>
+                </li>
+                <li class="paginate_button ">
+                  <a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a>
+                </li>
+                <li class="paginate_button ">
+                  <a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a>
+                </li>
+                <li class="paginate_button ">
+                  <a href="#" aria-controls="datatable" data-dt-idx="4" tabindex="0">4</a>
+                </li>
+                <li class="paginate_button ">
+                  <a href="#" aria-controls="datatable" data-dt-idx="5" tabindex="0">5</a>
+                </li>
+                <li class="paginate_button ">
+                  <a href="#" aria-controls="datatable" data-dt-idx="6" tabindex="0">6</a>
+                </li>
+                <li class="paginate_button next" id="datatable_next">
+                  <a href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">Next</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">27 offres d'emplois</div>
+          <div class="panel-body">
+            <p>
+              <!-- p style="text-align: justify" -->
+              En recherche d'emploi ? <br/>
+              27 offres d'emplois correspondent à votre profil, qu'attendez vous pour postuler ? <br/>
+              N'hésitez pas les amis ! <br/>
+            </p>
+          </div>
+          <div class="panel-footer">
+            <p style="text-align: center">
+              <button type="button" class="btn btn-default">Voir les offres</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="x_title">
+      <h2>Message :</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="dataTables_length" id="datatable_length">
+            <label>Show <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select> entries</label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div id="datatable_filter" class="dataTables_filter">
+            <label>Search:<input class="form-control input-sm" placeholder="" aria-controls="datatable" type="search">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="datatable" class="table table-striped table-hover table-bordered dataTable no-footer" role="grid"
+                 aria-describedby="datatable_info">
+            <thead>
+            <tr role="row">
+              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Contacte</th>
+              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Objet</th>
+              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Date reception</th>
+              <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Signaler</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr role="row" class="odd">
+              <td>Pierre Estriche</td>
+              <td>TR : Offre Ingénieur JEE</td>
+              <td>today 13 : 30</td>
+              <td><i class="fa fa-exclamation-triangle" style="font-size: 1.5em;"></i></td>
+            </tr><tr role="row" class="even">
+              <td>Nico And Uzi</td>
+              <td>Hummmm...</td>
+              <td>today 11 : 46</td>
+              <td><i class="fa fa-exclamation-triangle" style="font-size: 1.5em;"></i></td>
+            </tr><tr role="row" class="odd">
+              <td>Erouane de Le</td>
+              <td>lol</td>
+              <td>8/11/2016</td>
+              <td><i class="fa fa-exclamation-triangle" style="font-size: 1.5em;"></i></td>
+            </tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+            Showing 1 to 3 of 57 entries
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+            <ul class="pagination">
+              <li class="paginate_button previous disabled" id="datatable_previous">
+                <a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0">Previous</a>
+              </li>
+              <li class="paginate_button active">
+                <a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a>
+              </li>
+              <li class="paginate_button ">
+                <a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a>
+              </li>
+              <li class="paginate_button ">
+                <a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a>
+              </li>
+              <li class="paginate_button ">
+                <a href="#" aria-controls="datatable" data-dt-idx="4" tabindex="0">4</a>
+              </li>
+              <li class="paginate_button ">
+                <a href="#" aria-controls="datatable" data-dt-idx="5" tabindex="0">5</a>
+              </li>
+              <li class="paginate_button ">
+                <a href="#" aria-controls="datatable" data-dt-idx="6" tabindex="0">6</a>
+              </li>
+              <li class="paginate_button next" id="datatable_next">
+                <a href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">Next</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
