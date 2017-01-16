@@ -9,7 +9,7 @@
 *.ear
 
 #Node_module
-node_module
+node_module/
 
 #webapp
 src/main/webapp
