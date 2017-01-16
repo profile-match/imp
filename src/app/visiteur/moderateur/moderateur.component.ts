@@ -17,11 +17,13 @@ export class ModerateurComponent implements OnInit {
   rechercher: boolean = false;
 
   constructor(private _service:AuthenticationService,
-              private candidatService: CandidatService) { }
+              private candidatService: CandidatService) {
+    this.candidats = [];
+  }
 
   ngOnInit() {
     this.getCandidats();
-    this._service.checkCredentials();
+    this._service.checkCredentialModerator();
   }
 
 
@@ -30,7 +32,10 @@ export class ModerateurComponent implements OnInit {
   }
 
   getCandidats(): void {
+    console.log(JSON.stringify(this.candidats));
     this.candidatService.getCandidats().then(candidats => this.candidats = candidats);
+    console.log(JSON.stringify(this.candidats));
+   // console.log(JSON.stringify(this.candidats.length));
   }
 
   getSelectedCandidats(): Candidat {
