@@ -1,0 +1,53 @@
+<div class="x_panel">
+
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Créer un compte - Candidat</h3>
+    </div>
+  </div>
+
+  <div class="x_content">
+    <form (ngSubmit)="onSubmit()" id="inscription_candidat_form" data-parsley-validate class="form-horizontal form-label-left">
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nom">Nom : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="nom" [value]="nom" [(ngModel)]="candidat.nom" required="required"  name="nom" class="form-control col-md-7 col-xs-12">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prenom">Prénom : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="prenom" [value]="prenom" [(ngModel)]="candidat.prenom" required="required"  name="prenom" class="form-control col-md-7 col-xs-12">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Adresse e-mail : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="email" [value]="email" [(ngModel)]="candidat.email" required="required"  name="email" class="form-control col-md-7 col-xs-12">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="motdepasse">Mot de passe : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="motdepasse" [value]="motdepasse" [(ngModel)]="candidat.motdepasse" required="required"  name="motdepasse" class="form-control col-md-7 col-xs-12">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="motdepasse2">Confirmation du mo de passe : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="motdepasse2" [value]="motdepasse2" [(ngModel)]="candidat.motdepasse2" required="required"  name="motdepasse2" class="form-control col-md-7 col-xs-12">
+        </div>
+      </div>
+
+      <div style="text-align: center; ">
+        <button type="button" class="btn btn-default">Retour</button>
+        <button type="submit" class="btn btn-success">Valider</button>
+      </div>
+    </form>
+  </div>
+</div>
