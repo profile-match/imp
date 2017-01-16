@@ -8,7 +8,8 @@
 *.war
 *.ear
 
-
+#Node_module
+node_modules/
 
 #webapp
 src/main/webapp
@@ -116,20 +117,6 @@ build/Release
 
 jspm_packages
 
-#Exception css gentelella with errors
-!node_modules/	
-
-node_modules/*
-!node_modules/gentelella
-
-node_modules/gentelella/*
-!node_modules/gentelella/build
-
-node_modules/gentelella/build/*
-!node_modules/gentelella/build/css
-
-node_modules/gentelella/build/css/*
-!node_modules/gentelella/build/css/custom.min.css
 
 # Optional npm cache directory
 .npm
@@ -228,3 +215,4 @@ fabric.properties
 # End of https://www.gitignore.io/api/intellij
 
 # End of https://www.gitignore.io/api/linux,macos,windows,node,maven,notepadpp
+
