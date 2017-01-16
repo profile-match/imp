@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {Candidat} from "../interfaces/candidat";
+import {InMemoryDataService} from "../../in-memory-data.service";
 
 @Component({
   selector: 'app-dashboard-candidat',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './dashboardCandidat.component.html',
+  styleUrls: ['./dashboardCandidat.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardCandidatComponent implements OnInit {
 
   cdd : Candidat;
 
   constructor() {
-    this.cdd = {};
+    this.cdd = {id : 12,name : "jean",fname:"valjean"};
   }
 
   /*
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
   /*
   * Return candidat ID
    */
-  get cddID():String{
+  get cddID():number{
     return this.cdd.id;
   }
 

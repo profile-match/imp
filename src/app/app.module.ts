@@ -20,6 +20,7 @@ import { ModerateurComponent } from './visiteur/moderateur/moderateur.component'
 import { CandidatDetailComponent } from './visiteur/moderateur/candidat-detail/candidat-detail.component';
 import { CandidatSearchComponent } from './visiteur/moderateur/candidat-search/candidat-search.component';
 import { SignalementComponent } from './visiteur/moderateur/signalement/signalement.component';
+import {DashboardCandidatComponent} from "./candidat/dashboard/dashboardCandidat.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SignalementComponent } from './visiteur/moderateur/signalement/signalem
     ModerateurComponent,
     CandidatDetailComponent,
     CandidatSearchComponent,
-    SignalementComponent
+    SignalementComponent,
+    DashboardCandidatComponent
   ],
   imports: [
     BrowserModule,
