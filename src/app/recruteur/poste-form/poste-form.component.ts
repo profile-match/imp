@@ -109,7 +109,7 @@ export class PosteFormComponent implements OnInit {
    *
    * @returns {any[]}
    */
-  get savoirAddSpe(): any[] {
+  get savoirAddSpe(): Savoir[] {
     return this.poste.savoirSpe;
   }
 
@@ -118,7 +118,7 @@ export class PosteFormComponent implements OnInit {
    *
    * @returns {any[]}
    */
-  get savoirAddEtre(): any[] {
+  get savoirAddEtre(): Savoir[] {
     return this.poste.savoirEtre;
   }
 
@@ -127,7 +127,7 @@ export class PosteFormComponent implements OnInit {
    *
    * @returns {any[]}
    */
-  get savoirAddFaire(): any[] {
+  get savoirAddFaire(): Savoir[] {
     return this.poste.savoirFaire;
   }
 

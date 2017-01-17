@@ -156,9 +156,9 @@
             <input #inputfaire [(ngModel)]="inputSavoirFaire" name="inputSavoirFaire" id="tags_2" type="text"
                    class="tags form-control ng-normal" (keyup.enter)="onEnterFaire(inputfaire.value,selectfaire.value)">
             <select #selectfaire class="form-control" style="width: 35%; margin-left: 3%">
-              <option value="1">Obligatoire</option>
-              <option value="2">Plus</option>
-              <option value="3">N/A</option>
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
             </select>
             <button (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success" style="margin-left: 20px;">
               Ajouter
@@ -183,9 +183,9 @@
             <input #inputetre [(ngModel)]="inputSavoirEtre" name="inputSavoirEtre" id="tags_3" type="text"
                    class="tags form-control ng-normal" (keyup.enter)="onEnterEtre(inputetre.value,selectetre.value)">
             <select #selectetre class="form-control" style="width: 35%; margin-left: 3%">
-              <option value="1">Obligatoire</option>
-              <option value="2">Plus</option>
-              <option value="3">N/A</option>
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
             </select>
             <button (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
@@ -210,9 +210,9 @@
             <input #inputspe [(ngModel)]="inputSavoirSpe" name="inputSavoirSpe" id="tags_1" type="text"
                    class="tags form-control ng-normal" (keyup.enter)="onEnterSpe(inputspe.value,selectspe.value)"  >
             <select #selectspe class="form-control" style="width: 35%; margin-left: 3%">
-              <option value="1">Obligatoire</option>
-              <option value="2">Plus</option>
-              <option value="3">N/A</option>
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
             </select>
             <button (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>

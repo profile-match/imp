@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import {Savoir} from "../classes/savoir";
 
 @Component({
   selector: 'ng2-savoirSpe',
@@ -8,12 +9,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class SavoirSpeComponent implements OnInit {
 
   // private property to store savoir value
-  private _savoir: any;
+  private _savoir: Savoir;
   // private property to store delete$ value
   private _delete$: EventEmitter<any>;
 
   constructor() {
-    this._savoir = {};
     this._delete$ = new EventEmitter();
   }
 
@@ -22,7 +22,7 @@ export class SavoirSpeComponent implements OnInit {
    *
    * @returns {any}
    */
-  get savoir(): any {
+  get savoir(): Savoir {
     return this._savoir;
   }
 
@@ -31,7 +31,7 @@ export class SavoirSpeComponent implements OnInit {
    *
    * @param person
    */
-  @Input() set savoir(savoir: any) {
+  @Input() set savoir(savoir: Savoir) {
     this._savoir = savoir;
   }
 
@@ -50,7 +50,7 @@ export class SavoirSpeComponent implements OnInit {
    *
    * @param person
    */
-  delete(savoir: any) {
+  delete(savoir: Savoir) {
     this._delete$.emit(savoir);
   }
 
