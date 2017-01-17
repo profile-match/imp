@@ -14,5 +14,6 @@ export interface Poste {
   equipe_concernee: string,
   savoirSpe: Savoir[],
   savoirFaire: Savoir[],
-  savoirEtre: Savoir[]
+  savoirEtre: Savoir[],
+  metier: Savoir[]
 }

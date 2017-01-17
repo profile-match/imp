@@ -8,6 +8,7 @@ import { PosteFormComponent } from './recruteur/poste-form/poste-form.component'
 import { SavoirSpeComponent } from './recruteur/savoir-spe/savoir-spe.component';
 import { SavoirEtreComponent } from './recruteur/savoir-etre/savoir-etre.component';
 import { SavoirFaireComponent } from './recruteur/savoir-faire/savoir-faire.component';
+import { MetierComponent } from './recruteur/metier/metier.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SavoirFaireComponent } from './recruteur/savoir-faire/savoir-faire.comp
     PosteFormComponent,
     SavoirSpeComponent,
     SavoirEtreComponent,
-    SavoirFaireComponent
+    SavoirFaireComponent,
+    MetierComponent
   ],
   imports: [
     BrowserModule,

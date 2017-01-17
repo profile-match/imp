@@ -18,6 +18,7 @@ export class PosteFormComponent implements OnInit {
   inputSavoirSpe: string;
   inputSavoirEtre: string;
   inputSavoirFaire: string;
+  inputMetier: string;
 
   constructor() {
 
@@ -36,6 +37,7 @@ export class PosteFormComponent implements OnInit {
     this.poste.savoirSpe =  [];
     this.poste.savoirFaire = [];
     this.poste.savoirEtre = [];
+    this.poste.metier = [];
 
     this.class = "icheckbox_flat-green";
     this.query = '';
@@ -92,6 +94,16 @@ export class PosteFormComponent implements OnInit {
     }
   }
 
+  deleteMetier(metier: any) {
+    let ind: any = 0;
+    for (let i of this.poste.metier) {
+      ind++;
+      if (i == metier) {
+        this.poste.metier.splice(ind-1, 1);
+      }
+    }
+  }
+
   /**
    * Returns private property this.poste.savoirSpe
    *
@@ -119,6 +131,15 @@ export class PosteFormComponent implements OnInit {
     return this.poste.savoirFaire;
   }
 
+  /**
+   * Returns private property _metierAdd
+   *
+   * @returns {any[]}
+   */
+  get metierAdd(): any[] {
+    return this.poste.metier;
+  }
+
   onEnterSpe(value: string, nb: number) {
     if (value != "") {
       this.poste.savoirSpe.push(new Savoir(value,nb));
@@ -140,6 +161,12 @@ export class PosteFormComponent implements OnInit {
     }
   }
 
+  onEnterMetier(value: string, nb: number) {
+    if (value != "") {
+      this.poste.metier.push(new Savoir(value,nb));
+      this.inputMetier = "";
+    }
+  }
 
   getClass() {
     if (this.poste.afficher_moyenne == 0) {
