@@ -3,6 +3,7 @@ import { Headers, Http, Response  } from '@angular/http';
 import { Observable } 	  from 'rxjs';
 
 import { Candidat } from '../../candidat/interfaces/candidat';
+import { Comment } from '../../candidat/interfaces/commentaire';
 
 
 import 'rxjs/add/operator/toPromise';
@@ -36,6 +37,20 @@ export class CandidatService {
       .map((r: Response) => r.json().data as Candidat[]);
   }
 
+  getComments(): Promise<Comment[]> {
+    return this.http.get(this._backendURL.allComment)
+      .toPromise()
+      .then(response => response.json().data as Comment[])
+      .catch(this.handleError);
+  }
+
+  getComment(idCandidat: number): Promise<Comment[]> {
+    return this.http.get(this._backendURL.oneComment.replace(':id', idCandidat))//`/api/candidats/?idCandidat=${idCandidat}`)
+      .toPromise()
+      .then(response => response.json().data as Comment[])
+      .catch(this.handleError);
+  }
+
   getCandidats(): Promise<Candidat[]> {
     return this.http.get(this._backendURL.allCandidat)
       .toPromise()
@@ -44,10 +59,18 @@ export class CandidatService {
   }
 
   getCandidat(id: number): Promise<Candidat> {
-    const url = `${this.candidatsUrl}/${id}`;
+    //const url = `${this.candidatsUrl}/${id}`;
     return this.http.get(this._backendURL.oneCandidat.replace(':id', id))
       .toPromise()
       .then(response => response.json().data as Candidat)
+      .catch(this.handleError);
+  }
+
+  bannir(candidat: Candidat): Promise<Candidat[]> {
+    return this.http
+      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), JSON.stringify(candidat))
+      .toPromise()
+      .then(response => response.json().data as Candidat[])
       .catch(this.handleError);
   }
 

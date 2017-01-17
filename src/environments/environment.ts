@@ -13,7 +13,13 @@ export const environment = {
       allCandidat: '/api/candidats',
       oneCandidat: '/api/candidats/:id',
       randomPeople: '/api/peoples/random',
-      searchCandidat: '/api/candidats/?name=${:term}'
+      searchCandidat: '/api/candidats/?name=${:term}',
+      bannirCandidat: '/api/candidats/bannir/:id',
+      allComment: '/api/commentaires',
+      oneComment: '/api/commentaires/:id',
+      allPost:'/api/posts',
+      allRecruteur: '/api/recruteurs',
+      oneRecruteur: '/api/recruteurs/:id'
     }
   }
 };

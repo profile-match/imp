@@ -4,6 +4,7 @@ import any = jasmine.any;
 import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Candidat} from "../../candidat/interfaces/candidat";
+import {Recruteur} from "../../recruteur/interfaces/recruteur";
 
 export class User {
   constructor(
@@ -21,7 +22,7 @@ export class AuthenticationService {
   // private property to store candidats value
   private _candidats: Candidat[];
   // private property to store recruteurs value
-  private _recruteurs: any[];
+  private _recruteurs: Recruteur[];
   // private property to store all backend URLs
   private _backendURL: any;
 
@@ -42,6 +43,10 @@ export class AuthenticationService {
     this._http.get(this._backendURL.allCandidat)
       .map( res => res.json() )
       .subscribe( (candidats: any[]) => this._candidats = candidats);
+
+    this._http.get(this._backendURL.allRecruteur)
+      .map( res => res.json() )
+      .subscribe( (rec: any[]) => this._recruteurs = rec);
   }
 
   logout() {
@@ -54,7 +59,7 @@ export class AuthenticationService {
     console.log(JSON.stringify(users));
     console.log(JSON.stringify(this._candidats['data']));
     var authenticatedCandidat = this._candidats['data'].find(c => c.email === user.email);
-  //  var authenticatedRecruteur = this._recruteurs['data'].find(r => r.email === user.email);
+    var authenticatedRecruteur = this._recruteurs['data'].find(r => r.email === user.email);
     var authenticatedModerator = users.find(u => u.email === user.email);
     if (authenticatedModerator && authenticatedModerator.password === user.password){
       localStorage.setItem("user", user.email);
@@ -68,12 +73,12 @@ export class AuthenticationService {
 
       return true;
     }
- /*   else if (authenticatedRecruteur && authenticatedRecruteur.password === user.password){
+    else if (authenticatedRecruteur && authenticatedRecruteur.password === user.password){
       localStorage.setItem("user", authenticatedRecruteur.toString());
-      this._router.navigate(['/recruteur']);
+      this._router.navigate(['/accueil']);
 
       return true;
-    }*/
+    }
     return false;
 
   }

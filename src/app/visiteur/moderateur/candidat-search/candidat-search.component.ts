@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router }            from '@angular/router';
 
 import { Observable }        from 'rxjs/Observable';
@@ -16,6 +16,7 @@ import {ModerateurComponent} from "../moderateur.component";
 })
 export class CandidatSearchComponent implements OnInit {
 
+  private _bannir$: EventEmitter<any>;
   candidats: Observable<Candidat[]>;
   selectedCandidat: Candidat;
   selectedC: Candidat;
@@ -25,6 +26,7 @@ export class CandidatSearchComponent implements OnInit {
   constructor(private candidatSearchService: CandidatService,
               private router: Router) {
       this.searchTerms = new Subject<string>();
+    this._bannir$ = new EventEmitter();
   }
 
   ngOnInit() {
@@ -51,5 +53,22 @@ export class CandidatSearchComponent implements OnInit {
   goToDetail(candidat: Candidat): void {
     //	this.mod.selectedCandidat = null;
     this.selectedCandidat = candidat;
+  }
+
+  @Output('personBannir') get bannir$(): EventEmitter<any> {
+    return this._bannir$;
+  }
+
+  set bannir$(value: EventEmitter<any>) {
+    this._bannir$ = value;
+  }
+
+  /**
+   * Function to banish a person
+   *
+   * @param person
+   */
+  bannir(candidat: Candidat) {
+    this._bannir$.emit(candidat);
   }
 }

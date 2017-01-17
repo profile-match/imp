@@ -1,4 +1,5 @@
 export interface Poste {
+  idRecruteur: number,
   reference: string,
   intitule: string,
   indice_salaire: string,
@@ -11,5 +12,5 @@ export interface Poste {
   lieu_travail: string,
   organisation: string,
   equipe_concernee: string,
-  savoirSpe: Array<string>
+  signale: boolean
 }

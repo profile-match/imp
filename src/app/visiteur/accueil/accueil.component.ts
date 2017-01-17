@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 
 import {CandidatService} from "../../shared/service/candidat.service";
 import {Candidat} from "../../candidat/interfaces/candidat";
+import {RecruteurService} from "../../shared/service/recruteur.service";
+import {Recruteur} from "../../recruteur/interfaces/recruteur";
+import {Poste} from "../../recruteur/interfaces/poste";
+import {Comment} from "../../candidat/interfaces/commentaire";
 
 @Component({
   selector: 'app-accueil',
@@ -13,6 +17,10 @@ import {Candidat} from "../../candidat/interfaces/candidat";
 export class AccueilComponent implements OnInit{
 
   private candidats: Candidat[];
+  private recruteurs: Recruteur[];
+  private postes: Poste[];
+  private comments: Comment[];
+
   nbCountries: string;
   views: string;
   public countriesList = [
@@ -25,21 +33,38 @@ export class AccueilComponent implements OnInit{
 
   private menuList : any[];
 
-  constructor(private candidatService: CandidatService) {
+  constructor(private candidatService: CandidatService, private recruteurService : RecruteurService) {
     this.views = '127';
     this.nbCountries = '60';
     this.candidats = [];
+    this.recruteurs = [];
+    this.postes = [];
+    this.comments = [];
     this.menuList = [];
   }
 
   getCandidats(): void {
-    console.log(JSON.stringify(this.candidats));
     this.candidatService.getCandidats().then(candidats => this.candidats = candidats);
-    console.log(JSON.stringify(this.candidats));
+   // console.log(JSON.stringify(this.candidats));
+  }
+
+  getComments(): void {
+    this.candidatService.getComments().then(com => this.comments = com);
+  }
+
+  getRecruteurs(): void {
+    this.recruteurService.getRecruteurs().then(recruteurs => this.recruteurs = recruteurs);
+  }
+
+  getPostes(): void {
+    this.recruteurService.getPosts().then(postes => this.postes = postes);
   }
 
   ngOnInit(): void {
     this.getCandidats();
+    this.getRecruteurs();
+    this.getPostes();
+    this.getComments();
     this.setMenuList();
   }
 

@@ -26,30 +26,29 @@
 
           <!-- liste des candidats -->
           <li><a><i class="fa fa-users"></i> Gerer les Candidats <span class="fa fa-chevron-down"></span></a>
+            <div style="width:220px;height:150px;line-height:3em;overflow:auto;padding:5px;">
 
-            <ul class="candidats">
-              <li *ngFor="let candidat of candidats"
-                  [class.selected]="candidat === selectedCandidat"
-                  (click)="onSelect(candidat)"
-              >
-                <span class="badge">{{candidat.id}}</span> {{candidat.name}}
-              </li>
-            </ul>
+              <ul class="candidats">
+                <li *ngFor="let candidat of candidats"
+                    [class.selected]="candidat === selectedCandidat"
+                    (click)="onSelectCandidat(candidat)">
+                  <span class="badge">{{candidat.id}}</span> {{candidat.name}}
+                </li>
+              </ul>
+            </div>
           </li>
-
           <!-- liste des recruteurs -->
           <li><a><i class="fa fa-users"></i> Gerer les Recruteurs <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="general_elements.html">General Elements</a></li>
-              <li><a href="media_gallery.html">Media Gallery</a></li>
-              <li><a href="typography.html">Typography</a></li>
-              <li><a href="icons.html">Icons</a></li>
-              <li><a href="glyphicons.html">Glyphicons</a></li>
-              <li><a href="widgets.html">Widgets</a></li>
-              <li><a href="invoice.html">Invoice</a></li>
-              <li><a href="inbox.html">Inbox</a></li>
-              <li><a href="calendar.html">Calendar</a></li>
-            </ul>
+            <div style="width:220px;height:150px;line-height:3em;overflow:auto;padding:5px;">
+
+              <ul class="recruteurs">
+                <li *ngFor="let recruteur of recruteurs"
+                  [class.selected]="recruteur === selectedRecruteur"
+                  (click)="onSelectRecruteur(recruteur)">
+                  <span class="badge">{{recruteur.id}}</span> {{recruteur.name}}
+                </li>
+              </ul>
+            </div>
           </li>
 
 
@@ -92,20 +91,24 @@
     <!-- page content -->
     <button (click)="recherche()"> recherche candidat</button>
     <div *ngIf="rechercher">
-      <app-candidat-search>ex</app-candidat-search>
+      <app-candidat-search (personBannir)="bannir($event)">ex</app-candidat-search>
     </div>
 
-    *******
+  <!--  *******  detail du candidat selectionné :  -->
 
-    <app-candidat-detail [candidat]="selectedCandidat"></app-candidat-detail>
+    <app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)"></app-candidat-detail>
 
-    *************
+  <!--  ************* detail du recruteur selectionné :  -->
+
+    <app-recruteur-detail [recruteur]="selectedRecruteur" (bannirRecruteur)="bannirRecruteur($event)"></app-recruteur-detail>
+
+    <!--  ************* detail des signalement :  -->
 
     <div *ngIf="signalement">
-      <app-signalement>load</app-signalement>
+      <app-signalement (goToDetail)="goToDetailCandidat($event)" (goToDetailRecruteur)="goToDetailRecruteur($event)">load</app-signalement>
     </div>
 
-    *********
+  <!--  *********  -->
 
   </div>
 </div>
