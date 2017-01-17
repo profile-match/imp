@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location }  from '@angular/common';
 import {Candidat} from "../interfaces/candidat";
 
+
 @Component({
   selector: 'app-inscription-candidat',
   templateUrl: 'inscription-candidat.component.html',
@@ -15,6 +16,7 @@ export class InscriptionCandidatComponent implements OnInit {
   candidat = <Candidat>{};
 
   constructor(private location: Location) {
+
     this.candidat.name = "";
     this.candidat.firstname = "";
     this.candidat.email = "";
