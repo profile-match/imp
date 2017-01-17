@@ -38,7 +38,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="indice_salaire">Indice grille salaire
         </label>
         <div class="col-md-2 col-sm-2 col-xs-2">
-          <input type="text" id="indice_salaire" [value]="indice_salaire" [(ngModel)]="poste.indice_salaire"
+          <input type="text" id="indice_salaire" [value]="indice_salaire" [(ngModel)]="poste.indice_salaire" required="required"
                  name="indice_salaire" class="form-control col-md-7 col-xs-12">
         </div>
         <span title="Cette information permet d’indiquer le niveau où se situe le salaire du poste
@@ -84,7 +84,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_contrat">Type de contrat <span
           class="required">*</span>
         </label>
-        <div class="col-md-3 col-sm-3 col-xs-2">
+        <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="text" id="type_contrat" style="text-align:center;" [value]="type_contrat"
                  [(ngModel)]="poste.type_contrat" name="type_contrat" required="required"
                  class="form-control col-md-7 col-xs-12">
@@ -149,24 +149,85 @@
         </div>
       </div>
 
-
       <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir spécifiques</label>
-        <div class="col-md-4 col-sm-4 col-xs-4">
-          <input #inputspe id="tags_1" type="text" class="tags form-control" (keyup.enter)="onEnter(inputspe.value)" >
-
-          <div *ngFor="let savoir of savoirAdded" id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            {{savoir}}
-            <span class="tag"><span>social&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
-            <span class="tag"><span>adverts&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
-            <span class="tag"><span>sales&nbsp;&nbsp;</span><a href="#" title="Removing tag">x</a></span>
-            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 72px;"></div>
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir-faire</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputfaire [(ngModel)]="inputSavoirFaire" name="inputSavoirFaire" id="tags_2" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterFaire(inputfaire.value,selectfaire.value)">
+            <select #selectfaire class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="1">Obligatoire</option>
+              <option value="2">Plus</option>
+              <option value="3">N/A</option>
+            </select>
+            <button (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success" style="margin-left: 20px;">
+              Ajouter
+            </button>
+          </div>
+          <div id="tags_2_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-savoirFaire [savoir]="savoir" (savoirFaireDelete)="deleteFaire($event)"
+                             *ngFor="let savoir of savoirAddFaire">
+            </ng2-savoirFaire>
+            <div id="tags_2_addTag"><input id="tags_2_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
             <div class="tags_clear"></div>
           </div>
-          <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir-être</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputetre [(ngModel)]="inputSavoirEtre" name="inputSavoirEtre" id="tags_3" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterEtre(inputetre.value,selectetre.value)">
+            <select #selectetre class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="1">Obligatoire</option>
+              <option value="2">Plus</option>
+              <option value="3">N/A</option>
+            </select>
+            <button (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_3_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-savoirEtre [savoir]="savoir" (savoirEtreDelete)="deleteEtre($event)"
+                            *ngFor="let savoir of savoirAddEtre">
+            </ng2-savoirEtre>
+            <div id="tags_3_addTag"><input id="tags_3_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir spécifiques</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputspe [(ngModel)]="inputSavoirSpe" name="inputSavoirSpe" id="tags_1" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterSpe(inputspe.value,selectspe.value)"  >
+            <select #selectspe class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="1">Obligatoire</option>
+              <option value="2">Plus</option>
+              <option value="3">N/A</option>
+            </select>
+            <button (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-savoirSpe [savoir]="savoir" (savoirSpeDelete)="deleteSpe($event)" *ngFor="let savoir of savoirAddSpe">
+            </ng2-savoirSpe>
+            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
 
       <div style="text-align: center; ">
         <button type="button" class="btn btn-default">Retour</button>

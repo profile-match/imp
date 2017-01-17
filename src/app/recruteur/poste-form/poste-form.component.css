@@ -1,5 +1,6 @@
 .ng-valid { border-color: green; }
 .ng-invalid { border-color: red; }
+.ng-normal { border-color: lightgray; }
 .editor-wrapper-verysmall {
   min-height: 80px;
   max-height: 150px;

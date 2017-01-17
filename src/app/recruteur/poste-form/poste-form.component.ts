@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
-import {PosteService} from './poste.service';
+import {Savoir} from "../classes/savoir";
 
 @Component({
   selector: 'app-poste-form',
   templateUrl: './poste-form.component.html',
-  styleUrls: ['./poste-form.component.css'],
-  providers: [PosteService]
+  styleUrls: ['./poste-form.component.css']
 })
 export class PosteFormComponent implements OnInit {
 
@@ -15,11 +14,12 @@ export class PosteFormComponent implements OnInit {
   query: string;
   result: string;
   private isChecked: boolean;
-  //savoirSpe: string[];
   poste = <Poste>{};
-  savoirAdded:any[]
+  inputSavoirSpe: string;
+  inputSavoirEtre: string;
+  inputSavoirFaire: string;
 
-  constructor(private posteServ: PosteService) {
+  constructor() {
 
     this.poste.reference = "ref";
     this.poste.intitule = "int";
@@ -33,13 +33,13 @@ export class PosteFormComponent implements OnInit {
     this.poste.lieu_travail = "lieut";
     this.poste.organisation = "orga";
     this.poste.equipe_concernee = "equipe";
-    //this.poste.savoirSpe = this.posteServ.getSavoirSpe();
+    this.poste.savoirSpe =  [];
+    this.poste.savoirFaire = [];
+    this.poste.savoirEtre = [];
 
     this.class = "icheckbox_flat-green";
     this.query = '';
     this.result = '';
-    this.savoirAdded = [""];
-    //this.savoirSpe = [""];
     this.isChecked = false;
   }
 
@@ -62,29 +62,84 @@ export class PosteFormComponent implements OnInit {
      alert(this.poste.equipe + "equipeee");*/
   }
 
-  /*
-   filter(term: string) {
-   if (term != "") {
-   this.http.get("https://jsonplaceholder.typicode.com/posts/" + term)
-   .map(response => response.json())
-   .subscribe(result => this.result = result);
-   }
-   }
+  deleteSpe(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.savoirSpe) {
+      ind++;
+      if (i == savoir) {
+        this.poste.savoirSpe.splice(ind-1, 1);
+      }
+    }
+  }
+
+  deleteEtre(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.savoirEtre) {
+      ind++;
+      if (i == savoir) {
+        this.poste.savoirEtre.splice(ind-1, 1);
+      }
+    }
+  }
+
+  deleteFaire(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.savoirFaire) {
+      ind++;
+      if (i == savoir) {
+        this.poste.savoirFaire.splice(ind-1, 1);
+      }
+    }
+  }
+
+  /**
+   * Returns private property this.poste.savoirSpe
+   *
+   * @returns {any[]}
    */
-
-  addSavoirSpe(): void {
-
-
+  get savoirAddSpe(): any[] {
+    return this.poste.savoirSpe;
   }
 
-  onEnter(value: string) {
-    this.savoirAdded.push("<span class=\"tag\"><span>"+value+"</span><a href=\"#\" title=\"Removing tag\">x</a></span>");
+  /**
+   * Returns private property _savoirAddEtre
+   *
+   * @returns {any[]}
+   */
+  get savoirAddEtre(): any[] {
+    return this.poste.savoirEtre;
   }
 
-
-  getSavoirSpe(): void {
-    //this.poste.savoirSpe = this.posteService.getSavoirSpe();
+  /**
+   * Returns private property _savoirAddFaire
+   *
+   * @returns {any[]}
+   */
+  get savoirAddFaire(): any[] {
+    return this.poste.savoirFaire;
   }
+
+  onEnterSpe(value: string, nb: number) {
+    if (value != "") {
+      this.poste.savoirSpe.push(new Savoir(value,nb));
+      this.inputSavoirSpe = "";
+    }
+  }
+
+  onEnterFaire(value: string, nb: number) {
+    if (value != "") {
+      this.poste.savoirFaire.push(new Savoir(value,nb));
+      this.inputSavoirFaire = "";
+    }
+  }
+
+  onEnterEtre(value: string, nb: number) {
+    if (value != "") {
+      this.poste.savoirEtre.push(new Savoir(value,nb));
+      this.inputSavoirEtre = "";
+    }
+  }
+
 
   getClass() {
     if (this.poste.afficher_moyenne == 0) {
@@ -97,7 +152,7 @@ export class PosteFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getHeroes();
+
   }
 
 }

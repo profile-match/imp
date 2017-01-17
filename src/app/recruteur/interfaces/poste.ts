@@ -1,3 +1,4 @@
+import {Savoir} from "../classes/savoir";
 export interface Poste {
   reference: string,
   intitule: string,
@@ -11,5 +12,7 @@ export interface Poste {
   lieu_travail: string,
   organisation: string,
   equipe_concernee: string,
-  savoirSpe: Array<string>
+  savoirSpe: Savoir[],
+  savoirFaire: Savoir[],
+  savoirEtre: Savoir[]
 }
