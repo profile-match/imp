@@ -28,6 +28,7 @@
         "../node_modules/gentelella/vendors/select2/dist/css/select2.min.css",
         "../node_modules/gentelella/vendors/switchery/dist/switchery.min.css",
         "../node_modules/gentelella/vendors/starrr/dist/starrr.css"
+		"../node_modules/gentelella/build/css/custom.min.css"
       ],
       "scripts": [],
       "environments": {

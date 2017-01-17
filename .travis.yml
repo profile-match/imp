@@ -3,4 +3,5 @@ node_js:
 - '7.4'
 before_script:
 - npm install
+- cp fix/custom.min.css node_modules/gentelella/build/css/custom.min.css
 script: ng build
