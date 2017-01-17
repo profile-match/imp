@@ -45,22 +45,22 @@
         <h3>Expérience</h3>
         <hr>
         <div align="center" class="form-group">
-          <label class="col-md-3 control-label">Intitulé De Poste</label>
-          <div class="col-md-4">
+          <label class="col-md-3 control-label">Intitulé du poste<span class="required">*</span></label>
+          <div class="col-md-4 form-group">
             <input [value]="intitule_de_poste" class="form-control" [(ngModel)]="intitule_de_poste"
-                   name="intitule_de_poste"/>
+                   name="intitule_de_poste" required="required"/>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Date De Début *</label>
-          <div class="col-md-4">
-            <input [value]="date_debut" type="date" class="form-control" [(ngModel)]="date_debut" name="date_debut"/>
+          <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
+          <div class="col-md-4 form-group">
+            <input [value]="date_debut" type="date" class="form-control" [(ngModel)]="date_debut" name="date_debut" required="required"/>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Date De Fin *</label>
-          <div class="col-md-4">
-            <input [value]="date_fin" type="date" class="form-control" [(ngModel)]="date_fin" name="date_fin"/>
+          <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
+          <div class="col-md-4 form-group">
+            <input [value]="date_fin" type="date" class="form-control" [(ngModel)]="date_fin" name="date_fin" required="required"/>
           </div>
         </div>
         <div class="form-group">
@@ -313,14 +313,14 @@
 
 
         <div class="form-group">
-          <label class="col-md-3 control-label">Nom De l'entreprise *</label>
-          <div class="col-md-4">
-            <input [value]="nom_entreprise" class="form-control" [(ngModel)]="nom_entreprise" name="nom_entreprise"/>
+          <label class="col-md-3 control-label">Nom de l'entreprise <span class="required">*</span></label>
+          <div class="col-md-4 form-group">
+            <input [value]="nom_entreprise" class="form-control" [(ngModel)]="nom_entreprise" name="nom_entreprise" required="required"/>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-3 control-label">Description De l'entreprise</label>
+          <label class="col-md-3 control-label">Description de l'entreprise</label>
           <div class="col-md-4">
             <input [value]="description_entreprise" class="form-control" [(ngModel)]="description_entreprise"
                    name="description_entreprise"/>
@@ -340,10 +340,10 @@
         <div class="tab-pane" id="2a">
           <br/>
           <div align="center" class="form-group">
-            <label class="col-md-3 control-label">Intitulé De Formation *</label>
-            <div class="col-md-4">
+            <label class="col-md-3 control-label">Intitulé de Formation <span class="required">*</span></label>
+            <div class="col-md-4 form-group">
               <input [value]="intitule_de_formation" class="form-control" [(ngModel)]="intitule_de_formation"
-                     name="intitule_de_formation"/>
+                     name="intitule_de_formation" required="required"/>
             </div>
           </div>
           <div align="center" class="form-group">
@@ -361,17 +361,17 @@
           </div>
 
           <div class="form-group">
-            <label class="col-md-3 control-label">Date de début </label>
-            <div class="col-md-4">
+            <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
+            <div class="col-md-4 form-group">
               <input [value]="date_debut_format" type="date" class="form-control" [(ngModel)]="date_debut_format"
-                     name="date_debut_format"/>
+                     name="date_debut_format" required="required"/>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Date de fin </label>
-            <div class="col-md-4">
+            <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
+            <div class="col-md-4 form-group">
               <input [value]="date_fin_format" type="date" class="form-control" [(ngModel)]="date_fin_format"
-                     name="date_fin_format"/>
+                     name="date_fin_format" required="required"/>
             </div>
           </div>
 
@@ -382,16 +382,16 @@
         <div class="tab-pane" id="3a">
           <br/>
           <div align="center" class="form-group">
-            <label class="col-md-3 control-label">Domaine de compétence *</label>
-            <div class="col-md-4">
+            <label class="col-md-3 control-label">Domaine de compétence <span class="required">*</span></label>
+            <div class="col-md-4 form-group">
               <input [value]="domaine_de_competence" class="form-control" [(ngModel)]="domaine_de_competence"
-                     name="domaine_de_competence"/>
+                     name="domaine_de_competence" required="required"/>
             </div>
           </div>
           <div align="center" class="form-group">
-            <label class="col-md-3 control-label">Compétences *</label>
-            <div class="col-md-4">
-              <input [value]="competences" class="form-control" [(ngModel)]="competences" name="competences"/>
+            <label class="col-md-3 control-label">Compétences <span class="required">*</span></label>
+            <div class="col-md-4 form-group">
+              <input [value]="competences" class="form-control" [(ngModel)]="competences" name="competences" required="required"/>
             </div>
           </div>
         </div>
@@ -399,8 +399,8 @@
 
         <div class="form-group">
           <div class="col-md-offset-3 col-md-9">
-            <input type="submit" class="btn btn-default" value="Enregistrer"/>
-            <input type="reset" class="btn btn-default" value="Annuler"/>
+            <input type="submit" class="btn btn-success" value="Enregistrer"/>
+            <input type="reset" class="btn btn-primary" value="Annuler"/>
           </div>
         </div>
       </form>
