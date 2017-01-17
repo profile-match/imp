@@ -11,6 +11,7 @@
 
 #angular's modules
 angular/node_modules
+dist/
 
 #webapp
 src/main/webapp
