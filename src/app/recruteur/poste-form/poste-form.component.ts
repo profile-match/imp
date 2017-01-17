@@ -19,6 +19,9 @@ export class PosteFormComponent implements OnInit {
   inputSavoirEtre: string;
   inputSavoirFaire: string;
   inputMetier: string;
+  inputFonctionnelle: string;
+  inputTechnique: string;
+  inputLinguistiques: string;
 
   constructor() {
 
@@ -38,6 +41,17 @@ export class PosteFormComponent implements OnInit {
     this.poste.savoirFaire = [];
     this.poste.savoirEtre = [];
     this.poste.metier = [];
+    this.poste.fonctionnelle = [];
+    this.poste.technique = [];
+    this.poste.linguistiques = [];
+
+    this.inputSavoirSpe = "";
+    this.inputSavoirEtre = "";
+    this.inputSavoirFaire = "";
+    this.inputMetier = "";
+    this.inputFonctionnelle = "";
+    this.inputTechnique = "";
+    this.inputLinguistiques = "";
 
     this.class = "icheckbox_flat-green";
     this.query = '';
@@ -104,6 +118,36 @@ export class PosteFormComponent implements OnInit {
     }
   }
 
+  deleteFonctionnelle(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.fonctionnelle) {
+      ind++;
+      if (i == savoir) {
+        this.poste.fonctionnelle.splice(ind-1, 1);
+      }
+    }
+  }
+
+  deleteTechnique(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.technique) {
+      ind++;
+      if (i == savoir) {
+        this.poste.technique.splice(ind-1, 1);
+      }
+    }
+  }
+
+  deleteLinguistiques(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.linguistiques) {
+      ind++;
+      if (i == savoir) {
+        this.poste.linguistiques.splice(ind-1, 1);
+      }
+    }
+  }
+
   /**
    * Returns private property this.poste.savoirSpe
    *
@@ -136,8 +180,20 @@ export class PosteFormComponent implements OnInit {
    *
    * @returns {any[]}
    */
-  get metierAdd(): any[] {
+  get metierAdd(): Savoir[] {
     return this.poste.metier;
+  }
+
+  get fonctionnelleAdd(): Savoir[] {
+    return this.poste.fonctionnelle;
+  }
+
+  get techniqueAdd(): Savoir[] {
+    return this.poste.technique;
+  }
+
+  get linguistiquesAdd(): Savoir[] {
+    return this.poste.linguistiques;
   }
 
   onEnterSpe(value: string, nb: number) {
@@ -165,6 +221,27 @@ export class PosteFormComponent implements OnInit {
     if (value != "") {
       this.poste.metier.push(new Savoir(value,nb));
       this.inputMetier = "";
+    }
+  }
+
+  onEnterFonctionnelle(value: string, nb: number) {
+    if (value != "") {
+      this.poste.fonctionnelle.push(new Savoir(value,nb));
+      this.inputFonctionnelle = "";
+    }
+  }
+
+  onEnterTechnique(value: string, nb: number) {
+    if (value != "") {
+      this.poste.technique.push(new Savoir(value,nb));
+      this.inputTechnique = "";
+    }
+  }
+
+  onEnterLinguistiques(value: string, nb: number) {
+    if (value != "") {
+      this.poste.linguistiques.push(new Savoir(value,nb));
+      this.inputLinguistiques = "";
     }
   }
 

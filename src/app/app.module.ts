@@ -9,6 +9,9 @@ import { SavoirSpeComponent } from './recruteur/savoir-spe/savoir-spe.component'
 import { SavoirEtreComponent } from './recruteur/savoir-etre/savoir-etre.component';
 import { SavoirFaireComponent } from './recruteur/savoir-faire/savoir-faire.component';
 import { MetierComponent } from './recruteur/metier/metier.component';
+import { FonctionnelleComponent } from './recruteur/fonctionnelle/fonctionnelle.component';
+import { TechniqueComponent } from './recruteur/technique/technique.component';
+import { LinguistiquesComponent } from './recruteur/linguistiques/linguistiques.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { MetierComponent } from './recruteur/metier/metier.component';
     SavoirSpeComponent,
     SavoirEtreComponent,
     SavoirFaireComponent,
-    MetierComponent
+    MetierComponent,
+    FonctionnelleComponent,
+    TechniqueComponent,
+    LinguistiquesComponent
   ],
   imports: [
     BrowserModule,

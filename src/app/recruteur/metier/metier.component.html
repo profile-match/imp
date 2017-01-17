@@ -1,1 +1,1 @@
-<span class="tag_ng"><span>{{metier}}&nbsp;&nbsp;</span><a  (click)="delete(metier)" style="cursor: pointer;" title="Removing metier">x</a></span>
+<span class="tag_ng"><span>{{ (metier.obligatoire=="2" ? "Obligatoire" : metier.obligatoire=="1" ? "Plus" : "N/A")}} : {{metier.intitule}} &nbsp;&nbsp;</span><a  (click)="delete(metier)" style="cursor: pointer;" title="Removing savoir">x</a></span>
