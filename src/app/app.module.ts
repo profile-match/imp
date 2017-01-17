@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { PosteFormComponent } from './recruteur/poste-form/poste-form.component';
 import { AccueilComponent } from './visiteur/accueil/accueil.component';
 import { LoginComponent } from './visiteur/login/login.component';
+import {InscriptionCandidatComponent} from "./candidat/inscription-candidat/inscription-candidat.component";
 import { ModerateurComponent } from './visiteur/moderateur/moderateur.component';
 import { CandidatDetailComponent } from './visiteur/moderateur/candidat-detail/candidat-detail.component';
 import { CandidatSearchComponent } from './visiteur/moderateur/candidat-search/candidat-search.component';
@@ -31,6 +32,7 @@ import { RecruteurDetailComponent } from './visiteur/moderateur/recruteur-detail
     PosteFormComponent,
     AccueilComponent,
     LoginComponent,
+    InscriptionCandidatComponent,
     ModerateurComponent,
     CandidatDetailComponent,
     CandidatSearchComponent,
