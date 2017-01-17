@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-12">
+    <table id="datatable" class="table table-striped table-hover table-bordered dataTable no-footer" role="grid"
+           aria-describedby="datatable_info">
+      <thead>
+      <tr role="row">
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;"></th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Entreprise</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Poste</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Lieu</th>
+        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Date d'ajout</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr role="row" class="odd" *ngFor="let poste of lespostes">
+        <td><i class="fa fa-google" style="font-size: 1.5em;"></i></td>
+        <td>{{poste.intitule}}</td>
+        <td>{{poste.type_de_contrat}}</td>
+        <td>{{poste.lieu_de_travail}}</td>
+        <td>{{poste.date_de_publication}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

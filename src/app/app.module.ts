@@ -21,6 +21,8 @@ import { CandidatDetailComponent } from './visiteur/moderateur/candidat-detail/c
 import { CandidatSearchComponent } from './visiteur/moderateur/candidat-search/candidat-search.component';
 import { SignalementComponent } from './visiteur/moderateur/signalement/signalement.component';
 import {DashboardCandidatComponent} from "./candidat/dashboard/dashboardCandidat.component";
+import {PostesCandidatComponent} from './candidat/postes/postesCandidat.component';
+import { MessagesCandidatComponent } from './candidat/messages-candidat/messages-candidat.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import {DashboardCandidatComponent} from "./candidat/dashboard/dashboardCandidat
     CandidatDetailComponent,
     CandidatSearchComponent,
     SignalementComponent,
-    DashboardCandidatComponent
+    DashboardCandidatComponent,
+    PostesCandidatComponent,
+    MessagesCandidatComponent,
+
   ],
   imports: [
     BrowserModule,
