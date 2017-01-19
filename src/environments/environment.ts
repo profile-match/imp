@@ -14,7 +14,7 @@ export const environment = {
     port: '8080',
     endpoints: {
       creerCandidat: '/rest/candidat/create',
-      informer_moderateur: '/rest/candidat/informer',
+      informer_moderateur: '/rest/candidat/messagesignalementcandidat'
     }
   }
 };

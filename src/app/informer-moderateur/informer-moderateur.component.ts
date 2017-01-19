@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {Http} from "@angular/http";
+import {Http, Headers} from "@angular/http";
 
 @Component({
   selector: 'app-informer-moderateur',
@@ -41,8 +41,18 @@ export class InformerModerateurComponent implements OnInit {
   onSubmit(): void {
     this._data["titre"] = this.titre;
     this._data["description"] = this.description;
+    this._data["idCandidat"] = 1; // TODO
+    this._data["idReported"] = 999;// TODO
 
-    console.log(JSON.stringify(this._data));
+    this._data = (JSON.stringify(this._data));
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json')
+
+    this._http.post(this._backendURL.informer_moderateur, this._data, {
+      headers: headers
+    }).subscribe();
   }
 
   ngOnInit() {
