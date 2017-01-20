@@ -8,7 +8,7 @@ export const environment = {
   production: false,
   backend: {
     protocol: 'http',
-    host: '127.0.0.1',
+    host: 'localhost',
     port: '8080',
     endpoints: {
       allCandidat: '/api/candidats',
@@ -25,7 +25,7 @@ export const environment = {
       searchFonctionnelle: '/api/fonctionnelle/?intitule=${:intitule}',
       searchTechnique: '/api/technique/?intitule=${:intitule}',
       searchLinguistique: '/api/linguistique/?intitule=${:intitule}',
-
+      addPoste: '/pm-core/rest/recruteur/create',
       putPoste : '/rest/recruteur/updateDossier',
       getPost :'/api/recruteur/ElementAllDossier/:id',
 

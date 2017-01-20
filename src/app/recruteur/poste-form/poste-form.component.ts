@@ -1,11 +1,13 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
 import {Savoir} from "../classes/savoir";
+import {createService} from "../services/createService";
 
 @Component({
   selector: 'app-poste-form',
   templateUrl: './poste-form.component.html',
-  styleUrls: ['./poste-form.component.css']
+  styleUrls: ['./poste-form.component.css'],
+  providers: [createService]
 })
 export class PosteFormComponent implements OnInit {
 
@@ -30,7 +32,7 @@ export class PosteFormComponent implements OnInit {
 
   private _enModification: boolean;
 
-  constructor() {
+  constructor(private _createService: createService) {
 
     this._cancel$ = new EventEmitter();
     this._submit$ = new EventEmitter();
@@ -111,6 +113,7 @@ export class PosteFormComponent implements OnInit {
     if(this._enModification)
       this._submit$.emit(this._poste);
     else {
+      this._createService.create(this._poste).subscribe();
       //TODO
     }
 
@@ -250,56 +253,112 @@ export class PosteFormComponent implements OnInit {
 
   onEnterSpe(value: string, nb: number) {
     if (value != "") {
-      this._poste.savoir_specifications.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.savoir_specifications.push(savoirs);
       this._inputSavoirSpe = "";
     }
   }
 
   onEnterFaire(value: string, nb: number) {
     if (value != "") {
-      this._poste.savoir_faires.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.savoir_faires.push(savoirs);
       this._inputSavoirFaire = "";
     }
   }
 
   onEnterEtre(value: string, nb: number) {
     if (value != "") {
-      this._poste.savoir_etres.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.savoir_etres.push(savoirs);
       this._inputSavoirEtre = "";
+
     }
   }
 
   onEnterMetier(value: string, nb: number) {
     if (value != "") {
-      this._poste.metiers.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.metiers.push(savoirs);
       this._inputMetier = "";
     }
   }
 
   onEnterFonctionnelle(value: string, nb: number) {
     if (value != "") {
-      this._poste.fonctionnelles.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+      this._poste.fonctionnelles.push(savoirs);
       this._inputFonctionnelle = "";
     }
   }
 
   onEnterTechnique(value: string, nb: number) {
     if (value != "") {
-      this._poste.techniques.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.techniques.push(savoirs);
       this._inputTechnique = "";
     }
   }
 
   onEnterLinguistiques(value: string, nb: number) {
     if (value != "") {
-      this._poste.langues.push(new Savoir(value, nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.langues.push(savoirs);
       this._inputLinguistiques = "";
     }
   }
 
   onEnterFormation(value: string, nb: number) {
     if (value != "") {
-      this._poste.formations.push(new Savoir(value,nb));
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+
+      this._poste.formations.push(savoirs);
       this._inputFormation = "";
     }
   }
