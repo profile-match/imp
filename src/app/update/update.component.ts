@@ -25,7 +25,7 @@ export class UpdateComponent implements OnInit {
     this.candidat= {};
     this.candidat.experiencePro = {};
     this.candidat.formation = {};
-    this.candidat.competence= {};
+    this.candidat.competence= [];
 
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
@@ -59,8 +59,8 @@ export class UpdateComponent implements OnInit {
    *
    * @param person
    */
-  submit(candidat: any) {
-    this._http.put(this._backendURL.modifierCandidat.replace(':id', candidat.id), candidat)
+  onSubmit() {
+    this._http.put(this._backendURL.modifierCandidat.replace(':id', this.candidat.id), this.candidat)
       .subscribe(() => this._router.navigate(['/']));
   }
 

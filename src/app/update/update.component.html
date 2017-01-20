@@ -54,20 +54,20 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [value]="date_debut" type="date" class="form-control" [(ngModel)]="date_debut" name="date_debut" required="required"/>
+            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_debut" name="date_debut" required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [(value)]="date_fin" type="date" class="form-control" [(ngModel)]="date_fin" name="date_fin" required="required"/>
+            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_fin" name="date_fin" required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Pays</label>
           <div class="col-md-4">
             <!-- <input  [value]="pays" class="form-control" [(ngModel)]="pays" /> -->
-            <select name="pays" [(value)]="pays" [(ngModel)]="pays">
+            <select name="pays" [(ngModel)]="candidat.experiencePro.pays">
               <option value="France" selected="selected">France</option>
               <option value="Afghanistan">Afghanistan</option>
               <option value="Afrique_Centrale">Afrique_Centrale</option>
@@ -304,7 +304,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Ville</label>
           <div class="col-md-4">
-            <input [(value)]="ville" class="form-control" [(ngModel)]="ville" name="ville"/>
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.ville" name="ville"/>
           </div>
         </div>
 
@@ -315,14 +315,14 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Nom de l'entreprise <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [(value)]="nom_entreprise" class="form-control" [(ngModel)]="nom_entreprise" name="nom_entreprise" required="required"/>
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.nom_entreprise" name="nom_entreprise" required="required"/>
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label">Description de l'entreprise</label>
           <div class="col-md-4">
-            <input [(value)]="description_entreprise" class="form-control" [(ngModel)]="description_entreprise"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.description_entreprise"
                    name="description_entreprise"/>
           </div>
         </div>
@@ -330,7 +330,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Missions effectuées</label>
           <div class="col-md-4">
-            <input [(value)]="missions_effectuees" class="form-control" [(ngModel)]="missions_effectuees"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.missions_effectuees"
                    name="missions_effectuees"/>
           </div>
         </div>
@@ -342,20 +342,20 @@
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Intitulé de Formation <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [(value)]="intitule_de_formation" class="form-control" [(ngModel)]="intitule_de_formation"
+              <input class="form-control" [(ngModel)]="candidat.formation.intitule_de_formation"
                      name="intitule_de_formation" required="required"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Etablissement</label>
             <div class="col-md-4">
-              <input [(value)]="etablissement" class="form-control" [(ngModel)]="etablissement" name="etablissement"/>
+              <input class="form-control" [(ngModel)]="candidat.formation.etablissement" name="etablissement"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Description de la formation</label>
             <div class="col-md-4">
-              <input [(value)]="description_formation" class="form-control" [(ngModel)]="description_formation"
+              <input class="form-control" [(ngModel)]="candidat.formation.description_formation"
                      name="description_formation"/>
             </div>
           </div>
@@ -363,14 +363,14 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [(value)]="date_debut_format" type="date" class="form-control" [(ngModel)]="date_debut_format"
+              <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_debut_format"
                      name="date_debut_format" required="required"/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [(value)]="date_fin_format" type="date" class="form-control" [(ngModel)]="date_fin_format"
+              <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_fin_format"
                      name="date_fin_format" required="required"/>
             </div>
           </div>
@@ -384,14 +384,13 @@
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Domaine de compétence <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [(value)]="domaine_de_competence" class="form-control" [(ngModel)]="domaine_de_competence"
-                     name="domaine_de_competence" required="required"/>
+              <input class="form-control" name="domaine_de_competence" required="required"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Compétences <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [(value)]="competences" class="form-control" [(ngModel)]="competences" name="competences" required="required"/>
+              <input class="form-control" name="competences" required="required"/>
             </div>
           </div>
         </div>
