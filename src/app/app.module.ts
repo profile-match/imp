@@ -20,7 +20,6 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { CandidatService } from './shared/service/candidat.service';
 
 import { AppComponent } from './app.component';
-import { PosteFormComponent } from './recruteur/poste-form/poste-form.component';
 import { AccueilComponent } from './visiteur/accueil/accueil.component';
 import { LoginComponent } from './visiteur/login/login.component';
 import {InscriptionCandidatComponent} from "./candidat/inscription-candidat/inscription-candidat.component";
@@ -35,7 +34,6 @@ import { RecruteurDetailComponent } from './visiteur/moderateur/recruteur-detail
 @NgModule({
   declarations: [
     AppComponent,
-    PosteFormComponent,
     AccueilComponent,
     LoginComponent,
     InscriptionCandidatComponent,
