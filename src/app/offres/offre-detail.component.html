@@ -1,0 +1,120 @@
+ <div class="col-lg-9">
+              <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                <div class="col-lg-2">
+                  <b>Poste :</b>
+                </div>
+                <div class="col-lg-2">
+                    {{offreComponent.selectedOffre.poste}}
+                </div>
+                <div class="col-lg-2">
+                     <b>Expérience :</b>
+                </div>
+                <div class="col-lg-2">
+                    {{offreComponent.selectedOffre.experience}}
+                </div>
+              </div>
+              <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                <div class="col-lg-2">
+                  <b>Lieu de poste :</b>
+                </div>
+                <div class="col-lg-2">
+                    {{offreComponent.selectedOffre.lieu}}
+                </div>
+                <div class="col-lg-2">
+                     <b>Contrat :</b>
+                </div>
+                <div class="col-lg-2">
+                    {{offreComponent.selectedOffre.contrat}}
+                </div>
+              </div>
+              <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                <div class="col-lg-2">
+                  <b>Disponibilité :</b>
+                </div>
+                <div class="col-lg-2">
+                    {{offreComponent.selectedOffre.disponibilite}}
+                </div>
+                <div class="col-lg-5">
+                     <a href="#">Plus d'informations</a>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                <div class="col-lg-2">
+                  <b>Discription :</b>
+                </div>
+                <div class="col-lg-7">
+                {{offreComponent.selectedOffre.discription}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="x_content" style="margin-top: 12px; margin-bottom: 12px;">
+                  <button type="button" class="btn btn-round btn-default">Editer</button>
+                  <button type="button" class="btn btn-round btn-default">Clôturer</button>
+                </div>
+              </div>
+              <div class="row">
+              </div>
+               <div class="right_col" role="main">
+            <div class="">
+              <div class="row text-center-lg">
+                <h4>Postulants</h4>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_content">
+                      <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Photo</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Consulter</th>
+                            <th>Contacter</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Rhona Davidson</td>
+                            <td>Integration Specialist</td>
+                            <td>Tokyo</td>
+                            <td>55</td>
+                            <td>2010/10/14</td>
+                          </tr>
+                          <tr>
+                            <td>Colleen Hurst</td>
+                            <td>Javascript Developer</td>
+                            <td>San Francisco</td>
+                            <td>39</td>
+                            <td>2009/09/15</td>
+                          </tr>
+                          <tr>
+                            <td>Sonya Frost</td>
+                            <td>Software Engineer</td>
+                            <td>Edinburgh</td>
+                            <td>23</td>
+                            <td>2008/12/13</td>
+                          </tr>
+                          <tr>
+                            <td>Jena Gaines</td>
+                            <td>Office Manager</td>
+                            <td>London</td>
+                            <td>30</td>
+                            <td>2008/12/19</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <a routerLink="addOffer">
+              <button type="button" class="btn btn-round btn-primary" (click)="myFunction()">
+                Créer une nouvelle offre
+              </button>
+            </a>
+          </div>
+</div>

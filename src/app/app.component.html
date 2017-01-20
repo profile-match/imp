@@ -1,3 +1,17 @@
-<h1>
-  {{title}}
-</h1>
+  <div class="nav_menu">
+    <nav class="navbar navbar-default" role="navigation">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a routerLink="dashboard"> <b>iMatch-Profile</b></a></li>
+        <li><a routerLink="offres">Vos offres</a></li>
+        <li><a routerLink="candidats">Parcourir les condidats</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/envelope"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#/envelope"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#/envelope"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
