@@ -53,14 +53,6 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     this.http.post("http://localhost:8080/rest/utilisateur/inscrire", this._utilisateur , requestOptions)
-      .map( res => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return [];
-        }
-      })
       .subscribe();
     /*
       .flatMap( () => {
@@ -73,27 +65,8 @@ export class InscriptionUtilisateurComponent implements OnInit {
               return [];
             }
           });
-      })
-      .subscribe( (util: Utilisateur[]) => {
-        this._people = people;
-        this.hideDialog();
-      });*/
+      })*/
 
-    /*
-      this.utilisateur.setEmail(this.email);
-      this.utilisateur.setMotDePasse(this.motdepasse);
-
-      var json=JSON.stringify(this.utilisateur);
-
-      var header= new Headers({
-        'Content-Type': 'application/json'
-      });
-
-      this.http.post("http://localhost:8080/utilisateur/inscrire",json,{headers:header}).subscribe(
-        data =>  { alert("Inscription réussie !");},
-        err => {alert("Erreur lors de l'inscription. Merci de réessayer");},
-        () => console.log('done')
-      );*/
     }
 }
 
