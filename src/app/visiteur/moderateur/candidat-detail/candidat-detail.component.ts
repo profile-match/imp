@@ -25,9 +25,9 @@ export class CandidatDetailComponent implements OnInit {
 
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'nombre de Commentaire posté'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'nombre de d\'offre postulé'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'nombre de commentaire signalé'}
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'nb Comm posté'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'nb offre postulé'},
+    {data: [18, 48, 77, 9, 100, 27, 40], label: 'nb comm signalé'}
   ];
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions:any = {

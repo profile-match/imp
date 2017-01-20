@@ -34,7 +34,7 @@ export class CandidatService {
   search(term: string): Observable<Candidat[]> {
     return this.http
       .get(`http://localhost:8080/rest/candidat/get/?nom=${term}`)//`/api/candidats/?name=${term}`)
-      .map((r: Response) => r.json().data as Candidat[]);
+      .map( res =>  res.json());//(r: Response) => r.json().data as Candidat[]);
   }
 
   getComments(): Promise<Comment[]> {

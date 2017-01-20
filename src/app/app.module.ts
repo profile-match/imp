@@ -5,6 +5,10 @@ import { HttpModule } from '@angular/http';
 import {RouterModule} from "@angular/router";
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
+// noinspection TypeScriptCheckImport
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { MdInputModule } from '@angular/material/input';
+
 import './visiteur/moderateur/candidat-search/rxjs-extensions';
 
 import { APP_ROUTES } from './app.routes';

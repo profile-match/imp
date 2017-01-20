@@ -4,7 +4,7 @@
 
       <input #searchBox id="search-box" type="text" class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for..."/>
       <div>
-        <div *ngFor="let candidat of candidats | async"
+        <div *ngFor="let candidat of candidats"
              [class.selected]="candidat === selectedCandidat"
              (click)="goToDetail(candidat)"  >
           {{candidat.name}}
@@ -14,6 +14,15 @@
 							<button class="btn btn-default" type="button">Go!</button>
 						</span>
     </div>
+
+    <ul class="candidats">
+      <li *ngFor="let candidat of candidats"
+          [class.selected]="candidat === selectedCandidat"
+          (click)="onSelectCandidat(candidat)">
+        <span class="badge">{{candidat.id}}</span> {{candidat.nom}}
+      </li>
+    </ul>
+
   </div>
 </div>
 <app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)"></app-candidat-detail>
