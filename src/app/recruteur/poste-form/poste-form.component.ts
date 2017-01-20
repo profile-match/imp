@@ -1,4 +1,4 @@
-import {Component, OnInit, Input,Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
 import {Savoir} from "../classes/savoir";
 
@@ -44,13 +44,13 @@ export class PosteFormComponent implements OnInit {
     this.poste.lieu_travail = "lieut";
     this.poste.organisation = "orga";
     this.poste.equipe_concernee = "equipe";
-    this.poste.savoirSpe =  [];
-    this.poste.savoirFaire = [];
-    this.poste.savoirEtre = [];
-    this.poste.metier = [];
-    this.poste.fonctionnelle = [];
-    this.poste.technique = [];
-    this.poste.linguistiques = [];
+    this.poste.savoir_specifications = [];
+    this.poste.savoir_faires = [];
+    this.poste.savoir_etres = [];
+    this.poste.metiers = [];
+    this.poste.fonctionnelles = [];
+    this.poste.techniques = [];
+    this.poste.langues = [];
 
     this.inputSavoirSpe = "";
     this.inputSavoirEtre = "";
@@ -79,96 +79,85 @@ export class PosteFormComponent implements OnInit {
     return this._submit$;
   }
 
-  cancel()  {
+  cancel() {
     this._cancel$.emit();
   }
 
   submit(): void {
-    /*alert(this.poste.reference + "ref");
-     alert(this.poste.intitule + "int");
-     alert(this.poste.indice_salaire + "indsal");
+    //tester si je suis en mode non edit
+    //TODO
+    if (true) {
 
-     alert(this.poste.salaire_min + "min");
-     alert(this.poste.salaire_max + "max");
-     alert(this.poste.afficher_moyenne + "affmoy");
-     alert(this.poste.type_contrat + "typecontrat");
-     alert(this.poste.resume + "resumé");
-     alert(this.poste.point_attention + "ptsattention");
-     alert(this.poste.lieu_travail + "lieutrav");
-     alert(this.poste.organisation + "orga");
-     alert(this.poste.departement + "departement");
-     alert(this.poste.service + "service");
-     alert(this.poste.equipe + "equipeee");*/
-    console.log(this.poste);
+    }
     this._submit$.emit(this.poste);
   }
 
   deleteSpe(savoir: any) {
     let ind: any = 0;
-    for (let i of this.poste.savoirSpe) {
+    for (let i of this.poste.savoir_specifications) {
       ind++;
       if (i == savoir) {
-        this.poste.savoirSpe.splice(ind-1, 1);
+        this.poste.savoir_specifications.splice(ind - 1, 1);
       }
     }
   }
 
   deleteEtre(savoir: any) {
     let ind: any = 0;
-    for (let i of this.poste.savoirEtre) {
+    for (let i of this.poste.savoir_etres) {
       ind++;
       if (i == savoir) {
-        this.poste.savoirEtre.splice(ind-1, 1);
+        this.poste.savoir_etres.splice(ind - 1, 1);
       }
     }
   }
 
   deleteFaire(savoir: any) {
     let ind: any = 0;
-    for (let i of this.poste.savoirFaire) {
+    for (let i of this.poste.savoir_faires) {
       ind++;
       if (i == savoir) {
-        this.poste.savoirFaire.splice(ind-1, 1);
+        this.poste.savoir_faires.splice(ind - 1, 1);
       }
     }
   }
 
   deleteMetier(metier: any) {
     let ind: any = 0;
-    for (let i of this.poste.metier) {
+    for (let i of this.poste.metiers) {
       ind++;
       if (i == metier) {
-        this.poste.metier.splice(ind-1, 1);
+        this.poste.metiers.splice(ind - 1, 1);
       }
     }
   }
 
   deleteFonctionnelle(savoir: any) {
     let ind: any = 0;
-    for (let i of this.poste.fonctionnelle) {
+    for (let i of this.poste.fonctionnelles) {
       ind++;
       if (i == savoir) {
-        this.poste.fonctionnelle.splice(ind-1, 1);
+        this.poste.fonctionnelles.splice(ind - 1, 1);
       }
     }
   }
 
   deleteTechnique(savoir: any) {
     let ind: any = 0;
-    for (let i of this.poste.technique) {
+    for (let i of this.poste.techniques) {
       ind++;
       if (i == savoir) {
-        this.poste.technique.splice(ind-1, 1);
+        this.poste.techniques.splice(ind - 1, 1);
       }
     }
   }
 
   deleteLinguistiques(savoir: any) {
     let ind: any = 0;
-    for (let i of this.poste.linguistiques) {
+    for (let i of this.poste.langues) {
       ind++;
       if (i == savoir) {
-        this.poste.linguistiques.splice(ind-1, 1);
+        this.poste.langues.splice(ind - 1, 1);
       }
     }
   }
@@ -179,7 +168,7 @@ export class PosteFormComponent implements OnInit {
    * @returns {any[]}
    */
   get savoirAddSpe(): Savoir[] {
-    return this.poste.savoirSpe;
+    return this.poste.savoir_specifications;
   }
 
   /**
@@ -188,7 +177,7 @@ export class PosteFormComponent implements OnInit {
    * @returns {any[]}
    */
   get savoirAddEtre(): Savoir[] {
-    return this.poste.savoirEtre;
+    return this.poste.savoir_etres;
   }
 
   /**
@@ -197,7 +186,7 @@ export class PosteFormComponent implements OnInit {
    * @returns {any[]}
    */
   get savoirAddFaire(): Savoir[] {
-    return this.poste.savoirFaire;
+    return this.poste.savoir_faires;
   }
 
   /**
@@ -206,66 +195,66 @@ export class PosteFormComponent implements OnInit {
    * @returns {any[]}
    */
   get metierAdd(): Savoir[] {
-    return this.poste.metier;
+    return this.poste.metiers;
   }
 
   get fonctionnelleAdd(): Savoir[] {
-    return this.poste.fonctionnelle;
+    return this.poste.fonctionnelles;
   }
 
   get techniqueAdd(): Savoir[] {
-    return this.poste.technique;
+    return this.poste.techniques;
   }
 
   get linguistiquesAdd(): Savoir[] {
-    return this.poste.linguistiques;
+    return this.poste.langues;
   }
 
   onEnterSpe(value: string, nb: number) {
     if (value != "") {
-      this.poste.savoirSpe.push(new Savoir(value,nb));
+      this.poste.savoir_specifications.push(new Savoir(value, nb));
       this.inputSavoirSpe = "";
     }
   }
 
   onEnterFaire(value: string, nb: number) {
     if (value != "") {
-      this.poste.savoirFaire.push(new Savoir(value,nb));
+      this.poste.savoir_faires.push(new Savoir(value, nb));
       this.inputSavoirFaire = "";
     }
   }
 
   onEnterEtre(value: string, nb: number) {
     if (value != "") {
-      this.poste.savoirEtre.push(new Savoir(value,nb));
+      this.poste.savoir_etres.push(new Savoir(value, nb));
       this.inputSavoirEtre = "";
     }
   }
 
   onEnterMetier(value: string, nb: number) {
     if (value != "") {
-      this.poste.metier.push(new Savoir(value,nb));
+      this.poste.metiers.push(new Savoir(value, nb));
       this.inputMetier = "";
     }
   }
 
   onEnterFonctionnelle(value: string, nb: number) {
     if (value != "") {
-      this.poste.fonctionnelle.push(new Savoir(value,nb));
+      this.poste.fonctionnelles.push(new Savoir(value, nb));
       this.inputFonctionnelle = "";
     }
   }
 
   onEnterTechnique(value: string, nb: number) {
     if (value != "") {
-      this.poste.technique.push(new Savoir(value,nb));
+      this.poste.techniques.push(new Savoir(value, nb));
       this.inputTechnique = "";
     }
   }
 
   onEnterLinguistiques(value: string, nb: number) {
     if (value != "") {
-      this.poste.linguistiques.push(new Savoir(value,nb));
+      this.poste.langues.push(new Savoir(value, nb));
       this.inputLinguistiques = "";
     }
   }
