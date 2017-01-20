@@ -25,6 +25,7 @@ export const environment = {
       searchFonctionnelle: '/api/fonctionnelle/?intitule=${:intitule}',
       searchTechnique: '/api/technique/?intitule=${:intitule}',
       searchLinguistique: '/api/linguistique/?intitule=${:intitule}',
+
     }
   }
 };

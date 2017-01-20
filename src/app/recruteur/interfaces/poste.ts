@@ -1,5 +1,7 @@
 import {Savoir} from "../classes/savoir";
 export interface Poste {
+  id :number,
+  id_recruteur : number,
   reference: string,
   intitule: string,
   indice_salaire: string,
@@ -12,12 +14,15 @@ export interface Poste {
   lieu_travail: string,
   organisation: string,
   equipe_concernee: string,
-  savoirSpe: Savoir[],
-  savoirFaire: Savoir[],
-  savoirEtre: Savoir[],
-  metier: Savoir[],
-  fonctionnelle: Savoir[],
-  technique: Savoir[],
-  linguistiques: Savoir[],
-  formation: Savoir[]
+
+  savoir_specifications: Savoir[],
+  savoir_faires: Savoir[],
+  savoir_etres: Savoir[],
+  metiers: Savoir[],
+  fonctionnelles: Savoir[],
+  techniques: Savoir[],
+  langues: Savoir[],
+  certifications: Savoir[],
+  formations: Savoir[]
+
 }
