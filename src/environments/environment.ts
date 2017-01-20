@@ -8,13 +8,14 @@ export const environment = {
   backend: {
     protocol: 'http',
     host: 'localhost',
-    port: '4200',
+    port: '8080',
     endpoints: {
-      allCandidat: '/api/candidats',
-      oneCandidat: '/api/candidats/:id',
+      allCandidat: '/rest/candidat/get',//'/api/candidats',
+      oneCandidat: '/rest/candidat/get/:id',
       randomPeople: '/api/peoples/random',
       searchCandidat: '/api/candidats/?name=${:term}',
-      bannirCandidat: '/api/candidats/bannir/:id',
+      bannirCandidat: '/rest/candidat/ban/:id',
+      unbanCandidat: '/rest/candidat/unban/:id',
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost:'/api/posts',

@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import {RouterModule} from "@angular/router";
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import './visiteur/moderateur/candidat-search/rxjs-extensions';
 
@@ -26,6 +27,7 @@ import { SignalementComponent } from './visiteur/moderateur/signalement/signalem
 import { RecruteurService } from "./shared/service/recruteur.service";
 import { RecruteurDetailComponent } from './visiteur/moderateur/recruteur-detail/recruteur-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +45,10 @@ import { RecruteurDetailComponent } from './visiteur/moderateur/recruteur-detail
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule,
     APP_ROUTES,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    ChartsModule
+   // InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [CandidatService,RecruteurService],
   bootstrap: [AppComponent]

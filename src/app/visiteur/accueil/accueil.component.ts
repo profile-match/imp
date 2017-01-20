@@ -6,6 +6,7 @@ import {RecruteurService} from "../../shared/service/recruteur.service";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
 import {Poste} from "../../recruteur/interfaces/poste";
 import {Comment} from "../../candidat/interfaces/commentaire";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-accueil',
@@ -33,10 +34,10 @@ export class AccueilComponent implements OnInit{
 
   private menuList : any[];
 
-  constructor(private candidatService: CandidatService, private recruteurService : RecruteurService) {
+  constructor(private http: Http, private candidatService: CandidatService, private recruteurService : RecruteurService) {
     this.views = '127';
     this.nbCountries = '60';
-    this.candidats = [];
+    this.candidats = [{id: 11, email: 'nice', banned:0, loisirs: 'ni', nom: "test", photo:"", prenom: 'Mr. Nice', experiencePro: 'd', formation:'d', competence:[]}];
     this.recruteurs = [];
     this.postes = [];
     this.comments = [];
@@ -44,8 +45,15 @@ export class AccueilComponent implements OnInit{
   }
 
   getCandidats(): void {
-    this.candidatService.getCandidats().then(candidats => this.candidats = candidats);
-   // console.log(JSON.stringify(this.candidats));
+   /* this.http.get('http://localhost:8080/rest/candidat/get')//http://localhost:4200/api/candidats
+      .map( res => res.json() )
+      .subscribe( (candidats: any[]) => console.log(JSON.stringify(candidats)));*/
+  /*  this.http.get('http://localhost:8080/rest/candidat/get')
+      .toPromise()
+      .then(response => console.log(JSON.stringify(response['_body'])));*/
+
+    this.candidatService.getCandidats().subscribe(candidats => this.candidats = candidats);
+    console.log(JSON.stringify(this.candidats));
   }
 
   getComments(): void {
@@ -62,10 +70,10 @@ export class AccueilComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCandidats();
-    this.getRecruteurs();
+ /*   this.getRecruteurs();
     this.getPostes();
     this.getComments();
-    this.setMenuList();
+    this.setMenuList();*/
   }
 
   setMenuList() : void {

@@ -33,7 +33,7 @@ export class CandidatService {
 
   search(term: string): Observable<Candidat[]> {
     return this.http
-      .get(`/api/candidats/?name=${term}`)
+      .get(`http://localhost:8080/rest/candidat/get/?nom=${term}`)//`/api/candidats/?name=${term}`)
       .map((r: Response) => r.json().data as Candidat[]);
   }
 
@@ -51,27 +51,50 @@ export class CandidatService {
       .catch(this.handleError);
   }
 
-  getCandidats(): Promise<Candidat[]> {
-    return this.http.get(this._backendURL.allCandidat)
+  deleteComment(idCandidat: number): Promise<Comment[]> {
+    return this.http.delete(this._backendURL.allComment.replace(':id', idCandidat))
       .toPromise()
-      .then(response => response.json().data as Candidat[])
+      .then(response => response.json().data as Comment[])
       .catch(this.handleError);
   }
 
-  getCandidat(id: number): Promise<Candidat> {
+  editComment(idCandidat: number): Promise<Comment[]> {
+    return this.http.put(this._backendURL.oneComment.replace(':id', idCandidat), idCandidat)//`/api/candidats/?idCandidat=${idCandidat}`)
+      .toPromise()
+      .then(response => response.json().data as Comment[])
+      .catch(this.handleError);
+  }
+
+  getCandidats(): Observable<Candidat[]> {
+    return this.http.get(this._backendURL.allCandidat)
+      .map( res =>  res.json() );
+  /*  return this.http.get(this._backendURL.allCandidat)
+      .toPromise()
+      .then(response => response.json() as Candidat[])
+      .catch(this.handleError);*/
+  }
+
+  getCandidat(id: number): Observable<Candidat> {
     //const url = `${this.candidatsUrl}/${id}`;
     return this.http.get(this._backendURL.oneCandidat.replace(':id', id))
-      .toPromise()
+      .map( res =>  res.json() );
+  /*    .toPromise()
       .then(response => response.json().data as Candidat)
-      .catch(this.handleError);
+      .catch(this.handleError);*/
   }
 
-  bannir(candidat: Candidat): Promise<Candidat[]> {
+  bannir(candidat: Candidat) {//: Promise<Candidat[]> {
     return this.http
-      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), JSON.stringify(candidat))
-      .toPromise()
-      .then(response => response.json().data as Candidat[])
-      .catch(this.handleError);
+      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), candidat)
+      .subscribe()
+    //  .toPromise()
+   //   .then(response => response.json().data as Candidat[])
+  }
+
+  unBan(candidat: Candidat) {
+    return this.http
+      .put(this._backendURL.unbanCandidat.replace(':id',candidat.id), candidat)
+      .subscribe()
   }
 
   private handleError(error: any): Promise<any> {

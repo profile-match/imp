@@ -26,13 +26,13 @@
 
           <!-- liste des candidats -->
           <li><a><i class="fa fa-users"></i> Gerer les Candidats <span class="fa fa-chevron-down"></span></a>
-            <div style="width:220px;height:150px;line-height:3em;overflow:auto;padding:5px;">
+            <div style="width:220px;height:150px;line-height:3em;overflow:auto;padding:5px;"> <!-- pour le scrol -->
 
               <ul class="candidats">
                 <li *ngFor="let candidat of candidats"
                     [class.selected]="candidat === selectedCandidat"
                     (click)="onSelectCandidat(candidat)">
-                  <span class="badge">{{candidat.id}}</span> {{candidat.name}}
+                  <span class="badge">{{candidat.id}}</span> {{candidat.nom}}
                 </li>
               </ul>
             </div>
@@ -96,7 +96,7 @@
 
   <!--  *******  detail du candidat selectionné :  -->
 
-    <app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)"></app-candidat-detail>
+    <app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)" (unBanPerson)="unBan($event)"></app-candidat-detail>
 
   <!--  ************* detail du recruteur selectionné :  -->
 
@@ -109,6 +109,12 @@
     </div>
 
   <!--  *********  -->
+
+    <!-- Message pour bannir -->
+    <div id="ban">Utilisateur Banni</div>
+
+    <!-- Message pour bannir -->
+    <div id="unban">Utilisateur unban</div>
 
   </div>
 </div>

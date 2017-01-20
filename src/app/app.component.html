@@ -16,13 +16,6 @@
             </a>
           </div>
 
-          <div *ngIf="!login()">
-            <a routerLink="/inscription-candidat" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class=" fa fa-angle-right"></span>
-              S'inscrire
-            </a>
-          </div>
-
           <div *ngIf="login()">
             <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <span class=" fa fa-angle-right"></span>

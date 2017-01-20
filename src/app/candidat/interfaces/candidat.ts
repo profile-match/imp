@@ -1,9 +1,12 @@
 export interface Candidat {
-  id: number;
-  photo: string;
-  firstname: string;
-  name: string;
-  email: string;
-  password: string;
-  password2: string;
+  "id": number;
+  "email": string;
+  "banned": number;
+  "loisirs": string;
+  "nom": string;
+  "photo": string;
+  "prenom": string;
+  "experiencePro": string;
+  "formation": string;
+  "competence":any;
 }

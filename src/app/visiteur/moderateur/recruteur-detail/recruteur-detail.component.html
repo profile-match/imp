@@ -15,13 +15,6 @@
         <div class="profile_info">
           <span>Welcome,</span>
           <h2 style="color: black;"><b>{{recruteur.name}}</b></h2>
-        </div>
-      </div>
-      <!-- /menu profile quick info -->
-
-
-      <div class="container" >
-        <div class="content">
 
           <br />
           <a (click)="signaler()">signaler</a>
@@ -148,7 +141,7 @@
                       <td>{{poste.intitule}}</td>
                       <td align="center"><span class="fa fa-circle" style="color: green" *ngIf="!poste.signale"></span>
                         <span class="fa fa-circle" style="color: red" *ngIf="poste.signale"></span></td>
-                      <td align="center"><a (click)="editerPost(poste)"><span class="fa fa-edit"></span></a></td>
+                      <td align="center"><a (click)="selectedPost(poste)" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="fa fa-edit"></span></a></td>
                       <td align="center"><a (click)="supprimerPost(poste)"><span class="fa fa-trash"></span></a></td>
                     </tr>
 
@@ -166,5 +159,29 @@
 
   <a (click)="bannir(recruteur)"><span class="fa fa-ban"></span> Bannir </a>
   <!-- /page content -->
+
+  <!-- div pour editer poste -->
+  <div id="id01" class="modal">
+
+    <form class="modal-content animate" (ngSubmit)="onSubmit()" id="editerCom">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+
+      <div class="container">
+        <label><b>intitule</b></label>
+        <input type="text" id="intitule" placeholder="Modifier l'intitule" name="intitule" [(ngModel)]="_selectedPost.intitule">
+
+        <label><b>lieu</b></label>
+        <input type="text" id="lieu" placeholder="Entrer lieu" name="lieu" [(ngModel)]="_selectedPost.lieu_travail">
+
+        <button type="submit" onclick="document.getElementById('id01').style.display='none'">Modifier</button>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      </div>
+    </form>
+  </div>
 
 </div>

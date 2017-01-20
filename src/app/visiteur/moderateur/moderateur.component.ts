@@ -29,7 +29,7 @@ export class ModerateurComponent implements OnInit {
   ngOnInit() {
     this.getCandidats();
     this._service.checkCredentialModerator();
-    this.getRecruteurs();
+  //  this.getRecruteurs();
   }
 
 
@@ -43,7 +43,7 @@ export class ModerateurComponent implements OnInit {
 
 
   getCandidats(): void {
-    this.candidatService.getCandidats().then(candidats => this.candidats = candidats);
+    this.candidatService.getCandidats().subscribe(candidats => this.candidats = candidats);
   //  console.log(JSON.stringify(this.candidats));
   }
 
@@ -85,18 +85,50 @@ export class ModerateurComponent implements OnInit {
    * @param person
    */
   bannir(candidat: Candidat) {
-    alert("fonctionnalité 'banir candidat "+candidat.id +" ' non defini");
-   // this.candidatService.bannir(candidat).then(candidats => this.candidats = candidats);
+    // Get the snackbar DIV
+    var x = document.getElementById("ban")
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+   // alert("fonctionnalité 'banir candidat "+candidat.id +" ' non defini");
+    this.candidatService.bannir(candidat);//.then(candidats => this.candidats = candidats);
+  }
+
+  unBan(candidat: Candidat) {
+    // Get the snackbar DIV
+    var x = document.getElementById("unban")
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+    // alert("fonctionnalité 'banir candidat "+candidat.id +" ' non defini");
+    this.candidatService.unBan(candidat);//.then(candidats => this.candidats = candidats);
   }
 
   bannirRecruteur(recruteur: Recruteur) {
+    // Get the snackbar DIV
+    var x = document.getElementById("ban")
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
     alert("fonctionnalité 'banir recruteur "+recruteur.name +" ' non defini");
   }
 
   goToDetailCandidat(idCandidat: number){
     this.signalement = false;
     this.rechercher = false;
-    this.candidatService.getCandidat(idCandidat).then(candidat => this.selectedCandidat = candidat);
+    this.candidatService.getCandidat(idCandidat).subscribe(candidat => this.selectedCandidat = candidat);
   }
 
   goToDetailRecruteur(idRecruteur: number){

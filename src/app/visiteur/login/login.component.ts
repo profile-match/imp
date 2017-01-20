@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location }  from '@angular/common';
 import {AuthenticationService, User} from '../../shared/service/authentication.service'
+import {Subject} from "rxjs";
 
 
 @Component({

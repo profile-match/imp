@@ -25,8 +25,8 @@ export class SignalementComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getComments();
-    this.getPosts();
+  /*  this.getComments();
+    this.getPosts();*/
   }
 
   get comments(): Comment[] {

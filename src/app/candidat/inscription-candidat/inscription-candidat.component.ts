@@ -17,11 +17,11 @@ export class InscriptionCandidatComponent implements OnInit {
 
   constructor(private location: Location) {
 
-    this.candidat.name = "";
-    this.candidat.firstname = "";
+    this.candidat.nom = "";
+    this.candidat.prenom = "";
     this.candidat.email = "";
-    this.candidat.password = "";
-    this.candidat.password2 = "";
+    this.candidat.loisirs = "";
+    this.candidat.experiencePro = "";
 
     this.class = "icheckbox_flat-green";
     this.query = '';
