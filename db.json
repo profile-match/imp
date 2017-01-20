@@ -1,0 +1,22 @@
+{"savoirSpecifique" :[
+	{
+		"id": 1,
+		"value": "Connaissance des enjeux liés au priorités"
+	},
+	{
+		"id": 3,
+		"value": "Connaissance des enjeux liés au défis des directions informatiques"
+	},{
+		"id": 5,
+		"value": "Capacité à gérer un projet en mode traditionnelle"
+	},{
+		"id": 21,
+		"value": "directions métiers"
+	},{
+		"id": 45,
+		"value": "maîtrise d’œuvre"
+	},{
+		"id": 54,
+		"value": "maitrise d’ouvrage"
+	}]
+}

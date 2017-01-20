@@ -1,3 +1,44 @@
-<h1>
-{{title}}
-</h1>
+<!-- top navigation -->
+<div class="top_nav">
+  <div class="nav_menu">
+    <nav class="" role="navigation">
+
+      <span class="navbar nav_title" style="border: 0;">
+        <a routerLink="/accueil" class="site_title"><i class="fa fa-paw"></i> <span>iMatchProfile!</span></a> <router-outlet></router-outlet>
+      </span>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="">
+
+          <div *ngIf="!login()">
+            <a routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class=" fa fa-angle-right"></span>
+              Se connecter
+            </a>
+          </div>
+
+          <div *ngIf="login()">
+            <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class=" fa fa-angle-right"></span>
+              Se deconnecter
+            </a>
+          </div>
+          <router-outlet></router-outlet>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<!-- /top navigation -->
+
+<router-outlet>
+</router-outlet>
+
+
+<!-- footer content -->
+<footer>
+  <div class="pull-right">
+    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+  </div>
+  <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->

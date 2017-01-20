@@ -9,17 +9,12 @@
 *.ear
 
 
-#angular's modules
-angular/node_modules
-dist/
 
 #webapp
 src/main/webapp
 
-#Target
-target/
-
-temp/
+#Dist
+dist/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -118,8 +113,13 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules
+
 jspm_packages
+
+#Node_modules
+node_modules/	
+
+
 
 # Optional npm cache directory
 .npm
