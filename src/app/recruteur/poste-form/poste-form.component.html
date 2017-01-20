@@ -7,7 +7,7 @@
   </div>
 
   <div class="x_content">
-    <form (ngSubmit)="onSubmit()" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
+    <form  #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
 
       <div class="x_title">
         <h2>Caractéristique du poste</h2>
@@ -334,11 +334,12 @@
         </div>
       </div>
 
-
-      <div style="text-align: center; ">
-        <button type="button" class="btn btn-default">Retour</button>
-        <button type="submit" class="btn btn-success">Valider</button>
-      </div>
     </form>
+
+    <div style="text-align: center; ">
+      <button type="button" class="btn btn-default" (click) = "cancel()" >Retour</button>
+      <button type="submit" class="btn btn-success" (click)="submit()" >Valider</button>
+    </div>
+
   </div>
 </div>
