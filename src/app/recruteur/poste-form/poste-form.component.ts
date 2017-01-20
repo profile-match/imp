@@ -22,6 +22,7 @@ export class PosteFormComponent implements OnInit {
   inputFonctionnelle: string;
   inputTechnique: string;
   inputLinguistiques: string;
+  inputFormation: string;
 
   constructor() {
 
@@ -44,6 +45,7 @@ export class PosteFormComponent implements OnInit {
     this.poste.fonctionnelle = [];
     this.poste.technique = [];
     this.poste.linguistiques = [];
+    this.poste.formation = [];
 
     this.inputSavoirSpe = "";
     this.inputSavoirEtre = "";
@@ -52,6 +54,7 @@ export class PosteFormComponent implements OnInit {
     this.inputFonctionnelle = "";
     this.inputTechnique = "";
     this.inputLinguistiques = "";
+    this.inputFormation = "";
 
     this.class = "icheckbox_flat-green";
     this.query = '';
@@ -148,6 +151,16 @@ export class PosteFormComponent implements OnInit {
     }
   }
 
+  deleteFormation(savoir: any) {
+    let ind: any = 0;
+    for (let i of this.poste.formation) {
+      ind++;
+      if (i == savoir) {
+        this.poste.formation.splice(ind-1, 1);
+      }
+    }
+  }
+
   /**
    * Returns private property this.poste.savoirSpe
    *
@@ -196,6 +209,10 @@ export class PosteFormComponent implements OnInit {
     return this.poste.linguistiques;
   }
 
+  get formationAdd(): Savoir[] {
+    return this.poste.formation;
+  }
+
   onEnterSpe(value: string, nb: number) {
     if (value != "") {
       this.poste.savoirSpe.push(new Savoir(value,nb));
@@ -242,6 +259,13 @@ export class PosteFormComponent implements OnInit {
     if (value != "") {
       this.poste.linguistiques.push(new Savoir(value,nb));
       this.inputLinguistiques = "";
+    }
+  }
+
+  onEnterFormation(value: string, nb: number) {
+    if (value != "") {
+      this.poste.formation.push(new Savoir(value,nb));
+      this.inputFormation = "";
     }
   }
 

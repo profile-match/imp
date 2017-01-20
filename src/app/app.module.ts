@@ -12,6 +12,7 @@ import { MetierComponent } from './recruteur/metier/metier.component';
 import { FonctionnelleComponent } from './recruteur/fonctionnelle/fonctionnelle.component';
 import { TechniqueComponent } from './recruteur/technique/technique.component';
 import { LinguistiquesComponent } from './recruteur/linguistiques/linguistiques.component';
+import { FormationComponent } from './recruteur/formation/formation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LinguistiquesComponent } from './recruteur/linguistiques/linguistiques.
     MetierComponent,
     FonctionnelleComponent,
     TechniqueComponent,
-    LinguistiquesComponent
+    LinguistiquesComponent,
+    FormationComponent
   ],
   imports: [
     BrowserModule,

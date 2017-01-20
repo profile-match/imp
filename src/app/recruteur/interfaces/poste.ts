@@ -18,5 +18,6 @@ export interface Poste {
   metier: Savoir[],
   fonctionnelle: Savoir[],
   technique: Savoir[],
-  linguistiques: Savoir[]
+  linguistiques: Savoir[],
+  formation: Savoir[]
 }
