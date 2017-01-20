@@ -107,9 +107,13 @@ export class PosteFormComponent implements OnInit {
   }
 
   submit() {
-    this._submit$.emit(this._poste);
-    console.log(this._enModification);
-    //TODO
+
+    if(this._enModification)
+      this._submit$.emit(this._poste);
+    else {
+      //TODO
+    }
+
   }
 
   deleteSpe(savoir: any) {

@@ -9,7 +9,7 @@ export const environment = {
   backend: {
     protocol: 'http',
     host: '127.0.0.1',
-    port: '3000',
+    port: '8080',
     endpoints: {
       allCandidat: '/api/candidats',
       oneCandidat: '/api/candidats/:id',
@@ -19,13 +19,15 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost:'/api/posts',
-      getPost :'/api/recruteur/ElementAllDossier/:id',
       allRecruteur: '/api/recruteurs',
       oneRecruteur: '/api/recruteurs/:id',
       searchMetier: '/api/metier/?intitule=${:intitule}',
       searchFonctionnelle: '/api/fonctionnelle/?intitule=${:intitule}',
       searchTechnique: '/api/technique/?intitule=${:intitule}',
       searchLinguistique: '/api/linguistique/?intitule=${:intitule}',
+
+      putPoste : '/rest/recruteur/updateDossier',
+      getPost :'/api/recruteur/ElementAllDossier/:id',
 
     }
   }

@@ -76,10 +76,10 @@ export class UpdateComponent implements OnInit {
 
   }
 
-  submit(person: Poste) {
-    console.log("submit");
-    console.log(person);
-    //TODO
+  submit(poste: Poste) {
+    this._http.put(this._backendURL.putPoste, poste)
+      .subscribe(() => this._router.navigate(['/']) );
+
   }
 
   cancel() {
