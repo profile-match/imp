@@ -374,6 +374,33 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Formation</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputformation [(ngModel)]="inputFormation" name="inputFormation" id="tags_8" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterFormation(inputformation.value,selectformation.value)"  >
+            <select #selectformation class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button (click)="onEnterFormation(inputformation.value,selectformation.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_8_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-formation [savoir]="savoir" (formationDelete)="deleteFormation($event)" *ngFor="let savoir of formationAdd">
+            </ng2-formation>
+            <div id="tags_8_addTag"><input id="tags_8_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+
     </div>
     <div style="text-align: center; ">
       <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>

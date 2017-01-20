@@ -14,6 +14,7 @@ export interface Poste {
   lieu_travail: string,
   organisation: string,
   equipe_concernee: string,
+
   savoir_specifications: Savoir[],
   savoir_faires: Savoir[],
   savoir_etres: Savoir[],
@@ -23,4 +24,5 @@ export interface Poste {
   langues: Savoir[],
   certifications: Savoir[],
   formations: Savoir[]
+
 }

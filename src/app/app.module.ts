@@ -14,6 +14,7 @@ import { MetierComponent } from './recruteur/metier/metier.component';
 import { FonctionnelleComponent } from './recruteur/fonctionnelle/fonctionnelle.component';
 import { TechniqueComponent } from './recruteur/technique/technique.component';
 import { LinguistiquesComponent } from './recruteur/linguistiques/linguistiques.component';
+import { FormationComponent } from './recruteur/formation/formation.component';
 import { UpdateComponent } from './recruteur/poste-form/update/update.component';
 
 
@@ -28,6 +29,7 @@ import { UpdateComponent } from './recruteur/poste-form/update/update.component'
     FonctionnelleComponent,
     TechniqueComponent,
     LinguistiquesComponent,
+    FormationComponent,
     UpdateComponent,
   ],
   imports: [
