@@ -24,6 +24,7 @@ export class PosteFormComponent implements OnInit {
   private _inputTechnique: string;
   private _inputLinguistiques: string;
   private _inputFormation: string;
+  private _inputCertification: string;
 
   //
 
@@ -57,6 +58,7 @@ export class PosteFormComponent implements OnInit {
     this._poste.techniques = [];
     this._poste.langues = [];
     this._poste.formations = [];
+    this.poste.certifications = [];
 
 
     this._inputSavoirSpe = "";
@@ -67,6 +69,7 @@ export class PosteFormComponent implements OnInit {
     this._inputTechnique = "";
     this._inputLinguistiques = "";
     this._inputFormation = "";
+    this._inputCertification = "";
 
     //this._class = "icheckbox_flat-green";
     this._query = '';
@@ -199,6 +202,16 @@ export class PosteFormComponent implements OnInit {
     }
   }
 
+  deleteCertification(savoir: any) {
+    let ind: any = 0;
+    for (let i of this._poste.certifications) {
+      ind++;
+      if (i == savoir) {
+        this._poste.certifications.splice(ind-1, 1);
+      }
+    }
+  }
+
   /**
    * Returns private property this._poste.savoirSpe
    *
@@ -249,6 +262,10 @@ export class PosteFormComponent implements OnInit {
 
   get formationAdd(): Savoir[] {
     return this._poste.formations;
+  }
+
+  get certificationAdd(): Savoir[] {
+    return this._poste.certifications;
   }
 
   onEnterSpe(value: string, nb: number) {
@@ -363,6 +380,19 @@ export class PosteFormComponent implements OnInit {
     }
   }
 
+  onEnterCertification(value: string, nb: number) {
+    if (value != "") {
+      var savoirs:Savoir;
+      savoirs ={
+        obligatoire: nb,
+        intitule: value
+
+      };
+      this._poste.certifications.push(savoirs);
+      this._inputCertification = "";
+    }
+  }
+
   getClass() {
     if (this._poste.afficher_moyenne == 0) {
       this._isChecked = true;
@@ -413,7 +443,9 @@ export class PosteFormComponent implements OnInit {
     return this._inputFormation;
   }
 
-
+  get inputCertification(): string{
+    return this._inputCertification;
+  }
 
   ngOnInit() {
 

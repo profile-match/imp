@@ -400,6 +400,32 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Certification</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputcertification [(ngModel)]="inputCertification" name="inputCertification" id="tags_9" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterCertification(inputcertification.value,selectcertification.value)"  >
+            <select #selectcertification class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button (click)="onEnterCertification(inputcertification.value,selectcertification.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_9_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-certification [savoir]="savoir" (certificationDelete)="deleteCertification($event)" *ngFor="let savoir of certificationAdd">
+            </ng2-certification>
+            <div id="tags_9_addTag"><input id="tags_9_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
 
     </div>
   </form>

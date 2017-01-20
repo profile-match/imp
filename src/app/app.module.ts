@@ -16,7 +16,9 @@ import { TechniqueComponent } from './recruteur/technique/technique.component';
 import { LinguistiquesComponent } from './recruteur/linguistiques/linguistiques.component';
 import { FormationComponent } from './recruteur/formation/formation.component';
 import { UpdateComponent } from './recruteur/poste-form/update/update.component';
-import {createService} from "./recruteur/services/createService";
+
+import { CertificationComponent } from './recruteur/certification/certification.component';
+
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import {createService} from "./recruteur/services/createService";
     LinguistiquesComponent,
     FormationComponent,
     UpdateComponent,
+    CertificationComponent,
   ],
   imports: [
     BrowserModule,
