@@ -9,21 +9,21 @@
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Nom</label>
           <div class="col-md-4">
-            <input [(value)]="nom" class="form-control" [(ngModel)]="nom"
+            <input [value]="nom" class="form-control" [(ngModel)]="candidat.nom"
                    name="nom"/>
           </div>
         </div>
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Prenom</label>
           <div class="col-md-4">
-            <input [(value)]="prenom" class="form-control" [(ngModel)]="prenom"
+            <input [value]="prenom" class="form-control" [(ngModel)]="candidat.prenom"
                    name="prenom"/>
           </div>
         </div>
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Email</label>
           <div class="col-md-4">
-            <input [(value)]="email" class="form-control" [(ngModel)]="email"
+            <input class="form-control" [(ngModel)]="candidat.email"
                    name="email"/>
           </div>
         </div>
@@ -32,7 +32,7 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Loisirs</label>
             <div class="col-md-4">
-              <select name="loisirs" [(value)]="loisirs" [(ngModel)]="loisirs" name="loisirs">
+              <select name="loisirs" [(ngModel)]="candidat.loisirs" name="loisirs">
                 <option value="Music" selected="selected">Music</option>
                 <option value="Sports">Sports</option>
                 <option value="Cinema">Cinéma</option>
@@ -47,14 +47,14 @@
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Intitulé du poste<span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [(value)]="intitule_de_poste" class="form-control" [(ngModel)]="intitule_de_poste"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.intitule_de_poste"
                    name="intitule_de_poste" required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [(value)]="date_debut" type="date" class="form-control" [(ngModel)]="date_debut" name="date_debut" required="required"/>
+            <input [value]="date_debut" type="date" class="form-control" [(ngModel)]="date_debut" name="date_debut" required="required"/>
           </div>
         </div>
         <div class="form-group">
