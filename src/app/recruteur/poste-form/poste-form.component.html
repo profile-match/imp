@@ -6,9 +6,8 @@
     </div>
   </div>
 
-  <form (ngSubmit)="onSubmit()" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
+  <form #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
     <div class="x_panel title overflow_hidden">
-
       <div class="x_title">
         <h2>Caractéristique du poste</h2>
         <div class="clearfix">
@@ -260,7 +259,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Métier</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputmetier [(ngModel)]="inputMetier" name="inputMetier" id="tags_1" type="text"
+            <input #inputmetier [(ngModel)]="inputMetier" name="inputMetier" id="tags_4" type="text"
                    class="tags form-control ng-normal"
                    (keyup.enter)="onEnterMetier(inputmetier.value,selectmetier.value)">
             <select #selectmetier class="form-control" style="width: 35%; margin-left: 3%">
@@ -272,10 +271,10 @@
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
-          <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+          <div id="tags_4_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
             <ng2-metier [metier]="metier" (metierDelete)="deleteMetier($event)" *ngFor="let metier of metierAdd">
             </ng2-metier>
-            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
+            <div id="tags_4_addTag"><input id="tags_4_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
 
             <div class="tags_clear"></div>
@@ -289,7 +288,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Fonctionnelle</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputfonctionnelle [(ngModel)]="inputFonctionnelle" name="inputFonctionnelle" id="tags_1"
+            <input #inputfonctionnelle [(ngModel)]="inputFonctionnelle" name="inputFonctionnelle" id="tags_5"
                    type="text"
                    class="tags form-control ng-normal"
                    (keyup.enter)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)">
@@ -302,11 +301,11 @@
                     class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
-          <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+          <div id="tags_5_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
             <ng2-fonctionnelle [savoir]="savoir" (fonctionnelleDelete)="deleteFonctionnelle($event)"
                                *ngFor="let savoir of fonctionnelleAdd">
             </ng2-fonctionnelle>
-            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
+            <div id="tags_5_addTag"><input id="tags_5_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
 
             <div class="tags_clear"></div>
@@ -319,7 +318,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Technique</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputtechnique [(ngModel)]="inputTechnique" name="inputTechnique" id="tags_1" type="text"
+            <input #inputtechnique [(ngModel)]="inputTechnique" name="inputTechnique" id="tags_6" type="text"
                    class="tags form-control ng-normal"
                    (keyup.enter)="onEnterTechnique(inputtechnique.value,selecttechnique.value)">
             <select #selecttechnique class="form-control" style="width: 35%; margin-left: 3%">
@@ -331,11 +330,11 @@
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
-          <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+          <div id="tags_6_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
             <ng2-technique [savoir]="savoir" (techniqueDelete)="deleteTechnique($event)"
                            *ngFor="let savoir of techniqueAdd">
             </ng2-technique>
-            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
+            <div id="tags_6_addTag"><input id="tags_6_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
 
             <div class="tags_clear"></div>
@@ -348,7 +347,7 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Linguistiques</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputlinguistiques [(ngModel)]="inputLinguistiques" name="inputLinguistiques" id="tags_1"
+            <input #inputlinguistiques [(ngModel)]="inputLinguistiques" name="inputLinguistiques" id="tags_7"
                    type="text"
                    class="tags form-control ng-normal"
                    (keyup.enter)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)">
@@ -361,11 +360,11 @@
                     class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
-          <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+          <div id="tags_7_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
             <ng2-linguistiques [savoir]="savoir" (linguistiquesDelete)="deleteLinguistiques($event)"
                                *ngFor="let savoir of linguistiquesAdd">
             </ng2-linguistiques>
-            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
+            <div id="tags_7_addTag"><input id="tags_7_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
 
             <div class="tags_clear"></div>
@@ -374,11 +373,14 @@
         </div>
       </div>
 
-
-    </div>
-    <div style="text-align: center; ">
-      <button type="button" class="btn btn-default">Retour</button>
-      <button type="submit" class="btn btn-success">Valider</button>
     </div>
   </form>
+
+  <div style="text-align: center; ">
+    <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
+    <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
+  </div>
+
 </div>
+
+

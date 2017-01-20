@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input,Output, EventEmitter} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
 import {Savoir} from "../classes/savoir";
 
@@ -22,8 +22,15 @@ export class PosteFormComponent implements OnInit {
   inputFonctionnelle: string;
   inputTechnique: string;
   inputLinguistiques: string;
+  //
+
+  private _cancel$: EventEmitter<any>;
+  private _submit$: EventEmitter<any>;
 
   constructor() {
+
+    this._cancel$ = new EventEmitter();
+    this._submit$ = new EventEmitter();
 
     this.poste.reference = "ref";
     this.poste.intitule = "int";
@@ -60,7 +67,23 @@ export class PosteFormComponent implements OnInit {
   }
 
 
-  onSubmit(): void {
+  @Input() set modele(post: Poste) {
+    this.poste = post;
+  }
+
+  @Output('cancel') get cancel$(): EventEmitter<any> {
+    return this._cancel$;
+  }
+
+  @Output('submit') get submit$(): EventEmitter<any> {
+    return this._submit$;
+  }
+
+  cancel()  {
+    this._cancel$.emit();
+  }
+
+  submit(): void {
     /*alert(this.poste.reference + "ref");
      alert(this.poste.intitule + "int");
      alert(this.poste.indice_salaire + "indsal");
@@ -76,6 +99,8 @@ export class PosteFormComponent implements OnInit {
      alert(this.poste.departement + "departement");
      alert(this.poste.service + "service");
      alert(this.poste.equipe + "equipeee");*/
+    console.log(this.poste);
+    this._submit$.emit(this.poste);
   }
 
   deleteSpe(savoir: any) {

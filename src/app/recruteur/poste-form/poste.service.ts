@@ -6,7 +6,7 @@ export class PosteService {
   constructor() { }
 
   getSavoirSpe(): String[]{
-    return ["qsdsq","qsdq","test"];
+    return ["qsdscdq","qsdq","test"];
   }
 
 
