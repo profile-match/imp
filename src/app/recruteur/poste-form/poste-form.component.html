@@ -2,11 +2,12 @@
 
   <div class="page-title">
     <div class="title_left">
-      <h3>Nouveau poste à pourvoir</h3>
+      <h3 *ngIf="enModification" >Modification du poste {{poste.intitule}}</h3>
+      <h3 *ngIf="!enModification">Nouveau poste à pourvoir</h3>
     </div>
   </div>
 
-  <form #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
+  <form #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left">
     <div class="x_panel title overflow_hidden">
       <div class="x_title">
         <h2>Caractéristique du poste</h2>

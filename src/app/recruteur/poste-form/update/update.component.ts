@@ -40,13 +40,16 @@ export class UpdateComponent implements OnInit {
       lieu_travail: '',
       organisation: '',
       equipe_concernee: '',
-      savoirSpe: [],
-      savoirFaire:[],
-      savoirEtre: [],
-      metier: [],
-      fonctionnelle: [],
-      technique: [],
-      linguistiques:[]
+
+      savoir_specifications: [],
+      savoir_faires: [],
+      savoir_etres: [],
+      metiers: [],
+      fonctionnelles: [],
+      techniques: [],
+      langues: [],
+      certifications: [],
+      formations: []
     }
 
     this._poste =  this._poste_vide ;
@@ -68,6 +71,7 @@ export class UpdateComponent implements OnInit {
       .flatMap((id: string) => this._findPost(id))
       .subscribe( (poste: any) => {
         this._poste = poste;
+        console.log(this._poste);
       });
 
   }
@@ -98,6 +102,4 @@ export class UpdateComponent implements OnInit {
         }
       });
   }
-
-
 }

@@ -8,8 +8,8 @@ export const environment = {
   production: false,
   backend: {
     protocol: 'http',
-    host: 'localhost',
-    port: '4200',
+    host: '127.0.0.1',
+    port: '3000',
     endpoints: {
       allCandidat: '/api/candidats',
       oneCandidat: '/api/candidats/:id',
@@ -19,6 +19,7 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost:'/api/posts',
+      getPost :'/api/recruteur/ElementAllDossier/:id',
       allRecruteur: '/api/recruteurs',
       oneRecruteur: '/api/recruteurs/:id',
       searchMetier: '/api/metier/?intitule=${:intitule}',
