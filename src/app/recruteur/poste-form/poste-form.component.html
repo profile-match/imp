@@ -6,8 +6,8 @@
     </div>
   </div>
 
-  <div class="x_content">
-    <form (ngSubmit)="onSubmit()" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
+  <form (ngSubmit)="onSubmit()" id="poste_form" data-parsley-validate class="form-horizontal form-label-left">
+    <div class="x_panel title overflow_hidden">
 
       <div class="x_title">
         <h2>Caractéristique du poste</h2>
@@ -38,7 +38,8 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="indice_salaire">Indice grille salaire
         </label>
         <div class="col-md-2 col-sm-2 col-xs-2">
-          <input type="text" id="indice_salaire" [value]="indice_salaire" [(ngModel)]="poste.indice_salaire" required="required"
+          <input type="text" id="indice_salaire" [value]="indice_salaire" [(ngModel)]="poste.indice_salaire"
+                 required="required"
                  name="indice_salaire" class="form-control col-md-7 col-xs-12">
         </div>
         <span title="Cette information permet d’indiquer le niveau où se situe le salaire du poste
@@ -115,6 +116,13 @@
       du poste à pouvoir"><img style="margin-top: 7px;" src="./assets/information.png"
                                height="20" width="20"/></span>
       </div>
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Contexte du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
 
       <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lieu_travail">Lieu de travail <span
@@ -148,6 +156,14 @@
                  class="form-control col-md-7 col-xs-12">
         </div>
       </div>
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Capacités et compétences du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+
 
       <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir-faire</label>
@@ -160,7 +176,8 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success" style="margin-left: 20px;">
+            <button (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success"
+                    style="margin-left: 20px;">
               Ajouter
             </button>
           </div>
@@ -187,7 +204,8 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_3_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
@@ -208,13 +226,14 @@
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
             <input #inputspe [(ngModel)]="inputSavoirSpe" name="inputSavoirSpe" id="tags_1" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterSpe(inputspe.value,selectspe.value)"  >
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterSpe(inputspe.value,selectspe.value)">
             <select #selectspe class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
@@ -229,18 +248,28 @@
         </div>
       </div>
 
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Capacités et compétences du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+
       <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Métier</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
             <input #inputmetier [(ngModel)]="inputMetier" name="inputMetier" id="tags_1" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterMetier(inputmetier.value,selectmetier.value)"  >
+                   class="tags form-control ng-normal"
+                   (keyup.enter)="onEnterMetier(inputmetier.value,selectmetier.value)">
             <select #selectmetier class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterMetier(inputmetier.value,selectmetier.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button (click)="onEnterMetier(inputmetier.value,selectmetier.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
@@ -260,18 +289,22 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Fonctionnelle</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputfonctionnelle [(ngModel)]="inputFonctionnelle" name="inputFonctionnelle" id="tags_1" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)"  >
+            <input #inputfonctionnelle [(ngModel)]="inputFonctionnelle" name="inputFonctionnelle" id="tags_1"
+                   type="text"
+                   class="tags form-control ng-normal"
+                   (keyup.enter)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)">
             <select #selectfonctionnelle class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button (click)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            <ng2-fonctionnelle [savoir]="savoir" (fonctionnelleDelete)="deleteFonctionnelle($event)" *ngFor="let savoir of fonctionnelleAdd">
+            <ng2-fonctionnelle [savoir]="savoir" (fonctionnelleDelete)="deleteFonctionnelle($event)"
+                               *ngFor="let savoir of fonctionnelleAdd">
             </ng2-fonctionnelle>
             <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
@@ -287,17 +320,20 @@
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
             <input #inputtechnique [(ngModel)]="inputTechnique" name="inputTechnique" id="tags_1" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterTechnique(inputtechnique.value,selecttechnique.value)"  >
+                   class="tags form-control ng-normal"
+                   (keyup.enter)="onEnterTechnique(inputtechnique.value,selecttechnique.value)">
             <select #selecttechnique class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            <ng2-technique [savoir]="savoir" (techniqueDelete)="deleteTechnique($event)" *ngFor="let savoir of techniqueAdd">
+            <ng2-technique [savoir]="savoir" (techniqueDelete)="deleteTechnique($event)"
+                           *ngFor="let savoir of techniqueAdd">
             </ng2-technique>
             <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
@@ -312,18 +348,22 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Linguistiques</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputlinguistiques [(ngModel)]="inputLinguistiques" name="inputLinguistiques" id="tags_1" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)"  >
+            <input #inputlinguistiques [(ngModel)]="inputLinguistiques" name="inputLinguistiques" id="tags_1"
+                   type="text"
+                   class="tags form-control ng-normal"
+                   (keyup.enter)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)">
             <select #selectlinguistiques class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button (click)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            <ng2-linguistiques [savoir]="savoir" (linguistiquesDelete)="deleteLinguistiques($event)" *ngFor="let savoir of linguistiquesAdd">
+            <ng2-linguistiques [savoir]="savoir" (linguistiquesDelete)="deleteLinguistiques($event)"
+                               *ngFor="let savoir of linguistiquesAdd">
             </ng2-linguistiques>
             <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
@@ -335,10 +375,10 @@
       </div>
 
 
-      <div style="text-align: center; ">
-        <button type="button" class="btn btn-default">Retour</button>
-        <button type="submit" class="btn btn-success">Valider</button>
-      </div>
-    </form>
-  </div>
+    </div>
+    <div style="text-align: center; ">
+      <button type="button" class="btn btn-default">Retour</button>
+      <button type="submit" class="btn btn-success">Valider</button>
+    </div>
+  </form>
 </div>
