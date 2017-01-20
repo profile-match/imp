@@ -25,14 +25,12 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="motdepasse2">Confirmation du mot de passe : <span class="required">*</span></label>
-        <div class="col-md-4 col-sm-4 col-xs-4">
 
-          <input type="password" id="motdepasse2" [value]="motdepasse2" [(ngModel)]="utilisateur.password2" required="required" name="motdepasse2" class="form-control col-md-7 col-xs-12">
-
-        </div>
-      </div>
+      <ul class="users">
+        <li *ngFor="let user of users">
+          <span class="badge">{{user.id}}</span> {{user.email}}
+        </li>
+      </ul>
 
       <div style="text-align: center; ">
         <button type="button" class="btn btn-default">Retour</button>

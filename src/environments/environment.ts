@@ -20,7 +20,9 @@ export const environment = {
       oneComment: '/api/commentaires/:id',
       allPost:'/api/posts',
       allRecruteur: '/api/recruteurs',
-      oneRecruteur: '/api/recruteurs/:id'
+      oneRecruteur: '/api/recruteurs/:id',
+      allUser: '/rest/utilisateur/get',
+      createUser: '/rest/utilisateur/inscrire'
     }
   }
 };

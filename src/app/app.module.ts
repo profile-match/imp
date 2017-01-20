@@ -51,7 +51,7 @@ import { Utilisateur } from './utilisateur/utilisateur';
     ChartsModule
    // InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
-  providers: [CandidatService,RecruteurService, Utilisateur],
+  providers: [CandidatService,RecruteurService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
