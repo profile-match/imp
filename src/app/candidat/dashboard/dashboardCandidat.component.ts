@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Candidat} from "../interfaces/candidat";
-import {InMemoryDataService} from "../../in-memory-data.service";
+import {Component, OnInit} from '@angular/core';
+import {environment} from "../../../environments/environment";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-dashboard-candidat',
@@ -8,30 +8,37 @@ import {InMemoryDataService} from "../../in-memory-data.service";
   styleUrls: ['./dashboardCandidat.component.css']
 })
 export class DashboardCandidatComponent implements OnInit {
-
-  cdd : Candidat;
-
-  constructor() {
-    this.cdd = {id : 12,name : "jean",fname:"valjean"};
+  get cdd(): any {
+    return this._cdd;
   }
 
-  /*
-   *  Return Candidat name
-   */
-  get cddname():String{
-    return this.cdd.name;
+  set cdd(value: any) {
+    this._cdd = value;
   }
 
-  /*
-  * Return candidat ID
-   */
-  get cddID():number{
-    return this.cdd.id;
+  private _cdd: any;
+  private _backendURL: any;
+
+  constructor(private _http: Http) {
+    this._cdd = {};
+    this._backendURL = {};
+
+    // build backend base url
+    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
+    if (environment.backend.port) {
+      baseUrl += `:${environment.backend.port}`;
+    }
+
+    // build all backend urls
+    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
-
-
 
   ngOnInit() {
+    this._http.get(this._backendURL.getCandidat.replace(":id", 1))
+      .map(res => res.json())
+      .subscribe((candidat: any[]) => {
+          console.log(candidat);
+          this._cdd = candidat;
+        });
   }
-
 }

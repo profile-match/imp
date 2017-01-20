@@ -7,8 +7,6 @@ import './visiteur/moderateur/candidat-search/rxjs-extensions';
 import { APP_ROUTES } from './app.routes';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
 
 import { CandidatService } from './shared/service/candidat.service';
 
@@ -43,8 +41,7 @@ import { MessagesCandidatComponent } from './candidat/messages-candidat/messages
     BrowserModule,
     FormsModule,
     HttpModule,
-    APP_ROUTES,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    APP_ROUTES
   ],
   providers: [CandidatService],
   bootstrap: [AppComponent]
