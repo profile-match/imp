@@ -175,7 +175,7 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success"
+            <button type="button" (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success"
                     style="margin-left: 20px;">
               Ajouter
             </button>
@@ -203,7 +203,7 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success"
+            <button type="button" (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success"
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -231,7 +231,7 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success"
+            <button type="button" (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success"
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -267,7 +267,7 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterMetier(inputmetier.value,selectmetier.value)" class="btn btn-success"
+            <button type="button" (click)="onEnterMetier(inputmetier.value,selectmetier.value)" class="btn btn-success"
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -297,7 +297,7 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)"
+            <button type="button" (click)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)"
                     class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -326,7 +326,8 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)" class="btn btn-success"
+            <button type="button" (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)"
+                    class="btn btn-success"
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -356,7 +357,7 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button (click)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)"
+            <button type="button" (click)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)"
                     class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -374,13 +375,11 @@
       </div>
 
     </div>
+    <div style="text-align: center; ">
+      <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
+      <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
+    </div>
   </form>
-
-  <div style="text-align: center; ">
-    <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
-    <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
-  </div>
-
 </div>
 
 
