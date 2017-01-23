@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
-import any = jasmine.any;
 import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Candidat} from "../../candidat/interfaces/candidat";
@@ -51,6 +50,7 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("ut");
     this._router.navigate(['/accueil']);
   }
 
@@ -69,12 +69,15 @@ export class AuthenticationService {
     }
     else if (authenticatedCandidat && authenticatedCandidat.nom === user.password){
       localStorage.setItem("user", authenticatedCandidat.toString());
-      this._router.navigate(['/poste-form']);
+      localStorage.setItem("ut", "candidat");
+
+      this._router.navigate(['/addPost']);
 
       return true;
     }
   /*  else if (authenticatedRecruteur && authenticatedRecruteur.password === user.password){
       localStorage.setItem("user", authenticatedRecruteur.toString());
+      localStorage.setItem("ut", "recruteur");
       this._router.navigate(['/accueil']);
 
       return true;
@@ -89,6 +92,33 @@ export class AuthenticationService {
     }
     else {
       return true;
+    }
+  }
+
+  isAdmin(){
+    if (localStorage.getItem("user") === "admin"){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  isCandidat(){
+    if (localStorage.getItem("ut") === "candidat"){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  isRecruteur(){
+    if (localStorage.getItem("ut") === "recruteur"){
+      return true;
+    }
+    else {
+      return false;
     }
   }
 

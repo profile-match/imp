@@ -16,6 +16,8 @@ export const environment = {
       searchCandidat: '/api/candidats/?name=${:term}',
       bannirCandidat: '/rest/candidat/ban/:id',
       unbanCandidat: '/rest/candidat/unban/:id',
+      nbFemelle: '/rest/candidat/getnbfemelle',
+      nbMale: '/rest/candidat/getnbmale',
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/api/posts',

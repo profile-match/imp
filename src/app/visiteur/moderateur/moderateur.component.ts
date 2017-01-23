@@ -26,6 +26,7 @@ export class ModerateurComponent implements OnInit {
     this.recruteurs = [
       {  id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"}
     ];
+   // this.selectedRecruteur = {  id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"};
   }
 
   ngOnInit() {

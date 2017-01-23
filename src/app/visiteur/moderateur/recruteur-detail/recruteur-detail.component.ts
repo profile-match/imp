@@ -19,31 +19,7 @@ export class RecruteurDetailComponent implements OnInit {
   constructor(private recruteurService: RecruteurService) {
     this._bannir$ = new EventEmitter();
     this._postes = [];
-    this._recruteur = {id: 0,idEntreprise: 0, email: "null", banned: 0, nom: "null", photo : "null", prenom: "null"};
-
-    this._selectedPost.id_recruteur = 1;
-    this._selectedPost.reference = "ref";
-    this._selectedPost.intitule = "int";
-    this._selectedPost.indice_salaire = "ind";
-    this._selectedPost.salaire_min = 5;
-    this._selectedPost.salaire_max = 2;
-    this._selectedPost.afficher_moyenne = 0;
-    this._selectedPost.type_contrat = "tc";
-    this._selectedPost.resume = "res";
-    this._selectedPost.point_attention = "pa";
-    this._selectedPost.lieu_travail = "lieut";
-    this._selectedPost.organisation = "orga";
-    this._selectedPost.equipe_concernee = "equipe";
-    this._selectedPost.savoir_specifications = [];
-    this._selectedPost.savoir_faires = [];
-    this._selectedPost.savoir_etres = [];
-    this._selectedPost.metiers = [];
-    this._selectedPost.fonctionnelles = [];
-    this._selectedPost.techniques = [];
-    this._selectedPost.langues = [];
-    this._selectedPost.formations = [];
-    this._selectedPost.certifications = [];
-
+    this._selectedPost = {id: 1, id_recruteur: 1, date_publication: 12, reference:"ref", intitule:"int", indice_salaire: "ind", salaire_min:5, salaire_max:2, afficher_moyenne: 0, type_contrat: "tc", resume: "res", point_attention: "pa", lieu_travail: "lieut", organisation: "orga", equipe_concernee: "equipe", savoir_specifications:[], savoir_faires: [], savoir_etres:[], metiers:[], fonctionnelles: [], techniques: [], langues: [], formations: [], certifications: []};
   }
 
   ngOnInit() {

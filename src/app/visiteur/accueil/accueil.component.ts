@@ -22,6 +22,9 @@ export class AccueilComponent implements OnInit{
   private postes: Poste[];
   private comments: Comment[];
 
+  private _nbMale: number;
+  private _nbFemelle:number;
+
   nbCountries: string;
   views: string;
   public countriesList = [
@@ -42,6 +45,8 @@ export class AccueilComponent implements OnInit{
     this.postes = [];
     this.comments = [];
     this.menuList = [];
+    this._nbFemelle = 0;
+    this._nbMale = 0;
   }
 
   getCandidats(): void {
@@ -61,8 +66,18 @@ export class AccueilComponent implements OnInit{
     this.recruteurService.getPosts().then(postes => this.postes = postes);
   }
 
+  getnbFemelle(): void {
+    this.candidatService.getNbFemelle().subscribe(f => this._nbFemelle = f);
+  }
+
+  getnbMale(): void {
+    this.candidatService.getNbMale().subscribe(m => this._nbMale = m);
+  }
+
   ngOnInit(): void {
     this.getCandidats();
+    this.getnbFemelle();
+    this.getnbMale();
  /*   this.getRecruteurs();
     this.getPostes();
     this.getComments();

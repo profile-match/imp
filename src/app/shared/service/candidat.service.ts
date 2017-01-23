@@ -104,6 +104,16 @@ export class CandidatService {
       });
   }
 
+  getNbFemelle(){
+    return this.http.get(this._backendURL.nbFemelle)
+                    .map( res =>  res.json() );
+  }
+
+  getNbMale(){
+    return this.http.get(this._backendURL.nbMale)
+                    .map( res =>  res.json() );
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

@@ -23,4 +23,16 @@ export class AppComponent {
     return this._service.isLogin();
   }
 
+  isCandidat(){
+    return this._service.isCandidat();
+  }
+
+  isRecruteur(){
+    return this._service.isRecruteur();
+  }
+
+  isAdmin(){
+    return this._service.isAdmin();
+  }
+
 }
