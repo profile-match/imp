@@ -27,6 +27,13 @@
                    name="email"/>
           </div>
         </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Sexe</label>
+          <div class="col-md-4">
+            <input type="radio" [(ngModel)]="isMale" name="sex" value="true">Male<br>
+            <input type="radio" [(ngModel)]="isMale" name="sex" value="false">Female<br>
+          </div>
+        </div>
         <div class="tab-pane" id="4a">
           <br/><br/>
           <div class="form-group">
@@ -54,13 +61,15 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_debut" name="date_debut" required="required"/>
+            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_debut" name="date_debut"
+                   required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_fin" name="date_fin" required="required"/>
+            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_fin" name="date_fin"
+                   required="required"/>
           </div>
         </div>
         <div class="form-group">
@@ -315,7 +324,8 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Nom de l'entreprise <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input class="form-control" [(ngModel)]="candidat.experiencePro.nom_entreprise" name="nom_entreprise" required="required"/>
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.nom_entreprise" name="nom_entreprise"
+                   required="required"/>
           </div>
         </div>
 

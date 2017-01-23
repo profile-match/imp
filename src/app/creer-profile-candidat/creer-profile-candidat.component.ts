@@ -17,6 +17,8 @@ export class CreerProfileCandidatComponent implements OnInit {
 
   private _backendURL: any;
 
+  private sex: boolean;
+
   public nom = "";
   public prenom = "";
   public email = "";
@@ -46,6 +48,7 @@ export class CreerProfileCandidatComponent implements OnInit {
     this._comp = [];
     this._exp = {};
     this._backendURL = {};
+    this.sex = false;
 
     // TY Jessel
     // build backend base url
@@ -63,6 +66,7 @@ export class CreerProfileCandidatComponent implements OnInit {
     this._data["prenom"] = this.prenom;
     this._data["email"] = this.email;
     this._data["loisirs"] = this.loisirs;
+    this._data["isMale"] = this.sex;
     this._format["intitule_de_formation"] = this.intitule_de_formation;
     this._format["etablissement"] = this.etablissement;
     this._format["description_formation"] = this.description_formation;
