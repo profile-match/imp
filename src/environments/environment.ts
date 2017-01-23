@@ -25,9 +25,9 @@ export const environment = {
       searchFonctionnelle: '/api/fonctionnelle/?intitule=${:intitule}',
       searchTechnique: '/api/technique/?intitule=${:intitule}',
       searchLinguistique: '/api/linguistique/?intitule=${:intitule}',
-      addPoste: '/pm-core/rest/recruteur/create',
-      putPoste : '/pm-core/rest/recruteur/updateDossier',
-      getPost :'/pm-core/rest/recruteur/dossier/:id',
+      addPoste: '/rest/recruteur/create',
+      putPoste : '/rest/recruteur/updateDossier',
+      getPost :'/rest/recruteur/dossier/:id',
 
     }
   }
