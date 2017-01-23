@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Headers} from "@angular/http";
-
+import { Location }  from '@angular/common';
 import {environment} from "../../../environments/environment";
 import {Utilisateur} from "../utilisateur";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-inscription-utilisateur',
@@ -22,7 +23,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
   private _backendURL: any;
   private candidatsUrl = 'api/candidats';  // URL to web api
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private _router: Router, private location: Location) {
     this._backendURL = {};
     this.users = [{  id:1, email:'string', motdepasse:'string' }];
     this._utilisateur = {  id:1, email:'string', motdepasse:'string' };
@@ -54,20 +55,12 @@ export class InscriptionUtilisateurComponent implements OnInit {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     this.http.post("http://localhost:8080/rest/utilisateur/inscrire", this._utilisateur , requestOptions)
       .subscribe();
-    /*
-      .flatMap( () => {
-        return this.http.get("http://localhost:8080/rest/utilisateur/get")
-          .map( res => {
-            if (res.status === 200) {
-              return res.json();
-            }
-            else {
-              return [];
-            }
-          });
-      })*/
-
+    this._router.navigate(['/accueil']);
     }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
 
 

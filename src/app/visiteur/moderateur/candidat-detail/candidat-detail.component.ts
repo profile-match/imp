@@ -66,7 +66,7 @@ export class CandidatDetailComponent implements OnInit {
   // Pie
   public pieChartLabels:string[] = ['uncredible', 'credible'];
   public pieChartData:number[] = [300, 500];
-  public pieChartColors:any[] = [{backgroundColor:["#FF0000", "#00FF00"]}];
+  public pieChartColors:any[] = [{backgroundColor:["#EE0000", "#66E21A"]}];
   public pieChartType:string = 'pie';
   public pieChartOption:any = { size: {
                                   height: 200,

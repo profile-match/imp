@@ -68,33 +68,40 @@ export class CandidatService {
   getCandidats(): Observable<Candidat[]> {
     return this.http.get(this._backendURL.allCandidat)
       .map( res =>  res.json() );
-  /*  return this.http.get(this._backendURL.allCandidat)
-      .toPromise()
-      .then(response => response.json() as Candidat[])
-      .catch(this.handleError);*/
   }
 
   getCandidat(id: number): Observable<Candidat> {
     //const url = `${this.candidatsUrl}/${id}`;
     return this.http.get(this._backendURL.oneCandidat.replace(':id', id))
       .map( res =>  res.json() );
-  /*    .toPromise()
-      .then(response => response.json().data as Candidat)
-      .catch(this.handleError);*/
   }
 
   bannir(candidat: Candidat) {//: Promise<Candidat[]> {
+    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
-      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), candidat)
-      .subscribe()
-    //  .toPromise()
-   //   .then(response => response.json().data as Candidat[])
+      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), candidat, requestOptions)
+      .map( res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        else {
+          return [];
+        }
+      });
   }
 
   unBan(candidat: Candidat) {
+    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
-      .put(this._backendURL.unbanCandidat.replace(':id',candidat.id), candidat)
-      .subscribe()
+      .put(this._backendURL.unbanCandidat.replace(':id',candidat.id), candidat, requestOptions)
+      .map( res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        else {
+          return [];
+        }
+      });
   }
 
   private handleError(error: any): Promise<any> {

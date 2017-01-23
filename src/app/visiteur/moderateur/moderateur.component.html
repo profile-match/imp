@@ -45,7 +45,7 @@
                 <li *ngFor="let recruteur of recruteurs"
                   [class.selected]="recruteur === selectedRecruteur"
                   (click)="onSelectRecruteur(recruteur)">
-                  <span class="badge">{{recruteur.id}}</span> {{recruteur.name}}
+                  <span class="badge">{{recruteur.id}}</span> {{recruteur.nom}}
                 </li>
               </ul>
             </div>

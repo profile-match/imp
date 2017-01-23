@@ -23,7 +23,9 @@ export class ModerateurComponent implements OnInit {
   constructor(private _service:AuthenticationService,
               private candidatService: CandidatService, private recruteurService: RecruteurService) {
     this.candidats = [];
-    this.recruteurs = [];
+    this.recruteurs = [
+      {  id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"}
+    ];
   }
 
   ngOnInit() {
@@ -94,8 +96,7 @@ export class ModerateurComponent implements OnInit {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
-   // alert("fonctionnalité 'banir candidat "+candidat.id +" ' non defini");
-    this.candidatService.bannir(candidat);//.then(candidats => this.candidats = candidats);
+    this.candidatService.bannir(candidat).subscribe(c => this.selectedCandidat = c);
   }
 
   unBan(candidat: Candidat) {
@@ -108,8 +109,7 @@ export class ModerateurComponent implements OnInit {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
-    // alert("fonctionnalité 'banir candidat "+candidat.id +" ' non defini");
-    this.candidatService.unBan(candidat);//.then(candidats => this.candidats = candidats);
+    this.candidatService.unBan(candidat).subscribe(c => this.selectedCandidat = c);//.then(candidats => this.candidats = candidats);
   }
 
   bannirRecruteur(recruteur: Recruteur) {
@@ -122,7 +122,7 @@ export class ModerateurComponent implements OnInit {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
-    alert("fonctionnalité 'banir recruteur "+recruteur.name +" ' non defini");
+    alert("fonctionnalité 'banir recruteur "+recruteur.nom +" ' non defini");
   }
 
   goToDetailCandidat(idCandidat: number){

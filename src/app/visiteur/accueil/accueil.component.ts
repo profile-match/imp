@@ -45,13 +45,6 @@ export class AccueilComponent implements OnInit{
   }
 
   getCandidats(): void {
-   /* this.http.get('http://localhost:8080/rest/candidat/get')//http://localhost:4200/api/candidats
-      .map( res => res.json() )
-      .subscribe( (candidats: any[]) => console.log(JSON.stringify(candidats)));*/
-  /*  this.http.get('http://localhost:8080/rest/candidat/get')
-      .toPromise()
-      .then(response => console.log(JSON.stringify(response['_body'])));*/
-
     this.candidatService.getCandidats().subscribe(candidats => this.candidats = candidats);
     console.log(JSON.stringify(this.candidats));
   }

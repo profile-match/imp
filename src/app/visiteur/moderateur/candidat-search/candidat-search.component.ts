@@ -7,6 +7,7 @@ import { Subject }           from 'rxjs/Subject';
 import {CandidatService} from "../../../shared/service/candidat.service";
 import {Candidat} from "../../../candidat/interfaces/candidat";
 import {ModerateurComponent} from "../moderateur.component";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-candidat-search',
@@ -16,21 +17,26 @@ import {ModerateurComponent} from "../moderateur.component";
 })
 export class CandidatSearchComponent implements OnInit {
 
+  arrayOfNumbers: number[] = [100, 200, 300, 400, 500];
+
   private _bannir$: EventEmitter<any>;
-  candidats: Observable<Candidat[]>;
+ // candidats: Observable<Candidat[]>;
+  private _candidats: Candidat[];
   selectedCandidat: Candidat;
   selectedC: Candidat;
   mod: ModerateurComponent;
   private searchTerms : Subject<string>;
 
   constructor(private candidatSearchService: CandidatService,
-              private router: Router) {
+              private router: Router, private _sanitizer: DomSanitizer) {
       this.searchTerms = new Subject<string>();
     this._bannir$ = new EventEmitter();
+    this._candidats = [];
   }
 
   ngOnInit() {
-    this.candidats = this.searchTerms
+    this.getCandidats();
+ /*   this.candidats = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time
@@ -42,7 +48,25 @@ export class CandidatSearchComponent implements OnInit {
         // TODO: real error handling
         console.log(error);
         return Observable.of<Candidat[]>([]);
-      });
+      });*/
+  }
+
+  get candidats(): Candidat[] {
+    return this._candidats;
+  }
+
+  set candidats(value: Candidat[]) {
+    this._candidats = value;
+  }
+
+  getCandidats(){
+    this.candidatSearchService.getCandidats().subscribe(c => this._candidats = c);
+  }
+
+  autocompleListFormatter = (data: Candidat) : SafeHtml => {
+    let html = `<span>${data.nom}</span>`;
+    html += `<span> ${data.prenom}</span>`;
+    return this._sanitizer.bypassSecurityTrustHtml(html);
   }
 
   // Push a search term into the observable stream.

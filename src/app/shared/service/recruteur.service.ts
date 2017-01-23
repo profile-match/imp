@@ -3,6 +3,7 @@ import {Headers, Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Poste} from "../../recruteur/interfaces/poste";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class RecruteurService {
@@ -30,6 +31,11 @@ export class RecruteurService {
       .toPromise()
       .then(response => response.json().data as Poste[])
       .catch(this.handleError);
+  }
+
+  getPost(id: number): Observable<Poste[]> {
+    return this.http.get(this._backendURL.onePost.replace(':idRecruteur', id))
+      .map( res =>  res.json() );
   }
 
   getRecruteurs(): Promise<Recruteur[]> {

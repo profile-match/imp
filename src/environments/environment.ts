@@ -19,6 +19,7 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost:'/api/posts',
+      onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
       allRecruteur: '/api/recruteurs',
       oneRecruteur: '/api/recruteurs/:id',
       allUser: '/rest/utilisateur/get',
