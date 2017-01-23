@@ -119,7 +119,6 @@ export class PosteFormComponent implements OnInit {
       this._submit$.emit(this._poste);
     else {
       this._createService.create(this._poste).subscribe();
-      //TODO
     }
 
   }

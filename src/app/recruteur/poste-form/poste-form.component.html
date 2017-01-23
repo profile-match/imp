@@ -278,9 +278,7 @@
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
 
-            <select #completMetier class="form-control" style="width: 35%; margin-left: 3%" >
-              <option *ngFor="let savoir of cMetier" >{{savoir.intitule}}</option>
-            </select>
+
 
             <input #inputmetier [(ngModel)]="inputMetier" name="inputMetier" id="tags_4" type="text"
                    class="tags form-control ng-normal"
@@ -350,7 +348,6 @@
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-
             <button type="button" (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)" class="btn btn-success"
                     style="margin-left: 20px;">Ajouter
             </button>
@@ -458,11 +455,12 @@
 
 
     </div>
-    <div style="text-align: center; ">
-      <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
-      <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
-    </div>
   </form>
-</div>
 
+  <div style="text-align: center; ">
+    <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
+    <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
+  </div>
+
+</div>
 

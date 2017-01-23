@@ -77,7 +77,6 @@ export class UpdateComponent implements OnInit {
   }
 
   submit(poste: Poste) {
-    console.log(JSON.stringify(poste));
     this._http.put(this._backendURL.putPoste, JSON.stringify(poste),this._options())
       .subscribe(() => this._router.navigate(['/']) );
 
