@@ -1,6 +1,7 @@
 import {Component, OnInit, Input,Output, EventEmitter} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
 import {Savoir} from "../classes/savoir";
+import { PosteService } from './poste.service';
 
 @Component({
   selector: 'app-poste-form',
@@ -93,8 +94,10 @@ export class PosteFormComponent implements OnInit {
     //TODO
     if(true){
 
+    }else{
+      this._submit$.emit(this.poste);
     }
-    this._submit$.emit(this.poste);
+
   }
 
   deleteSpe(savoir: any) {
