@@ -2,11 +2,11 @@ import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import {Savoir} from "../interfaces/savoir";
 
 @Component({
-  selector: 'ng2-savoirEtre',
-  templateUrl: './savoir-etre.component.html',
-  styleUrls: ['./savoir-etre.component.css']
+  selector: 'ng2-certification',
+  templateUrl: './certification.component.html',
+  styleUrls: ['./certification.component.css']
 })
-export class SavoirEtreComponent implements OnInit {
+export class CertificationComponent implements OnInit {
 
   // private property to store savoir value
   private _savoir: Savoir;
@@ -41,7 +41,7 @@ export class SavoirEtreComponent implements OnInit {
    *
    * @returns {EventEmitter<any>}
    */
-  @Output('savoirEtreDelete') get delete$(): EventEmitter<any> {
+  @Output('certificationDelete') get delete$(): EventEmitter<any> {
     return this._delete$;
   }
 

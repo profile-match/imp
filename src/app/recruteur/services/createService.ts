@@ -1,21 +1,28 @@
+/**
+ * Created by Misternutz on 20/01/2017.
+ */
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Injectable } from '@angular/core';
 import {Headers, Http, Response, RequestOptions} from '@angular/http';
 import { Observable } 	  from 'rxjs';
 
 import 'rxjs/add/operator/toPromise';
 import {environment} from "../../../environments/environment";
-import {Savoir} from "../interfaces/savoir";
+import {Poste} from "../interfaces/poste";
+
+
 
 @Injectable()
-export class AutocompletionService {
+export class createService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   // private property to store all backend URLs
   private _backendURL: any;
   private candidatsUrl = 'api/candidats';  // URL to web api
+  private _dossier :Poste;
 
-  constructor(private http: Http) {
+  constructor(private _http: Http) {
     this._backendURL = {};
 
     // build backend base url
@@ -28,39 +35,13 @@ export class AutocompletionService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
-  searchMetier(intitule: string): Observable<Savoir[]> {
 
-    return this.http
-      .get(this._backendURL.searchMetier.replace(':intitule', intitule), this._options)
-  .map((r: Response) => r.json().data as Savoir[]);
-
+    create(dossier): Observable<Poste> {
+    console.log(JSON.stringify(dossier));
+      return this._http.post(this._backendURL.addPoste, JSON.stringify(dossier), this._options())
+        .map((res: Response) => res.json());
   }
 
-  private getHeaders(){
-    let headers = new Headers();
-    headers.append('Accept', 'application/json');
-    return headers;
-  }
-
-
-  searchFonctionnelle(intitule: string): Observable<Savoir[]> {
-    return this.http
-      .get(this._backendURL.searchFonctionnelle.replace(':intitule', intitule))
-      .map((res:Response) => res.json())
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
-  }
-
-  searchTechnique(intitule: string): Observable<Savoir[]> {
-    return this.http
-      .get(this._backendURL.searchTechnique.replace(':intitule', intitule))
-      .map((r: Response) => r.json().data as Savoir[]);
-  }
-
-  searchLinguistique(intitule: string): Observable<Savoir[]> {
-    return this.http
-      .get(this._backendURL.searchLinguistique.replace(':intitule', intitule))
-      .map((r: Response) => r.json().data as Savoir[]);
-  }
 
 
   private handleError(error: any): Promise<any> {
@@ -72,5 +53,7 @@ export class AutocompletionService {
     const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
     return new RequestOptions({headers: headers});
   }
+
+
 
 }

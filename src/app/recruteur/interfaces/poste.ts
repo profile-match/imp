@@ -1,4 +1,4 @@
-import {Savoir} from "../classes/savoir";
+import {Savoir} from "./savoir";
 export interface Poste {
   id :number,
   id_recruteur : number,

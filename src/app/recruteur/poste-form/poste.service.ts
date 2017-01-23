@@ -9,5 +9,4 @@ export class PosteService {
     return ["qsdscdq","qsdq","test"];
   }
 
-
 }

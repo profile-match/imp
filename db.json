@@ -1,5 +1,5 @@
 {
-  "poste" : {
+  "poste": {
     "reference": "ref",
     "intitule": "poste titre",
     "indice_salaire": "strong",
@@ -12,23 +12,29 @@
     "lieu_travail": "paris",
     "organisation": "ogm",
     "equipe_concernee": "mon equipe",
-    "savoirSpe ": [],
-    "savoirFaire":[
-      { "intitule" : "savoirFaire1",
-          "obligatoire" : "0"
+
+    "savoir_specifications": [],
+    "savoir_faires": [
+      {
+        "intitule": "savoirFaire1",
+        "obligatoire": "0"
       },
-      { "intitule" : "savoirFaire2",
-        "obligatoire" : "1"
+      {
+        "intitule": "savoirFaire2",
+        "obligatoire": "1"
       },
-      { "intitule" : "savoirFaire3",
-        "obligatoire" : "2"
+      {
+        "intitule": "savoirFaire3",
+        "obligatoire": "2"
       }
     ],
-    "savoirEtre": [],
-    "metier": [],
-    "fonctionnelle": [],
-    "technique": [],
-    "linguistiques": []
+    "savoir_etres": [],
+    "metiers": [],
+    "fonctionnelles": [],
+    "techniques": [],
+    "langues": [],
+    "certifications": [],
+    "formations": []
   }
 }
 

@@ -17,6 +17,9 @@ import { LinguistiquesComponent } from './recruteur/linguistiques/linguistiques.
 import { FormationComponent } from './recruteur/formation/formation.component';
 import { UpdateComponent } from './recruteur/poste-form/update/update.component';
 
+import { CertificationComponent } from './recruteur/certification/certification.component';
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { UpdateComponent } from './recruteur/poste-form/update/update.component'
     LinguistiquesComponent,
     FormationComponent,
     UpdateComponent,
+    CertificationComponent,
   ],
   imports: [
     BrowserModule,

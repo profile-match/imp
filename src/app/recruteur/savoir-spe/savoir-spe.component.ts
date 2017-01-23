@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import {Savoir} from "../classes/savoir";
+import {Savoir} from "../interfaces/savoir";
 
 @Component({
   selector: 'ng2-savoirSpe',
