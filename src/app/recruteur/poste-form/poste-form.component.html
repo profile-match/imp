@@ -19,12 +19,12 @@
 
   <div class="page-title">
     <div class="title_left">
-      <h3 *ngIf="enModification" >Modification du poste {{poste.intitule}}</h3>
+      <h3 *ngIf="enModification">Modification du poste {{poste.intitule}}</h3>
       <h3 *ngIf="!enModification">Nouveau poste à pourvoir</h3>
     </div>
   </div>
 
-  <form  #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left">
+  <form #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left">
     <div class="x_panel title overflow_hidden">
       <div class="x_title">
         <h2>Caractéristique du poste</h2>
@@ -187,13 +187,14 @@
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
             <input #inputfaire [(ngModel)]="inputSavoirFaire" name="inputSavoirFaire" id="tags_2" type="text"
-                   class="tags form-control ng-normal" >
+                   class="tags form-control ng-normal">
             <select #selectfaire class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button type="button"type="button"  (click)="onEnterFaire(inputfaire.value,selectfaire.value)" class="btn btn-success"
+            <button type="button" type="button" (click)="onEnterFaire(inputfaire.value,selectfaire.value)"
+                    class="btn btn-success"
                     style="margin-left: 20px;">
               Ajouter
             </button>
@@ -279,11 +280,16 @@
           <div style="display: flex;">
 
 
-
             <input #inputmetier [(ngModel)]="inputMetier" name="inputMetier" id="tags_4" type="text"
                    class="tags form-control ng-normal"
-                   (keyup.enter)="onEnterMetier(inputmetier.value,selectmetier.value)" (keyup) ="completeMetier(inputmetier.value,selectmetier.value)">
-
+                   list="metiersAuto"
+                   (keyup)="autoComplete(inputmetier.value,'metier')"
+                   (keyup.enter)="onEnterMetier(inputmetier.value,selectmetier.value)">
+            <datalist id="metiersAuto">
+              <option *ngFor="let metier of metiers">
+                {{metier.intitule}}
+              </option>
+            </datalist>
             <select #selectmetier class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
@@ -312,8 +318,15 @@
           <div style="display: flex;">
             <input #inputfonctionnelle [(ngModel)]="inputFonctionnelle" name="inputFonctionnelle" id="tags_5"
                    type="text"
+                   list="fontionAuto"
                    class="tags form-control ng-normal"
+                   (keyup)="autoComplete(inputfonctionnelle.value,'fonctionnelle')"
                    (keyup.enter)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)">
+            <datalist id="fontionAuto">
+              <option *ngFor="let functionnelle of fonctionnelles" >
+                {{functionnelle.intitule}}
+              </option>
+            </datalist>
             <select #selectfonctionnelle class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
@@ -342,13 +355,21 @@
           <div style="display: flex;">
             <input #inputtechnique [(ngModel)]="inputTechnique" name="inputTechnique" id="tags_6" type="text"
                    class="tags form-control ng-normal"
+                   list="technoAuto"
+                   (keyup)="autoComplete(inputtechnique.value,'technique')"
                    (keyup.enter)="onEnterTechnique(inputtechnique.value,selecttechnique.value)">
+            <datalist id="technoAuto">
+              <option *ngFor="let technique of techniques" >
+                {{technique.intitule}}
+              </option>
+            </datalist>
             <select #selecttechnique class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button type="button" (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)" class="btn btn-success"
+            <button type="button" (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)"
+                    class="btn btn-success"
                     style="margin-left: 20px;">Ajouter
             </button>
           </div>
@@ -371,8 +392,15 @@
           <div style="display: flex;">
             <input #inputlinguistiques [(ngModel)]="inputLinguistiques" name="inputLinguistiques" id="tags_7"
                    type="text"
+                   list="langueAuto"
                    class="tags form-control ng-normal"
+                   (keyup)="autoComplete(inputlinguistiques.value,'linguistique')"
                    (keyup.enter)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)">
+            <datalist id="langueAuto">
+              <option *ngFor="let langue of langues" >
+                {{langue.intitule}}
+              </option>
+            </datalist>
             <select #selectlinguistiques class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
@@ -406,17 +434,27 @@
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
             <input #inputformation [(ngModel)]="inputFormation" name="inputFormation" id="tags_8" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterFormation(inputformation.value,selectformation.value)"  >
+                   class="tags form-control ng-normal"
+                   list="formationAuto"
+                   (keyup)="autoComplete(inputformation.value,'formation')"
+                   (keyup.enter)="onEnterFormation(inputformation.value,selectformation.value)">
+            <datalist id="formationAuto">
+              <option *ngFor="let formation of formations" >
+                    {{formation.intitule}}
+              </option>
+            </datalist>
             <select #selectformation class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button type="button" (click)="onEnterFormation(inputformation.value,selectformation.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button type="button" (click)="onEnterFormation(inputformation.value,selectformation.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_8_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            <ng2-formation [savoir]="savoir" (formationDelete)="deleteFormation($event)" *ngFor="let savoir of formationAdd">
+            <ng2-formation [savoir]="savoir" (formationDelete)="deleteFormation($event)"
+                           *ngFor="let savoir of formationAdd">
             </ng2-formation>
             <div id="tags_8_addTag"><input id="tags_8_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
@@ -431,18 +469,29 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Certification</label>
         <div class="col-md-7 col-sm-7 col-xs-7">
           <div style="display: flex;">
-            <input #inputcertification [(ngModel)]="inputCertification" name="inputCertification" id="tags_9" type="text"
-                   class="tags form-control ng-normal" (keyup.enter)="onEnterCertification(inputcertification.value,selectcertification.value)"  >
+            <input #inputcertification [(ngModel)]="inputCertification" name="inputCertification" id="tags_9"
+                   type="text"
+                   list="certifAuto"
+                   class="tags form-control ng-normal"
+                   (keyup)="autoComplete(inputcertification.value,'certification')"
+                   (keyup.enter)="onEnterCertification(inputcertification.value,selectcertification.value)">
+            <datalist id="certifAuto">
+              <option *ngFor="let certification of certifications" >
+                {{certification.intitule}}
+              </option>
+            </datalist>
             <select #selectcertification class="form-control" style="width: 35%; margin-left: 3%">
               <option value="2">Obligatoire</option>
               <option value="1">Plus</option>
               <option value="0">N/A</option>
             </select>
-            <button type="button" (click)="onEnterCertification(inputcertification.value,selectcertification.value)" class="btn btn-success" style="margin-left: 20px;">Ajouter
+            <button type="button" (click)="onEnterCertification(inputcertification.value,selectcertification.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
             </button>
           </div>
           <div id="tags_9_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            <ng2-certification [savoir]="savoir" (certificationDelete)="deleteCertification($event)" *ngFor="let savoir of certificationAdd">
+            <ng2-certification [savoir]="savoir" (certificationDelete)="deleteCertification($event)"
+                               *ngFor="let savoir of certificationAdd">
             </ng2-certification>
             <div id="tags_9_addTag"><input id="tags_9_tag" value="" data-default="add a tag"
                                            style="color: rgb(102, 102, 102); width: 72px;"></div>
@@ -452,8 +501,6 @@
           <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
         </div>
       </div>
-
-
     </div>
   </form>
 

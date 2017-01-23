@@ -12,7 +12,7 @@ import {AutocompletionService} from "../services/autocompletion.service";
 })
 export class PosteFormComponent implements OnInit {
 
- // private _class: string;
+  // private _class: string;
   private _query: string;
   private _result: string;
   private _isChecked: boolean;
@@ -34,8 +34,15 @@ export class PosteFormComponent implements OnInit {
 
   private _enModification: boolean;
 
-  //arrays SAvoirs
+  //arrays Savoirs pour récupérer les auto complete
   private _metiers: Savoir[];
+  private _fonctionnelles: Savoir[];
+
+
+  private _langues: Savoir[];
+  private _formations: Savoir[];
+  private _certifications: Savoir[];
+  private _techniques: Savoir[];
 
 
   constructor(private _createService: createService, private _AutocompletionService: AutocompletionService) {
@@ -65,6 +72,13 @@ export class PosteFormComponent implements OnInit {
     this._poste.formations = [];
     this._poste.certifications = [];
 
+    this._metiers = [];
+    this._fonctionnelles = [];
+    this._techniques = [];
+    this._langues = [];
+    this._formations = [];
+    this._certifications = [];
+
     this._inputSavoirSpe = "";
     this._inputSavoirEtre = "";
     this._inputSavoirFaire = "";
@@ -82,6 +96,54 @@ export class PosteFormComponent implements OnInit {
   }
 
 
+  get metiers(): Savoir[] {
+    return this._metiers;
+  }
+
+  set metiers(value: Savoir[]) {
+    this._metiers = value;
+  }
+
+  get fonctionnelles(): Savoir[] {
+    return this._fonctionnelles;
+  }
+
+  set fonctionnelles(value: Savoir[]) {
+    this._fonctionnelles = value;
+  }
+
+  get langues(): Savoir[] {
+    return this._langues;
+  }
+
+  set langues(value: Savoir[]) {
+    this._langues = value;
+  }
+
+  get formations(): Savoir[] {
+    return this._formations;
+  }
+
+  set formations(value: Savoir[]) {
+    this._formations = value;
+  }
+
+  get certifications(): Savoir[] {
+    return this._certifications;
+  }
+
+  set certifications(value: Savoir[]) {
+    this._certifications = value;
+  }
+
+  get techniques(): Savoir[] {
+    return this._techniques;
+  }
+
+  set techniques(value: Savoir[]) {
+    this._techniques = value;
+  }
+
   @Input() set modele(post: Poste) {
     this._poste = post;
   }
@@ -95,11 +157,11 @@ export class PosteFormComponent implements OnInit {
   }
 
 
-  get enModification() : boolean{
+  get enModification(): boolean {
     return this._enModification;
   }
 
-  get poste() : Poste{
+  get poste(): Poste {
     return this._poste;
   }
 
@@ -115,19 +177,12 @@ export class PosteFormComponent implements OnInit {
   }
 
   submit() {
-    if(this._enModification)
+    if (this._enModification)
       this._submit$.emit(this._poste);
     else {
       this._createService.create(this._poste).subscribe();
     }
 
-  }
-
-  completeMetier(value: string, nb: number) {
-    this._AutocompletionService.searchMetier(value).subscribe(
-      savoir => {this._metiers = savoir;
-
-      });
   }
 
   deleteSpe(savoir: any) {
@@ -205,7 +260,7 @@ export class PosteFormComponent implements OnInit {
     for (let i of this._poste.formations) {
       ind++;
       if (i == savoir) {
-        this._poste.formations.splice(ind-1, 1);
+        this._poste.formations.splice(ind - 1, 1);
       }
     }
   }
@@ -215,7 +270,7 @@ export class PosteFormComponent implements OnInit {
     for (let i of this._poste.certifications) {
       ind++;
       if (i == savoir) {
-        this._poste.certifications.splice(ind-1, 1);
+        this._poste.certifications.splice(ind - 1, 1);
       }
     }
   }
@@ -282,8 +337,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterSpe(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -296,8 +351,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterFaire(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
       };
@@ -309,8 +364,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterEtre(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -324,8 +379,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterMetier(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -337,8 +392,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterFonctionnelle(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -350,8 +405,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterTechnique(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -364,8 +419,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterLinguistiques(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -378,8 +433,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterFormation(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -392,8 +447,8 @@ export class PosteFormComponent implements OnInit {
 
   onEnterCertification(value: string, nb: number) {
     if (value != "") {
-      var savoirs:Savoir;
-      savoirs ={
+      var savoirs: Savoir;
+      savoirs = {
         obligatoire: nb,
         intitule: value
 
@@ -417,45 +472,73 @@ export class PosteFormComponent implements OnInit {
   //   return this._class;
   // }
 
-  get query() : string{
+  get query(): string {
     return this._query;
   }
 
-  get result() : string{
-    return this._result ;
+  get result(): string {
+    return this._result;
   }
-  get isChecked() : boolean{
+
+  get isChecked(): boolean {
     return this._isChecked;
   }
 
-  get inputSavoirSpe(): string{
+  get inputSavoirSpe(): string {
     return this._inputSavoirSpe;
   }
-  get inputSavoirEtre(): string{
+
+  get inputSavoirEtre(): string {
     return this._inputSavoirEtre;
   }
-  get inputSavoirFaire(): string{
+
+  get inputSavoirFaire(): string {
     return this._inputSavoirFaire;
   }
-  get inputMetier(): string{
+
+  get inputMetier(): string {
     return this._inputMetier;
   }
-  get inputFonctionnelle(): string{
+
+  get inputFonctionnelle(): string {
     return this._inputFonctionnelle;
   }
-  get inputTechnique(): string{
+
+  get inputTechnique(): string {
     return this._inputTechnique;
   }
-  get inputLinguistiques(): string{
+
+  get inputLinguistiques(): string {
     return this._inputLinguistiques;
   }
-  get inputFormation(): string{
+
+  get inputFormation(): string {
     return this._inputFormation;
   }
 
-  get inputCertification(): string{
+  get inputCertification(): string {
     return this._inputCertification;
   }
+
+  autoComplete(value: string, funct: string) {
+    if (value) {
+      if (funct == "metier") {
+        this._AutocompletionService.searchMetier(value).subscribe(savoirMet => this._metiers = savoirMet);
+      } else if (funct == "fonctionnelle") {
+        this._AutocompletionService.searchFonctionnelle(value).subscribe(savoirFonc => this._fonctionnelles = savoirFonc);
+      } else if (funct == "technique") {
+        this._AutocompletionService.searchTechnique(value).subscribe(savoirTech => this._techniques = savoirTech);
+      } else if (funct == "linguistique") {
+        this._AutocompletionService.searchLinguistique(value).subscribe(savoirLin => this._langues = savoirLin);
+      } else if (funct == "formation") {
+        this._AutocompletionService.searchFormation(value).subscribe(savoirForm => this._formations = savoirForm);
+      } else if (funct == "certification") {
+        this._AutocompletionService.searchCertification(value).subscribe(savoirCert => this._certifications = savoirCert);
+      }
+    }
+  }
+
+
 
   ngOnInit() {
 

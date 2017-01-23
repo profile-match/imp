@@ -28,13 +28,6 @@ export class AutocompletionService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
-  searchMetier(intitule: string): Observable<Savoir[]> {
-
-    return this.http
-      .get(this._backendURL.searchMetier.replace(':intitule', intitule), this._options)
-  .map((r: Response) => r.json().data as Savoir[]);
-
-  }
 
   private getHeaders(){
     let headers = new Headers();
@@ -42,24 +35,41 @@ export class AutocompletionService {
     return headers;
   }
 
+  searchMetier(intitule: string): Observable<Savoir[]> {
+    return this.http
+      .get(this._backendURL.searchMetier.replace(':intitule', intitule), this._options)
+      .map((r: Response) => r.json() as Savoir[]);
+
+  }
 
   searchFonctionnelle(intitule: string): Observable<Savoir[]> {
     return this.http
       .get(this._backendURL.searchFonctionnelle.replace(':intitule', intitule))
-      .map((res:Response) => res.json())
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+      .map((res:Response) => res.json() as Savoir[]);
   }
 
   searchTechnique(intitule: string): Observable<Savoir[]> {
     return this.http
       .get(this._backendURL.searchTechnique.replace(':intitule', intitule))
-      .map((r: Response) => r.json().data as Savoir[]);
+      .map((r: Response) => r.json() as Savoir[]);
   }
 
   searchLinguistique(intitule: string): Observable<Savoir[]> {
     return this.http
       .get(this._backendURL.searchLinguistique.replace(':intitule', intitule))
-      .map((r: Response) => r.json().data as Savoir[]);
+      .map((r: Response) => r.json() as Savoir[]);
+  }
+
+  searchFormation(intitule: string): Observable<Savoir[]> {
+    return this.http
+      .get(this._backendURL.searchFormation.replace(':intitule', intitule))
+      .map((r: Response) => r.json() as Savoir[]);
+  }
+
+  searchCertification(intitule: string): Observable<Savoir[]> {
+    return this.http
+      .get(this._backendURL.searchCertification.replace(':intitule', intitule))
+      .map((r: Response) => r.json() as Savoir[]);
   }
 
 
