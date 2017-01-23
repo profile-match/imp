@@ -1,6 +1,8 @@
+import {Savoir} from "./savoir";
 export interface Poste {
+  id: number,
   id_recruteur: number,
-  date_publication: number;
+  date_publication: number,
   reference: string,
   intitule: string,
   indice_salaire: string,
@@ -13,6 +15,15 @@ export interface Poste {
   afficher_moyenne: number,
   organisation: string,
   equipe_concernee: string,
-  "id":number
- // signale: boolean
+  savoir_specifications: Savoir[],
+  savoir_faires: Savoir[],
+  savoir_etres: Savoir[],
+  metiers: Savoir[],
+  fonctionnelles: Savoir[],
+  techniques: Savoir[],
+  langues: Savoir[],
+  certifications: Savoir[],
+  formations: Savoir[]
+  // signale: boolean
+
 }

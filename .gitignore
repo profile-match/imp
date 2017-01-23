@@ -9,6 +9,9 @@
 *.ear
 
 
+#Node_module
+node_modules/
+
 
 #webapp
 src/main/webapp
@@ -116,11 +119,6 @@ build/Release
 
 jspm_packages
 
-#Node_modules
-node_modules/	
-
-
-
 # Optional npm cache directory
 .npm
 
@@ -217,4 +215,4 @@ fabric.properties
 
 # End of https://www.gitignore.io/api/intellij
 
-# End of https://www.gitignore.io/api/linux,macos,windows,node,maven,notepadpp
+  # End of https://www.gitignore.io/api/linux,macos,windows,node,maven,notepadpp

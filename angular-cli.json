@@ -30,6 +30,7 @@
         "../node_modules/gentelella/vendors/starrr/dist/starrr.css",
         "../node_modules/gentelella/build/css/custom.min.css"
       ],
+
       "scripts": [
         "../node_modules/chart.js/dist/Chart.bundle.js"
       ],

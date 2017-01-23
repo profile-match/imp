@@ -18,12 +18,21 @@ export const environment = {
       unbanCandidat: '/rest/candidat/unban/:id',
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
-      allPost:'/api/posts',
+      allPost: '/api/posts',
       onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
       allRecruteur: '/api/recruteurs',
       oneRecruteur: '/api/recruteurs/:id',
       allUser: '/rest/utilisateur/get',
-      createUser: '/rest/utilisateur/inscrire'
+      createUser: '/rest/utilisateur/inscrire',
+      searchMetier: '/rest/recruteur/completeMetier/:intitule',
+      searchFonctionnelle: '/rest/recruteur/completeFonctionnelle/:intitule',
+      searchTechnique: '/rest/recruteur/completeTechnique/:intitule',
+      searchLinguistique: '/rest/recruteur/completeLangue/:intitule',
+      searchFormation: '/rest/recruteur/completeFormation/:intitule',
+      searchCertification: '/rest/recruteur/completeCertification/:intitule',
+      addPoste: '/rest/recruteur/create',
+      putPoste: '/rest/recruteur/updateDossier',
+      getPost: '/rest/recruteur/dossier/:id',
     }
   }
 };

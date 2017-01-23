@@ -20,7 +20,30 @@ export class RecruteurDetailComponent implements OnInit {
     this._bannir$ = new EventEmitter();
     this._postes = [];
     this._recruteur = {id: 0,idEntreprise: 0, email: "null", banned: 0, nom: "null", photo : "null", prenom: "null"};
-    this._selectedPost = {id_recruteur: 0, date_publication: 0, reference: "#0", intitule: "null", indice_salaire: "0", salaire_min: 0, salaire_max: 0, type_contrat: "null", resume: "null", point_attention: "null", lieu_travail: "null", afficher_moyenne: 0, organisation: "null", equipe_concernee: "null", id: 0};//, signale: false};
+
+    this._selectedPost.id_recruteur = 1;
+    this._selectedPost.reference = "ref";
+    this._selectedPost.intitule = "int";
+    this._selectedPost.indice_salaire = "ind";
+    this._selectedPost.salaire_min = 5;
+    this._selectedPost.salaire_max = 2;
+    this._selectedPost.afficher_moyenne = 0;
+    this._selectedPost.type_contrat = "tc";
+    this._selectedPost.resume = "res";
+    this._selectedPost.point_attention = "pa";
+    this._selectedPost.lieu_travail = "lieut";
+    this._selectedPost.organisation = "orga";
+    this._selectedPost.equipe_concernee = "equipe";
+    this._selectedPost.savoir_specifications = [];
+    this._selectedPost.savoir_faires = [];
+    this._selectedPost.savoir_etres = [];
+    this._selectedPost.metiers = [];
+    this._selectedPost.fonctionnelles = [];
+    this._selectedPost.techniques = [];
+    this._selectedPost.langues = [];
+    this._selectedPost.formations = [];
+    this._selectedPost.certifications = [];
+
   }
 
   ngOnInit() {

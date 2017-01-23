@@ -5,8 +5,7 @@
     <div class="clearfix"></div>
 
 
-
-    <br />
+    <br/>
 
     <!-- sidebar menu -->
     <div id="sidebar-menu">
@@ -52,10 +51,12 @@
           </li>
 
 
-          <li><a (click)="setSignal()"><i class="fa fa-table"></i> Gerer les signalements <span class="fa fa-chevron-right"></span></a>
+          <li><a (click)="setSignal()"><i class="fa fa-table"></i> Gerer les signalements <span
+            class="fa fa-chevron-right"></span></a>
           </li>
 
-          <li><a><i class="fa fa-graduation-cap"></i> Gerer les competences <span class="fa fa-chevron-right"></span></a>
+          <li><a><i class="fa fa-graduation-cap"></i> Gerer les competences <span
+            class="fa fa-chevron-right"></span></a>
           </li>
 
         </ul>
@@ -84,8 +85,6 @@
 </div>
 
 
-
-
 <div class="right_col" role="main">
   <div class="">
     <!-- page content -->
@@ -94,21 +93,25 @@
       <app-candidat-search (personBannir)="bannir($event)">ex</app-candidat-search>
     </div>
 
-  <!--  *******  detail du candidat selectionné :  -->
+    <!--  *******  detail du candidat selectionné :  -->
 
-    <app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)" (unBanPerson)="unBan($event)"></app-candidat-detail>
+    <app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)"
+                         (unBanPerson)="unBan($event)"></app-candidat-detail>
 
-  <!--  ************* detail du recruteur selectionné :  -->
+    <!--  ************* detail du recruteur selectionné :  -->
 
-    <app-recruteur-detail [recruteur]="selectedRecruteur" (bannirRecruteur)="bannirRecruteur($event)"></app-recruteur-detail>
+    <app-recruteur-detail [recruteur]="selectedRecruteur"
+                          (bannirRecruteur)="bannirRecruteur($event)"></app-recruteur-detail>
 
     <!--  ************* detail des signalement :  -->
 
     <div *ngIf="signalement">
-      <app-signalement (goToDetail)="goToDetailCandidat($event)" (goToDetailRecruteur)="goToDetailRecruteur($event)">load</app-signalement>
+      <app-signalement (goToDetail)="goToDetailCandidat($event)" (goToDetailRecruteur)="goToDetailRecruteur($event)">
+        load
+      </app-signalement>
     </div>
 
-  <!--  *********  -->
+    <!--  *********  -->
 
     <!-- Message pour bannir -->
     <div id="ban">Utilisateur Banni</div>

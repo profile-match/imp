@@ -11,6 +11,7 @@ import {AuthenticationService} from "./shared/service/authentication.service";
 export class AppComponent {
   title = 'app works!';
 
+
   constructor(private _service:AuthenticationService
     ){}
 
@@ -21,4 +22,5 @@ export class AppComponent {
   login() {
     return this._service.isLogin();
   }
+
 }
