@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response  } from '@angular/http';
+import {Headers, Http, Response, RequestOptions} from '@angular/http';
 import { Observable } 	  from 'rxjs';
 
 import 'rxjs/add/operator/toPromise';
 import {environment} from "../../../environments/environment";
-import {Savoir} from "../classes/savoir";
+import {Savoir} from "../interfaces/savoir";
 
 @Injectable()
 export class AutocompletionService {
@@ -29,15 +29,25 @@ export class AutocompletionService {
   }
 
   searchMetier(intitule: string): Observable<Savoir[]> {
+
     return this.http
-      .get(this._backendURL.searchMetier.replace(':intitule', intitule))
-      .map((r: Response) => r.json().data as Savoir[]);
+      .get(this._backendURL.searchMetier.replace(':intitule', intitule), this._options)
+  .map((r: Response) => r.json().data as Savoir[]);
+
   }
+
+  private getHeaders(){
+    let headers = new Headers();
+    headers.append('Accept', 'application/json');
+    return headers;
+  }
+
 
   searchFonctionnelle(intitule: string): Observable<Savoir[]> {
     return this.http
       .get(this._backendURL.searchFonctionnelle.replace(':intitule', intitule))
-      .map((r: Response) => r.json().data as Savoir[]);
+      .map((res:Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
   }
 
   searchTechnique(intitule: string): Observable<Savoir[]> {
@@ -58,6 +68,9 @@ export class AutocompletionService {
     return Promise.reject(error.message || error);
   }
 
-
+  private _options(headerList: Object = {}): RequestOptions {
+    const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
+    return new RequestOptions({headers: headers});
+  }
 
 }

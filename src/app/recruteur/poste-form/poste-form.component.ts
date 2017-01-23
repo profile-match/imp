@@ -1,13 +1,14 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {Poste}    from '../interfaces/poste';
-import {Savoir} from "../classes/savoir";
+import {Savoir} from "../interfaces/savoir";
 import {createService} from "../services/createService";
+import {AutocompletionService} from "../services/autocompletion.service";
 
 @Component({
   selector: 'app-poste-form',
   templateUrl: './poste-form.component.html',
   styleUrls: ['./poste-form.component.css'],
-  providers: [createService]
+  providers: [createService, AutocompletionService]
 })
 export class PosteFormComponent implements OnInit {
 
@@ -27,13 +28,17 @@ export class PosteFormComponent implements OnInit {
   private _inputCertification: string;
 
   //
-
+  selectedValue = null;
   private _cancel$: EventEmitter<any>;
   private _submit$: EventEmitter<any>;
 
   private _enModification: boolean;
 
-  constructor(private _createService: createService) {
+  //arrays SAvoirs
+  private _metiers: Savoir[];
+
+
+  constructor(private _createService: createService, private _AutocompletionService: AutocompletionService) {
 
     this._cancel$ = new EventEmitter();
     this._submit$ = new EventEmitter();
@@ -58,7 +63,7 @@ export class PosteFormComponent implements OnInit {
     this._poste.techniques = [];
     this._poste.langues = [];
     this._poste.formations = [];
-    this.poste.certifications = [];
+    this._poste.certifications = [];
 
 
     this._inputSavoirSpe = "";
@@ -119,6 +124,19 @@ export class PosteFormComponent implements OnInit {
       this._createService.create(this._poste).subscribe();
       //TODO
     }
+
+  }
+
+  completeMetier(value: string, nb: number) {
+
+
+    this._AutocompletionService.searchMetier(value).subscribe(
+      savoir => {this._metiers = savoir;
+
+      });
+
+
+
 
   }
 
@@ -252,6 +270,10 @@ export class PosteFormComponent implements OnInit {
     return this._poste.fonctionnelles;
   }
 
+  get cMetier(): Savoir[] {
+    return this._metiers;
+  }
+
   get techniqueAdd(): Savoir[] {
     return this._poste.techniques;
   }
@@ -288,7 +310,6 @@ export class PosteFormComponent implements OnInit {
       savoirs ={
         obligatoire: nb,
         intitule: value
-
       };
 
       this._poste.savoir_faires.push(savoirs);

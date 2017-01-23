@@ -1,12 +1,12 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
+import {Http, RequestOptions, Headers} from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 import { Observable } from "rxjs";
 
 import {Poste}    from '../../interfaces/poste';
-import {Savoir} from "../../classes/savoir";
+import {Savoir} from "../../interfaces/savoir";
 import { environment } from "../../../../environments/environment";
 
 @Component({
@@ -71,13 +71,14 @@ export class UpdateComponent implements OnInit {
       .flatMap((id: string) => this._findPost(id))
       .subscribe( (poste: any) => {
         this._poste = poste;
-        console.log(this._poste);
+
       });
 
   }
 
   submit(poste: Poste) {
-    this._http.put(this._backendURL.putPoste, poste)
+    console.log(JSON.stringify(poste));
+    this._http.put(this._backendURL.putPoste, JSON.stringify(poste),this._options())
       .subscribe(() => this._router.navigate(['/']) );
 
   }
@@ -95,11 +96,17 @@ export class UpdateComponent implements OnInit {
     return this._http.get(this._backendURL.getPost.replace(':id', id))
       .map( res => {
         if (res.status === 200) {
+
           return res.json();
         }
         else {
           return this._poste_vide;
         }
       });
+  }
+
+  private _options(headerList: Object = {}): RequestOptions {
+    const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
+    return new RequestOptions({headers: headers});
   }
 }

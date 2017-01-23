@@ -8,7 +8,6 @@ import { Observable } 	  from 'rxjs';
 
 import 'rxjs/add/operator/toPromise';
 import {environment} from "../../../environments/environment";
-import {Savoir} from "../classes/savoir";
 import {Poste} from "../interfaces/poste";
 
 
