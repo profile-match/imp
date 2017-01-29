@@ -18,10 +18,6 @@ export class CandidatDetailComponent implements OnInit {
   private _bannir$: EventEmitter<any>;
   private _unban$: EventEmitter<any>;
 
-  public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-  public doughnutChartData:number[] = [350, 450, 100];
-  public doughnutChartType:string = 'doughnut';
-
 
   // lineChart
   public lineChartData:Array<any> = [
@@ -64,7 +60,7 @@ export class CandidatDetailComponent implements OnInit {
 
 
   // Pie
-  public pieChartLabels:string[] = ['uncredible', 'credible'];
+  public pieChartLabels:string[] = ['unsafe', 'safe'];
   public pieChartData:number[] = [300, 500];
   public pieChartColors:any[] = [{backgroundColor:["#EE0000", "#66E21A"]}];
   public pieChartType:string = 'pie';

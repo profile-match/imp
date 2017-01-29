@@ -25,21 +25,9 @@ export class AccueilComponent implements OnInit{
   private _nbMale: number;
   private _nbFemelle:number;
 
-  nbCountries: string;
-  views: string;
-  public countriesList = [
-    {name:"France", value:"33"},
-    {name:"Germany", value:"27"},
-    {name:"United States", value:"16"},
-    {name:"Spain", value:"11"},
-    {name:"Britain", value:"10"}
-  ];
-
   private menuList : any[];
 
   constructor(private http: Http, private candidatService: CandidatService, private recruteurService : RecruteurService) {
-    this.views = '127';
-    this.nbCountries = '60';
     this.candidats = [{id: 11, email: 'nice', banned:0, loisirs: 'ni', nom: "test", photo:"", prenom: 'Mr. Nice', experiencePro: 'd', formation:'d', competence:[]}];
     this.recruteurs = [];
     this.postes = [];

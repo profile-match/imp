@@ -123,7 +123,22 @@ export class ModerateurComponent implements OnInit {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
-    alert("fonctionnalité 'banir recruteur "+recruteur.nom +" ' non defini");
+   // alert("fonctionnalité 'banir recruteur "+recruteur.nom +" ' non defini (manque le back)");
+    this.recruteurService.bannir(recruteur).subscribe(r => this.selectedRecruteur = r);
+  }
+
+  unBanRecruteur(recruteur: Recruteur) {
+    // Get the snackbar DIV
+    var x = document.getElementById("unban")
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+    // alert("fonctionnalité 'banir recruteur "+recruteur.nom +" ' non defini (manque le back)");
+    this.recruteurService.unBan(recruteur).subscribe(r => this.selectedRecruteur = r);
   }
 
   goToDetailCandidat(idCandidat: number){

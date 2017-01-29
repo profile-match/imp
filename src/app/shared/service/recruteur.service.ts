@@ -38,6 +38,34 @@ export class RecruteurService {
       .map( res =>  res.json() );
   }
 
+  bannir(recruteur: Recruteur) {//: Promise<Candidat[]> {
+    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
+    return this.http
+      .put(this._backendURL.banRecruteur.replace(':id',recruteur.id), recruteur, requestOptions)
+      .map( res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        else {
+          return [];
+        }
+      });
+  }
+
+  unBan(recruteur: Recruteur) {
+    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
+    return this.http
+      .put(this._backendURL.unBanRecruteur.replace(':id',recruteur.id), recruteur, requestOptions)
+      .map( res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        else {
+          return [];
+        }
+      });
+  }
+
   getRecruteurs(): Promise<Recruteur[]> {
     return this.http.get(this._backendURL.allRecruteur)
       .toPromise()

@@ -12,7 +12,7 @@ export class User {
 }
 
 var users = [
-  new User('admin','admin'),
+  new User('admin@admin','admin'),
   new User('user1@gmail.com','a23')
 ];
 
@@ -56,11 +56,10 @@ export class AuthenticationService {
 
   login(user:User){
 
-    console.log(JSON.stringify(users));
-    console.log(JSON.stringify(this._candidats['data']));
     var authenticatedCandidat = this._candidats.find(c => c.email === user.email);
   //  var authenticatedRecruteur = this._recruteurs['data'].find(r => r.email === user.email);
     var authenticatedModerator = users.find(u => u.email === user.email);
+
     if (authenticatedModerator && authenticatedModerator.password === user.password){
       localStorage.setItem("user", user.email);
       this._router.navigate(['/moderateur']);
@@ -96,7 +95,7 @@ export class AuthenticationService {
   }
 
   isAdmin(){
-    if (localStorage.getItem("user") === "admin"){
+    if (localStorage.getItem("user") === "admin@admin"){
       return true;
     }
     else {
@@ -129,7 +128,7 @@ export class AuthenticationService {
   }
 
   checkCredentialModerator(){
-    if (localStorage.getItem("user") !== "admin"){
+    if (localStorage.getItem("user") !== "admin@admin"){
       this._router.navigate(['/login']);
     }
   }

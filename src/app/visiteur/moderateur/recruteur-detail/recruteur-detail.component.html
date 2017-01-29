@@ -24,7 +24,7 @@
 
 
 
-      <h3>Chart Js <small>Some examples to get you started</small></h3>
+      <span *ngIf="recruteur.banned"><h3 style="color: #e90000">Utilisateur banni</h3></span>
     </div>
 
   </div>
@@ -34,23 +34,53 @@
   <div class="row">
     <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="x_panel">
-        <!--
-                      <div style="display: block">
-          <canvas baseChart
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [chartType]="doughnutChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
+        <div class="x_title">
+          <h2>Activité sur offres/commentaires <small>Sessions</small></h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a>
+                </li>
+                <li><a href="#">Settings 2</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
         </div>
-        -->
+
+        <div class="x_content">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div style="display: block;">
+                <canvas baseChart width="250" height="150"
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </div>
 
-    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-md-6 col-sm-6 col-xs-12" >
       <div class="x_panel">
         <div class="x_title">
-          <h2>Pie Graph Chart <small>Sessions</small></h2>
+          <h2>credibilité de l'utilisateur <small>Sessions</small></h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -69,7 +99,23 @@
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
-          <canvas id="pieChart"></canvas>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div style="display: block;">
+                <canvas baseChart width="250" height="150"
+                        [data]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [chartType]="pieChartType"
+                        [colors]="pieChartColors"
+                        [options] = "pieChartOption"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -157,7 +203,13 @@
 
   </div>
 
-  <a (click)="bannir(recruteur)"><span class="fa fa-ban"></span> Bannir </a>
+
+  <span *ngIf="!recruteur.banned">
+    <a (click)="bannir(recruteur)"><span class="fa fa-ban"></span> Bannir </a>
+  </span>
+  <span *ngIf="recruteur.banned">
+    <a (click)="unBan(recruteur)"><span class="fa fa-ban"></span> debannir </a>
+  </span>
   <!-- /page content -->
 
   <!-- div pour editer poste -->

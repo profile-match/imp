@@ -12,12 +12,13 @@ export const environment = {
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
-      randomPeople: '/api/peoples/random',
       searchCandidat: '/api/candidats/?name=${:term}',
-      bannirCandidat: '/rest/candidat/ban/:id',
+      bannirCandidat: '/rest/candidat/ban/:id',   //bannir un candidat
       unbanCandidat: '/rest/candidat/unban/:id',
       nbFemelle: '/rest/candidat/getnbfemelle',
       nbMale: '/rest/candidat/getnbmale',
+      banRecruteur: '/rest/recruteur/ban/:id',  //bannir un recruteur
+      unBanRecruteur: '/rest/recruteur/unban/:id',
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/api/posts',

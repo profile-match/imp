@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private location: Location, private _service:AuthenticationService ) {}
 
-  login() {
+  login(a :any) {
     if(!this._service.login(this.user)){
       this.errorMsg = 'Failed to login';
     }
