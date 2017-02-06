@@ -2,7 +2,7 @@
 export const environment = {
   production: true,
   backend: {
-    protocol: 'http',
+    protocol: 'https',
     host: 'pm-core.bober.ovh',
     port: '80',
     endpoints: {
