@@ -4,7 +4,7 @@ export const environment = {
   backend: {
     protocol: 'https',
     host: 'pm-core.bober.ovh',
-    port: '80',
+    port: '443',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
