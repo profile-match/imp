@@ -406,7 +406,7 @@
           </div>
 
           <div id="tags_2_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
-            <span class="tag_ng" *ngFor="let competence of this.candidat.competence">
+            <span class="tag_ng" *ngFor="let competence of candidat.competence">
               <span class="tag_ng">{{competence}}</span>
               <a (click)="deleteComp(competence)" style="cursor: pointer;" title="Supprimer">x</a>
             </span>
