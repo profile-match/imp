@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
+import {CreerProfileCandidatComponent} from "./creer-profile-candidat/creer-profile-candidat.component";
+import {UpdateComponent} from "./update/update.component";
 
 // APP COMPONENTS
-import { UpdateComponent } from "./update/update.component";
-import {CreerProfileCandidatComponent} from "./creer-profile-candidat/creer-profile-candidat.component";
 
 const ROUTES: Routes = [
     {path: '', redirectTo: 'createCandidat', pathMatch: 'full'},

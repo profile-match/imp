@@ -13,15 +13,12 @@ import {Candidat} from "../interfaces/candidat";
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
+
   private _backendURL: any;
 
   private _candidat: Candidat;
 
-  private _emptyCandidat: any;
-
-
   constructor(private _route: ActivatedRoute, private _router: Router, private _http: Http) {
-    this._backendURL = {};
     this.candidat= {};
     this.candidat.experiencePro = {};
     this.candidat.formation = {};

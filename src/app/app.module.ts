@@ -8,6 +8,7 @@ import { APP_ROUTES } from './app.routes';
 import {AppComponent} from './app.component';
 import {CreerProfileCandidatComponent} from './creer-profile-candidat/creer-profile-candidat.component';
 import { UpdateComponent } from './update/update.component';
+import {CandidatService} from "./shared/candidat.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { UpdateComponent } from './update/update.component';
     RouterModule,
     APP_ROUTES
   ],
-  providers: [],
+  providers: [CandidatService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

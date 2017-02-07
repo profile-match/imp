@@ -1,45 +1,45 @@
-<h1 align="center">Créer Profil Candidat</h1>
+<h1 align="center">Créer un profil candidat</h1>
 <div id="exTab1" class="container">
 
   <div class="tab-content clearfix">
-    <div class="tab-pane active">
+    <div class="tab-pane active" id="1a">
       <form (ngSubmit)="onSubmit()" class="form-horizontal" id="candidat_form">
         <h3>Informations Générales</h3>
         <hr>
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Nom</label>
           <div class="col-md-4">
-            <input [value]="nom" class="form-control" [(ngModel)]="nom"
+            <input [value]="nom" class="form-control" [(ngModel)]="candidat.nom"
                    name="nom"/>
           </div>
         </div>
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Prenom</label>
           <div class="col-md-4">
-            <input [value]="prenom" class="form-control" [(ngModel)]="prenom"
+            <input [value]="prenom" class="form-control" [(ngModel)]="candidat.prenom"
                    name="prenom"/>
           </div>
         </div>
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Email</label>
           <div class="col-md-4">
-            <input [value]="email" class="form-control" [(ngModel)]="email"
+            <input class="form-control" [(ngModel)]="candidat.email"
                    name="email"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Sexe</label>
           <div class="col-md-4">
-            <input type="radio" [(ngModel)]="sex" name="sex" value="true">Male<br>
-            <input type="radio" [(ngModel)]="sex" name="sex" value="false">Female<br>
+            <input checked="checked" type="radio" [ngModel]="isMale" name="sex" value="true">Male<br>
+            <input type="radio" [ngModel]="isMale" name="sex" value="false">Female<br>
           </div>
         </div>
-        <div class="tab-pane">
+        <div class="tab-pane" id="4a">
           <br/><br/>
           <div class="form-group">
             <label class="col-md-3 control-label">Loisirs</label>
             <div class="col-md-4">
-              <select name="loisirs" [value]="loisirs" [(ngModel)]="loisirs" name="loisirs">
+              <select name="loisirs" [(ngModel)]="candidat.loisirs" name="loisirs">
                 <option value="Music" selected="selected">Music</option>
                 <option value="Sports">Sports</option>
                 <option value="Cinema">Cinéma</option>
@@ -54,21 +54,21 @@
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Intitulé du poste<span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [value]="intitule_de_poste" class="form-control" [(ngModel)]="intitule_de_poste"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.intitule_de_poste"
                    name="intitule_de_poste" required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [value]="date_debut" type="date" class="form-control" [(ngModel)]="date_debut" name="date_debut"
+            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_debut" name="date_debut"
                    required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [value]="date_fin" type="date" class="form-control" [(ngModel)]="date_fin" name="date_fin"
+            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_fin" name="date_fin"
                    required="required"/>
           </div>
         </div>
@@ -76,8 +76,8 @@
           <label class="col-md-3 control-label">Pays</label>
           <div class="col-md-4">
             <!-- <input  [value]="pays" class="form-control" [(ngModel)]="pays" /> -->
-            <select name="pays" [value]="pays" [(ngModel)]="pays">
-              <option value="France" selected="selected">France</option>
+            <select name="pays" [(ngModel)]="candidat.experiencePro.pays">
+              <option value="France">France</option>
               <option value="Afghanistan">Afghanistan</option>
               <option value="Afrique_Centrale">Afrique_Centrale</option>
               <option value="Afrique_du_sud">Afrique_du_Sud</option>
@@ -313,7 +313,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Ville</label>
           <div class="col-md-4">
-            <input [value]="ville" class="form-control" [(ngModel)]="ville" name="ville"/>
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.ville" name="ville"/>
           </div>
         </div>
 
@@ -324,7 +324,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Nom de l'entreprise <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input [value]="nom_entreprise" class="form-control" [(ngModel)]="nom_entreprise" name="nom_entreprise"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.nom_entreprise" name="nom_entreprise"
                    required="required"/>
           </div>
         </div>
@@ -332,7 +332,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Description de l'entreprise</label>
           <div class="col-md-4">
-            <input [value]="description_entreprise" class="form-control" [(ngModel)]="description_entreprise"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.description_entreprise"
                    name="description_entreprise"/>
           </div>
         </div>
@@ -340,7 +340,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Missions effectuées</label>
           <div class="col-md-4">
-            <input [value]="missions_effectuees" class="form-control" [(ngModel)]="missions_effectuees"
+            <input class="form-control" [(ngModel)]="candidat.experiencePro.missions_effectuees"
                    name="missions_effectuees"/>
           </div>
         </div>
@@ -352,20 +352,20 @@
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Intitulé de Formation <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [value]="intitule_de_formation" class="form-control" [(ngModel)]="intitule_de_formation"
+              <input class="form-control" [(ngModel)]="candidat.formation.intitule_de_formation"
                      name="intitule_de_formation" required="required"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Etablissement</label>
             <div class="col-md-4">
-              <input [value]="etablissement" class="form-control" [(ngModel)]="etablissement" name="etablissement"/>
+              <input class="form-control" [(ngModel)]="candidat.formation.etablissement" name="etablissement"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Description de la formation</label>
             <div class="col-md-4">
-              <input [value]="description_formation" class="form-control" [(ngModel)]="description_formation"
+              <input class="form-control" [(ngModel)]="candidat.formation.description_formation"
                      name="description_formation"/>
             </div>
           </div>
@@ -373,14 +373,14 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [value]="date_debut_format" type="date" class="form-control" [(ngModel)]="date_debut_format"
+              <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_debut_format"
                      name="date_debut_format" required="required"/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input [value]="date_fin_format" type="date" class="form-control" [(ngModel)]="date_fin_format"
+              <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_fin_format"
                      name="date_fin_format" required="required"/>
             </div>
           </div>
@@ -389,21 +389,28 @@
 
         <h3>Competences</h3>
         <hr>
-        <div class="tab-pane" id="3a">
-          <br/>
-          <div align="center" class="form-group">
-            <label class="col-md-3 control-label">Domaine de compétence <span class="required">*</span></label>
-            <div class="col-md-4 form-group">
-              <input [value]="domaine_de_competence" class="form-control" [(ngModel)]="domaine_de_competence"
-                     name="domaine_de_competence" required="required"/>
-            </div>
+        <div class="form-group">
+
+          <div id="tags_9_addTag">
+            <input list="CompetenceAuto" #comp name="comp" id="tags_9_tag" value=""
+                   data-default="add a tag"
+                   [(ngModel)]="compet"
+                   (keyup)="autoCompleteCompetences(comp.value)"
+                   (keyup.enter)="addCompetence(comp.value)">
+            <datalist id="CompetenceAuto">
+              <option *ngFor="let propositions_competence of propositions_competences">
+                {{propositions_competence}}
+              </option>
+            </datalist>
+            <button type="button" (click)="addCompetence(comp.value)">Ajouter la compétence</button>
           </div>
-          <div align="center" class="form-group">
-            <label class="col-md-3 control-label">Compétences <span class="required">*</span></label>
-            <div class="col-md-4 form-group">
-              <input [value]="competences" class="form-control" [(ngModel)]="competences" name="competences"
-                     required="required"/>
-            </div>
+
+          <div id="tags_2_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <span class="tag_ng" *ngFor="let competence of this.candidat.competence">
+              <span class="tag_ng">{{competence}}</span>
+              <a (click)="deleteComp(competence)" style="cursor: pointer;" title="Supprimer">x</a>
+            </span>
+            <div class="tags_clear"></div>
           </div>
         </div>
 
