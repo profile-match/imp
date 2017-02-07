@@ -9,12 +9,14 @@ import {AppComponent} from './app.component';
 import {CandidatService} from "./shared/candidat.service";
 import {CreerProfileCandidatComponent} from "./Candidat/creer-profile-candidat/creer-profile-candidat.component";
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
+import { FormComponent } from './Candidat/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreerProfileCandidatComponent,
-    UpdateProfileCandidatComponent
+    UpdateProfileCandidatComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

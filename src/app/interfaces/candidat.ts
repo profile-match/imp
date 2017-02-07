@@ -4,7 +4,7 @@ import {formation} from "./formation";
 /**
  * Created by antoine on 20/01/17.
  */
-export interface Candidat {
+export interface candidat {
   "id": number;
   "email": string;
   "banned": number;

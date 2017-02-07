@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
-import {Candidat} from "../interfaces/candidat";
+import {candidat} from "../interfaces/candidat";
 
 @Injectable()
 export class CandidatService {
@@ -21,7 +21,7 @@ export class CandidatService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
-  createCandidat(c:Candidat): Observable<any> {
+  createCandidat(c:candidat): Observable<any> {
     return this._http.post(this._backendURL.creerCandidat, JSON.stringify(c), this._options())
       .map((res: Response) => res.json());
   }
