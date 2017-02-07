@@ -4,15 +4,15 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
 import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
-import {Candidat} from "../interfaces/candidat";
+import {Candidat} from "../../interfaces/candidat";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'modifier-candidat',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  templateUrl: './update-profile-candidat.component.html',
+  styleUrls: ['./update-profile-candidat.component.css']
 })
-export class UpdateComponent implements OnInit {
+export class UpdateProfileCandidatComponent implements OnInit {
 
   private _backendURL: any;
 

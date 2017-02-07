@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
-import {Candidat} from "../interfaces/candidat";
-import {CandidatService} from "../shared/candidat.service";
-import {competence} from "../interfaces/competence";
+import {Candidat} from "../../interfaces/candidat";
+import {CandidatService} from "../../shared/candidat.service";
+import {competence} from "../../interfaces/competence";
 
 @Component({
   selector: 'creer-profile-candidat',

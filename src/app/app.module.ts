@@ -6,15 +6,15 @@ import { RouterModule } from "@angular/router";
 import { APP_ROUTES } from './app.routes';
 
 import {AppComponent} from './app.component';
-import {CreerProfileCandidatComponent} from './creer-profile-candidat/creer-profile-candidat.component';
-import { UpdateComponent } from './update/update.component';
 import {CandidatService} from "./shared/candidat.service";
+import {CreerProfileCandidatComponent} from "./Candidat/creer-profile-candidat/creer-profile-candidat.component";
+import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CreerProfileCandidatComponent,
-    UpdateComponent
+    UpdateProfileCandidatComponent
   ],
   imports: [
     BrowserModule,
