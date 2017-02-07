@@ -4,8 +4,8 @@ import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
 import {Observable} from "rxjs";
-import {Candidat} from "../../interfaces/candidat";
 import {environment} from "../../../environments/environment";
+import {candidat} from "../../interfaces/candidat";
 
 @Component({
   selector: 'modifier-candidat',
@@ -16,7 +16,7 @@ export class UpdateProfileCandidatComponent implements OnInit {
 
   private _backendURL: any;
 
-  private _candidat: Candidat;
+  private _candidat: candidat;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _http: Http) {
     this.candidat= {};
@@ -48,7 +48,7 @@ export class UpdateProfileCandidatComponent implements OnInit {
     this._route.params
       .map((params: any) => params.id)
       .flatMap((id: string) => this._fetchOne(id))
-      .subscribe((candidat: Candidat) => this._candidat = candidat);
+      .subscribe((candidat: candidat) => this._candidat = candidat);
   }
 
   /**

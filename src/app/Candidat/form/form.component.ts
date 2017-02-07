@@ -22,6 +22,8 @@ export class FormComponent implements OnInit {
 
   constructor(private _candidatService: CandidatService) {
 
+    this._create$ = new EventEmitter();
+
     this.candidat = {};
     this.candidat.experiencePro = {};
     this.candidat.formation = {};
@@ -30,7 +32,7 @@ export class FormComponent implements OnInit {
     this._propositions_competences = [];
   }
 
-  @Output() get create$(): EventEmitter<any> {
+  @Output("createCandidat") get create$(): EventEmitter<any> {
     return this._create$;
   }
 
