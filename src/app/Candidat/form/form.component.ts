@@ -42,9 +42,6 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this._create$.emit(this.candidat);
-
-    // this._candidatService.createCandidat(this.candidat).subscribe();
-    console.log(this.candidat);
   }
 
   addCompetence(competence: competence) {

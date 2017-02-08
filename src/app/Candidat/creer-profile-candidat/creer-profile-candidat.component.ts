@@ -17,7 +17,6 @@ export class CreerProfileCandidatComponent implements OnInit {
 
   createCandidat(candidat:candidat){
     this._candidatService.createCandidat(candidat).subscribe();
-    console.log(candidat);
   }
 
   /**

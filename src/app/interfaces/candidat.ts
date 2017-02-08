@@ -13,6 +13,9 @@ export interface candidat {
   "isMale" : boolean;
   "photo": string;
   "prenom": string;
+  "adresse": string;
+  "telfix": string;
+  "telperso": string;
   "experiencePro": experiencePro;
   "formation": formation;
   "competence":competence[];
