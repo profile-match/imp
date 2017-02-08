@@ -1,13 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 
 // APP COMPONENTS
-import { UpdateComponent } from "./update/update.component";
-import {CreerProfileCandidatComponent} from "./creer-profile-candidat/creer-profile-candidat.component";
+import { SendinvitationComponent } from "./sendinvitation/sendinvitation.component";
 
 const ROUTES: Routes = [
-    {path: '', redirectTo: 'createCandidat', pathMatch: 'full'},
-    {path: 'createCandidat', component: CreerProfileCandidatComponent},
-    {path: 'editCandidat/:id', component: UpdateComponent}
+    {path: '', redirectTo: 'envoyerInvitation', pathMatch: 'full'},
+  {path: 'envoyerInvitation', component: SendinvitationComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

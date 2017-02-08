@@ -13,9 +13,7 @@ export const environment = {
     host: 'localhost',
     port: '8080',
     endpoints: {
-      creerCandidat: '/rest/candidat/create',
-      modifierCandidat:'/rest/candidat/update',
-      getCandidat:'/rest/candidat/get/:id'
+      sendInvitation:'/javaMail/webresources/candidat/sendinvitationmail'
     }
   }
 };
