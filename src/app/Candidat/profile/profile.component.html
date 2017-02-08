@@ -1,0 +1,123 @@
+<!--<div class="nav_menu">-->
+  <!--<nav class="navbar navbar-default" role="navigation">-->
+    <!--<div class="navbar nav_title" style="border: 0;">-->
+      <!--<a routerLink="/accueil" class="site_title"><i class="fa fa-paw"></i> <span>iMatchProfile!</span></a>-->
+      <!--<router-outlet></router-outlet>-->
+    <!--</div>-->
+    <!--<ul class="nav navbar-nav navbar-left">-->
+      <!--<li><a href="#">Votre Profil</a></li>-->
+      <!--<li><a href="#">Générez un CV</a></li>-->
+      <!--<li><a href="#">Parcourir les offres disponibles</a></li>-->
+    <!--</ul>-->
+
+    <!--<ul class="nav navbar-nav navbar-right">-->
+      <!--<li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>-->
+      <!--<li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>-->
+      <!--<li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>-->
+    <!--</ul>-->
+  <!--</nav>-->
+<!--</div>-->
+
+<div class="x_panel">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="x_title">
+        <h1>{{_candidatName}} {{_candidatFName}}</h1>
+        <span *ngIf="_candidatBanned" style="color:red">
+          Ce compte a été suspendu
+        </span>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <label>Adresse postale : </label> {{_candidatAddress}}
+          </div>
+          <div class="row">
+            <label>Adresse e-mail : </label> {{_candidatEmail}}
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <label>Téléphone fix : </label> {{_candidatPhoneFix}}
+          </div>
+          <div class="row">
+            <label>Téléphone portable : </label> {{_candidatPhoneMobile}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <img style="border:1px solid #e6e9ed;" src="../../../assets/candidat.jpg" height="172" width="128"
+           align="right">
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+
+  <div class="x_content">
+    <div class="x_title">
+      <h3>Profil</h3>
+    </div>
+    <div class="col-md-4">
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab1" class="nav nav-tabs bar_tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="/home/candidat/profile#skills-tab" id="home-tab" role="tab" data-toggle="tab"
+               aria-expanded="true">Compétences</a>
+          </li>
+        </ul>
+        <div id="myTabContent1" class="tab-content">
+          <div role="tabpanel" class="tab-pane fade active in" id="skills-tab" aria-labelledby="home-tab">
+            <app-competence [candidat]="candidat"></app-competence>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab2" class="nav nav-tabs bar_tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="/home/candidat/profile#experience-tab" role="tab" id="profile-tab" data-toggle="tab"
+               aria-expanded="true">Expériences</a>
+          </li>
+        </ul>
+        <div id="myTabContent2" class="tab-content">
+          <div role="tabpanel" class="tab-pane fade active in" id="experience-tab" aria-labelledby="profile-tab">
+            <app-experience [candidat]="candidat"></app-experience>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab3" class="nav nav-tabs bar_tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="/home/candidat/profile#formation-tab" role="tab" id="profile-tab2" data-toggle="tab"
+               aria-expanded="true">Formations</a>
+          </li>
+        </ul>
+        <div id="myTabContent3" class="tab-content">
+          <div role="tabpanel" class="tab-pane fade active in" id="formation-tab" aria-labelledby="profile-tab2">
+            <app-formation [candidat]="candidat"></app-formation>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="x_content">
+    <div class="x_title">
+      <h3>Options du compte</h3>
+    </div>
+    <div class="row">
+      <button class="btn btn-default" type="submit">Changer Mot de Passe</button>
+      <button class="btn btn-default" type="submit" (click)="setCandidatBanned(!_candidatBanned)" >Suspendre Compte</button>
+      <button class="btn btn-default" type="submit">Supprimer Compte</button>
+    </div>
+  </div>
+
+</div>
+

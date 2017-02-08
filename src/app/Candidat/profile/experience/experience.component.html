@@ -1,0 +1,24 @@
+<table id="datatable" class="table table-striped table-hover table-bordered dataTable no-footer" role="grid"
+       aria-describedby="datatable_info">
+  <thead>
+  <tr role="row">
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Intitulé</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Nom de l'Entreprise</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Ville</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Pays</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Date de Début</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Date de Fin</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr role="row" class="odd"> <!--*ngFor="let experience of candidatExperience">-->
+    <td>{{candidatExperience.intitule_de_poste}}</td>
+    <td>{{candidatExperience.nom_entreprise}}</td>
+    <td>{{candidatExperience.ville}}</td>
+    <td>{{candidatExperience.pays}}</td>
+    <td>{{candidatExperience.date_debut}}</td>
+    <td>{{candidatExperience.date_fin}}</td>
+  </tr>
+  </tbody>
+</table>
