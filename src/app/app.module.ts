@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import {RouterModule} from "@angular/router";
-import './visiteur/moderateur/candidat-search/rxjs-extensions';
 
 import { APP_ROUTES } from './app.routes';
 
