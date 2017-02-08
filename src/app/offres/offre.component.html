@@ -29,30 +29,11 @@
                 </option>
               </select>
             </div>
-              <app-offre-detail></app-offre-detail> 
+              <app-offre-detail></app-offre-detail>
             </div>
           </div>
     </div>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 
-<section class="">
-  <header class="header">
-    <h1>Offres</h1>
-    <input class="" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newOffre.poste" (keyup.enter)="addOffre()">
-  </header>
-  <section class="main" *ngIf="testOffreList.length > 0">
-    <ul class="">
-      <li *ngFor="let offre of offreList">
-        <div class="view">
-          <label>{{offre.poste}}</label>
-          <button class="" (click)="removeOffre(offre)"></button>
-        </div>
-      </li>
-    </ul>
-  </section>
-  <footer class="footer" *ngIf="offreList.length > 0">
-    <span class="todo-count"><strong>{{offreList.length}}</strong> {{offreList.length == 1 ? 'item' : 'items'}} left</span>
-  </footer>
-</section>
 

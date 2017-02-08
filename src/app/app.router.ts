@@ -12,7 +12,7 @@ export const router: Routes =  [
 
   { path: 'dashboard', component: DashboardComponent },
   { path: 'offres', component: OffreComponent },
-  { path: 'candidats', component: CandidatsComponent },
+  { path: 'blankpage', component: CandidatsComponent },
   { path: 'offres/addOffer', component: AddOffreComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, //by default the offres page will be shown, it will be changed
   { path: '**', component: PageNotFoundComponent }

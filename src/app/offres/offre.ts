@@ -1,3 +1,4 @@
+import {Candidat} from  '../candidats/candidat';
 export class Offre {
   id: number;
   poste: string = '';
@@ -8,6 +9,7 @@ export class Offre {
   disponibilite: string = '';
   discription: string = '';
   info: string = '';
+  candidats: Candidat[] = [];
 
   constructor(values: Object = {}){
     Object.assign(this, values);
