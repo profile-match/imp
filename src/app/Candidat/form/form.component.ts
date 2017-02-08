@@ -36,10 +36,6 @@ export class FormComponent implements OnInit {
     return this._create$;
   }
 
-  set create$(value: EventEmitter<any>) {
-    this._create$ = value;
-  }
-
   onSubmit() {
     this._create$.emit(this.candidat);
   }
