@@ -17,6 +17,7 @@ export class FormComponent implements OnInit {
   private _candidat: candidat;
 
   private _compet: string;
+  private _format: string;
 
   private _propositions_competences: string[];
 
@@ -26,7 +27,7 @@ export class FormComponent implements OnInit {
 
     this.candidat = {};
     this.candidat.experiencePro = {};
-    this.candidat.formation = {};
+    this.candidat.formation = [];
     this.candidat.competence = [];
 
     this._propositions_competences = [];
@@ -41,14 +42,30 @@ export class FormComponent implements OnInit {
   }
 
   addCompetence(competence: competence) {
-    if (this.candidat.competence.indexOf(competence) == -1) {
-      this.candidat.competence.push(competence);
-      this.compet = "";
+    if (competence) {
+      if (this.candidat.competence.indexOf(competence) == -1) {
+        this.candidat.competence.push(competence);
+        this.compet = "";
+      }
     }
     this.propositions_competences = [];
   }
 
   deleteComp(competence: string) {
+    this.candidat.competence.splice(this.candidat.competence.indexOf(competence), 1);
+    this.propositions_competences = [];
+  }
+
+  addForm(competence: competence) {
+    if (this.candidat.competence.indexOf(competence) == -1) {
+      this.candidat.competence.push(competence);
+      this.compet = "";
+    }
+
+    this.propositions_competences = [];
+  }
+
+  deleteForm(competence: string) {
     this.candidat.competence.splice(this.candidat.competence.indexOf(competence), 1);
     this.propositions_competences = [];
   }
@@ -92,6 +109,14 @@ export class FormComponent implements OnInit {
 
   set compet(value: string) {
     this._compet = value;
+  }
+
+  get format(): string {
+    return this._format;
+  }
+
+  set format(value: string) {
+    this._format = value;
   }
 
 }

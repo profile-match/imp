@@ -407,8 +407,19 @@
               <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_fin_format"
                      name="date_fin_format" required="required"/>
             </div>
+
+          </div>
+          <div class="form-group">
+            <button type="button" (click)="addForm(comp.value)">Ajouter la formation</button>
           </div>
 
+          <div class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <span class="tag_ng" *ngFor="let formation of candidat.formation">
+              <span class="tag_ng">{{formation}}</span>
+              <a (click)="deleteForm(formation)" style="cursor: pointer;" title="Supprimer">x</a>
+            </span>
+            <div class="tags_clear"></div>
+          </div>
         </div>
 
         <h3>Competences</h3>

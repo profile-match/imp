@@ -17,6 +17,6 @@ export interface candidat {
   "telfix": string;
   "telperso": string;
   "experiencePro": experiencePro;
-  "formation": formation;
+  "formation": formation[];
   "competence":competence[];
 }
