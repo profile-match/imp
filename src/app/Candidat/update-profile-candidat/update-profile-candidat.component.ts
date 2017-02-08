@@ -19,9 +19,10 @@ export class UpdateProfileCandidatComponent implements OnInit {
   private _candidat: candidat;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _http: Http) {
+    this._backendURL = {};
     this.candidat= {};
     this.candidat.experiencePro = {};
-    this.candidat.formation = {};
+    this.candidat.formation = [];
     this.candidat.competence= [];
 
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;

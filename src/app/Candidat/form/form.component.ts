@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
 import {CandidatService} from "../../shared/candidat.service";
@@ -19,11 +19,14 @@ export class FormComponent implements OnInit {
   private _compet: string;
   private _format: string;
 
+  private _isUpdateMode: boolean;
+
   private _propositions_competences: string[];
 
   constructor(private _candidatService: CandidatService) {
 
     this._create$ = new EventEmitter();
+    this._candidat = <candidat>{};
 
     this.candidat = {};
     this.candidat.experiencePro = {};
@@ -31,6 +34,7 @@ export class FormComponent implements OnInit {
     this.candidat.competence = [];
 
     this._propositions_competences = [];
+    this._isUpdateMode = false;
   }
 
   @Output("createCandidat") get create$(): EventEmitter<any> {
@@ -87,11 +91,18 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(record) {
+    if(record.candidat && record.candidat.currentValue){
+      this._candidat = record.candidat.currentValue;
+      this._isUpdateMode = !!this._candidat;
+    }
+  }
+
   get candidat(): any {
     return this._candidat;
   }
 
-  set candidat(value: any) {
+  @Input() set candidat(value: candidat) {
     this._candidat = value;
   }
 
@@ -119,4 +130,11 @@ export class FormComponent implements OnInit {
     this._format = value;
   }
 
+  get isUpdateMode(): boolean {
+    return this._isUpdateMode;
+  }
+
+  set isUpdateMode(value: boolean) {
+    this._isUpdateMode = value;
+  }
 }

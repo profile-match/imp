@@ -1,5 +1,11 @@
-<h1 align="center">Créer un profil candidat</h1>
+<!--<h1 align="center">Créer un profil candidat</h1>-->
 <div id="exTab1" class="container">
+  <div class="x_panel">
+    <div class="title_left">
+      <h3 *ngIf="isUpdateMode">Modification d'un profil du candidat {{candidat.prenom}}</h3>
+      <h3 *ngIf="!isUpdateMode">Création d'un profil candidat</h3>
+    </div>
+  </div>
 
   <div class="tab-content clearfix">
     <div class="tab-pane active" id="1a">
