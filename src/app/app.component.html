@@ -1,3 +1,101 @@
-<h1>
-{{title}}
-</h1>
+
+<!-- top navigation -->
+
+<div class="nav_menu">
+  <nav class="navbar navbar-default" role="navigation">
+    <span class="navbar nav_title" style="border: 0;">
+        <a routerLink="/accueil" class="site_title"><i class="fa fa-paw"></i> <span>iMatchProfile!</span></a>
+    </span>
+
+    <!-- si l'utlisateur n'est pas connecté -->
+    <div *ngIf="!login()">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se connecter
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- si l'utlisateur connecté est un candidat-->
+    <div *ngIf="isCandidat()">
+
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#">Vos offres</a></li>
+        <li><a href="#">Nouvelle offre</a></li>
+        <li><a href="#">Parcourir les candidats</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+        <li>
+          <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se deconnecter
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- si l'utlisateur connecté est un recruteur-->
+    <div *ngIf="isRecruteur()">
+
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#">Vos postes</a></li>
+        <li><a href="#">New post</a></li>
+        <li><a href="#">Parcourir les candidats</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+        <li>
+          <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se deconnecter
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- si l'utlisateur connecté est l'admin-->
+    <div *ngIf="isAdmin()">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+        <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+        <li>
+          <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se deconnecter
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+  </nav>
+</div>
+<!-- /top navigation -->
+
+<router-outlet>
+</router-outlet>
+
+
+<!-- footer content -->
+<footer>
+  <div class="pull-right">
+    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+  </div>
+  <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->
