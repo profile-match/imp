@@ -25,6 +25,21 @@ export class UpdateProfileCandidatComponent implements OnInit {
     this.candidat.formation = [];
     this.candidat.competence= [];
 
+    this._candidat = {
+      email: '',
+      loisirs: '',
+      nom: '',
+      prenom:'',
+      isMale: false,
+      photo: '',
+      adresse: '',
+      telfix: '',
+      telperso: '',
+      experiencePro: [],
+      formation: [],
+      competence: []
+    };
+
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
     if (environment.backend.port) {
       baseUrl += `:${environment.backend.port}`;
@@ -89,5 +104,10 @@ export class UpdateProfileCandidatComponent implements OnInit {
         }
       });
   }
+
+  // private _options(headerList: Object = {}): RequestOptions {
+  //   const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
+  //   return new RequestOptions({headers: headers});
+  // }
 
 }

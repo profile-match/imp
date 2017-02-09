@@ -14,7 +14,7 @@ import {candidat} from "../../interfaces/candidat";
 export class FormComponent implements OnInit {
   private _create$: EventEmitter<any>;
 
-  private _candidat: candidat;
+  private _candidat = <candidat>{};
 
   private _compet: string;
   private _format: string;
@@ -26,7 +26,6 @@ export class FormComponent implements OnInit {
   constructor(private _candidatService: CandidatService) {
 
     this._create$ = new EventEmitter();
-    this._candidat = <candidat>{};
 
     this.candidat = {};
     this.candidat.experiencePro = {};
@@ -37,7 +36,7 @@ export class FormComponent implements OnInit {
     this._isUpdateMode = false;
   }
 
-  @Output("createCandidat") get create$(): EventEmitter<any> {
+  @Output('createCandidat') get create$(): EventEmitter<any> {
     return this._create$;
   }
 
@@ -98,7 +97,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  get candidat(): any {
+  get candidat(): candidat {
     return this._candidat;
   }
 
