@@ -1,1 +1,1 @@
-<form-candidat [candidat]="candidat" (submit) = "onSubmit()" (cancel)="cancel()"></form-candidat>
+<form-candidat [isUpdateMode]="true" [candidat]="candidat" [id]="id" (cancel)="cancel()" (submit)="updateCandidat($event)"></form-candidat>

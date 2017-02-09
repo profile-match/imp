@@ -1,11 +1,9 @@
-import {Component, OnInit, Output, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
-import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
 import {candidat} from "../../interfaces/candidat";
+import {CandidatService} from "../../shared/candidat.service";
 
 @Component({
   selector: 'modifier-candidat',
@@ -13,48 +11,13 @@ import {candidat} from "../../interfaces/candidat";
   styleUrls: ['./update-profile-candidat.component.css']
 })
 export class UpdateProfileCandidatComponent implements OnInit {
-
-  private _backendURL: any;
-
   private _candidat: candidat;
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _http: Http) {
-    this._backendURL = {};
-    this.candidat= {};
-    this.candidat.experiencePro = {};
-    this.candidat.formation = [];
-    this.candidat.competence= [];
+  private _id : string;
 
-    this._candidat = {
-      email: '',
-      loisirs: '',
-      nom: '',
-      prenom:'',
-      isMale: false,
-      photo: '',
-      adresse: '',
-      telfix: '',
-      telperso: '',
-      experiencePro: [],
-      formation: [],
-      competence: []
-    };
-
-    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend.port) {
-      baseUrl += `:${environment.backend.port}`;
-    }
-
-    // build all backend urls
-    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
-  }
-
-  get candidat(): any {
-    return this._candidat;
-  }
-
-  @Input() set candidat(value: any) {
-    this._candidat = value;
+  constructor(private _route: ActivatedRoute, private _router: Router, private _candidatService: CandidatService) {
+    this.id = "";
+    this.candidat = {};
   }
 
   /**
@@ -63,51 +26,34 @@ export class UpdateProfileCandidatComponent implements OnInit {
   ngOnInit() {
     this._route.params
       .map((params: any) => params.id)
-      .flatMap((id: string) => this._fetchOne(id))
-      .subscribe((candidat: candidat) => this._candidat = candidat);
+      .subscribe((id: string) => this.id = id);
+
+    this._candidatService.getCandidat(this.id).subscribe((candidat: candidat) => this._candidat = candidat);
   }
 
-  /**
-   * Function to update person by id and redirect to people list
-   *
-   * @param person
-   */
-  onSubmit() {
-    this._http.put(this._backendURL.modifierCandidat.replace(':id', this.candidat.id), this.candidat)
-      .subscribe(() => this._router.navigate(['/']));
+  updateCandidat(c: candidat) {
+    this._candidatService.updateCandidat(c).subscribe();
   }
 
-  /**
-   * Function to cancel process and redirect to people list
-   */
   cancel() {
     this._router.navigate(['/']);
   }
 
-  /**
-   * Returns an observable fetchs one person by id
-   *
-   * @param id
-   *
-   * @returns {Observable<R>}
-   *
-   * @private
-   */
-  private _fetchOne(id: string): Observable<any> {
-    return this._http.get(this._backendURL.getCandidat.replace(':id', id))
-      .map(res => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return this._candidat;
-        }
-      });
+  get candidat(): any {
+    return this._candidat;
   }
 
-  // private _options(headerList: Object = {}): RequestOptions {
-  //   const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
-  //   return new RequestOptions({headers: headers});
-  // }
+  set candidat(value: any) {
+    this._candidat = value;
+  }
+
+  get id(): string {
+    return this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
+  }
+
 
 }

@@ -1,1 +1,1 @@
-<form-candidat (createCandidat)="createCandidat($event)"></form-candidat>
+<form-candidat [isUpdateMode]="false" (cancel)="cancel()" (submit)="createCandidat($event)"></form-candidat>

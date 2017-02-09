@@ -4,9 +4,9 @@ export const environment = {
     json: {'Content-Type': 'application/json'}
   },
   backend: {
-    protocol: 'https',
-    host: 'pm-core.bober.ovh',
-    // port: '8080',
+    protocol: 'http',
+    host: 'localhost',
+    port: '8080',
     endpoints: {
       creerCandidat: '/rest/candidat/create',
       modifierCandidat:'/rest/candidat/update',

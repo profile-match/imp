@@ -26,6 +26,11 @@ export class CandidatService {
       .map((res: Response) => res.json());
   }
 
+  updateCandidat(c:candidat): Observable<any> {
+    return this._http.put(this._backendURL.modifierCandidat, JSON.stringify(c), this._options())
+      .map((res: Response) => res.json());
+  }
+
   getCandidat(id:string): Observable<any> {
     return this._http.get(this._backendURL.getCandidat.replace(':id', id))
       .map(res => {

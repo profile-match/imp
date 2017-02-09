@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
 import {candidat} from "../../interfaces/candidat";
 import {CandidatService} from "../../shared/candidat.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'creer-profile-candidat',
@@ -12,11 +13,15 @@ import {CandidatService} from "../../shared/candidat.service";
 
 export class CreerProfileCandidatComponent implements OnInit {
 
-  constructor(private _candidatService: CandidatService) {
+  constructor(private _router: Router, private _candidatService: CandidatService) {
   }
 
   createCandidat(candidat:candidat){
     this._candidatService.createCandidat(candidat).subscribe();
+  }
+
+  cancel(){
+    this._router.navigate(['/']);
   }
 
   /**

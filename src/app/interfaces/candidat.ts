@@ -11,12 +11,13 @@ export interface candidat {
   "loisirs": string;
   "nom": string;
   "isMale" : boolean;
+  "isSuspended": boolean;
   "photo": string;
   "prenom": string;
   "adresse": string;
   "telfix": string;
   "telperso": string;
-  "experiencePro": experiencePro;
+  "experiencePro": experiencePro[];
   "formation": formation[];
   "competence":competence[];
 }

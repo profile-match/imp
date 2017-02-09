@@ -4,6 +4,8 @@ import 'rxjs/add/operator/mergeMap'
 import {CandidatService} from "../../shared/candidat.service";
 import {competence} from "../../interfaces/competence";
 import {candidat} from "../../interfaces/candidat";
+import {formation} from "../../interfaces/formation";
+import {experiencePro} from "../../interfaces/experiencePro";
 
 @Component({
   selector: 'form-candidat',
@@ -12,65 +14,124 @@ import {candidat} from "../../interfaces/candidat";
 })
 
 export class FormComponent implements OnInit {
-  private _create$: EventEmitter<any>;
-
-  private _candidat = <candidat>{};
-
-  private _compet: string;
-  private _format: string;
 
   private _isUpdateMode: boolean;
+
+  private _profile$: EventEmitter<any>;
+
+  private _candidat: candidat;
+
+  private _compet: string;
+
+  private _formation1: string;
+  private _formation2: string;
+  private _formation3: string;
+  private _formation4: string;
+  private _formation5: string;
+
+  private _experience1:string;
+  private _experience2:string;
+  private _experience3:string;
+  private _experience4:string;
+  private _experience5:string;
+  private _experience6:string;
+  private _experience7:string;
+  private _experience8:string;
 
   private _propositions_competences: string[];
 
   constructor(private _candidatService: CandidatService) {
 
-    this._create$ = new EventEmitter();
+    this._isUpdateMode = false;
+
+    this._profile$ = new EventEmitter();
 
     this.candidat = {};
-    this.candidat.experiencePro = {};
+    this.candidat.experiencePro = [];
     this.candidat.formation = [];
     this.candidat.competence = [];
-
     this._propositions_competences = [];
-    this._isUpdateMode = false;
+
+    this.clearFormationForm();
+    this.clearExperienceForm();
   }
 
-  @Output('createCandidat') get create$(): EventEmitter<any> {
-    return this._create$;
+  @Output("submit") get create$(): EventEmitter<any> {
+    return this._profile$;
   }
 
   onSubmit() {
-    this._create$.emit(this.candidat);
+    this._profile$.emit(this.candidat);
   }
 
   addCompetence(competence: competence) {
     if (competence) {
       if (this.candidat.competence.indexOf(competence) == -1) {
-        this.candidat.competence.push(competence);
+        const comp = {
+          "competence":competence
+        }
+        this.candidat.competence.push(comp);
         this.compet = "";
       }
     }
     this.propositions_competences = [];
   }
 
-  deleteComp(competence: string) {
+  deleteComp(competence: competence) {
     this.candidat.competence.splice(this.candidat.competence.indexOf(competence), 1);
     this.propositions_competences = [];
   }
 
-  addForm(competence: competence) {
-    if (this.candidat.competence.indexOf(competence) == -1) {
-      this.candidat.competence.push(competence);
-      this.compet = "";
+  addFormation() {
+
+    if (this.formation1 != "" && this.formation2 != "" && this.formation3 != "" &&
+      this.formation4 != "" && this.formation5 != "") {
+
+      const formation = {
+        "intitule_de_formation": this.formation1,
+        "etablissement": this.formation2,
+        "description_formation": this.formation3,
+        "date_debut_format": this.formation4,
+        "date_fin_format": this.formation5
+      };
+
+      if (this.candidat.formation.indexOf(formation) == -1) {
+        this.candidat.formation.push(formation);
+        this.clearFormationForm();
+      }
+    }
+  }
+
+  deleteExperience(experiencePro: experiencePro) {
+    this.candidat.experiencePro.splice(this.candidat.experiencePro.indexOf(experiencePro), 1);
+  }
+
+  addExperience(){
+
+    if (this.experience1 != "", this.experience2 != "", this.experience3 != "", this.experience4 != "",
+      this.experience5 != "", this.experience6 != "", this.experience7 != "", this.experience8 != "") {
+
+      const experiencePro = {
+        "intitule_de_poste": this.experience1,
+        "date_debut": this.experience2,
+        "date_fin": this.experience3,
+        "pays": this.experience4,
+        "ville": this.experience5,
+        "nom_entreprise": this.experience6,
+        "description_entreprise": this.experience7,
+        "missions_effectuees": this.experience8
+      }
+
+      if (this.candidat.experiencePro.indexOf(experiencePro) == -1) {
+        this.candidat.experiencePro.push(experiencePro);
+        this.clearExperienceForm();
+      }
     }
 
-    this.propositions_competences = [];
   }
 
-  deleteForm(competence: string) {
-    this.candidat.competence.splice(this.candidat.competence.indexOf(competence), 1);
-    this.propositions_competences = [];
+  deleteFormation(formation: formation) {
+    this.candidat.formation.splice(this.candidat.formation.indexOf(formation), 1);
   }
 
   autoCompleteCompetences(s: string) {
@@ -84,25 +145,56 @@ export class FormComponent implements OnInit {
     }
   }
 
+  clearFormationForm() {
+    this._formation1 = "";
+    this._formation2 = "";
+    this._formation3 = "";
+    this._formation4 = "";
+    this._formation5 = "";
+  }
+
+  clearExperienceForm(){
+    this._experience1 = "";
+    this._experience2 = "";
+    this._experience3 = "";
+    this._experience4 = "";
+    this._experience5 = "";
+    this._experience6 = "";
+    this._experience7 = "";
+    this._experience8 = "";
+  }
+
   /**
    * OnInit implementation
    */
   ngOnInit() {
   }
 
+  /**
+   * Function to handle component update
+   *
+   * @param record
+   */
   ngOnChanges(record) {
-    if(record.candidat && record.candidat.currentValue){
+    if(record.model && record.candidat.currentValue) {
       this._candidat = record.candidat.currentValue;
-      this._isUpdateMode = !!this._candidat;
     }
   }
 
-  get candidat(): candidat {
+  get candidat(): any {
     return this._candidat;
   }
 
-  @Input() set candidat(value: candidat) {
+  @Input() set candidat(value: any) {
     this._candidat = value;
+  }
+
+  get isUpdateMode(): boolean {
+    return this._isUpdateMode;
+  }
+
+  @Input() set isUpdateMode(value: boolean) {
+    this._isUpdateMode = value;
   }
 
   get propositions_competences(): string[] {
@@ -121,19 +213,101 @@ export class FormComponent implements OnInit {
     this._compet = value;
   }
 
-  get format(): string {
-    return this._format;
+  get formation5(): string {
+    return this._formation5;
   }
 
-  set format(value: string) {
-    this._format = value;
+  set formation5(value: string) {
+    this._formation5 = value;
   }
 
-  get isUpdateMode(): boolean {
-    return this._isUpdateMode;
+  get formation4(): string {
+    return this._formation4;
   }
 
-  set isUpdateMode(value: boolean) {
-    this._isUpdateMode = value;
+  set formation4(value: string) {
+    this._formation4 = value;
   }
+
+  get formation3(): string {
+    return this._formation3;
+  }
+
+  set formation3(value: string) {
+    this._formation3 = value;
+  }
+
+  get formation2(): string {
+    return this._formation2;
+  }
+
+  set formation2(value: string) {
+    this._formation2 = value;
+  }
+
+  get formation1(): string {
+    return this._formation1;
+  }
+
+  set formation1(value: string) {
+    this._formation1 = value;
+  }
+
+  get experience1(): string {
+    return this._experience1;
+  }
+
+  set experience1(value: string) {
+    this._experience1 = value;
+  }
+  get experience2(): string {
+    return this._experience2;
+  }
+
+  set experience2(value: string) {
+    this._experience2 = value;
+  }
+  get experience3(): string {
+    return this._experience3;
+  }
+
+  set experience3(value: string) {
+    this._experience3 = value;
+  }
+  get experience4(): string {
+    return this._experience4;
+  }
+
+  set experience4(value: string) {
+    this._experience4 = value;
+  }
+  get experience5(): string {
+    return this._experience5;
+  }
+
+  set experience5(value: string) {
+    this._experience5 = value;
+  }
+  get experience6(): string {
+    return this._experience6;
+  }
+
+  set experience6(value: string) {
+    this._experience6 = value;
+  }
+  get experience7(): string {
+    return this._experience7;
+  }
+
+  set experience7(value: string) {
+    this._experience7 = value;
+  }
+  get experience8(): string {
+    return this._experience8;
+  }
+
+  set experience8(value: string) {
+    this._experience8 = value;
+  }
+
 }

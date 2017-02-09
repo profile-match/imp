@@ -1,11 +1,6 @@
-<!--<h1 align="center">Créer un profil candidat</h1>-->
+<h1 align="center" *ngIf="!isUpdateMode">Créer un profil candidat</h1>
+<h1 align="center" *ngIf="isUpdateMode">Mettre à jour mon profil</h1>
 <div id="exTab1" class="container">
-  <div class="x_panel">
-    <div class="title_left">
-      <h3 *ngIf="isUpdateMode">Modification d'un profil du candidat {{candidat.prenom}}</h3>
-      <h3 *ngIf="!isUpdateMode">Création d'un profil candidat</h3>
-    </div>
-  </div>
 
   <div class="tab-content clearfix">
     <div class="tab-pane active" id="1a">
@@ -84,21 +79,21 @@
         <div align="center" class="form-group">
           <label class="col-md-3 control-label">Intitulé du poste<span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input class="form-control" [(ngModel)]="candidat.experiencePro.intitule_de_poste"
+            <input #Exform1 class="form-control" [(ngModel)]="experience1"
                    name="intitule_de_poste" required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_debut" name="date_debut"
+            <input #Exform2 type="date" class="form-control" [(ngModel)]="experience2" name="date_debut"
                    required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input type="date" class="form-control" [(ngModel)]="candidat.experiencePro.date_fin" name="date_fin"
+            <input #Exform3 type="date" class="form-control" [(ngModel)]="experience3" name="date_fin"
                    required="required"/>
           </div>
         </div>
@@ -106,7 +101,7 @@
           <label class="col-md-3 control-label">Pays</label>
           <div class="col-md-4">
             <!-- <input  [value]="pays" class="form-control" [(ngModel)]="pays" /> -->
-            <select name="pays" [(ngModel)]="candidat.experiencePro.pays">
+            <select #Exform4 name="pays" [(ngModel)]="experience4">
               <option value="France">France</option>
               <option value="Afghanistan">Afghanistan</option>
               <option value="Afrique_Centrale">Afrique_Centrale</option>
@@ -343,7 +338,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Ville</label>
           <div class="col-md-4">
-            <input class="form-control" [(ngModel)]="candidat.experiencePro.ville" name="ville"/>
+            <input #Exform5 class="form-control" [(ngModel)]="experience5" name="ville"/>
           </div>
         </div>
 
@@ -354,7 +349,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Nom de l'entreprise <span class="required">*</span></label>
           <div class="col-md-4 form-group">
-            <input class="form-control" [(ngModel)]="candidat.experiencePro.nom_entreprise" name="nom_entreprise"
+            <input #Exform6 class="form-control" [(ngModel)]="experience6" name="nom_entreprise"
                    required="required"/>
           </div>
         </div>
@@ -362,7 +357,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Description de l'entreprise</label>
           <div class="col-md-4">
-            <input class="form-control" [(ngModel)]="candidat.experiencePro.description_entreprise"
+            <input #Exform7 class="form-control" [(ngModel)]="experience7"
                    name="description_entreprise"/>
           </div>
         </div>
@@ -370,11 +365,25 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Missions effectuées</label>
           <div class="col-md-4">
-            <input class="form-control" [(ngModel)]="candidat.experiencePro.missions_effectuees"
+            <input #Exform8  class="form-control" [(ngModel)]="experience8"
                    name="missions_effectuees"/>
           </div>
         </div>
+        <div class="form-group">
+          <button type="button"
+                  (click)="addExperience()">
+            Ajouter l'experience
+          </button>
+        </div>
 
+        <div class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <span class="tag_ng" *ngFor="let experiencePro of candidat.experiencePro">
+              <span class="tag_ng">{{experiencePro.intitule_de_poste}}</span>
+              <a (click)="deleteExperience(experiencePro)" style="cursor: pointer;" title="Supprimer">x</a>
+            </span>
+          <div class="tags_clear"></div>
+        </div>
+        <!-- ############################################################################################################# -->
         <h3>Formation</h3>
         <hr>
         <div class="tab-pane" id="2a">
@@ -382,52 +391,56 @@
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Intitulé de Formation <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input class="form-control" [(ngModel)]="candidat.formation.intitule_de_formation"
+              <input #intitule_de_formation class="form-control" [(ngModel)]="formation1"
                      name="intitule_de_formation" required="required"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Etablissement</label>
             <div class="col-md-4">
-              <input class="form-control" [(ngModel)]="candidat.formation.etablissement" name="etablissement"/>
+              <input #etablissement class="form-control" name="etablissement" [(ngModel)]="formation2"/>
             </div>
           </div>
           <div align="center" class="form-group">
             <label class="col-md-3 control-label">Description de la formation</label>
             <div class="col-md-4">
-              <input class="form-control" [(ngModel)]="candidat.formation.description_formation"
-                     name="description_formation"/>
+              <textarea rows="4" #description_formation class="form-control" [(ngModel)]="formation3"
+                        name="description_formation"></textarea>
+
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_debut_format"
+              <input #date_debut_format type="date" class="form-control" [(ngModel)]="formation4"
                      name="date_debut_format" required="required"/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
             <div class="col-md-4 form-group">
-              <input type="date" class="form-control" [(ngModel)]="candidat.formation.date_fin_format"
+              <input #date_fin_format type="date" class="form-control" [(ngModel)]="formation5"
                      name="date_fin_format" required="required"/>
             </div>
 
           </div>
           <div class="form-group">
-            <button type="button" (click)="addForm(comp.value)">Ajouter la formation</button>
+            <button type="button"
+                    (click)="addFormation()">
+              Ajouter la formation
+            </button>
           </div>
 
           <div class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
             <span class="tag_ng" *ngFor="let formation of candidat.formation">
-              <span class="tag_ng">{{formation}}</span>
-              <a (click)="deleteForm(formation)" style="cursor: pointer;" title="Supprimer">x</a>
+              <span class="tag_ng">{{formation.intitule_de_formation}}</span>
+              <a (click)="deleteFormation(formation)" style="cursor: pointer;" title="Supprimer">x</a>
             </span>
             <div class="tags_clear"></div>
           </div>
         </div>
-
+        <!-- ############################################################################################################# -->
         <h3>Competences</h3>
         <hr>
         <div class="form-group">
@@ -448,7 +461,7 @@
 
           <div id="tags_2_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
             <span class="tag_ng" *ngFor="let competence of candidat.competence">
-              <span class="tag_ng">{{competence}}</span>
+              <span class="tag_ng">{{competence.competence}}</span>
               <a (click)="deleteComp(competence)" style="cursor: pointer;" title="Supprimer">x</a>
             </span>
             <div class="tags_clear"></div>
