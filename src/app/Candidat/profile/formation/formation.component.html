@@ -11,12 +11,12 @@
   </thead>
 
   <tbody>
-  <tr role="row" class="odd"> <!--*ngFor="let formation of candidatFormation">-->
-    <td>{{candidatFormation.intitule_de_formation}}</td>
-    <td>{{candidatFormation.etablissement}}</td>
-    <td>{{candidatFormation.description_formation}}</td>
-    <td>{{candidatFormation.date_debut}}</td>
-    <td>{{candidatFormation.date_fin}}</td>
+  <tr role="row" class="odd" *ngFor="let formation of candidatFormation">
+    <td>{{formation.intitule_de_formation}}</td>
+    <td>{{formation.etablissement}}</td>
+    <td>{{formation.description_formation}}</td>
+    <td>{{formation.date_debut}}</td>
+    <td>{{formation.date_fin}}</td>
   </tr>
   </tbody>
 </table>

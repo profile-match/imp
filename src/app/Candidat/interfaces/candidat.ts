@@ -9,11 +9,11 @@ export interface candidat {
   email: string;
   loisirs: string,
   photo: any;
-  // adresse: string;
-  // phone_fix: string;
-  // phone_mobile: string;
-  experiencePro: experience;
-  formation: formation;
+  adresse: string;
+  telfix: string;
+  telperso: string;
+  experiencePro: experience[];
+  formation: formation[];
   competence: competence[];
   isMale: boolean;
   banned: boolean;

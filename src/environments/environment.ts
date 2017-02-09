@@ -4,7 +4,7 @@ export const environment = {
     json: {'Content-Type': 'application/json'}
   },
   backend: {
-    protocol: 'https',
+    protocol: 'http',
     host: 'pm-core.bober.ovh',
     port: '8080',
     endpoints: {

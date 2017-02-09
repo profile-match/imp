@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-  <tr role="row" class="odd"> <!--*ngFor="let experience of candidatExperience">-->
-    <td>{{candidatExperience.intitule_de_poste}}</td>
-    <td>{{candidatExperience.nom_entreprise}}</td>
-    <td>{{candidatExperience.ville}}</td>
-    <td>{{candidatExperience.pays}}</td>
-    <td>{{candidatExperience.date_debut}}</td>
-    <td>{{candidatExperience.date_fin}}</td>
+  <tr role="row" class="odd" *ngFor="let experience of candidatExperience">
+    <td>{{experience.intitule_de_poste}}</td>
+    <td>{{experience.nom_entreprise}}</td>
+    <td>{{experience.ville}}</td>
+    <td>{{experience.pays}}</td>
+    <td>{{experience.date_debut}}</td>
+    <td>{{experience.date_fin}}</td>
   </tr>
   </tbody>
 </table>

@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {environment} from "../../../environments/environment";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap'
-// import {Http} from "@angular/http";
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
+import {formation} from "../interfaces/formation";
+import {experience} from "../interfaces/experience";
+import {competence} from "../interfaces/competence";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap'
 
 @Component({
   selector: 'app-profile-candidat',
@@ -15,27 +16,53 @@ export class ProfileCandidatComponent implements OnInit {
 
   private _candidat: candidat;
   private _dialogStatus: string;
-  private _backendURL: any;
 
   constructor(private _candidatService: CandidatService) {
     this._dialogStatus = 'inactive';
-
-    // this._backendURL = {};
-    //
-    // // build backend base url
-    // let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-    // // if (environment.backend.port) {
-    // if (environment.backend) {
-    //   // baseUrl += `:${environment.backend.port}`;
-    //   baseUrl += `:${environment.backend}`;
-    // }
-
-    // build all backend urls
-    // Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
+    this._candidat = {id:-1,
+      nom:"ROBERT",
+      prenom:"JACQUES",
+      email:"",
+      loisirs:"",
+      photo:"",
+      adresse:"",
+      telfix:"",
+      telperso:"",
+      experiencePro: [{
+        id:-1,
+        intitule_de_poste: "",
+        date_debut: "",
+        date_fin: "",
+        pays: "",
+        ville: "",
+        nom_entreprise: "",
+        description_entreprise: "",
+        missions_effectuees: ""
+      }],
+      formation: [{
+        id:-1,
+        intitule_de_formation: "",
+        etablissement: "",
+        description_formation: "",
+        date_debut: "",
+        date_fin: ""
+      }],
+      competence: [{
+        id:-1,
+        domaine_de_competence: "",
+        competences: ""
+      }],
+      isMale: false,
+      banned:false
+    };
   }
 
   ngOnInit() {
-    this._candidatService.getCandidat(1).subscribe();
+    this._candidatService.getCandidat(73).subscribe(
+      (candidat: candidat) => {
+        console.log(candidat);
+        this._candidat = candidat
+      });
   }
 
   get candidat(): candidat {
@@ -46,11 +73,11 @@ export class ProfileCandidatComponent implements OnInit {
   //   this._candidat = value;
   // }
 
-  get _candidatName(): String {
+  get _candidatName(): string {
     return this._candidat.nom;
   }
 
-  get _candidatFName(): String {
+  get _candidatFName(): string {
     return this._candidat.prenom;
   }
 
@@ -58,21 +85,33 @@ export class ProfileCandidatComponent implements OnInit {
     return this._candidat.id;
   }
 
-  // get _candidatAddress():string{
-  //   return this._candidat.address;
-  // }
+  get _candidatAddress():string{
+    return this._candidat.adresse;
+  }
 
   get _candidatEmail(): string {
     return this._candidat.email;
   }
 
-  // get _candidatPhoneFix():string{
-  //   return this._candidat.phone_fix;
-  // }
-  //
-  // get _candidatPhoneMobile():string{
-  //   return this._candidat.phone_mobile;
-  // }
+  get _candidatPhoneFix():string{
+    return this._candidat.telfix;
+  }
+
+  get _candidatPhoneMobile():string{
+    return this._candidat.telperso;
+  }
+
+  get _candidatFormations():formation[]{
+    return this._candidat.formation;
+  }
+
+  get _candidatExperiences():experience[]{
+    return this._candidat.experiencePro;
+  }
+
+  get _candidatCompetences():competence[]{
+    return this._candidat.competence;
+  }
 
   get _candidatBanned(): boolean {
     return this._candidat.banned;

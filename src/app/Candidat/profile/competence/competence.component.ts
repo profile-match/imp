@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {candidat} from "../../interfaces/candidat";
 import {competence} from "../../interfaces/competence";
 
 @Component({
@@ -9,25 +8,21 @@ import {competence} from "../../interfaces/competence";
 })
 export class CompetenceComponent implements OnInit {
 
-  private _candidat: candidat;
+  private _competences: competence[];
 
   constructor() {
-    // this.Candidat = PROFILE;
+    this._competences = [];
   }
 
   ngOnInit() {
   }
 
-  get candidat(): candidat {
-    return this._candidat;
+  get competences(): competence[] {
+    return this._competences;
   }
 
-  @Input() set candidat(value: candidat) {
-    this._candidat = value;
-  }
-
-  get candidatCompetences(): competence[] {
-    return this._candidat.competence;
+  @Input() set competences(value: competence[]) {
+    this._competences = value;
   }
 
 }

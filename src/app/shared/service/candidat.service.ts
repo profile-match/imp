@@ -23,8 +23,8 @@ export class CandidatService {
 
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend) {
-      baseUrl += `:${environment.backend}`;
+    if (environment.backend.port) {
+      baseUrl += `:${environment.backend.port}`;
     }
 
     // build all backend urls
@@ -72,6 +72,7 @@ export class CandidatService {
 
   getCandidat(id: number): Observable<candidat> {
     //const url = `${this.candidatsUrl}/${id}`;
+    console.log(this._backendURL.getCandidat.replace(':id', id));
     return this.http.get(this._backendURL.getCandidat.replace(':id', id))
       .map( res =>  res.json() );
   }

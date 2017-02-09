@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {candidat} from "../../interfaces/candidat";
 import {formation} from "../../interfaces/formation";
 
 @Component({
@@ -9,25 +8,21 @@ import {formation} from "../../interfaces/formation";
 })
 export class FormationComponent implements OnInit {
 
-  private _candidat: candidat;
+  private _formations: formation[];
 
   constructor() {
-    // this.Candidat = PROFILE;
+    this._formations = [];
   }
 
   ngOnInit() {
   }
 
-  get candidat(): candidat {
-    return this._candidat;
+  get formations(): formation[] {
+    return this._formations;
   }
 
-  @Input() set candidat(value: candidat) {
-    this._candidat = value;
-  }
-
-  get candidatFormation(): formation {
-    return this._candidat.formation;
+  @Input() set formations(value: formation[]) {
+    this._formations = value;
   }
 
 }
