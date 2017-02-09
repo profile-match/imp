@@ -38,21 +38,21 @@ export class CandidatService {
   }
 
   getComments(): Promise<Comment[]> {
-    return this.http.get(this._backendURL.allComment)
+    return this.http.get(this._backendURL.getComments)
       .toPromise()
       .then(response => response.json().data as Comment[])
       .catch(this.handleError);
   }
 
   getComment(idCandidat: number): Promise<Comment[]> {
-    return this.http.get(this._backendURL.oneComment.replace(':id', idCandidat))//`/api/candidats/?idCandidat=${idCandidat}`)
+    return this.http.get(this._backendURL.getComment.replace(':id', idCandidat))//`/api/candidats/?idCandidat=${idCandidat}`)
       .toPromise()
       .then(response => response.json().data as Comment[])
       .catch(this.handleError);
   }
 
   deleteComment(idCandidat: number): Promise<Comment[]> {
-    return this.http.delete(this._backendURL.allComment.replace(':id', idCandidat))
+    return this.http.delete(this._backendURL.getComments.replace(':id', idCandidat))
       .toPromise()
       .then(response => response.json().data as Comment[])
       .catch(this.handleError);
@@ -66,20 +66,20 @@ export class CandidatService {
   }
 
   getCandidats(): Observable<candidat[]> {
-    return this.http.get(this._backendURL.allCandidat)
+    return this.http.get(this._backendURL.getCandidats)
       .map( res =>  res.json() );
   }
 
   getCandidat(id: number): Observable<candidat> {
     //const url = `${this.candidatsUrl}/${id}`;
-    return this.http.get(this._backendURL.oneCandidat.replace(':id', id))
+    return this.http.get(this._backendURL.getCandidat.replace(':id', id))
       .map( res =>  res.json() );
   }
 
   bannir(candidat: candidat) {//: Promise<Candidat[]> {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
-      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), candidat, requestOptions)
+      .put(this._backendURL.bannir.replace(':id',candidat.id), candidat, requestOptions)
       .map( res => {
         if (res.status === 200) {
           return res.json();
@@ -93,7 +93,7 @@ export class CandidatService {
   unBan(candidat: candidat) {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
-      .put(this._backendURL.unbanCandidat.replace(':id',candidat.id), candidat, requestOptions)
+      .put(this._backendURL.unBan.replace(':id',candidat.id), candidat, requestOptions)
       .map( res => {
         if (res.status === 200) {
           return res.json();
