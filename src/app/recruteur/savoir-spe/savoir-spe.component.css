@@ -1,0 +1,19 @@
+.tag_ng {
+  line-height: 1;
+  background: #1ABB9C;
+  color: #fff !important;
+}
+span.tag_ng {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  display: block;
+  float: left;
+  padding: 5px 9px;
+  text-decoration: none;
+  background: #1abb9c;
+  color: #f1f6f7;
+  margin-right: 5px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-family: helvetica
+}
