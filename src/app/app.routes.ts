@@ -8,6 +8,7 @@ import {ModerateurComponent} from "./visiteur/moderateur/moderateur.component";
 import {PosteFormComponent} from './recruteur/poste-form/poste-form.component';
 import {LoginComponent} from "./visiteur/login/login.component";
 import {InscriptionUtilisateurComponent} from "./utilisateur/inscription/inscription-utilisateur.component";
+import {InscriptionLinkedinComponent} from "./utilisateur/inscription-linkedin/inscription-linkedin.component";
 
 const ROUTES: Routes = [
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const ROUTES: Routes = [
   {path: 'moderateur', component: ModerateurComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inscription-utilisateur', component: InscriptionUtilisateurComponent},
+  {path: 'inscription-linkedin', component: InscriptionLinkedinComponent},
   {path: 'addPost', component: PosteFormComponent},
   {path: 'editPost/:id', component: UpdateComponent}
 ];

@@ -41,6 +41,7 @@ import { FormationComponent } from './recruteur/formation/formation.component';
 import { UpdateComponent } from './recruteur/poste-form/update/update.component';
 
 import { CertificationComponent } from './recruteur/certification/certification.component';
+import { InscriptionLinkedinComponent } from './utilisateur/inscription-linkedin/inscription-linkedin.component';
 
 
 
@@ -66,7 +67,8 @@ import { CertificationComponent } from './recruteur/certification/certification.
     LinguistiquesComponent,
     FormationComponent,
     UpdateComponent,
-    CertificationComponent
+    CertificationComponent,
+    InscriptionLinkedinComponent
   ],
   imports: [
     BrowserModule,

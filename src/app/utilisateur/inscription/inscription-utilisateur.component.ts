@@ -61,6 +61,20 @@ export class InscriptionUtilisateurComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  goLinkedIn(): void{
+    console.log("test");
+    //this._router.navigate(['/inscription-linkedin']);
+
+    //https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86g3ojziahkhnk&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fhome%2Finscription-linkedin&state=987654321&scope=r_basicprofile
+      window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
+        "response_type=code&" +
+        "client_id=86g3ojziahkhnk&" +
+        "redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fhome%2Finscription-linkedin&" +
+        "state=987654321&" +
+        "scope=r_emailaddress";
+
+  }
 }
 
 
