@@ -10,6 +10,14 @@
     <!-- si l'utlisateur n'est pas connecté -->
     <div *ngIf="!login()">
       <ul class="nav navbar-nav navbar-right">
+
+        <!-- mettre partie si connecté en recruteur -->
+        <li>
+         <!-- <a   routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >inviter </a> -->
+          <button class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                  (click)="showDialog()" >Open Modal</button>
+        </li>
+
         <li>
           <a routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
@@ -90,6 +98,13 @@
 <router-outlet>
 </router-outlet>
 
+
+<section class="dialog-modal" [ngClass]="{ 'active': dialogStatusInvitation === 'active' }" >
+  <app-form-invitation (cancel)="hideDialog()" (submit)="sendMail($event)"></app-form-invitation>
+</section>
+
+
+<h1> COUCOU </h1>
 
 <!-- footer content -->
 <footer>

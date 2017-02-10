@@ -9,12 +9,18 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 // noinspection TypeScriptCheckImport
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { MdInputModule } from '@angular/material/input';
+import { MaterialModule } from '@angular/material';
+import { ReactiveFormsModule } from "@angular/forms";
 
 import './visiteur/moderateur/candidat-search/rxjs-extensions';
 
 import { APP_ROUTES } from './app.routes';
 
+
+//services
 import { CandidatService } from './shared/service/candidat.service';
+import { RecruteurService } from "./shared/service/recruteur.service";
+import { MailService } from "./shared/service/mail.service";
 
 import { AccueilComponent } from './visiteur/accueil/accueil.component';
 import { LoginComponent } from './visiteur/login/login.component';
@@ -23,7 +29,6 @@ import { ModerateurComponent } from './visiteur/moderateur/moderateur.component'
 import { CandidatDetailComponent } from './visiteur/moderateur/candidat-detail/candidat-detail.component';
 import { CandidatSearchComponent } from './visiteur/moderateur/candidat-search/candidat-search.component';
 import { SignalementComponent } from './visiteur/moderateur/signalement/signalement.component';
-import { RecruteurService } from "./shared/service/recruteur.service";
 import { RecruteurDetailComponent } from './visiteur/moderateur/recruteur-detail/recruteur-detail.component';
 import { Utilisateur } from './utilisateur/utilisateur';
 
@@ -41,6 +46,7 @@ import { FormationComponent } from './recruteur/formation/formation.component';
 import { UpdateComponent } from './recruteur/poste-form/update/update.component';
 
 import { CertificationComponent } from './recruteur/certification/certification.component';
+import { FormInvitationComponent } from './shared/form-invitation/form-invitation.component';
 
 
 
@@ -66,7 +72,8 @@ import { CertificationComponent } from './recruteur/certification/certification.
     LinguistiquesComponent,
     FormationComponent,
     UpdateComponent,
-    CertificationComponent
+    CertificationComponent,
+    FormInvitationComponent
   ],
   imports: [
     BrowserModule,
@@ -76,9 +83,11 @@ import { CertificationComponent } from './recruteur/certification/certification.
     APP_ROUTES,
     MdInputModule,
     Ng2AutoCompleteModule,
-    ChartsModule
+    ChartsModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [CandidatService,RecruteurService],
+  providers: [CandidatService,RecruteurService, MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

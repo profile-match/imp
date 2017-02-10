@@ -1,0 +1,42 @@
+<md-card>
+
+  <md-card-title>
+    <span>Inviter des candidats </span>
+  </md-card-title>
+
+  <md-card-content>
+    <form novalidate [formGroup]="form">
+
+      <p [class.errors]="form.controls.email.dirty && form.controls.email.invalid">
+        <md-input placeholder="Email" style="width:100%" formControlName="email" required name="email" type="email"></md-input>
+
+        <span *ngIf="form.controls.email.dirty && form.controls.email.errors?.required">champ obligatoire</span>
+        <span *ngIf="form.controls.email.dirty && form.controls.email.errors?.mailErreur"><br>mail invalide</span>
+      </p>
+
+      <!--      <div class="x_panel title overflow_hidden">
+              <div class="x_title">
+                <h2>Inviter des candidats </h2>
+                <div class="clearfix">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-3" for="reference">Reference
+                </label>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                  <input type="text" placeholder="Email" id="reference"  required="required"
+                         name="reference" class="form-control col-md-7 col-xs-12">
+                </div>
+              </div>
+            </div>-->
+    </form>
+  </md-card-content>
+
+  <md-card-actions align="end">
+    <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
+    <button type="submit" class="btn btn-success" (click)="submit(form.value)" [disabled]="!form.valid">Valider</button>
+  </md-card-actions>
+
+
+</md-card>
