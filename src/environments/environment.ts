@@ -10,7 +10,7 @@ export const environment = {
     host: '127.0.0.1',
     port: '9000',
     endpoints: {
-      allOffers: '/pm-core/rest/recruteur/allDossier'
+      allOffers: '/pm-core/rest/recruteur/dossierRecruteur/:id'
     }
   }
 };

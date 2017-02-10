@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from "rxjs";
-import { environment } from "../../../environments/environment";
+import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class OffersService {
@@ -31,15 +31,17 @@ export class OffersService {
    * @returns {Observable<R>}
    */
   fetch(): Observable<any[]> {
-    return this._http.get(this._backendURL.allOffers, this._options())
-      .map((res: Response) => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return [];
-        }
-      });
+    if (localStorage.getItem("user") != null && localStorage.getItem("ut") == "recruteur") {
+      return this._http.get(this._backendURL.allOffers.replace(':id',localStorage.getItem("user")), this._options())
+        .map((res: Response) => {
+          if (res.status === 200) {
+            return res.json();
+          }
+          else {
+            return [];
+          }
+        });
+    }
   }
 
   /**
