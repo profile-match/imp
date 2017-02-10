@@ -6,6 +6,7 @@ import {experience} from "../interfaces/experience";
 import {competence} from "../interfaces/competence";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile-candidat',
@@ -16,12 +17,13 @@ export class ProfileCandidatComponent implements OnInit {
 
   private _candidat: candidat;
   private _dialogStatus: string;
+  private _id: string;
 
-  constructor(private _candidatService: CandidatService) {
+  constructor(private _route: ActivatedRoute, private _candidatService: CandidatService) {
     this._dialogStatus = 'inactive';
     this._candidat = {id:-1,
-      nom:"ROBERT",
-      prenom:"JACQUES",
+      nom:"",
+      prenom:"",
       email:"",
       loisirs:"",
       photo:"",
@@ -44,24 +46,33 @@ export class ProfileCandidatComponent implements OnInit {
         intitule_de_formation: "",
         etablissement: "",
         description_formation: "",
-        date_debut: "",
-        date_fin: ""
+        date_debut_format: "",
+        date_fin_format: ""
       }],
       competence: [{
         id:-1,
-        domaine_de_competence: "",
-        competences: ""
+        type: 0,
+        competence: ""
       }],
       isMale: false,
-      banned:false
+      banned: false,
+      isSuspended: false
     };
+    this._id = "";
   }
 
   ngOnInit() {
-    this._candidatService.getCandidat(73).subscribe(
-      (candidat: candidat) => {
+    this._route.params
+      .map((params: any) => params.id)
+      .subscribe((id: string) => {
+        console.log(id);
+        this._id = id;
+      });
+
+    this._candidatService.getCandidats().subscribe(
+      (candidat: candidat[]) => {
         console.log(candidat);
-        this._candidat = candidat
+        this._candidat = candidat[0];
       });
   }
 
@@ -101,6 +112,10 @@ export class ProfileCandidatComponent implements OnInit {
     return this._candidat.telperso;
   }
 
+  get _candidatPhoto():any{
+    return this._candidat.photo;
+  }
+
   get _candidatFormations():formation[]{
     return this._candidat.formation;
   }
@@ -113,28 +128,31 @@ export class ProfileCandidatComponent implements OnInit {
     return this._candidat.competence;
   }
 
-  get _candidatBanned(): boolean {
-    return this._candidat.banned;
+  get _candidatSuspended(): boolean {
+    return this._candidat.isSuspended;
   }
 
-  setCandidatBanned(bool: boolean) {
-    this._candidat.banned = bool;
+  suspendCandidat(c: candidat) {
+    console.log("isSuspended: "+c.isSuspended);
+    this._candidatService.suspend(c).subscribe();
+    console.log("isSuspended: "+c.isSuspended);
   }
+
+  unsuspendCandidat(c: candidat){
+    console.log("isSuspended: "+c.isSuspended);
+    this._candidatService.unSuspend(c).subscribe();
+    console.log("isSuspended: "+c.isSuspended);
+  }
+
 
   get dialogStatus(): string {
     return this._dialogStatus
   }
 
-  /**
-   * Function to display modal
-   */
   showDialog() {
     this._dialogStatus = 'active';
   }
 
-  /**
-   * Function to hide modal
-   */
   hideDialog() {
     this._dialogStatus = 'inactive';
   }

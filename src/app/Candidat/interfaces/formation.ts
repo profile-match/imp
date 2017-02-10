@@ -6,6 +6,6 @@ export interface formation {
   intitule_de_formation: string;
   etablissement: string;
   description_formation: string;
-  date_debut: string;
-  date_fin: string;
+  date_debut_format: string;
+  date_fin_format: string;
 }

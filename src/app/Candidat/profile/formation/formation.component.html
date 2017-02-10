@@ -3,20 +3,20 @@
   <thead>
   <tr role="row">
     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Intitulé</th>
-    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Établissement</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Nom Établissement</th>
     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Description</th>
-    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Date de Début</th>
-    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Date de Fin</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Date Début</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Date Fin</th>
   </tr>
   </thead>
 
   <tbody>
-  <tr role="row" class="odd" *ngFor="let formation of candidatFormation">
+  <tr role="row" class="odd" *ngFor="let formation of formations">
     <td>{{formation.intitule_de_formation}}</td>
     <td>{{formation.etablissement}}</td>
     <td>{{formation.description_formation}}</td>
-    <td>{{formation.date_debut}}</td>
-    <td>{{formation.date_fin}}</td>
+    <td>{{formation.date_debut_format}}</td>
+    <td>{{formation.date_fin_format}}</td>
   </tr>
   </tbody>
 </table>

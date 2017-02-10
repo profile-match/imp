@@ -22,6 +22,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   @Input() set experiences(value: experience[]) {
+    console.log(value);
     this._experiences = value;
   }
 

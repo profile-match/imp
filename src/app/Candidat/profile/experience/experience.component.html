@@ -3,16 +3,16 @@
   <thead>
   <tr role="row">
     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Intitulé</th>
-    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Nom de l'Entreprise</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Nom Entreprise</th>
     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 161px;">Ville</th>
     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Pays</th>
-    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Date de Début</th>
-    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Date de Fin</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Date Début</th>
+    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;">Date Fin</th>
   </tr>
   </thead>
 
   <tbody>
-  <tr role="row" class="odd" *ngFor="let experience of candidatExperience">
+  <tr role="row" class="odd" *ngFor="let experience of experiences">
     <td>{{experience.intitule_de_poste}}</td>
     <td>{{experience.nom_entreprise}}</td>
     <td>{{experience.ville}}</td>

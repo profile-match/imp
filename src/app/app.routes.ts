@@ -8,8 +8,8 @@ import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
 
 
 const ROUTES: Routes = [
-  { path: '', redirectTo: '/candidat/profile', pathMatch: 'full' },
-  { path: 'candidat/profile', component: ProfileCandidatComponent},
+  { path: '', redirectTo: '/candidat/profile/:id', pathMatch: 'full' },
+  { path: 'candidat/profile/:id', component: ProfileCandidatComponent},
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

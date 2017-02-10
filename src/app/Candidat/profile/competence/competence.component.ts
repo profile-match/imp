@@ -22,6 +22,7 @@ export class CompetenceComponent implements OnInit {
   }
 
   @Input() set competences(value: competence[]) {
+    console.log(value);
     this._competences = value;
   }
 

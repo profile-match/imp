@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http, Response  } from '@angular/http';
-import { Observable } 	  from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Headers, Http, Response} from '@angular/http';
+import {Observable}    from 'rxjs';
 
-import { candidat } from '../../candidat/interfaces/candidat';
-import { Comment } from '../../candidat/interfaces/commentaire';
+import {candidat} from '../../candidat/interfaces/candidat';
+import {Comment} from '../../candidat/interfaces/commentaire';
 
 
 import 'rxjs/add/operator/toPromise';
@@ -67,21 +67,21 @@ export class CandidatService {
 
   getCandidats(): Observable<candidat[]> {
     return this.http.get(this._backendURL.getCandidats)
-      .map( res =>  res.json() );
+      .map(res => res.json());
   }
 
-  getCandidat(id: number): Observable<candidat> {
+  getCandidat(id: string): Observable<candidat> {
     //const url = `${this.candidatsUrl}/${id}`;
     console.log(this._backendURL.getCandidat.replace(':id', id));
     return this.http.get(this._backendURL.getCandidat.replace(':id', id))
-      .map( res =>  res.json() );
+      .map(res => res.json());
   }
 
-  bannir(candidat: candidat) {//: Promise<Candidat[]> {
-    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
+  bannir(candidat: candidat) {//: Promise<candidat[]> {
+    const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
-      .put(this._backendURL.bannir.replace(':id',candidat.id), candidat, requestOptions)
-      .map( res => {
+      .put(this._backendURL.bannirCandidat.replace(':id', candidat.id), candidat, requestOptions)
+      .map(res => {
         if (res.status === 200) {
           return res.json();
         }
@@ -92,10 +92,10 @@ export class CandidatService {
   }
 
   unBan(candidat: candidat) {
-    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
+    const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
-      .put(this._backendURL.unBan.replace(':id',candidat.id), candidat, requestOptions)
-      .map( res => {
+      .put(this._backendURL.unbanCandidat.replace(':id', candidat.id), candidat, requestOptions)
+      .map(res => {
         if (res.status === 200) {
           return res.json();
         }
@@ -105,14 +105,44 @@ export class CandidatService {
       });
   }
 
-  getNbFemelle(){
-    return this.http.get(this._backendURL.nbFemelle)
-                    .map( res =>  res.json() );
+  suspend(candidat: candidat) {//: Promise<candidat[]> {
+    const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
+    console.log(this._backendURL.suspendCandidat.replace(':id', candidat.id));
+    return this.http
+      .put(this._backendURL.suspendCandidat.replace(':id', candidat.id), candidat, requestOptions)
+      .map(res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        else {
+          return [];
+        }
+      });
   }
 
-  getNbMale(){
+  unSuspend(candidat: candidat) {//: Promise<candidat[]> {
+    const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
+    return this.http
+      .put(this._backendURL.unsuspendCandidat.replace(':id', candidat.id), candidat, requestOptions)
+      .map(res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        else {
+          return [];
+        }
+      });
+  }
+
+
+  getNbFemelle() {
+    return this.http.get(this._backendURL.nbFemelle)
+      .map(res => res.json());
+  }
+
+  getNbMale() {
     return this.http.get(this._backendURL.nbMale)
-                    .map( res =>  res.json() );
+      .map(res => res.json());
   }
 
   private handleError(error: any): Promise<any> {

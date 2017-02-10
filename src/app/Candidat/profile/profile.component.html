@@ -3,11 +3,11 @@
     <div class="col-md-10">
       <div class="x_title">
         <h1>{{_candidatName}} {{_candidatFName}}</h1>
-        <span *ngIf="_candidatBanned" style="color:red">
+        <span *ngIf="_candidatSuspended" style="color:red">
           Ce compte a été suspendu
         </span>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="!_candidatSuspended">
         <div class="col-md-5">
           <div class="row">
             <label>Adresse postale : </label> {{_candidatAddress}}
@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-5">
           <div class="row">
-            <label>Téléphone fix : </label> {{_candidatPhoneFix}}
+            <label>Téléphone fixe : </label> {{_candidatPhoneFix}}
           </div>
           <div class="row">
             <label>Téléphone portable : </label> {{_candidatPhoneMobile}}
@@ -27,14 +27,14 @@
       </div>
     </div>
     <div class="col-md-2">
-      <img style="border:1px solid #e6e9ed;" src="../../../assets/candidat.jpg" height="172" width="128"
+      <img style="border:1px solid #e6e9ed;" src="{{_candidatPhoto}}" height="172" width="128"
            align="right">
     </div>
   </div>
   <div class="clearfix"></div>
 
 
-  <div class="x_content">
+  <div class="x_content" *ngIf="!_candidatSuspended">
     <div class="x_title">
       <h3>Profil</h3>
     </div>
@@ -93,9 +93,11 @@
       <h3>Options du compte</h3>
     </div>
     <div class="row">
-      <button class="btn btn-default" type="submit">Changer Mot de Passe</button>
-      <button class="btn btn-default" type="submit" (click)="setCandidatBanned(!_candidatBanned)" >Suspendre Compte</button>
-      <button class="btn btn-default" type="submit">Supprimer Compte</button>
+      <button class="btn btn-default" type="submit">Modifier mes informations</button>
+      <button class="btn btn-default" type="submit">Changer mon mot de passe</button>
+      <button class="btn btn-default" type="submit" *ngIf="!_candidatSuspended" (click)="suspendCandidat(candidat)" >Suspendre mon compte</button>
+      <button class="btn btn-default" type="submit" *ngIf="_candidatSuspended" (click)="unsuspendCandidat(candidat)" >Rétablir mon compte</button>
+      <button class="btn btn-default" type="submit">Supprimer mon compte</button>
     </div>
   </div>
 
