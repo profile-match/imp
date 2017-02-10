@@ -31,12 +31,8 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Sexe</label>
           <div class="col-md-4">
-            <fieldset ngModelGroup="candidat.isMale">
-              <input type="radio" [(ngModel)]="candidat.isMale" name="isMale" (click)="setSex(true)"
-                     value="true">Male<br>
-              <input type="radio" [(ngModel)]="candidat.isMale" name="isMale" (click)="setSex(false)"
-                     value="false">Female<br>
-            </fieldset>
+            <input [(ngModel)]="candidat.isMale" type="radio" name="sex" value=true>Male<br>
+            <input [(ngModel)]="candidat.isMale" type="radio" name="sex" value=false>Female<br>
           </div>
         </div>
         <div align="center" class="form-group">
@@ -405,7 +401,6 @@
             <div class="col-md-4">
               <textarea rows="4" #description_formation class="form-control" [(ngModel)]="formation3"
                         name="description_formation"></textarea>
-
             </div>
           </div>
 

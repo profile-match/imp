@@ -79,10 +79,7 @@ export class FormComponent implements OnInit {
       "type":type
     };
 
-    console.log(comp);
-
     if (competence) {
-      console.log(this.candidat.competence.indexOf(comp) == -1);
       if (this.candidat.competence.indexOf(comp) == -1) {
         this.candidat.competence.push(comp);
         this.compet = "";
