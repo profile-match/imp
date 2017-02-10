@@ -26,7 +26,7 @@ export class OffersService {
   }
 
   /**
-   * Function to return list of people
+   * Function to return list of offers
    *
    * @returns {Observable<R>}
    */
