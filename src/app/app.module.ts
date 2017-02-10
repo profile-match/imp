@@ -42,6 +42,9 @@ import {CertificationComponent} from './recruteur/certification/certification.co
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {FormComponent} from "./Candidat/form/form.component";
 import {CandidatService} from "./shared/service/candidat.service";
+import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
+import {MessagesCandidatComponent} from "./Candidat/messages-candidat/messages-candidat.component";
+import {PostesCandidatComponent} from "./Candidat/postes/postesCandidat.component";
 
 @NgModule({
     declarations: [
@@ -68,7 +71,10 @@ import {CandidatService} from "./shared/service/candidat.service";
         CertificationComponent,
         CreerProfileCandidatComponent,
         UpdateProfileCandidatComponent,
-        FormComponent
+        FormComponent,
+        DashboardCandidatComponent,
+        MessagesCandidatComponent,
+        PostesCandidatComponent
     ],
     imports: [
         BrowserModule,
