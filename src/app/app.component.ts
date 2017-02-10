@@ -30,7 +30,15 @@ export class AppComponent {
     this._mailService.envoyerMail(mail)
       .subscribe( (res : any) => {
         this._notification = true;
-        this._typeNotification = res['success'] === "success" ? "success" : "error";
+
+        if(res['success'] === "success"){
+          this._typeNotification = "success";
+          this._message = "Message envoyé !";
+        } else{
+          this._typeNotification = "error";
+          this._message = "Le message n'a pas pu être envoyé";
+        }
+
       });
     this.hideDialog();
   }
@@ -48,6 +56,7 @@ export class AppComponent {
   }
   closeNotif(){
     this._notification = false;
+    this._message = "";
   }
 
 
