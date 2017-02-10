@@ -105,33 +105,15 @@ export class CandidatService {
       });
   }
 
-  suspend(candidat: candidat) {//: Promise<candidat[]> {
-    const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
+  suspend(candidat: candidat): Observable<candidat>  {
     console.log(this._backendURL.suspendCandidat.replace(':id', candidat.id));
-    return this.http
-      .put(this._backendURL.suspendCandidat.replace(':id', candidat.id), candidat, requestOptions)
-      .map(res => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return [];
-        }
-      });
+    return this.http.get(this._backendURL.suspendCandidat.replace(':id', candidat.id))
+      .map(res => res.json());
   }
 
-  unSuspend(candidat: candidat) {//: Promise<candidat[]> {
-    const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
-    return this.http
-      .put(this._backendURL.unsuspendCandidat.replace(':id', candidat.id), candidat, requestOptions)
-      .map(res => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return [];
-        }
-      });
+  unSuspend(candidat: candidat): Observable<candidat>  {
+    return this.http.get(this._backendURL.unsuspendCandidat.replace(':id', candidat.id))
+      .map(res => res.json());
   }
 
 

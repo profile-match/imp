@@ -17,5 +17,5 @@ export interface candidat {
   competence: competence[];
   isMale: boolean;
   banned: boolean;
-  isSuspended: boolean;
+  suspended: boolean;
 }

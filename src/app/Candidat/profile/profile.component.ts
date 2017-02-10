@@ -56,7 +56,7 @@ export class ProfileCandidatComponent implements OnInit {
       }],
       isMale: false,
       banned: false,
-      isSuspended: false
+      suspended: false
     };
     this._id = "";
   }
@@ -69,10 +69,10 @@ export class ProfileCandidatComponent implements OnInit {
         this._id = id;
       });
 
-    this._candidatService.getCandidats().subscribe(
-      (candidat: candidat[]) => {
+    this._candidatService.getCandidat(this._id).subscribe(
+      (candidat: candidat) => {
         console.log(candidat);
-        this._candidat = candidat[0];
+        this._candidat = candidat;
       });
   }
 
@@ -129,19 +129,27 @@ export class ProfileCandidatComponent implements OnInit {
   }
 
   get _candidatSuspended(): boolean {
-    return this._candidat.isSuspended;
+    return this._candidat.suspended;
   }
 
   suspendCandidat(c: candidat) {
-    console.log("isSuspended: "+c.isSuspended);
-    this._candidatService.suspend(c).subscribe();
-    console.log("isSuspended: "+c.isSuspended);
+    console.log("suspended: "+c.suspended);
+    this._candidatService.suspend(c).subscribe(
+      (cdd: candidat) => {
+      console.log(cdd);
+      this._candidat = cdd;
+    });
+    console.log("suspended: "+c.suspended);
   }
 
   unsuspendCandidat(c: candidat){
-    console.log("isSuspended: "+c.isSuspended);
-    this._candidatService.unSuspend(c).subscribe();
-    console.log("isSuspended: "+c.isSuspended);
+    console.log("suspended: "+c.suspended);
+    this._candidatService.unSuspend(c).subscribe(
+      (cdd: candidat) => {
+      console.log(cdd);
+      this._candidat = cdd;
+    });
+    console.log("suspended: "+c.suspended);
   }
 
 
