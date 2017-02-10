@@ -29,14 +29,16 @@ export class FormComponent implements OnInit {
   private _formation4: string;
   private _formation5: string;
 
-  private _experience1:string;
-  private _experience2:string;
-  private _experience3:string;
-  private _experience4:string;
-  private _experience5:string;
-  private _experience6:string;
-  private _experience7:string;
-  private _experience8:string;
+  private _experience1: string;
+  private _experience2: string;
+  private _experience3: string;
+  private _experience4: string;
+  private _experience5: string;
+  private _experience6: string;
+  private _experience7: string;
+  private _experience8: string;
+
+  private _comp_select: string;
 
   private _propositions_competences: string[];
 
@@ -54,6 +56,8 @@ export class FormComponent implements OnInit {
 
     this.clearFormationForm();
     this.clearExperienceForm();
+
+    this.comp_select = "0";
   }
 
   @Output("submit") get create$(): EventEmitter<any> {
@@ -61,15 +65,25 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.candidat);
     this._profile$.emit(this.candidat);
   }
 
-  addCompetence(competence: competence) {
+  setSex(b: boolean) {
+    this.candidat.isMale = b;
+  }
+
+  addCompetence(competence: string, type:string) {
+    const comp = {
+      "competence": competence,
+      "type":type
+    };
+
+    console.log(comp);
+
     if (competence) {
-      if (this.candidat.competence.indexOf(competence) == -1) {
-        const comp = {
-          "competence":competence
-        }
+      console.log(this.candidat.competence.indexOf(comp) == -1);
+      if (this.candidat.competence.indexOf(comp) == -1) {
         this.candidat.competence.push(comp);
         this.compet = "";
       }
@@ -106,7 +120,7 @@ export class FormComponent implements OnInit {
     this.candidat.experiencePro.splice(this.candidat.experiencePro.indexOf(experiencePro), 1);
   }
 
-  addExperience(){
+  addExperience() {
 
     if (this.experience1 != "", this.experience2 != "", this.experience3 != "", this.experience4 != "",
       this.experience5 != "", this.experience6 != "", this.experience7 != "", this.experience8 != "") {
@@ -120,7 +134,7 @@ export class FormComponent implements OnInit {
         "nom_entreprise": this.experience6,
         "description_entreprise": this.experience7,
         "missions_effectuees": this.experience8
-      }
+      };
 
       if (this.candidat.experiencePro.indexOf(experiencePro) == -1) {
         this.candidat.experiencePro.push(experiencePro);
@@ -153,7 +167,7 @@ export class FormComponent implements OnInit {
     this._formation5 = "";
   }
 
-  clearExperienceForm(){
+  clearExperienceForm() {
     this._experience1 = "";
     this._experience2 = "";
     this._experience3 = "";
@@ -176,7 +190,7 @@ export class FormComponent implements OnInit {
    * @param record
    */
   ngOnChanges(record) {
-    if(record.model && record.candidat.currentValue) {
+    if (record.model && record.candidat.currentValue) {
       this._candidat = record.candidat.currentValue;
     }
   }
@@ -257,9 +271,18 @@ export class FormComponent implements OnInit {
     return this._experience1;
   }
 
+  get comp_select(): string {
+    return this._comp_select;
+  }
+
+  set comp_select(value: string) {
+    this._comp_select = value;
+  }
+
   set experience1(value: string) {
     this._experience1 = value;
   }
+
   get experience2(): string {
     return this._experience2;
   }
@@ -267,6 +290,7 @@ export class FormComponent implements OnInit {
   set experience2(value: string) {
     this._experience2 = value;
   }
+
   get experience3(): string {
     return this._experience3;
   }
@@ -274,6 +298,7 @@ export class FormComponent implements OnInit {
   set experience3(value: string) {
     this._experience3 = value;
   }
+
   get experience4(): string {
     return this._experience4;
   }
@@ -281,6 +306,7 @@ export class FormComponent implements OnInit {
   set experience4(value: string) {
     this._experience4 = value;
   }
+
   get experience5(): string {
     return this._experience5;
   }
@@ -288,6 +314,7 @@ export class FormComponent implements OnInit {
   set experience5(value: string) {
     this._experience5 = value;
   }
+
   get experience6(): string {
     return this._experience6;
   }
@@ -295,6 +322,7 @@ export class FormComponent implements OnInit {
   set experience6(value: string) {
     this._experience6 = value;
   }
+
   get experience7(): string {
     return this._experience7;
   }
@@ -302,6 +330,7 @@ export class FormComponent implements OnInit {
   set experience7(value: string) {
     this._experience7 = value;
   }
+
   get experience8(): string {
     return this._experience8;
   }

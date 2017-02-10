@@ -4,4 +4,5 @@
 export interface competence{
   id:number;
   competence: string;
+  type: number;
 }

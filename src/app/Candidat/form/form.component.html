@@ -8,31 +8,35 @@
         <h3>Informations Générales</h3>
         <hr>
         <div align="center" class="form-group">
-          <label class="col-md-3 control-label">Nom</label>
+          <label class="col-md-3 control-label">Nom <span class="required">*</span></label>
           <div class="col-md-4">
             <input [value]="nom" class="form-control" [(ngModel)]="candidat.nom"
-                   name="nom"/>
+                   name="nom" required="required"/>
           </div>
         </div>
         <div align="center" class="form-group">
-          <label class="col-md-3 control-label">Prenom</label>
+          <label class="col-md-3 control-label">Prenom <span class="required">*</span></label>
           <div class="col-md-4">
             <input [value]="prenom" class="form-control" [(ngModel)]="candidat.prenom"
-                   name="prenom"/>
+                   name="prenom" required="required"/>
           </div>
         </div>
         <div align="center" class="form-group">
-          <label class="col-md-3 control-label">Email</label>
+          <label class="col-md-3 control-label">Email <span class="required">*</span></label>
           <div class="col-md-4">
-            <input class="form-control" [(ngModel)]="candidat.email"
-                   name="email"/>
+            <input type="email" class="form-control" [(ngModel)]="candidat.email"
+                   name="email" required="required"/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 control-label">Sexe</label>
           <div class="col-md-4">
-            <input checked="checked" type="radio" [ngModel]="isMale" name="sex" value="true">Male<br>
-            <input type="radio" [ngModel]="isMale" name="sex" value="false">Female<br>
+            <fieldset ngModelGroup="candidat.isMale">
+              <input type="radio" [(ngModel)]="candidat.isMale" name="isMale" (click)="setSex(true)"
+                     value="true">Male<br>
+              <input type="radio" [(ngModel)]="candidat.isMale" name="isMale" (click)="setSex(false)"
+                     value="false">Female<br>
+            </fieldset>
           </div>
         </div>
         <div align="center" class="form-group">
@@ -77,24 +81,21 @@
         <h3>Expérience</h3>
         <hr>
         <div align="center" class="form-group">
-          <label class="col-md-3 control-label">Intitulé du poste<span class="required">*</span></label>
+          <label class="col-md-3 control-label">Intitulé du poste</label>
           <div class="col-md-4 form-group">
-            <input #Exform1 class="form-control" [(ngModel)]="experience1"
-                   name="intitule_de_poste" required="required"/>
+            <input #Exform1 class="form-control" [(ngModel)]="experience1" name="intitule_de_poste"/>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
+          <label class="col-md-3 control-label">Date de début</label>
           <div class="col-md-4 form-group">
-            <input #Exform2 type="date" class="form-control" [(ngModel)]="experience2" name="date_debut"
-                   required="required"/>
+            <input #Exform2 type="date" class="form-control" [(ngModel)]="experience2" name="date_debut"/>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
+          <label class="col-md-3 control-label">Date de fin</label>
           <div class="col-md-4 form-group">
-            <input #Exform3 type="date" class="form-control" [(ngModel)]="experience3" name="date_fin"
-                   required="required"/>
+            <input #Exform3 type="date" class="form-control" [(ngModel)]="experience3" name="date_fin"/>
           </div>
         </div>
         <div class="form-group">
@@ -104,15 +105,15 @@
             <select #Exform4 name="pays" [(ngModel)]="experience4">
               <option value="France">France</option>
               <option value="Afghanistan">Afghanistan</option>
-              <option value="Afrique_Centrale">Afrique_Centrale</option>
-              <option value="Afrique_du_sud">Afrique_du_Sud</option>
+              <option value="Afrique_Centrale">Afrique Centrale</option>
+              <option value="Afrique_du_sud">Afrique du Sud</option>
               <option value="Albanie">Albanie</option>
               <option value="Algerie">Algerie</option>
               <option value="Allemagne">Allemagne</option>
               <option value="Andorre">Andorre</option>
               <option value="Angola">Angola</option>
               <option value="Anguilla">Anguilla</option>
-              <option value="Arabie_Saoudite">Arabie_Saoudite</option>
+              <option value="Arabie_Saoudite">Arabie Saoudite</option>
               <option value="Argentine">Argentine</option>
               <option value="Armenie">Armenie</option>
               <option value="Australie">Australie</option>
@@ -130,37 +131,37 @@
               <option value="Bolivie">Bolivie</option>
               <option value="Botswana">Botswana</option>
               <option value="Bhoutan">Bhoutan</option>
-              <option value="Boznie_Herzegovine">Boznie_Herzegovine</option>
+              <option value="Boznie_Herzegovine">Boznie Herzegovine</option>
               <option value="Bresil">Bresil</option>
               <option value="Brunei">Brunei</option>
               <option value="Bulgarie">Bulgarie</option>
-              <option value="Burkina_Faso">Burkina_Faso</option>
+              <option value="Burkina_Faso">Burkina Faso</option>
               <option value="Burundi">Burundi</option>
               <option value="Caiman">Caiman</option>
               <option value="Cambodge">Cambodge</option>
               <option value="Cameroun">Cameroun</option>
               <option value="Canada">Canada</option>
               <option value="Canaries">Canaries</option>
-              <option value="Cap_vert">Cap_Vert</option>
+              <option value="Cap_vert">Cap Vert</option>
               <option value="Chili">Chili</option>
               <option value="Chine">Chine</option>
               <option value="Chypre">Chypre</option>
               <option value="Colombie">Colombie</option>
               <option value="Comores">Colombie</option>
               <option value="Congo">Congo</option>
-              <option value="Congo_democratique">Congo_democratique</option>
+              <option value="Congo_democratique">Congo democratique</option>
               <option value="Cook">Cook</option>
-              <option value="Coree_du_Nord">Coree_du_Nord</option>
-              <option value="Coree_du_Sud">Coree_du_Sud</option>
+              <option value="Coree_du_Nord">Coree du Nord</option>
+              <option value="Coree_du_Sud">Coree du Sud</option>
               <option value="Costa_Rica">Costa_Rica</option>
-              <option value="Cote_d_Ivoire">Côte_d_Ivoire</option>
+              <option value="Cote_d_Ivoire">Côte d'Ivoire</option>
               <option value="Croatie">Croatie</option>
               <option value="Cuba">Cuba</option>
               <option value="Danemark">Danemark</option>
               <option value="Djibouti">Djibouti</option>
               <option value="Dominique">Dominique</option>
               <option value="Egypte">Egypte</option>
-              <option value="Emirats_Arabes_Unis">Emirats_Arabes_Unis</option>
+              <option value="Emirats_Arabes_Unis">Emirats Arabes Unis</option>
               <option value="Equateur">Equateur</option>
               <option value="Erythree">Erythree</option>
               <option value="Espagne">Espagne</option>
@@ -185,10 +186,10 @@
               <option value="Guatemala">Guatemala</option>
               <option value="Guernesey">Guernesey</option>
               <option value="Guinee">Guinee</option>
-              <option value="Guinee_Bissau">Guinee_Bissau</option>
-              <option value="Guinee equatoriale">Guinee_Equatoriale</option>
+              <option value="Guinee_Bissau">Guinee Bissau</option>
+              <option value="Guinee equatoriale">Guinee Equatoriale</option>
               <option value="Guyana">Guyana</option>
-              <option value="Guyane_Francaise ">Guyane_Francaise</option>
+              <option value="Guyane_Francaise ">Guyane Francaise</option>
               <option value="Haiti">Haiti</option>
               <option value="Hawaii">Hawaii</option>
               <option value="Honduras">Honduras</option>
@@ -255,8 +256,8 @@
               <option value="Niue">Niue</option>
               <option value="Norfolk">Norfolk</option>
               <option value="Norvege">Norvege</option>
-              <option value="Nouvelle_Caledonie">Nouvelle_Caledonie</option>
-              <option value="Nouvelle_Zelande">Nouvelle_Zelande</option>
+              <option value="Nouvelle_Caledonie">Nouvelle Caledonie</option>
+              <option value="Nouvelle_Zelande">Nouvelle Zelande</option>
               <option value="Oman">Oman</option>
               <option value="Ouganda">Ouganda</option>
               <option value="Ouzbekistan">Ouzbekistan</option>
@@ -264,31 +265,31 @@
               <option value="Palau">Palau</option>
               <option value="Palestine">Palestine</option>
               <option value="Panama">Panama</option>
-              <option value="Papouasie_Nouvelle_Guinee">Papouasie_Nouvelle_Guinee</option>
+              <option value="Papouasie_Nouvelle_Guinee">Papouasie Nouvelle Guinee</option>
               <option value="Paraguay">Paraguay</option>
               <option value="Pays_Bas">Pays_Bas</option>
               <option value="Perou">Perou</option>
               <option value="Philippines">Philippines</option>
               <option value="Pologne">Pologne</option>
               <option value="Polynesie">Polynesie</option>
-              <option value="Porto_Rico">Porto_Rico</option>
+              <option value="Porto_Rico">Porto Rico</option>
               <option value="Portugal">Portugal</option>
               <option value="Qatar">Qatar</option>
-              <option value="Republique_Dominicaine">Republique_Dominicaine</option>
-              <option value="Republique_Tcheque">Republique_Tcheque</option>
+              <option value="Republique_Dominicaine">Republique Dominicaine</option>
+              <option value="Republique_Tcheque">Republique Tcheque</option>
               <option value="Reunion">Reunion</option>
               <option value="Roumanie">Roumanie</option>
-              <option value="Royaume_Uni">Royaume_Uni</option>
+              <option value="Royaume_Uni">Royaume Uni</option>
               <option value="Russie">Russie</option>
               <option value="Rwanda">Rwanda</option>
               <option value="Sahara Occidental">Sahara Occidental</option>
-              <option value="Sainte_Lucie">Sainte_Lucie</option>
-              <option value="Saint_Marin">Saint_Marin</option>
+              <option value="Sainte_Lucie">Sainte Lucie</option>
+              <option value="Saint_Marin">Saint Marin</option>
               <option value="Salomon">Salomon</option>
               <option value="Salvador">Salvador</option>
-              <option value="Samoa_Occidentales">Samoa_Occidentales</option>
-              <option value="Samoa_Americaine">Samoa_Americaine</option>
-              <option value="Sao_Tome_et_Principe">Sao_Tome_et_Principe</option>
+              <option value="Samoa_Occidentales">Samoa Occidentales</option>
+              <option value="Samoa_Americaine">Samoa Americaine</option>
+              <option value="Sao_Tome_et_Principe">Sao Tome et Principe</option>
               <option value="Senegal">Senegal</option>
               <option value="Seychelles">Seychelles</option>
               <option value="Sierra Leone">Sierra Leone</option>
@@ -297,7 +298,7 @@
               <option value="Slovenie">Slovenie</option>
               <option value="Somalie">Somalie</option>
               <option value="Soudan">Soudan</option>
-              <option value="Sri_Lanka">Sri_Lanka</option>
+              <option value="Sri_Lanka">Sri Lanka</option>
               <option value="Suede">Suede</option>
               <option value="Suisse">Suisse</option>
               <option value="Surinam">Surinam</option>
@@ -310,9 +311,9 @@
               <option value="Tchad">Tchad</option>
               <option value="Thailande">Thailande</option>
               <option value="Tibet">Tibet</option>
-              <option value="Timor_Oriental">Timor_Oriental</option>
+              <option value="Timor_Oriental">Timor Oriental</option>
               <option value="Togo">Togo</option>
-              <option value="Trinite_et_Tobago">Trinite_et_Tobago</option>
+              <option value="Trinite_et_Tobago">Trinite et Tobago</option>
               <option value="Tristan da cunha">Tristan de cuncha</option>
               <option value="Tunisie">Tunisie</option>
               <option value="Turkmenistan">Turmenistan</option>
@@ -322,8 +323,8 @@
               <option value="Vanuatu">Vanuatu</option>
               <option value="Vatican">Vatican</option>
               <option value="Venezuela">Venezuela</option>
-              <option value="Vierges_Americaines">Vierges_Americaines</option>
-              <option value="Vierges_Britanniques">Vierges_Britanniques</option>
+              <option value="Vierges_Americaines">Vierges Americaines</option>
+              <option value="Vierges_Britanniques">Vierges Britanniques</option>
               <option value="Vietnam">Vietnam</option>
               <option value="Wake">Wake</option>
               <option value="Wallis et Futuma">Wallis et Futuma</option>
@@ -347,10 +348,9 @@
 
 
         <div class="form-group">
-          <label class="col-md-3 control-label">Nom de l'entreprise <span class="required">*</span></label>
+          <label class="col-md-3 control-label">Nom de l'entreprise</label>
           <div class="col-md-4 form-group">
-            <input #Exform6 class="form-control" [(ngModel)]="experience6" name="nom_entreprise"
-                   required="required"/>
+            <input #Exform6 class="form-control" [(ngModel)]="experience6" name="nom_entreprise"/>
           </div>
         </div>
 
@@ -365,7 +365,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label">Missions effectuées</label>
           <div class="col-md-4">
-            <input #Exform8  class="form-control" [(ngModel)]="experience8"
+            <input #Exform8 class="form-control" [(ngModel)]="experience8"
                    name="missions_effectuees"/>
           </div>
         </div>
@@ -389,10 +389,9 @@
         <div class="tab-pane" id="2a">
           <br/>
           <div align="center" class="form-group">
-            <label class="col-md-3 control-label">Intitulé de Formation <span class="required">*</span></label>
+            <label class="col-md-3 control-label">Intitulé de Formation</label>
             <div class="col-md-4 form-group">
-              <input #intitule_de_formation class="form-control" [(ngModel)]="formation1"
-                     name="intitule_de_formation" required="required"/>
+              <input #intitule_de_formation class="form-control" [(ngModel)]="formation1" name="intitule_de_formation"/>
             </div>
           </div>
           <div align="center" class="form-group">
@@ -411,17 +410,16 @@
           </div>
 
           <div class="form-group">
-            <label class="col-md-3 control-label">Date de début <span class="required">*</span></label>
+            <label class="col-md-3 control-label">Date de début</label>
             <div class="col-md-4 form-group">
               <input #date_debut_format type="date" class="form-control" [(ngModel)]="formation4"
-                     name="date_debut_format" required="required"/>
+                     name="date_debut_format"/>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Date de fin <span class="required">*</span></label>
+            <label class="col-md-3 control-label">Date de fin</label>
             <div class="col-md-4 form-group">
-              <input #date_fin_format type="date" class="form-control" [(ngModel)]="formation5"
-                     name="date_fin_format" required="required"/>
+              <input #date_fin_format type="date" class="form-control" [(ngModel)]="formation5" name="date_fin_format"/>
             </div>
 
           </div>
@@ -456,7 +454,13 @@
                 {{propositions_competence}}
               </option>
             </datalist>
-            <button type="button" (click)="addCompetence(comp.value)">Ajouter la compétence</button>
+            <select #type name="type" [(ngModel)]="comp_select">
+              <option value="0">Metier</option>
+              <option value="1">Fonctionnelle</option>
+              <option value="2">Technique</option>
+              <option value="3">Linguistique</option>
+            </select>
+            <button type="button" (click)="addCompetence(comp.value, type.value)">Ajouter la compétence</button>
           </div>
 
           <div id="tags_2_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">

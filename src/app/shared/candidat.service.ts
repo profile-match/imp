@@ -21,17 +21,17 @@ export class CandidatService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
-  createCandidat(c:candidat): Observable<any> {
+  createCandidat(c: candidat): Observable<candidat> {
     return this._http.post(this._backendURL.creerCandidat, JSON.stringify(c), this._options())
       .map((res: Response) => res.json());
   }
 
-  updateCandidat(c:candidat): Observable<any> {
+  updateCandidat(c: candidat): Observable<candidat> {
     return this._http.put(this._backendURL.modifierCandidat, JSON.stringify(c), this._options())
       .map((res: Response) => res.json());
   }
 
-  getCandidat(id:string): Observable<any> {
+  getCandidat(id: string): Observable<any> {
     return this._http.get(this._backendURL.getCandidat.replace(':id', id))
       .map(res => {
         if (res.status === 200) {
@@ -49,8 +49,8 @@ export class CandidatService {
       });
   }
 
-  private _options(headerList: Object = {}): RequestOptions {
-    const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
+  private _options(): RequestOptions {
+    const headers = new Headers(Object.assign({'Content-Type': 'application/json'}));
     return new RequestOptions({headers: headers});
   }
 
