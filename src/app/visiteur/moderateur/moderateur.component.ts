@@ -32,7 +32,7 @@ export class ModerateurComponent implements OnInit {
   ngOnInit() {
     this.getCandidats();
     this._service.checkCredentialModerator();
-  //  this.getRecruteurs();
+    this.getRecruteurs();
   }
 
 
@@ -41,7 +41,7 @@ export class ModerateurComponent implements OnInit {
   }
 
   getRecruteurs(): void {
-    this.recruteurService.getRecruteurs().then(recruteurs => this.recruteurs = recruteurs);
+    this.recruteurService.getRecruteurs().subscribe(recruteurs => this.recruteurs = recruteurs);
   }
 
 
@@ -98,6 +98,7 @@ export class ModerateurComponent implements OnInit {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
     this.candidatService.bannir(candidat).subscribe(c => this.selectedCandidat = c);
+    this.getCandidats();
   }
 
   unBan(candidat: candidat) {
@@ -110,7 +111,8 @@ export class ModerateurComponent implements OnInit {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
-    this.candidatService.unBan(candidat).subscribe(c => this.selectedCandidat = c);//.then(candidats => this.candidats = candidats);
+    this.candidatService.unBan(candidat).subscribe(c => this.selectedCandidat = c);
+    this.getCandidats();
   }
 
   bannirRecruteur(recruteur: Recruteur) {
@@ -125,6 +127,7 @@ export class ModerateurComponent implements OnInit {
 
    // alert("fonctionnalité 'banir recruteur "+recruteur.nom +" ' non defini (manque le back)");
     this.recruteurService.bannir(recruteur).subscribe(r => this.selectedRecruteur = r);
+    this.getRecruteurs();
   }
 
   unBanRecruteur(recruteur: Recruteur) {
@@ -139,6 +142,7 @@ export class ModerateurComponent implements OnInit {
 
     // alert("fonctionnalité 'banir recruteur "+recruteur.nom +" ' non defini (manque le back)");
     this.recruteurService.unBan(recruteur).subscribe(r => this.selectedRecruteur = r);
+    this.getRecruteurs();
   }
 
   goToDetailCandidat(idCandidat: number){
@@ -150,33 +154,7 @@ export class ModerateurComponent implements OnInit {
   goToDetailRecruteur(idRecruteur: number){
     this.signalement = false;
     this.rechercher = false;
-    this.recruteurService.getRecruteur(idRecruteur).then(recruteur => this.selectedRecruteur = recruteur);
-  }
-
-  // lineChart
-  public lineChartData:Array<any> = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartType:string = 'line';
-  public pieChartType:string = 'pie';
-
-  // Pie
-  public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-  public pieChartData:number[] = [300, 500, 100];
-
-  public randomizeType():void {
-    this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'line';
-    this.pieChartType = this.pieChartType === 'doughnut' ? 'pie' : 'doughnut';
-  }
-
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
-
-  public chartHovered(e:any):void {
-    console.log(e);
+    this.recruteurService.getRecruteur(idRecruteur).subscribe(recruteur => this.selectedRecruteur = recruteur);
   }
 
 }

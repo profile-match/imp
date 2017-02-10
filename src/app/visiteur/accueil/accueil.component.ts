@@ -46,13 +46,13 @@ export class AccueilComponent implements OnInit {
         this.candidatService.getComments().then(com => this.comments = com);
     }
 
-    getRecruteurs(): void {
-        this.recruteurService.getRecruteurs().then(recruteurs => this.recruteurs = recruteurs);
-    }
+  getRecruteurs(): void {
+    this.recruteurService.getRecruteurs().subscribe(recruteurs => this.recruteurs = recruteurs);
+  }
 
-    getPostes(): void {
-        this.recruteurService.getPosts().then(postes => this.postes = postes);
-    }
+  getPostes(): void {
+    this.recruteurService.getPosts().subscribe(postes => this.postes = postes);
+  }
 
     getnbFemelle(): void {
         this.candidatService.getNbFemelle().subscribe(f => this._nbFemelle = f);
@@ -62,15 +62,15 @@ export class AccueilComponent implements OnInit {
         this.candidatService.getNbMale().subscribe(m => this._nbMale = m);
     }
 
-    ngOnInit(): void {
-        this.getCandidats();
-        this.getnbFemelle();
-        this.getnbMale();
-        /*   this.getRecruteurs();
-         this.getPostes();
-         this.getComments();
-         this.setMenuList();*/
-    }
+  ngOnInit(): void {
+    this.getCandidats();
+    this.getnbFemelle();
+    this.getnbMale();
+    this.getRecruteurs();
+    this.getPostes();
+ /*   this.getComments();
+    this.setMenuList();*/
+  }
 
     setMenuList(): void {
         //  alert(this.candidats.length);

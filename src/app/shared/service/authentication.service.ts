@@ -42,10 +42,10 @@ export class AuthenticationService {
     this._http.get(this._backendURL.allCandidat)
       .map( res => res.json() )
       .subscribe( (candidats: any[]) => this._candidats = candidats);
-/*
+
     this._http.get(this._backendURL.allRecruteur)
       .map( res => res.json() )
-      .subscribe( (rec: any[]) => this._recruteurs = rec);*/
+      .subscribe( (rec: any[]) => this._recruteurs = rec);
   }
 
   logout() {
@@ -57,7 +57,7 @@ export class AuthenticationService {
   login(user:User){
 
     var authenticatedCandidat = this._candidats.find(c => c.email === user.email);
-  //  var authenticatedRecruteur = this._recruteurs['data'].find(r => r.email === user.email);
+    var authenticatedRecruteur = this._recruteurs.find(r => r.email === user.email);
     var authenticatedModerator = users.find(u => u.email === user.email);
 
     if (authenticatedModerator && authenticatedModerator.password === user.password){
@@ -67,20 +67,20 @@ export class AuthenticationService {
       return true;
     }
     else if (authenticatedCandidat && authenticatedCandidat.nom === user.password){
-      localStorage.setItem("user", authenticatedCandidat.toString());
+      localStorage.setItem("user", authenticatedCandidat.id.toString());
       localStorage.setItem("ut", "candidat");
-
+      console.log("id cand : "+localStorage.getItem("user"))
       this._router.navigate(['/addPost']);
 
       return true;
     }
-  /*  else if (authenticatedRecruteur && authenticatedRecruteur.password === user.password){
-      localStorage.setItem("user", authenticatedRecruteur.toString());
+    else if (authenticatedRecruteur && authenticatedRecruteur.nom === user.password){
+      localStorage.setItem("user", authenticatedRecruteur.id.toString());
       localStorage.setItem("ut", "recruteur");
       this._router.navigate(['/accueil']);
 
       return true;
-    }*/
+    }
     return false;
 
   }

@@ -67,7 +67,7 @@ export class SignalementComponent implements OnInit {
 
   getPosts(): void {
     //  console.log(JSON.stringify(this._comments));
-    this.recruteurService.getPosts().then(posts => this._postes = posts);
+    this.recruteurService.getPosts().subscribe(posts => this._postes = posts);
   }
 
   get postes(): Poste[] {
