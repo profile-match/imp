@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import { Location }  from '@angular/common';
 import {environment} from "../../../environments/environment";
-import {Utilisateur} from "../utilisateur";
 import {Router} from "@angular/router";
+import {Utilisateur} from "../utilisateur";
 
 @Component({
   selector: 'app-inscription-utilisateur',

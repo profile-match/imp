@@ -1,8 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {CandidatService} from "../../../shared/service/candidat.service";
-import {Comment} from "../../../candidat/interfaces/commentaire";
 import {Poste} from "../../../recruteur/interfaces/poste";
 import {RecruteurService} from "../../../shared/service/recruteur.service";
+import {Commentaire} from "../../../Candidat/interfaces/commentaire";
 
 @Component({
   selector: 'app-signalement',
@@ -12,7 +12,7 @@ import {RecruteurService} from "../../../shared/service/recruteur.service";
 })
 export class SignalementComponent implements OnInit {
 
-  private _comments: Comment[];
+  private _comments: Commentaire[];
   private _postes: Poste[];
   private _goToDetail$: EventEmitter<any>;
   private _goToDetailRecruteur$: EventEmitter<any>;
@@ -29,10 +29,10 @@ export class SignalementComponent implements OnInit {
     this.getPosts();*/
   }
 
-  get comments(): Comment[] {
+  get comments(): Commentaire[] {
     return this._comments;
   }
-  set comments(value: Comment[]) {
+  set comments(value: Commentaire[]) {
     this._comments = value;
   }
 

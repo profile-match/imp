@@ -1,4 +1,3 @@
-
 export const environment = {
   production: true,
   backend: {
@@ -31,6 +30,10 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
+      creerCandidat: '/rest/candidat/create',
+      modifierCandidat: '/rest/candidat/update',
+      getCandidat: '/rest/candidat/get/:id',
+      getCompetences: '/rest/competence/get/:comp'
     }
   }
 };

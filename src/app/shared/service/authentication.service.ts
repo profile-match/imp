@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
-import {Candidat} from "../../candidat/interfaces/candidat";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
+import {candidat} from "../../Candidat/interfaces/candidat";
 
 export class User {
   constructor(
@@ -19,7 +19,7 @@ var users = [
 @Injectable()
 export class AuthenticationService {
   // private property to store candidats value
-  private _candidats: Candidat[];
+  private _candidats: candidat[];
   // private property to store recruteurs value
   private _recruteurs: Recruteur[];
   // private property to store all backend URLs
