@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { SignalementComponent } from './signalement.component';
+import {Http} from "@angular/http";
 
 describe('SignalementComponent', () => {
   let component: SignalementComponent;
@@ -11,7 +12,10 @@ describe('SignalementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignalementComponent ]
+      declarations: [ SignalementComponent ],
+      providers : [
+          { provide: Http, useValue: true }
+                  ]
     })
     .compileComponents();
   }));

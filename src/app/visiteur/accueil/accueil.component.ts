@@ -28,7 +28,7 @@ export class AccueilComponent implements OnInit{
   private menuList : any[];
 
   constructor(private http: Http, private candidatService: CandidatService, private recruteurService : RecruteurService) {
-    this.candidats = [{id: 11, email: 'nice', banned:0, loisirs: 'ni', nom: "test", photo:"", prenom: 'Mr. Nice', experiencePro: 'd', formation:'d', competence:[]}];
+    this.candidats = [{id: 11, adresse: '8 r', email: 'nice', banned:0, loisirs: 'ni', nom: "test", photo:"", prenom: 'Mr. Nice', telfix: '03', telperso: '06', experiencePro: 'd', formation:'d', competence:[]}];
     this.recruteurs = [];
     this.postes = [];
     this.comments = [];
@@ -47,11 +47,11 @@ export class AccueilComponent implements OnInit{
   }
 
   getRecruteurs(): void {
-    this.recruteurService.getRecruteurs().then(recruteurs => this.recruteurs = recruteurs);
+    this.recruteurService.getRecruteurs().subscribe(recruteurs => this.recruteurs = recruteurs);
   }
 
   getPostes(): void {
-    this.recruteurService.getPosts().then(postes => this.postes = postes);
+    this.recruteurService.getPosts().subscribe(postes => this.postes = postes);
   }
 
   getnbFemelle(): void {
@@ -66,9 +66,9 @@ export class AccueilComponent implements OnInit{
     this.getCandidats();
     this.getnbFemelle();
     this.getnbMale();
- /*   this.getRecruteurs();
+    this.getRecruteurs();
     this.getPostes();
-    this.getComments();
+ /*   this.getComments();
     this.setMenuList();*/
   }
 

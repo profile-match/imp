@@ -1,4 +1,4 @@
-<div class="col-md-3 left_col">
+<div class="col-md-3 left_col" style="color: ">
   <div class="left_col scroll-view">
 
 
@@ -28,10 +28,11 @@
             <div style="width:220px;height:150px;line-height:3em;overflow:auto;padding:5px;"> <!-- pour le scrol -->
 
               <ul class="candidats">
-                <li *ngFor="let candidat of candidats"
+                <li *ngFor="let candidat of candidats; let i = index"
                     [class.selected]="candidat === selectedCandidat"
                     (click)="onSelectCandidat(candidat)">
-                  <span class="badge">{{candidat.id}}</span> {{candidat.nom}}
+                  <span *ngIf="candidat.banned" class="badge" style="background-color: red">{{i}}</span>
+                  <span *ngIf="!candidat.banned" class="badge" style="background-color: green">{{i}}</span>{{candidat.nom}}
                 </li>
               </ul>
             </div>
@@ -44,7 +45,8 @@
                 <li *ngFor="let recruteur of recruteurs"
                   [class.selected]="recruteur === selectedRecruteur"
                   (click)="onSelectRecruteur(recruteur)">
-                  <span class="badge">{{recruteur.id}}</span> {{recruteur.nom}}
+                  <span *ngIf="recruteur.banned" class="badge" style="background-color: red">{{recruteur.id}}</span>
+                  <span *ngIf="!recruteur.banned" class="badge" style="background-color: green">{{recruteur.id}}</span>{{recruteur.nom}}
                 </li>
               </ul>
             </div>

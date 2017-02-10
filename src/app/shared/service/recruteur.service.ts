@@ -26,10 +26,9 @@ export class RecruteurService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
-  getPosts(): Promise<Poste[]> {
+  getPosts(): Observable<Poste[]> {
     return this.http.get(this._backendURL.allPost)
-      .toPromise()
-      .then(response => response.json().data as Poste[])
+      .map(response => response.json())
       .catch(this.handleError);
   }
 
@@ -66,18 +65,16 @@ export class RecruteurService {
       });
   }
 
-  getRecruteurs(): Promise<Recruteur[]> {
+  getRecruteurs(): Observable<Recruteur[]> {
     return this.http.get(this._backendURL.allRecruteur)
-      .toPromise()
-      .then(response => response.json().data as Recruteur[])
+      .map(response => response.json())
       .catch(this.handleError);
   }
 
-  getRecruteur(id: number): Promise<Recruteur> {
+  getRecruteur(id: number): Observable<Recruteur> {
     //const url = `${this.candidatsUrl}/${id}`;
     return this.http.get(this._backendURL.oneRecruteur.replace(':id', id))
-      .toPromise()
-      .then(response => response.json().data as Recruteur)
+      .map( res =>  res.json() )
       .catch(this.handleError);
   }
 
