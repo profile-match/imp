@@ -33,3 +33,18 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+main.ts
+polyfills.ts
+styles.css
+test.ts
+tsconfig.json
+typings.d.ts
+.editorconfig
+angular-cli.json
+karma.conf.js
+npm-debug.log
+package.json
+tslint.json
+/node_modules
+/e2e
+/.idea
