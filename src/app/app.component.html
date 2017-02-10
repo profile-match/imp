@@ -99,7 +99,7 @@
 
 
 <!-- dialogue de confirmation inviter une personne à créer un compte  -->
-<div *ngIf=" notification === true" [ngSwitch]="typeNotification">
+<!--<div *ngIf=" notification === true" [ngSwitch]="typeNotification">
 
     <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable center" (click)="closeNotif()">
       <a class="close" data-dismiss="alert" aria-label="close" >×</a>
@@ -110,6 +110,12 @@
       <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
       {{message}}
     </div>
+</div>-->
+<div *ngIf=" notification === true" class="alert alert-success alert-dismissable center"  (click)="closeNotif()"
+     [class.alert-success]="typeNotification==='success'"
+     [class.alert-danger]="typeNotification==='error'">
+      <a class="close" data-dismiss="alert" aria-label="close" >×</a>
+      {{message}}
 </div>
 
 <!-- ################"  -->

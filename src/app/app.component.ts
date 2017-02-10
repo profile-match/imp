@@ -56,6 +56,7 @@ export class AppComponent {
   }
   closeNotif(){
     this._notification = false;
+    this._typeNotification = "";
     this._message = "";
   }
 
