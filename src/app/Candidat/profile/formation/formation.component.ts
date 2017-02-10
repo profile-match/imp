@@ -22,7 +22,7 @@ export class FormationComponent implements OnInit {
   }
 
   @Input() set formations(value: formation[]) {
-    console.log(value);
+    // console.log(value);
     this._formations = value;
   }
 

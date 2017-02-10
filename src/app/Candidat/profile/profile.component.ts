@@ -6,7 +6,7 @@ import {experience} from "../interfaces/experience";
 import {competence} from "../interfaces/competence";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-profile-candidat',
@@ -65,13 +65,11 @@ export class ProfileCandidatComponent implements OnInit {
     this._route.params
       .map((params: any) => params.id)
       .subscribe((id: string) => {
-        console.log(id);
         this._id = id;
       });
 
     this._candidatService.getCandidat(this._id).subscribe(
       (candidat: candidat) => {
-        console.log(candidat);
         this._candidat = candidat;
       });
   }
@@ -133,25 +131,18 @@ export class ProfileCandidatComponent implements OnInit {
   }
 
   suspendCandidat(c: candidat) {
-    console.log("suspended: "+c.suspended);
     this._candidatService.suspend(c).subscribe(
       (cdd: candidat) => {
-      console.log(cdd);
       this._candidat = cdd;
     });
-    console.log("suspended: "+c.suspended);
   }
 
   unsuspendCandidat(c: candidat){
-    console.log("suspended: "+c.suspended);
     this._candidatService.unSuspend(c).subscribe(
       (cdd: candidat) => {
-      console.log(cdd);
       this._candidat = cdd;
     });
-    console.log("suspended: "+c.suspended);
   }
-
 
   get dialogStatus(): string {
     return this._dialogStatus

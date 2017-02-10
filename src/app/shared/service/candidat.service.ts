@@ -72,7 +72,7 @@ export class CandidatService {
 
   getCandidat(id: string): Observable<candidat> {
     //const url = `${this.candidatsUrl}/${id}`;
-    console.log(this._backendURL.getCandidat.replace(':id', id));
+    // console.log(this._backendURL.getCandidat.replace(':id', id));
     return this.http.get(this._backendURL.getCandidat.replace(':id', id))
       .map(res => res.json());
   }
@@ -106,7 +106,7 @@ export class CandidatService {
   }
 
   suspend(candidat: candidat): Observable<candidat>  {
-    console.log(this._backendURL.suspendCandidat.replace(':id', candidat.id));
+    // console.log(this._backendURL.suspendCandidat.replace(':id', candidat.id));
     return this.http.get(this._backendURL.suspendCandidat.replace(':id', candidat.id))
       .map(res => res.json());
   }
@@ -130,14 +130,6 @@ export class CandidatService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
-  }
-
-
-  getCandidatsSlowly(): Promise<candidat[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getCandidats()), 2000);
-    });
   }
 
 }
