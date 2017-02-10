@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <form #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left">
+  <form novalidate #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left" >
     <div class="x_panel title overflow_hidden">
       <div class="x_title">
         <h2>Caractéristique du poste</h2>
@@ -15,59 +15,75 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad" >
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="reference">Reference <span
           class="required">*</span>
         </label>
+
         <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="text" id="reference" [value]="reference" [(ngModel)]="poste.reference" required="required"
-                 name="reference" class="form-control col-md-7 col-xs-12">
+                 name="reference" class="form-control col-md-7 col-xs-12" #reference="ngModel">
         </div>
+        <span class="alert" *ngIf="reference.dirty && reference.errors?.required">Remplissez ce champ</span>
+
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="intitule">Intitule <span class="required">*</span>
         </label>
         <div class="col-md-4 col-sm-4 col-xs-4">
-          <input type="text" id="intitule" [value]="intitule" [(ngModel)]="poste.intitule" required="required"
+          <input type="text" id="intitule" [value]="intitule" [(ngModel)]="poste.intitule" required #intitule="ngModel"
                  name="intitule" class="form-control col-md-7 col-xs-12">
+
         </div>
+        <span class="alert" *ngIf="intitule.dirty && intitule.errors?.required">Remplissez ce champ</span>
       </div>
 
-      <div class="form-group">
+
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="indice_salaire">Indice grille salaire
         </label>
         <div class="col-md-2 col-sm-2 col-xs-2">
           <input type="text" id="indice_salaire" [value]="indice_salaire" [(ngModel)]="poste.indice_salaire"
                  required="required"
-                 name="indice_salaire" class="form-control col-md-7 col-xs-12">
+                 name="indice_salaire" class="form-control col-md-7 col-xs-12" #indice="ngModel">
+
         </div>
+
         <span title="Cette information permet d’indiquer le niveau où se situe le salaire du poste
 à pourvoir dans la grille de salaires au sein de l’entreprise"><img style="margin-top: 7px;"
                                                                     src="./assets/information.png"
                                                                     height="20" width="20"/></span>
-      </div>
 
-      <div class="form-group">
+        <span class="alert" *ngIf="indice.dirty && indice.errors?.required">Remplissez ce champ</span>
+
+         </div>
+
+
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salaire_min">Salaire Minimun Annuel <span
           class="required">*</span>
         </label>
         <div class="col-md-2 col-sm-2 col-xs-2">
           <input type="text" id="salaire_min" style="text-align:center;" [value]="salaire_min"
-                 [(ngModel)]="poste.salaire_min" name="salaire_min" required="required"
+                 [(ngModel)]="poste.salaire_min" name="salaire_min" required #salaire_min="ngModel"
                  class="form-control col-md-7 col-xs-12">
-        </div>
+            </div>
+        <span class="alert" *ngIf="salaire_min.dirty && salaire_min.errors?.required">Remplissez ce champ</span>
+
       </div>
 
-      <div class="form-group">
+
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salaire_max">Salaire Maximum Annuel <span
           class="required">*</span>
         </label>
         <div class="col-md-2 col-sm-2 col-xs-2">
           <input type="text" style="text-align:center;" id="salaire_max" [value]="salaire_max"
-                 [(ngModel)]="poste.salaire_max" name="salaire_max" required="required"
+                 [(ngModel)]="poste.salaire_max" name="salaire_max" required #salaire_max="ngModel"
                  class="form-control col-md-7 col-xs-12">
-        </div>
+             </div>
+        <span class="alert" *ngIf="salaire_max.dirty && salaire_max.errors?.required">Remplissez ce champ</span>
 
       </div>
 
@@ -81,29 +97,32 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_contrat">Type de contrat <span
           class="required">*</span>
         </label>
         <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="text" id="type_contrat" style="text-align:center;" [value]="type_contrat"
-                 [(ngModel)]="poste.type_contrat" name="type_contrat" required="required"
+                 [(ngModel)]="poste.type_contrat" name="type_contrat" required #type_contrat="ngModel"
                  class="form-control col-md-7 col-xs-12">
-        </div>
+           </div>
+        <span class="alert" *ngIf="type_contrat.dirty && type_contrat.errors?.required">Remplissez ce champ</span>
+
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Résumé synthétique du poste <span
           class="required">*</span>
         </label>
         <div class="col-md-5 col-sm-5 col-xs-5">
           <div id="resume" (input)="poste.resume=$event.target.textContent" [textContent]="poste.resume"
                class="editor-wrapper-small placeholderText" contenteditable="true"></div>
+
         </div>
       </div>
 
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="point_attention">Point d'attention
         </label>
         <div class="col-md-5 col-sm-5 col-xs-5">
@@ -124,37 +143,43 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lieu_travail">Lieu de travail <span
           class="required">*</span>
         </label>
         <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="text" id="lieu_travail" [value]="lieu_travail"
-                 [(ngModel)]="poste.lieu_travail  " name="lieu_travail" required="required"
+                 [(ngModel)]="poste.lieu_travail  " name="lieu_travail" required #lieu="ngModel"
                  class="form-control col-md-7 col-xs-12">
-        </div>
+          </div>
+        <span class="alert "*ngIf="lieu.dirty && lieu.errors?.required">Remplissez ce champ</span>
+
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="organisation">Organisation <span
           class="required">*</span>
         </label>
         <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="text" id="organisation" [value]="organisation"
-                 [(ngModel)]="poste.organisation  " name="organisation" required="required"
+                 [(ngModel)]="poste.organisation  " name="organisation" required #organisation="ngModel"
                  class="form-control col-md-7 col-xs-12">
         </div>
+        <span class="alert "*ngIf="organisation.dirty && organisation.errors?.required">Remplissez ce champ</span>
+
       </div>
 
-      <div class="form-group">
+      <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="equipe_concernee">Equipe Concernée <span
           class="required">*</span>
         </label>
         <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="text" id="equipe_concernee" [value]="equipe_concernee"
-                 [(ngModel)]="poste.equipe_concernee" name="equipe_concernee" required="required"
+                 [(ngModel)]="poste.equipe_concernee" name="equipe_concernee" required #equipe="ngModel"
                  class="form-control col-md-7 col-xs-12">
         </div>
+        <span class="alert "*ngIf="equipe.dirty && equipe.errors?.required">Remplissez ce champ</span>
+
       </div>
     </div>
     <div class="x_panel title overflow_hidden">
@@ -488,8 +513,8 @@
   </form>
 
   <div style="text-align: center; ">
-    <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
-    <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
+    <button type="button" class="btn btn-primary" (click)="cancel()">Retour</button>
+    <button type="submit" class="btn btn-success" (click)="submit()" [disabled]="!f.valid">Valider</button>
   </div>
 
 </div>

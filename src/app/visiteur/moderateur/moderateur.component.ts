@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../shared/service/authentication.service'
 import { CandidatService } from '../../shared/service/candidat.service';
-import { Candidat } from '../../candidat/interfaces/candidat';
 import {RecruteurService} from "../../shared/service/recruteur.service";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
+import {candidat} from "../../Candidat/interfaces/candidat";
 
 @Component({
   selector: 'app-moderateur',
@@ -13,9 +13,9 @@ import {Recruteur} from "../../recruteur/interfaces/recruteur";
 })
 export class ModerateurComponent implements OnInit {
 
-  candidats: Candidat[];
+  candidats: candidat[];
   recruteurs: Recruteur[];
-  selectedCandidat: Candidat;
+  selectedCandidat: candidat;
   selectedRecruteur: Recruteur;
   signalement: boolean = false;
   rechercher: boolean = false;
@@ -50,11 +50,11 @@ export class ModerateurComponent implements OnInit {
   //  console.log(JSON.stringify(this.candidats));
   }
 
-  getSelectedCandidats(): Candidat {
+  getSelectedCandidats(): candidat {
     return this.selectedCandidat;
   }
 
-  onSelectCandidat(candidat: Candidat): void {
+  onSelectCandidat(candidat: candidat): void {
     this.signalement = false;
     this.rechercher = false;
     this.selectedRecruteur = null;
@@ -87,7 +87,7 @@ export class ModerateurComponent implements OnInit {
    *
    * @param person
    */
-  bannir(candidat: Candidat) {
+  bannir(candidat: candidat) {
     // Get the snackbar DIV
     var x = document.getElementById("ban")
 
@@ -101,7 +101,7 @@ export class ModerateurComponent implements OnInit {
     this.getCandidats();
   }
 
-  unBan(candidat: Candidat) {
+  unBan(candidat: candidat) {
     // Get the snackbar DIV
     var x = document.getElementById("unban")
 
@@ -148,7 +148,7 @@ export class ModerateurComponent implements OnInit {
   goToDetailCandidat(idCandidat: number){
     this.signalement = false;
     this.rechercher = false;
-    this.candidatService.getCandidat(idCandidat).subscribe(candidat => this.selectedCandidat = candidat);
+    this.candidatService.getCandidat("" + idCandidat).subscribe(candidat => this.selectedCandidat = candidat);
   }
 
   goToDetailRecruteur(idRecruteur: number){

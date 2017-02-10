@@ -1,131 +1,160 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http, Response  } from '@angular/http';
-import { Observable } 	  from 'rxjs';
-
-import { Candidat } from '../../candidat/interfaces/candidat';
-import { Comment } from '../../candidat/interfaces/commentaire';
+import {Injectable} from '@angular/core';
+import {Headers, Http, RequestOptions} from '@angular/http';
+import {Observable}      from 'rxjs';
 
 
 import 'rxjs/add/operator/toPromise';
 import {environment} from "../../../environments/environment";
+import {candidat} from "../../Candidat/interfaces/candidat";
+import {Response} from "_debugger";
+import {Commentaire} from "../../Candidat/interfaces/commentaire";
 
 @Injectable()
 export class CandidatService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
 
-  // private property to store all backend URLs
-  private _backendURL: any;
-  private candidatsUrl = 'api/candidats';  // URL to web api
+    private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) {
-    this._backendURL = {};
+    // private property to store all backend URLs
+    private _backendURL: any;
+    private candidatsUrl = 'api/candidats';  // URL to web api
 
-    // build backend base url
-    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend.port) {
-      baseUrl += `:${environment.backend.port}`;
+    constructor(private http: Http) {
+        this._backendURL = {};
+
+        // build backend base url
+        let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
+        if (environment.backend.port) {
+            baseUrl += `:${environment.backend.port}`;
+
+        }
+
+        // build all backend urls
+        Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
     }
 
-    // build all backend urls
-    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
-  }
+    createCandidat(c: candidat): Observable<candidat> {
+        return this.http.post(this._backendURL.creerCandidat, JSON.stringify(c), this._options())
+            .map((res) => res.json());
+    }
 
-  search(term: string): Observable<Candidat[]> {
-    return this.http
-      .get(`http://localhost:8080/rest/candidat/get/?nom=${term}`)//`/api/candidats/?name=${term}`)
-      .map((r: Response) => r.json().data as Candidat[]);
-  }
+    updateCandidat(c: candidat): Observable<candidat> {
+        return this.http.put(this._backendURL.modifierCandidat, JSON.stringify(c), this._options())
+            .map((res) => res.json());
+    }
 
-  getComments(): Promise<Comment[]> {
-    return this.http.get(this._backendURL.allComment)
-      .toPromise()
-      .then(response => response.json().data as Comment[])
-      .catch(this.handleError);
-  }
-
-  getComment(idCandidat: number): Promise<Comment[]> {
-    return this.http.get(this._backendURL.oneComment.replace(':id', idCandidat))//`/api/candidats/?idCandidat=${idCandidat}`)
-      .toPromise()
-      .then(response => response.json().data as Comment[])
-      .catch(this.handleError);
-  }
-
-  deleteComment(idCandidat: number): Promise<Comment[]> {
-    return this.http.delete(this._backendURL.allComment.replace(':id', idCandidat))
-      .toPromise()
-      .then(response => response.json().data as Comment[])
-      .catch(this.handleError);
-  }
-
-  editComment(idCandidat: number): Promise<Comment[]> {
-    return this.http.put(this._backendURL.oneComment.replace(':id', idCandidat), idCandidat)//`/api/candidats/?idCandidat=${idCandidat}`)
-      .toPromise()
-      .then(response => response.json().data as Comment[])
-      .catch(this.handleError);
-  }
-
-  getCandidats(): Observable<Candidat[]> {
-    return this.http.get(this._backendURL.allCandidat)
-      .map( res =>  res.json() );
-  }
-
-  getCandidat(id: number): Observable<Candidat> {
-    //const url = `${this.candidatsUrl}/${id}`;
-    return this.http.get(this._backendURL.oneCandidat.replace(':id', id))
-      .map( res =>  res.json() );
-  }
-
-  bannir(candidat: Candidat): Observable<Candidat>  {
-    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
-    return this.http
-      .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), candidat, requestOptions)
-      .map( res => res.json() );
-    /*{
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return [];
-        }
-      });*/
-  }
-
-  unBan(candidat: Candidat): Observable<Candidat> {
-    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
-    return this.http
-      .put(this._backendURL.unbanCandidat.replace(':id',candidat.id), candidat, requestOptions)
-      .map( res => {
-        if (res.status === 200) {
-          return res.json();
-        }
-        else {
-          return [];
-        }
-      });
-  }
-
-  getNbFemelle(){
-    return this.http.get(this._backendURL.nbFemelle)
-                    .map( res =>  res.json() );
-  }
-
-  getNbMale(){
-    return this.http.get(this._backendURL.nbMale)
-                    .map( res =>  res.json() );
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
+    getCandidat(id: string): Observable<candidat> {
+        return this.http.get(this._backendURL.getCandidat.replace(':id', id))
+            .map(res => {
+                if (res.status === 200) {
+                    return res.json();
+                }
+            });
+    }
 
 
-  getCandidatsSlowly(): Promise<Candidat[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getCandidats()), 2000);
-    });
-  }
+    getCompetences(s: string): Observable<string[]> {
+        return this.http.get(this._backendURL.getCompetences.replace(':comp', s))
+            .map(res => {
+                if (res.status === 200) {
+                    return res.json();
+                }
+            });
+    }
+
+    private _options(): RequestOptions {
+        const headers = new Headers(Object.assign({'Content-Type': 'application/json'}));
+        return new RequestOptions({headers: headers});
+    }
+
+    search(term: string): Observable<candidat[]> {
+        return this.http
+            .get(`http://localhost:8080/rest/candidat/get/?nom=${term}`)//`/api/candidats/?name=${term}`)
+            .map((r) => r.json().data as candidat[]);
+    }
+
+    getComments(): Promise<Commentaire[]> {
+        return this.http.get(this._backendURL.allComment)
+            .toPromise()
+            .then(response => response.json().data as Commentaire[])
+            .catch(this.handleError);
+    }
+
+    getComment(idCandidat: number): Promise<Commentaire[]> {
+        return this.http.get(this._backendURL.oneComment.replace(':id', idCandidat))//`/api/candidats/?idCandidat=${idCandidat}`)
+            .toPromise()
+            .then(response => response.json().data as Commentaire[])
+            .catch(this.handleError);
+    }
+
+    deleteComment(idCandidat: number): Promise<Commentaire[]> {
+        return this.http.delete(this._backendURL.allComment.replace(':id', idCandidat))
+            .toPromise()
+            .then(response => response.json().data as Commentaire[])
+            .catch(this.handleError);
+    }
+
+    editComment(idCandidat: number): Promise<Commentaire[]> {
+        return this.http.put(this._backendURL.oneComment.replace(':id', idCandidat), idCandidat)//`/api/candidats/?idCandidat=${idCandidat}`)
+            .toPromise()
+            .then(response => response.json().data as Commentaire[])
+            .catch(this.handleError);
+    }
+
+    getCandidats(): Observable<candidat[]> {
+        return this.http.get(this._backendURL.allCandidat)
+            .map(res => res.json());
+    }
+
+    bannir(candidat: candidat) {//: Promise<Candidat[]> {
+        const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
+        return this.http
+            .put(this._backendURL.bannirCandidat.replace(':id', candidat.id), candidat, requestOptions)
+            .map(res => {
+                if (res.status === 200) {
+                    return res.json();
+                }
+                else {
+                    return [];
+                }
+            });
+    }
+
+    unBan(candidat: candidat) {
+        const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
+        return this.http
+            .put(this._backendURL.unbanCandidat.replace(':id', candidat.id), candidat, requestOptions)
+            .map(res => {
+                if (res.status === 200) {
+                    return res.json();
+                }
+                else {
+                    return [];
+                }
+            });
+    }
+
+    getNbFemelle() {
+        return this.http.get(this._backendURL.nbFemelle)
+            .map(res => res.json());
+    }
+
+    getNbMale() {
+        return this.http.get(this._backendURL.nbMale)
+            .map(res => res.json());
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    }
+
+
+    getCandidatsSlowly(): Promise<candidat[]> {
+        return new Promise(resolve => {
+            // Simulate server latency with 2 second delay
+            setTimeout(() => resolve(this.getCandidats()), 2000);
+        });
+    }
 
 }
