@@ -101,12 +101,12 @@
 <!-- dialogue de confirmation inviter une personne à créer un compte  -->
 <div *ngIf=" notification === true" [ngSwitch]="typeNotification">
 
-    <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable" (click)="closeNotif()">
+    <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable center" (click)="closeNotif()">
       <a class="close" data-dismiss="alert" aria-label="close" >×</a>
       Message envoyé !
     </div>
 
-    <div *ngSwitchCase="'error'" class="alert alert-danger alert-dismissable">
+    <div *ngSwitchCase="'error'" class="alert alert-danger alert-dismissable center">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
       <strong>Erreur !</strong> Le message n'a pas pu être envoyé
     </div>
