@@ -16,10 +16,10 @@ export const environment = {
       unBanRecruteur: '/rest/recruteur/unban/:id',
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
-      allPost: '/api/posts',
+      allPost: '/rest/recruteur/allDossier',
       onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
-      allRecruteur: '/api/recruteurs',
-      oneRecruteur: '/api/recruteurs/:id',
+      allRecruteur: '/rest/recruteur/get',
+      oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
       createUser: '/rest/utilisateur/inscrire',
       searchMetier: '/rest/recruteur/completeMetier/:intitule',

@@ -45,12 +45,15 @@ describe('CandidatService', () => {
                   body: [
                     {
                       id: 26,
+                      adresse: "8 route",
                       email: "b@b.gmail.com",
                       banned: 0,
                       loisirs: "sport",
                       nom: "martin",
                       photo: "null",
                       prenom: "jean",
+                      telfix:"03",
+                      telperso:"06",
                       experiencePro: "exp",
                       formation: "form",
                       competence: null
@@ -83,18 +86,21 @@ describe('CandidatService', () => {
           (connection: MockConnection) => {
 
             // make sure the URL is correct
-            expect(connection.request.url).toMatch(/\/server\/api\/blogs\/3/);
+            expect(connection.request.url).toMatch(/\/rest\/candidat\/get\/3/);
             connection.mockRespond(
               new Response(
                 new ResponseOptions({
                   body: {
                     id: 3,
+                    adresse: "8 route",
                     email: "b@b.gmail.com",
                     banned: 0,
                     loisirs: "sport",
                     nom: "martin",
                     photo: "null",
                     prenom: "jean",
+                    telfix:"03",
+                    telperso:"06",
                     experiencePro: "exp",
                     formation: "form",
                     competence: null
@@ -115,45 +121,52 @@ describe('CandidatService', () => {
       })));
 
 //pour tester le banned d'un candidat (ne fonctionne pas)
-    it('should save updates to an existing candidat entry', inject([CandidatService], (service: CandidatService) => {
-      getTestBed().compileComponents().then(() => {
-        mockBackend.connections.subscribe(
-          (connection: MockConnection) => {
-            connection.mockRespond(new Response(
+    it('should save updates to an existing candidat entry (ban)', async(inject([CandidatService], (candidatService) => {
+      mockBackend.connections.subscribe(
+        (connection: MockConnection) => {
+
+          // make sure the URL is correct
+          expect(connection.request.url).toMatch(/\/rest\/candidat\/ban\/3/);
+          connection.mockRespond(
+            new Response(
               new ResponseOptions({
-                  body: [
-                    {
-                      id: 26,
-                      email: "b@b.gmail.com",
-                      banned: 0,
-                      loisirs: "sport",
-                      nom: "martin",
-                      photo: "null",
-                      prenom: "jean",
-                      experiencePro: "exp",
-                      formation: "form",
-                      competence: null
-                    }]
+                body: {
+                  id: 3,
+                  adresse: "8 route",
+                  email: "b@b.gmail.com",
+                  banned: 0,
+                  loisirs: "sport",
+                  nom: "martin",
+                  photo: "null",
+                  prenom: "jean",
+                  telfix:"03",
+                  telperso:"06",
+                  experiencePro: "exp",
+                  formation: "form",
+                  competence: null
                 }
-              )));
-          });
 
-        let candidat: Candidat;
-        candidat = {
-          id: 3, email: "b@b.gmail.com", banned: 0, loisirs: "sport", nom: "martin", photo: "null", prenom: "jean",
-          experiencePro: "exp", formation: "form", competence: null
-        };
-        console.log("candidat avant : " + candidat.id);
+              }))
+          );
+        }
+      );
 
-        service.bannir(candidat).subscribe(
-          (successResult: Candidat) => {
-            expect(successResult).toBeDefined();
-            console.log(successResult);
-         //   expect(successResult.id).toEqual(4);
-          });
+      let candidat: Candidat;
+      candidat = {
+        id: 3, adresse: "8 route", email: "b@b.gmail.com", banned: 0, loisirs: "sport", nom: "martin", photo: "null", prenom: "jean",
+        telfix:"03", telperso:"06",experiencePro: "exp", formation: "form", competence: null
+      };
+      console.log("candidat avant : " + candidat.id);
 
-      });
-    }));
+      candidatService.bannir(candidat).subscribe(
+        (cand) => {
+          console.log(JSON.stringify(cand));
+          console.log("4eme cand : "+cand.id+" banne "+ cand.banned);
+          expect(cand.id).toEqual(3);
+          expect(cand.banned).toEqual(0);
+        }
+      );
+    })));
 
 
 });

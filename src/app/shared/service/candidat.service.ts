@@ -76,21 +76,22 @@ export class CandidatService {
       .map( res =>  res.json() );
   }
 
-  bannir(candidat: Candidat) {//: Promise<Candidat[]> {
+  bannir(candidat: Candidat): Observable<Candidat>  {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
       .put(this._backendURL.bannirCandidat.replace(':id',candidat.id), candidat, requestOptions)
-      .map( res => {
+      .map( res => res.json() );
+    /*{
         if (res.status === 200) {
           return res.json();
         }
         else {
           return [];
         }
-      });
+      });*/
   }
 
-  unBan(candidat: Candidat) {
+  unBan(candidat: Candidat): Observable<Candidat> {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     return this.http
       .put(this._backendURL.unbanCandidat.replace(':id',candidat.id), candidat, requestOptions)
