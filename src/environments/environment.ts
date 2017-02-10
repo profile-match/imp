@@ -5,8 +5,8 @@ export const environment = {
   },
   backend: {
     protocol: 'http',
-    host: 'localhost',
-    port: '8080',
+    host: 'pm-core.bober.ovh',
+    port:'8080',
     endpoints: {
       creerCandidat: '/rest/candidat/create',
       modifierCandidat:'/rest/candidat/update',
