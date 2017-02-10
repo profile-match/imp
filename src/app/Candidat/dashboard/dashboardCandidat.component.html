@@ -1,0 +1,51 @@
+<div class="x_panel">
+  <div class="x_title">
+    <h1>Dashboard</h1> Bonjour {{candidat.prenom}} {{candidat.nom}}
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="row">
+    <div class="x_title">
+      <h2>Vos offres :</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div class="col-sm-10">
+
+        <app-postes-candidat [candidat]="candidat"></app-postes-candidat>
+
+      </div>
+      <div class="col-sm-2">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">27 offres d'emplois</div>
+          <div class="panel-body">
+            <p>
+              <!-- p style="text-align: justify" -->
+              En recherche d'emploi ? <br/>
+              27 offres d'emplois correspondent à votre profil, qu'attendez vous pour postuler ? <br/>
+              N'hésitez pas les amis ! <br/>
+            </p>
+          </div>
+          <div class="panel-footer">
+            <p style="text-align: center">
+              <button type="button" class="btn btn-default">Voir les offres</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="x_title">
+      <h2>Message :</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <app-messages-candidat></app-messages-candidat>
+    </div>
+  </div>
+
+</div>
+
