@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "./shared/service/authentication.service";
-import { DialogRef, ModalComponent, CloseGuard } from 'angular2-modal';
 import {MailService} from "./shared/service/mail.service";
+
+
 
 
 @Component({
