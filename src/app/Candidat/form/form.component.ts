@@ -73,18 +73,25 @@ export class FormComponent implements OnInit {
     this.candidat.isMale = b;
   }
 
-  addCompetence(competence: string, type:string) {
+  addCompetence(competence: string, type: string) {
     const comp = {
       "competence": competence,
-      "type":type
+      "type": type
     };
 
-    if (competence) {
-      if (this.candidat.competence.indexOf(comp) == -1) {
-        this.candidat.competence.push(comp);
-        this.compet = "";
+    let b = true;
+
+    for (let c of this.candidat.competence) {
+      if (comp.competence === c.competence || comp.type === c.type) {
+        b = false;
       }
     }
+
+    if (b) {
+      this.candidat.competence.push(comp);
+      this.compet = "";
+    }
+
     this.propositions_competences = [];
   }
 
