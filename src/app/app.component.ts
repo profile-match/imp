@@ -3,6 +3,7 @@ import {AuthenticationService} from "./shared/service/authentication.service";
 import { DialogRef, ModalComponent, CloseGuard } from 'angular2-modal';
 import {MailService} from "./shared/service/mail.service";
 
+
 @Component({
   selector: 'app-root',
   providers: [AuthenticationService],
@@ -13,20 +14,42 @@ export class AppComponent {
 
   private _dialogStatusInvitation = 'inactive';
 
+  private  _notification : boolean;
+  private _typeNotification : string
+  private _message : string ;
 
   constructor(private _service:AuthenticationService, private _mailService : MailService){
 
     this._dialogStatusInvitation = 'inactive';
+    this._notification = false;
+    this._typeNotification = "";
 
   }
 
   sendMail(mail : any){
     this._mailService.envoyerMail(mail)
-      .subscribe( _ => {
-        this.hideDialog();
+      .subscribe( (res : any) => {
+        console.log(res);
+        this._notification = true;
+        this._typeNotification = res['success'] === "success" ? "success" : "error";
       });
+    this.hideDialog();
   }
 
+get message() : string{
+    return this._message;
+}
+
+get typeNotification() : string{
+    return this._typeNotification;
+}
+
+get notification() : boolean{
+    return this._notification;
+}
+  closeNotif(){
+    this._notification = false;
+  }
 
 
   get dialogStatusInvitation(): string {

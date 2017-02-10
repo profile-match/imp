@@ -12,10 +12,11 @@
       <ul class="nav navbar-nav navbar-right">
 
         <!-- mettre partie si connecté en recruteur -->
-        <li>
-         <!-- <a   routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >inviter </a> -->
-          <button class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
-                  (click)="showDialog()" >Open Modal</button>
+        <li (click)="showDialog()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
         </li>
 
         <li>
@@ -94,6 +95,26 @@
   </nav>
 </div>
 <!-- /top navigation -->
+
+
+<!-- ################"  -->
+<div *ngIf=" notification === true" [ngSwitch]="typeNotification">
+
+    <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable" (click)="closeNotif()">
+      <a class="close" data-dismiss="alert" aria-label="close" >×</a>
+      <strong>Success!</strong> Message envoyé !
+    </div>
+
+    <div *ngSwitchCase="'error'" class="alert alert-danger alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+      <strong>Erreur !</strong> Le message n'a pas pu être envoyé
+    </div>
+
+
+</div>
+
+
+<!-- ################"  -->
 
 <router-outlet>
 </router-outlet>

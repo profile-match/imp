@@ -49,7 +49,6 @@ import { CertificationComponent } from './recruteur/certification/certification.
 import { FormInvitationComponent } from './shared/form-invitation/form-invitation.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +72,7 @@ import { FormInvitationComponent } from './shared/form-invitation/form-invitatio
     FormationComponent,
     UpdateComponent,
     CertificationComponent,
-    FormInvitationComponent
+    FormInvitationComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +84,7 @@ import { FormInvitationComponent } from './shared/form-invitation/form-invitatio
     Ng2AutoCompleteModule,
     ChartsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [CandidatService,RecruteurService, MailService],
   bootstrap: [AppComponent]
