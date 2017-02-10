@@ -11,7 +11,8 @@
     <div *ngIf="!login()">
       <ul class="nav navbar-nav navbar-right">
 
-        <!-- mettre partie si connecté en recruteur -->
+        <!-- mettre partie si connecté en tant recruteur -->
+        <!-- bouton inviter pour inviter une personne à créer un compte -->
         <li (click)="showDialog()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
@@ -97,7 +98,7 @@
 <!-- /top navigation -->
 
 
-<!-- ################"  -->
+<!-- dialogue de confirmation inviter une personne à créer un compte  -->
 <div *ngIf=" notification === true" [ngSwitch]="typeNotification">
 
     <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable" (click)="closeNotif()">
@@ -109,21 +110,13 @@
       <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
       <strong>Erreur !</strong> Le message n'a pas pu être envoyé
     </div>
-
-
 </div>
-
 
 <!-- ################"  -->
 
+
 <router-outlet>
 </router-outlet>
-
-
-<section class="dialog-modal" [ngClass]="{ 'active': dialogStatusInvitation === 'active' }" >
-  <app-form-invitation (cancel)="hideDialog()" (submit)="sendMail($event)"></app-form-invitation>
-</section>
-
 
 <!-- footer content -->
 <footer>
@@ -133,3 +126,13 @@
   <div class="clearfix"></div>
 </footer>
 <!-- /footer content -->
+
+
+
+<!--  inviter une personne à créer un compte  -->
+
+<section class="dialog-modal" [ngClass]="{ 'active': dialogStatusInvitation === 'active' }" >
+  <app-form-invitation (cancel)="hideDialog()" (submit)="sendMail($event)"></app-form-invitation>
+</section>
+
+<!-- ################"  -->

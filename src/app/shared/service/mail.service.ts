@@ -26,7 +26,6 @@ export class MailService {
   envoyerMail(mails : any ) : Observable<any>{
     return this._http.post(this._backendURL.sendMail, JSON.stringify(mails), this._options())
       .map((res: Response) => {
-      console.log(res);
         if (res.status === 200) {
           return {"success" : "success"};
         }

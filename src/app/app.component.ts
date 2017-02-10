@@ -14,7 +14,6 @@ import {MailService} from "./shared/service/mail.service";
 export class AppComponent {
 
   private _dialogStatusInvitation = 'inactive';
-
   private  _notification : boolean;
   private _typeNotification : string
   private _message : string ;
@@ -30,24 +29,23 @@ export class AppComponent {
   sendMail(mail : any){
     this._mailService.envoyerMail(mail)
       .subscribe( (res : any) => {
-        console.log(res);
         this._notification = true;
         this._typeNotification = res['success'] === "success" ? "success" : "error";
       });
     this.hideDialog();
   }
 
-get message() : string{
+  get message() : string{
     return this._message;
-}
+  }
 
-get typeNotification() : string{
+  get typeNotification() : string{
     return this._typeNotification;
-}
+  }
 
-get notification() : boolean{
+  get notification() : boolean{
     return this._notification;
-}
+  }
   closeNotif(){
     this._notification = false;
   }
