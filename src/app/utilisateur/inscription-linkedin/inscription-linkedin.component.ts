@@ -27,50 +27,8 @@ export class InscriptionLinkedinComponent implements OnInit {
   }
 
   ngOnInit() {
-    //console.log(this.activatedRoute.url);
-    //console.log(this.getCode(location.href));
-    //console.log(this.getState(location.href));
-
-
-    const requestOptions = { headers: new Headers({'Content-Type': 'text/plain', 'Access-Control-Allow-Origin' : 'http://localhost:4200'})};
-    var params:any = {};
-    params.grant_type="authorization_code";
-    params.code=this.getCode(location.href);
-    params.redirect_uri="http%3A%2F%2Flocalhost%3A4200%2Fhome%2Finscription-linkedin";
-    params.client_id="86g3ojziahkhnk";
-    params.client_secret="k4DM17hgWPswnxKA";
-
-    var url = "https://www.linkedin.com/oauth/v2/accessToken?" +
-      "grant_type=authorization_code&" +
-      "code=" + this.getCode(location.href) + "&" +
-      "redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fhome%2Finscription-linkedin&" +
-      "client_id=86g3ojziahkhnk&" +
-      "client_secret=k4DM17hgWPswnxKA";
-console.log(url);
-
-/*
-    this._http.post(url, params, requestOptions)
-      .map( res => {
-          if (res.status === 200) {
-            console.log(res.json());
-            return res.json();
-          }
-          else {
-            return [];
-          }
-        })
-        .subscribe( (people: any[]) => {
-        });
-        */
-
-    console.log(this._backendURL.linkedinToken.replace(':code',this.getCode(location.href)).replace(':state', this.getState(location.href)));
-    /*
-    this._http.get(this._backendURL.replace(':code',this.getCode(location.href)).replace(':state', this.getState(location.href)))
-      .map( res =>  res.json() )
-      .subscribe( (res: any) => {
-        console.log(res);
-    });
-    */
+    this._http.get(this._backendURL.linkedinToken.replace(':code',this.getCode(location.href)).replace(':state', this.getState(location.href)))
+      .subscribe();
   }
 
   getCode(chaine:string):string{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer, ElementRef } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import { Location }  from '@angular/common';
 import {environment} from "../../../environments/environment";
@@ -17,14 +17,25 @@ export class InscriptionUtilisateurComponent implements OnInit {
   _utilisateur: Utilisateur;
   users: Utilisateur[];
 
+  public DEFAULT_STATUS = 0;
+  public HOVER_STATUS = 1;
+  public ACTIVATED_STATUS = 2;
+  private _buttonLinkedinStatus:number;
+
+
+  public buttonLinkedinStatus():number{
+  return this._buttonLinkedinStatus;
+}
+
   private headers = new Headers({'Content-Type': 'application/json'});
 
   // private property to store all backend URLs
   private _backendURL: any;
   private candidatsUrl = 'api/candidats';  // URL to web api
 
-  constructor(private http: Http, private _router: Router, private location: Location) {
+  constructor(private http: Http, private _router: Router, private location: Location, private _el: ElementRef, private _rd: Renderer) {
     this._backendURL = {};
+    this._buttonLinkedinStatus = this.DEFAULT_STATUS;
     this.users = [{  id:1, email:'string', motdepasse:'string' }];
     this._utilisateur = {  id:1, email:'string', motdepasse:'string' };
 
@@ -63,17 +74,26 @@ export class InscriptionUtilisateurComponent implements OnInit {
   }
 
   goLinkedIn(): void{
-    console.log("test");
-    //this._router.navigate(['/inscription-linkedin']);
-
-    //https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86g3ojziahkhnk&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fhome%2Finscription-linkedin&state=987654321&scope=r_basicprofile
+      this.activeLinkedinButton();
       window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
         "response_type=code&" +
-        "client_id=86g3ojziahkhnk&" +
+        "client_id=7868doeuipinun&" +
         "redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fhome%2Finscription-linkedin&" +
         "state=987654321&" +
         "scope=r_emailaddress";
 
+  }
+
+  overLinkedinButton(): void{
+    this._buttonLinkedinStatus=this.HOVER_STATUS;
+  }
+
+  activeLinkedinButton(): void{
+    this._buttonLinkedinStatus=this.ACTIVATED_STATUS;
+  }
+
+  leaveLinkedinButton(): void{
+    this._buttonLinkedinStatus=this.DEFAULT_STATUS;
   }
 }
 
