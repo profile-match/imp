@@ -37,7 +37,13 @@ export const environment = {
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
+      linkedinToken: '/rest/linkedin/gettoken/:code/:state',
       getCompetences: '/rest/competence/get/:comp'
     }
+  },
+  frontend: {
+    protocol: 'http',
+    host: 'imp.bober.ovh',
+    port: ''
   }
 };

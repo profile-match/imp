@@ -9,6 +9,7 @@ import {ModerateurComponent} from "./visiteur/moderateur/moderateur.component";
 import {PosteFormComponent} from './recruteur/poste-form/poste-form.component';
 import {LoginComponent} from "./visiteur/login/login.component";
 import {InscriptionUtilisateurComponent} from "./utilisateur/inscription/inscription-utilisateur.component";
+import {InscriptionLinkedinComponent} from "./utilisateur/inscription-linkedin/inscription-linkedin.component";
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
 
@@ -23,7 +24,8 @@ const ROUTES: Routes = [
     {path: '', redirectTo: 'createCandidat', pathMatch: 'full'},
     {path: 'createCandidat', component: CreerProfileCandidatComponent},
     {path: 'editCandidat/:id', component: UpdateProfileCandidatComponent},
-    {path: 'candidat/:id', component: DashboardCandidatComponent}
+    {path: 'candidat/:id', component: DashboardCandidatComponent},
+    {path: 'inscription-linkedin', component: InscriptionLinkedinComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

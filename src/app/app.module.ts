@@ -24,8 +24,7 @@ import {CandidatSearchComponent} from './visiteur/moderateur/candidat-search/can
 import {SignalementComponent} from './visiteur/moderateur/signalement/signalement.component';
 import {RecruteurService} from "./shared/service/recruteur.service";
 import {RecruteurDetailComponent} from './visiteur/moderateur/recruteur-detail/recruteur-detail.component';
-
-
+import { InscriptionLinkedinComponent } from './utilisateur/inscription-linkedin/inscription-linkedin.component';
 import {AppComponent} from './app.component';
 import {PosteFormComponent} from './recruteur/poste-form/poste-form.component';
 import {SavoirSpeComponent} from './recruteur/savoir-spe/savoir-spe.component';
@@ -58,7 +57,6 @@ import {PostesCandidatComponent} from "./Candidat/postes/postesCandidat.componen
         CandidatSearchComponent,
         SignalementComponent,
         RecruteurDetailComponent,
-
         SavoirSpeComponent,
         SavoirEtreComponent,
         SavoirFaireComponent,
@@ -74,20 +72,24 @@ import {PostesCandidatComponent} from "./Candidat/postes/postesCandidat.componen
         FormComponent,
         DashboardCandidatComponent,
         MessagesCandidatComponent,
-        PostesCandidatComponent
+        PostesCandidatComponent,
+        InscriptionLinkedinComponent
     ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        RouterModule,
-        APP_ROUTES,
-        MdInputModule,
-        Ng2AutoCompleteModule,
-        ChartsModule
-    ],
-    providers: [CandidatService, RecruteurService],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule,
+    APP_ROUTES,
+    MdInputModule,
+    Ng2AutoCompleteModule,
+    ChartsModule
+  ],
+  providers: [CandidatService, RecruteurService],
+  bootstrap: [AppComponent]
+
 })
 export class AppModule {
 }
+
+
