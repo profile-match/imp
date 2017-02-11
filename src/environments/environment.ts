@@ -38,6 +38,8 @@ export const environment = {
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
       linkedinToken: '/rest/linkedin/gettoken/:code/:state',
+      suspendCandidat: '/rest/candidat/suspend/:id',
+      unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp'
     }
   },

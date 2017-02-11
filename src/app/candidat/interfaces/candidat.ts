@@ -11,7 +11,7 @@ export interface candidat {
   "loisirs": string;
   "nom": string;
   "isMale" : boolean;
-  "isSuspended": boolean;
+  "suspended": boolean;
   "photo": string;
   "prenom": string;
   "adresse": string;
