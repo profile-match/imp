@@ -62,13 +62,13 @@ describe('RecruteurServiceService', () => {
 
       recruteurService.getRecruteurs().subscribe((recruteurs: Recruteur[]) => {
         console.log("1er recruteur : "+recruteurs[0]);
-   /*     expect(recruteurs.length).toBeDefined();
-        expect(recruteurs.length).toEqual(1);
-        expect(recruteurs[0].id).toEqual(26);
-        expect(recruteurs[0].email).toEqual("b@b.gmail.com");
-        expect(recruteurs[0].banned).toEqual(0);
-        expect(recruteurs[0].nom).toEqual("martin");
-        expect(recruteurs[0].photo).toEqual("null");*/
+        /*     expect(recruteurs.length).toBeDefined();
+         expect(recruteurs.length).toEqual(1);
+         expect(recruteurs[0].id).toEqual(26);
+         expect(recruteurs[0].email).toEqual("b@b.gmail.com");
+         expect(recruteurs[0].banned).toEqual(0);
+         expect(recruteurs[0].nom).toEqual("martin");
+         expect(recruteurs[0].photo).toEqual("null");*/
         done();
       });
     });

@@ -48,6 +48,7 @@ import {FormationCandidatComponent} from "./Candidat/profile/formation/formation
 import {ExperienceComponent} from "./Candidat/profile/experience/experience.component";
 import {CompetenceComponent} from "./Candidat/profile/competence/competence.component";
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
+import {FormInvitationComponent} from "./shared/form-invitation"
 
 //services
 import { CandidatService } from './shared/service/candidat.service';
@@ -87,7 +88,8 @@ import {NotificationService} from "./shared/service/notification.service"
       FormationCandidatComponent,
       ExperienceComponent,
       CompetenceComponent,
-      ProfileCandidatComponent
+      ProfileCandidatComponent,
+      FormInvitationComponent
     ],
 
   imports: [
