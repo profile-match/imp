@@ -5,7 +5,7 @@ export const environment = {
   },
   backend: {
     protocol: 'http',
-    host: 'pm-core.bober.ovh',
+    host: 'localhost',
     port: '8080',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
@@ -45,7 +45,7 @@ export const environment = {
   },
   frontend: {
     protocol: 'http',
-    host: 'imp.bober.ovh',
+    host: 'localhost',
     port: ''
   }
 };
