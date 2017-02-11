@@ -111,13 +111,12 @@
       {{message}}
     </div>
 </div>-->
-<div *ngIf=" notification === true" class="alert alert-success alert-dismissable center"  (click)="closeNotif()"
-     [class.alert-success]="typeNotification==='success'"
-     [class.alert-danger]="typeNotification==='error'">
+<div *ngIf=" notification.message" class="alert alert-success alert-dismissable center"  (click)="closeNotif()"
+     [class.alert-success]="notification.type==='success'"
+     [class.alert-danger]="notification.type==='error'">
       <a class="close" data-dismiss="alert" aria-label="close" >×</a>
-      {{message}}
+      {{notification.message}}
 </div>
-
 <!-- ################"  -->
 
 

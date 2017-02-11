@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "./shared/service/authentication.service";
 import {MailService} from "./shared/service/mail.service";
+import {Observable} from "rxjs";
+import {NotificationService} from "./shared/service/notification.service";
 
 
 
@@ -14,52 +16,44 @@ import {MailService} from "./shared/service/mail.service";
 export class AppComponent {
 
   private _dialogStatusInvitation = 'inactive';
-  private  _notification : boolean;
-  private _typeNotification : string
-  private _message : string ;
+  private _timer ;
+  private _notification : any ;
 
-  constructor(private _service:AuthenticationService, private _mailService : MailService){
+  constructor(private _service:AuthenticationService, private _mailService : MailService, private _notificationService : NotificationService) {
 
     this._dialogStatusInvitation = 'inactive';
-    this._notification = false;
-    this._typeNotification = "";
+    this._notification = {};
+  }
+
+  ngOnInit() {
+    this._notificationService.changeEmitted$.subscribe(
+      (res : any ) => {
+        this._notification = res;
+      });
 
   }
 
   sendMail(mail : any){
     this._mailService.envoyerMail(mail)
       .subscribe( (res : any) => {
-        this._notification = true;
 
         if(res['success'] === "success"){
-          this._typeNotification = "success";
-          this._message = "Message envoyé !";
+          this._notificationService.addNotification("Message envoyé ! ", "success");
         } else{
-          this._typeNotification = "error";
-          this._message = "Le message n'a pas pu être envoyé";
+          this._notificationService.addNotification("erreur lors de l'envoie du message ", "error");
         }
-
+        this._timer = Observable.timer(6000).subscribe(_ => this.closeNotif()) ;
       });
     this.hideDialog();
   }
 
-  get message() : string{
-    return this._message;
-  }
-
-  get typeNotification() : string{
-    return this._typeNotification;
-  }
-
-  get notification() : boolean{
+  get notification() : any{
     return this._notification;
   }
   closeNotif(){
-    this._notification = false;
-    this._typeNotification = "";
-    this._message = "";
+    this._timer.unsubscribe();
+    this._notification = {};
   }
-
 
   get dialogStatusInvitation(): string {
     return this._dialogStatusInvitation;

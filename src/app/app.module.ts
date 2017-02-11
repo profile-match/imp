@@ -21,6 +21,7 @@ import { APP_ROUTES } from './app.routes';
 import { CandidatService } from './shared/service/candidat.service';
 import { RecruteurService } from "./shared/service/recruteur.service";
 import { MailService } from "./shared/service/mail.service";
+import {NotificationService} from "./shared/service/notification.service"
 
 import { AccueilComponent } from './visiteur/accueil/accueil.component';
 import { LoginComponent } from './visiteur/login/login.component';
@@ -86,7 +87,7 @@ import { FormInvitationComponent } from './shared/form-invitation/form-invitatio
     MaterialModule,
     ReactiveFormsModule,
   ],
-  providers: [CandidatService,RecruteurService, MailService],
+  providers: [CandidatService,RecruteurService, MailService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
