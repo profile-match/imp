@@ -8,8 +8,11 @@ import {RouterModule} from "@angular/router";
 import {ChartsModule} from 'ng2-charts/ng2-charts';
 
 // noinspection TypeScriptCheckImport
+
 import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
 import {MdInputModule} from '@angular/material/input';
+import { MaterialModule } from '@angular/material';
+import { ReactiveFormsModule } from "@angular/forms";
 
 import './visiteur/moderateur/candidat-search/rxjs-extensions';
 
@@ -22,7 +25,6 @@ import {ModerateurComponent} from './visiteur/moderateur/moderateur.component';
 import {CandidatDetailComponent} from './visiteur/moderateur/candidat-detail/candidat-detail.component';
 import {CandidatSearchComponent} from './visiteur/moderateur/candidat-search/candidat-search.component';
 import {SignalementComponent} from './visiteur/moderateur/signalement/signalement.component';
-import {RecruteurService} from "./shared/service/recruteur.service";
 import {RecruteurDetailComponent} from './visiteur/moderateur/recruteur-detail/recruteur-detail.component';
 import { InscriptionLinkedinComponent } from './utilisateur/inscription-linkedin/inscription-linkedin.component';
 import {AppComponent} from './app.component';
@@ -36,11 +38,9 @@ import {TechniqueComponent} from './recruteur/technique/technique.component';
 import {LinguistiquesComponent} from './recruteur/linguistiques/linguistiques.component';
 import {FormationComponent} from './recruteur/formation/formation.component';
 import {UpdateComponent} from './recruteur/poste-form/update/update.component';
-
 import {CertificationComponent} from './recruteur/certification/certification.component';
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {FormComponent} from "./Candidat/form/form.component";
-import {CandidatService} from "./shared/service/candidat.service";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
 import {MessagesCandidatComponent} from "./Candidat/messages-candidat/messages-candidat.component";
 import {PostesCandidatComponent} from "./Candidat/postes/postesCandidat.component";
@@ -48,6 +48,12 @@ import {FormationCandidatComponent} from "./Candidat/profile/formation/formation
 import {ExperienceComponent} from "./Candidat/profile/experience/experience.component";
 import {CompetenceComponent} from "./Candidat/profile/competence/competence.component";
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
+
+//services
+import { CandidatService } from './shared/service/candidat.service';
+import { RecruteurService } from "./shared/service/recruteur.service";
+import { MailService } from "./shared/service/mail.service";
+import {NotificationService} from "./shared/service/notification.service"
 
 @NgModule({
     declarations: [
@@ -83,6 +89,7 @@ import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
       CompetenceComponent,
       ProfileCandidatComponent
     ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -91,9 +98,12 @@ import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
     APP_ROUTES,
     MdInputModule,
     Ng2AutoCompleteModule,
-    ChartsModule
+    ChartsModule,
+    MaterialModule,
+    ReactiveFormsModule,
   ],
-  providers: [CandidatService, RecruteurService],
+  providers: [CandidatService,RecruteurService, MailService, NotificationService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

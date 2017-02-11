@@ -8,6 +8,16 @@
     <!-- si l'utlisateur n'est pas connecté -->
     <div *ngIf="!login()">
       <ul class="nav navbar-nav navbar-right">
+
+        <!-- mettre partie si connecté en tant recruteur -->
+        <!-- bouton inviter pour inviter une personne à créer un compte -->
+        <li (click)="showDialog()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
+
         <li>
           <a routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
@@ -85,9 +95,31 @@
 </div>
 <!-- /top navigation -->
 
+
+<!-- dialogue de confirmation inviter une personne à créer un compte  -->
+<!--<div *ngIf=" notification === true" [ngSwitch]="typeNotification">
+
+    <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable center" (click)="closeNotif()">
+      <a class="close" data-dismiss="alert" aria-label="close" >×</a>
+      Message envoyé !
+    </div>
+
+    <div *ngSwitchCase="'error'" class="alert alert-danger alert-dismissable center">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+      {{message}}
+    </div>
+</div>-->
+<div *ngIf=" notification.message" class="alert alert-success alert-dismissable center"  (click)="closeNotif()"
+     [class.alert-success]="notification.type==='success'"
+     [class.alert-danger]="notification.type==='error'">
+      <a class="close" data-dismiss="alert" aria-label="close" >×</a>
+      {{notification.message}}
+</div>
+<!-- ################"  -->
+
+
 <router-outlet>
 </router-outlet>
-
 
 <!-- footer content -->
 <footer>
@@ -97,3 +129,13 @@
   <div class="clearfix"></div>
 </footer>
 <!-- /footer content -->
+
+
+
+<!--  inviter une personne à créer un compte  -->
+
+<section class="dialog-modal" [ngClass]="{ 'active': dialogStatusInvitation === 'active' }" >
+  <app-form-invitation (cancel)="hideDialog()" (submit)="sendMail($event)"></app-form-invitation>
+</section>
+
+<!-- ################"  -->

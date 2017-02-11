@@ -37,7 +37,7 @@ export class createService {
 
 
     create(dossier): Observable<Poste> {
-      return this._http.post(this._backendURL.addPoste, JSON.stringify(dossier), this._options())
+      return this._http.post(this._backendURL.addPoste, (dossier), this._options())
         .map((res: Response) => res.json());
   }
 

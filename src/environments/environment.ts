@@ -34,13 +34,17 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
+
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
       linkedinToken: '/rest/linkedin/gettoken/:code/:state',
       suspendCandidat: '/rest/candidat/suspend/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
-      getCompetences: '/rest/competence/get/:comp'
+      getCompetences: '/rest/competence/get/:comp',
+
+      sendMail : '/rest/serviceMail/envoyer'
+
     }
   },
   frontend: {
