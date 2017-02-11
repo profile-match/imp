@@ -3,4 +3,5 @@ export interface Commentaire {
     idCandidat: number;
     contenu:string;
     signale:boolean;
+
 }

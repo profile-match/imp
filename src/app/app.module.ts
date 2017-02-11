@@ -45,49 +45,58 @@ import {CandidatService} from "./shared/service/candidat.service";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
 import {MessagesCandidatComponent} from "./Candidat/messages-candidat/messages-candidat.component";
 import {PostesCandidatComponent} from "./Candidat/postes/postesCandidat.component";
+import {FormationCandidatComponent} from "./Candidat/profile/formation/formation.component";
+import {ExperienceComponent} from "./Candidat/profile/experience/experience.component";
+import {CompetenceComponent} from "./Candidat/profile/competence/competence.component";
+import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        PosteFormComponent,
-        AccueilComponent,
-        LoginComponent,
-        InscriptionUtilisateurComponent,
-        ModerateurComponent,
-        CandidatDetailComponent,
-        CandidatSearchComponent,
-        SignalementComponent,
-        RecruteurDetailComponent,
+  declarations: [
+    AppComponent,
+    PosteFormComponent,
+    AccueilComponent,
+    LoginComponent,
+    InscriptionUtilisateurComponent,
+    ModerateurComponent,
+    CandidatDetailComponent,
+    CandidatSearchComponent,
+    SignalementComponent,
+    RecruteurDetailComponent,
 
-        SavoirSpeComponent,
-        SavoirEtreComponent,
-        SavoirFaireComponent,
-        MetierComponent,
-        FonctionnelleComponent,
-        TechniqueComponent,
-        LinguistiquesComponent,
-        FormationComponent,
-        UpdateComponent,
-        CertificationComponent,
-        CreerProfileCandidatComponent,
-        UpdateProfileCandidatComponent,
-        FormComponent,
-        DashboardCandidatComponent,
-        MessagesCandidatComponent,
-        PostesCandidatComponent
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        RouterModule,
-        APP_ROUTES,
-        MdInputModule,
-        Ng2AutoCompleteModule,
-        ChartsModule
-    ],
-    providers: [CandidatService, RecruteurService],
-    bootstrap: [AppComponent]
+    SavoirSpeComponent,
+    SavoirEtreComponent,
+    SavoirFaireComponent,
+    MetierComponent,
+    FonctionnelleComponent,
+    TechniqueComponent,
+    LinguistiquesComponent,
+    FormationComponent,
+    UpdateComponent,
+    CertificationComponent,
+    CreerProfileCandidatComponent,
+    UpdateProfileCandidatComponent,
+    FormComponent,
+    ProfileCandidatComponent,
+    CompetenceComponent,
+    ExperienceComponent,
+    FormationComponent,
+    DashboardCandidatComponent,
+    MessagesCandidatComponent,
+    PostesCandidatComponent,
+    FormationCandidatComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule,
+    APP_ROUTES,
+    MdInputModule,
+    Ng2AutoCompleteModule,
+    ChartsModule
+  ],
+  providers: [CandidatService, RecruteurService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
