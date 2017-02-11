@@ -82,7 +82,7 @@ export class FormComponent implements OnInit {
     let b = true;
 
     for (let c of this.candidat.competence) {
-      if (comp.competence === c.competence || comp.type === c.type) {
+      if (comp.competence === c.competence && comp.type === c.type) {
         b = false;
       }
     }
