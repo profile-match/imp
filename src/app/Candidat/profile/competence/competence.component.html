@@ -9,7 +9,7 @@
 
   <tbody>
   <tr role="row" class="odd" *ngFor="let competence of competences">
-    <td>{{competence.type}}</td>
+    <td>{{competence.type  | competenceType}}</td>
     <td>{{competence.competence}}</td>
   </tr>
   </tbody>

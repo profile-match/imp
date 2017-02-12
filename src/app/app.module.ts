@@ -54,7 +54,8 @@ import {FormInvitationComponent} from "./shared/form-invitation"
 import { CandidatService } from './shared/service/candidat.service';
 import { RecruteurService } from "./shared/service/recruteur.service";
 import { MailService } from "./shared/service/mail.service";
-import {NotificationService} from "./shared/service/notification.service"
+import {NotificationService} from "./shared/service/notification.service";
+import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe'
 
 @NgModule({
     declarations: [
@@ -89,7 +90,8 @@ import {NotificationService} from "./shared/service/notification.service"
       ExperienceComponent,
       CompetenceComponent,
       ProfileCandidatComponent,
-      FormInvitationComponent
+      FormInvitationComponent,
+      CompetenceTypePipe
     ],
 
   imports: [
