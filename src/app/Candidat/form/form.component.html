@@ -68,10 +68,16 @@
         </select>
       </div>
     </div>
-    <div align="center" class="form-group">
+    <div class="form-group">
+      <label class="col-md-3 control-label">Choisissez votre photo de profil</label>
       <div class="col-md-4">
         <input type="file" (change)="onChange($event)"/>
         <br/>
+        <div class="loader" *ngIf="isUploading">
+          <svg class="circular">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
         <img src="{{urlPhoto}}" class="img-circle" style="width:auto;height:150px;"/>
       </div>
     </div>

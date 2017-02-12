@@ -43,10 +43,12 @@ export class FormComponent implements OnInit {
   private _propositions_competences: string[];
 
   private _urlPhoto: string;
+  private _isUploading:boolean;
 
   constructor(private _candidatService: CandidatService) {
 
     this._isUpdateMode = false;
+    this.isUploading = false;
 
     this._profile$ = new EventEmitter();
 
@@ -63,10 +65,12 @@ export class FormComponent implements OnInit {
   }
 
   onChange(event) {
+    this.isUploading = true;
     let files = event.srcElement.files;
     this._candidatService.uploadPhoto(files).subscribe((id_photo: string) => {
       this.candidat.photo = id_photo;
       this._urlPhoto = this._candidatService.getPhotoUrl(this.candidat.photo)
+      this.isUploading = false;
     });
   }
 
@@ -360,6 +364,14 @@ export class FormComponent implements OnInit {
 
   set urlPhoto(value: string) {
     this._urlPhoto = value;
+  }
+
+  get isUploading(): boolean {
+    return this._isUploading;
+  }
+
+  set isUploading(value: boolean) {
+    this._isUploading = value;
   }
 
 }
