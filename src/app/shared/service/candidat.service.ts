@@ -28,6 +28,25 @@ export class CandidatService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
+  private _options(): RequestOptions {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return new RequestOptions({headers: headers});
+  }
+
+  uploadPhoto(c: FileList): Observable<string> {
+    let formData: FormData = new FormData();
+    formData.append('filedata', c[0], c[0].name);
+    let headers = new Headers();
+    headers.set('Content-Type', 'multipart/form-data');
+    return this.http.post(this._backendURL.postPhotoCandidat, formData, new RequestOptions())
+      .map((res) => res.json());
+
+  }
+
+  getPhotoUrl(id:string):string{
+    return this._backendURL.getPhotoCandidat.replace(':id', id);
+  }
+
   createCandidat(c: candidat): Observable<candidat> {
     return this.http.post(this._backendURL.creerCandidat, JSON.stringify(c), this._options())
       .map((res) => res.json());
@@ -55,11 +74,6 @@ export class CandidatService {
           return res.json();
         }
       });
-  }
-
-  private _options(): RequestOptions {
-    const headers = new Headers(Object.assign({'Content-Type': 'application/json'}));
-    return new RequestOptions({headers: headers});
   }
 
   search(term: string): Observable<candidat[]> {

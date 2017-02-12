@@ -10,6 +10,8 @@ export const environment = {
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
+      postPhotoCandidat: '/rest/candidat/photo/',
+      getPhotoCandidat: '/rest/candidat/photo/:id',
       searchCandidat: '/api/candidats/?name=${:term}',
       bannirCandidat: '/rest/candidat/ban/:id',   //bannir un candidat
       unbanCandidat: '/rest/candidat/unban/:id',

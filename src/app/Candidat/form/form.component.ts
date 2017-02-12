@@ -42,6 +42,8 @@ export class FormComponent implements OnInit {
 
   private _propositions_competences: string[];
 
+  private _urlPhoto: string;
+
   constructor(private _candidatService: CandidatService) {
 
     this._isUpdateMode = false;
@@ -58,6 +60,14 @@ export class FormComponent implements OnInit {
     this.clearExperienceForm();
 
     this.comp_select = "0";
+  }
+
+  onChange(event) {
+    let files = event.srcElement.files;
+    this._candidatService.uploadPhoto(files).subscribe((id_photo: string) => {
+      this.candidat.photo = id_photo;
+      this._urlPhoto = this._candidatService.getPhotoUrl(this.candidat.photo)
+    });
   }
 
   @Output("submit") get create$(): EventEmitter<any> {
@@ -341,6 +351,15 @@ export class FormComponent implements OnInit {
 
   set experience8(value: string) {
     this._experience8 = value;
+  }
+
+
+  get urlPhoto(): string {
+    return this._urlPhoto;
+  }
+
+  set urlPhoto(value: string) {
+    this._urlPhoto = value;
   }
 
 }
