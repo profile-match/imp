@@ -18,6 +18,7 @@ export class ProfileCandidatComponent implements OnInit {
   private _candidat: candidat;
   private _dialogStatus: string;
   private _id: string;
+  private _urlPhoto: string;
 
   constructor(private _route: ActivatedRoute, private _candidatService: CandidatService) {
     this._dialogStatus = 'inactive';
@@ -35,14 +36,16 @@ export class ProfileCandidatComponent implements OnInit {
     this._candidatService.getCandidat(this._id).subscribe(
       (candidat: candidat) => {
         this._candidat = candidat;
+        this._urlPhoto = this._candidatService.getPhotoUrl(candidat.photo);
       });
+
   }
 
   get candidat(): any {
     return this._candidat;
   }
 
-  set candidat(candidat:any) {
+  set candidat(candidat: any) {
     this._candidat = candidat;
   }
 
@@ -58,7 +61,7 @@ export class ProfileCandidatComponent implements OnInit {
     return this._candidat.id;
   }
 
-  get _candidatAddress():string{
+  get _candidatAddress(): string {
     return this._candidat.adresse;
   }
 
@@ -66,27 +69,27 @@ export class ProfileCandidatComponent implements OnInit {
     return this._candidat.email;
   }
 
-  get _candidatPhoneFix():string{
+  get _candidatPhoneFix(): string {
     return this._candidat.telfix;
   }
 
-  get _candidatPhoneMobile():string{
+  get _candidatPhoneMobile(): string {
     return this._candidat.telperso;
   }
 
-  get _candidatPhoto():any{
+  get _candidatPhoto(): any {
     return this._candidat.photo;
   }
 
-  get _candidatFormations():formation[]{
+  get _candidatFormations(): formation[] {
     return this._candidat.formation;
   }
 
-  get _candidatExperiences():experiencePro[]{
+  get _candidatExperiences(): experiencePro[] {
     return this._candidat.experiencePro;
   }
 
-  get _candidatCompetences():competence[]{
+  get _candidatCompetences(): competence[] {
     return this._candidat.competence;
   }
 
@@ -97,15 +100,15 @@ export class ProfileCandidatComponent implements OnInit {
   suspendCandidat(c: candidat) {
     this._candidatService.suspend(c).subscribe(
       (cdd: candidat) => {
-      this._candidat = cdd;
-    });
+        this._candidat = cdd;
+      });
   }
 
-  unsuspendCandidat(c: candidat){
+  unsuspendCandidat(c: candidat) {
     this._candidatService.unSuspend(c).subscribe(
       (cdd: candidat) => {
-      this._candidat = cdd;
-    });
+        this._candidat = cdd;
+      });
   }
 
   get dialogStatus(): string {
@@ -118,6 +121,14 @@ export class ProfileCandidatComponent implements OnInit {
 
   hideDialog() {
     this._dialogStatus = 'inactive';
+  }
+
+  get urlPhoto(): string {
+    return this._urlPhoto;
+  }
+
+  set urlPhoto(value: string) {
+    this._urlPhoto = value;
   }
 
 }
