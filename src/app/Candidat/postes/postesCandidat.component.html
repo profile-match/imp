@@ -9,12 +9,12 @@
       </select> postes</label>
     </div>
   </div>
-  <!-- div class="col-sm-6">
+  <div class="col-sm-6">
     <div id="datatable_filter" class="dataTables_filter">
-      <label>Recherche:<input class="form-control input-sm" placeholder="" aria-controls="datatable" type="search">
+      <label>Recherche:<input class="form-control input-sm" placeholder="" aria-controls="datatable" type="search" [(ngModel)]="search">
       </label>
     </div>
-  </div -->
+  </div>
 </div>
 <div class="row">
   <div class="col-sm-12">
@@ -58,7 +58,7 @@
         <li class="paginate_button previous disabled" id="datatable_previous_disable" *ngIf="_page == 1">
           <a class="navig-button" aria-controls="datatable" data-dt-idx="0" tabindex="0" (click)="prevPage()">Précédant</a>
         </li>
-        <li class="paginate_button" *ngFor="let i of pages">
+        <li *ngFor="let i of pages"  [ngClass]="{'active': i == page, 'paginate_button': true}">
           <a class="navig-button" aria-controls="datatable" data-dt-idx="0" tabindex="{{i}}" (click)="setPage(i)">{{i}}</a>
         </li>
         <li class="paginate_button next" id="datatable_next" *ngIf="_page != maxPage">
