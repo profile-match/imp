@@ -12,13 +12,6 @@
 
         <!-- mettre partie si connecté en tant recruteur -->
         <!-- bouton inviter pour inviter une personne à créer un compte -->
-        <li (click)="showDialog()">
-          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
-            <span class=" fa fa-angle-right"></span>
-            Inviter
-          </a>
-        </li>
-
         <li>
           <a routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
@@ -27,8 +20,6 @@
         </li>
       </ul>
     </div>
-
-
     <!-- si l'utlisateur connecté est un candidat-->
     <div *ngIf="isCandidat()">
 
@@ -42,6 +33,12 @@
         <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+        <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
         <li>
           <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
@@ -64,6 +61,12 @@
         <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+        <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
         <li>
           <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
@@ -81,6 +84,12 @@
         <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
+        <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
         <li>
           <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class=" fa fa-angle-right"></span>
