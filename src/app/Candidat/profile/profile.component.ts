@@ -19,11 +19,13 @@ export class ProfileCandidatComponent implements OnInit {
   private _dialogStatus: string;
   private _id: string;
   private _urlPhoto: string;
+  private _onglet: string;
 
   constructor(private _route: ActivatedRoute, private _candidatService: CandidatService) {
     this._dialogStatus = 'inactive';
     this.candidat = {};
     this._id = "";
+    this._onglet = "comp";
   }
 
   ngOnInit() {
@@ -131,4 +133,16 @@ export class ProfileCandidatComponent implements OnInit {
     this._urlPhoto = value;
   }
 
+  get onglet(): string {
+    return this._onglet;
+  }
+
+  set onglet(value: string) {
+    this._onglet = value;
+    console.log("onglet : " + value);
+  }
+
+  setOnglet(onglet: string) {
+    this._onglet = onglet;
+  }
 }
