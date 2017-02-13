@@ -169,4 +169,9 @@ export class CandidatService {
       .map(res => res.json());
   }
 
+  delete(candidat: candidat){
+    return this.http.delete(this._backendURL.deleteCandidat.replace(':id', candidat.id))
+      .map(res => res.json());
+  }
+
 }

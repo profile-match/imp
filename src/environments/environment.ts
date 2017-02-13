@@ -5,7 +5,7 @@ export const environment = {
   },
   backend: {
     protocol: 'http',
-    host: 'localhost',
+    host: 'pm-core.bober.ovh',
     port: '8080',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
@@ -15,6 +15,7 @@ export const environment = {
       searchCandidat: '/api/candidats/?name=${:term}',
       bannirCandidat: '/rest/candidat/ban/:id',   //bannir un candidat
       unbanCandidat: '/rest/candidat/unban/:id',
+      deleteCandidat: '/rest/candidat/delete/:id',
       nbFemelle: '/rest/candidat/getnbfemelle',
       nbMale: '/rest/candidat/getnbmale',
       banRecruteur: '/rest/recruteur/ban/:id',  //bannir un recruteur

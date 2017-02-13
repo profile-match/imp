@@ -5,7 +5,7 @@ import {formation} from "../interfaces/formation";
 import {competence} from "../interfaces/competence";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {experiencePro} from "../interfaces/experiencePro";
 
 @Component({
@@ -16,13 +16,13 @@ import {experiencePro} from "../interfaces/experiencePro";
 export class ProfileCandidatComponent implements OnInit {
 
   private _candidat: candidat;
-  private _dialogStatus: string;
+  private _dialogModal: string;
   private _id: string;
   private _urlPhoto: string;
   private _onglet: string;
 
-  constructor(private _route: ActivatedRoute, private _candidatService: CandidatService) {
-    this._dialogStatus = 'inactive';
+  constructor(private _route: ActivatedRoute, private _router: Router, private _candidatService: CandidatService) {
+    this._dialogModal = 'inactive';
     this.candidat = {};
     this._id = "";
     this._onglet = "comp";
@@ -113,16 +113,16 @@ export class ProfileCandidatComponent implements OnInit {
       });
   }
 
-  get dialogStatus(): string {
-    return this._dialogStatus
+  get modalStatus(): string {
+    return this._dialogModal
   }
 
-  showDialog() {
-    this._dialogStatus = 'active';
+  showModal() {
+    this._dialogModal = 'active';
   }
 
-  hideDialog() {
-    this._dialogStatus = 'inactive';
+  hideModal() {
+    this._dialogModal = 'inactive';
   }
 
   get urlPhoto(): string {
@@ -145,4 +145,10 @@ export class ProfileCandidatComponent implements OnInit {
   setOnglet(onglet: string) {
     this._onglet = onglet;
   }
+
+  deleteCandidat(c: candidat){
+    this._candidatService.delete(c).subscribe();
+    this._router.navigate(['accueil']);
+  }
+
 }

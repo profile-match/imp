@@ -83,9 +83,31 @@
       <button class="btn btn-default" type="submit">Changer mon mot de passe</button>
       <button class="btn btn-default" type="submit" *ngIf="!_candidatSuspended" (click)="suspendCandidat(candidat)" >Suspendre mon compte</button>
       <button class="btn btn-default" type="submit" *ngIf="_candidatSuspended" (click)="unsuspendCandidat(candidat)" >Rétablir mon compte</button>
-      <button class="btn btn-default" type="submit">Supprimer mon compte</button>
+      <button class="btn btn-default" type="submit" (click)="showModal()">Supprimer mon compte</button>
     </div>
   </div>
+
+  <section class="dialog-modal" [ngClass]="{ 'active': modalStatus === 'active' }" >
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" (click)="hideModal()">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Suppression du compte</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Attention</h4>
+        <p>Cette action provoquera la suppression totale et définitive de toutes les données de votre compte.</p>
+        <p>Cette action est irréversible.</p>
+        <p>Voulez-vous continuer ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="hideModal()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="deleteCandidat(candidat)">Supprimer mon compte</button>
+      </div>
+
+    </div>
+  </section>
 
 </div>
 
