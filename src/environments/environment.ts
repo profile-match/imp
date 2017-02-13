@@ -36,7 +36,7 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
-
+      allOffers: '/rest/recruteur/dossierRecruteur/:id',
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
@@ -44,9 +44,7 @@ export const environment = {
       suspendCandidat: '/rest/candidat/suspend/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
-
       sendMail : '/rest/serviceMail/envoyer'
-
     }
   },
   frontend: {

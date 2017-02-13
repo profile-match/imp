@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
@@ -6,14 +6,14 @@ import {Recruteur} from "../../recruteur/interfaces/recruteur";
 import {candidat} from "../../Candidat/interfaces/candidat";
 
 export class User {
-  constructor(
-    public email: string,
-    public password: string) { }
+  constructor(public email: string,
+              public password: string) {
+  }
 }
 
 var users = [
-  new User('admin@admin','admin'),
-  new User('user1@gmail.com','a23')
+  new User('admin@admin', 'admin'),
+  new User('user1@gmail.com', 'a23')
 ];
 
 @Injectable()
@@ -25,7 +25,7 @@ export class AuthenticationService {
   // private property to store all backend URLs
   private _backendURL: any;
 
-  constructor(private _http: Http, private _router: Router){
+  constructor(private _http: Http, private _router: Router) {
     this._candidats = [];
     this._recruteurs = [];
 
@@ -40,12 +40,12 @@ export class AuthenticationService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
 
     this._http.get(this._backendURL.allCandidat)
-      .map( res => res.json() )
-      .subscribe( (candidats: any[]) => this._candidats = candidats);
+      .map(res => res.json())
+      .subscribe((candidats: any[]) => this._candidats = candidats);
 
     this._http.get(this._backendURL.allRecruteur)
-      .map( res => res.json() )
-      .subscribe( (rec: any[]) => this._recruteurs = rec);
+      .map(res => res.json())
+      .subscribe((rec: any[]) => this._recruteurs = rec);
   }
 
   logout() {
@@ -54,27 +54,27 @@ export class AuthenticationService {
     this._router.navigate(['/accueil']);
   }
 
-  login(user:User){
+  login(user: User) {
 
     var authenticatedCandidat = this._candidats.find(c => c.email === user.email);
     var authenticatedRecruteur = this._recruteurs.find(r => r.email === user.email);
     var authenticatedModerator = users.find(u => u.email === user.email);
 
-    if (authenticatedModerator && authenticatedModerator.password === user.password){
+    if (authenticatedModerator && authenticatedModerator.password === user.password) {
       localStorage.setItem("user", user.email);
       this._router.navigate(['/moderateur']);
 
       return true;
     }
-    else if (authenticatedCandidat && authenticatedCandidat.nom === user.password){
+    else if (authenticatedCandidat && authenticatedCandidat.nom === user.password) {
       localStorage.setItem("user", authenticatedCandidat.id.toString());
       localStorage.setItem("ut", "candidat");
-      console.log("id cand : "+localStorage.getItem("user"))
+      console.log("id cand : " + localStorage.getItem("user"))
       this._router.navigate(['/addPost']);
 
       return true;
     }
-    else if (authenticatedRecruteur && authenticatedRecruteur.nom === user.password){
+    else if (authenticatedRecruteur && authenticatedRecruteur.nom === user.password) {
       localStorage.setItem("user", authenticatedRecruteur.id.toString());
       localStorage.setItem("ut", "recruteur");
       this._router.navigate(['/accueil']);
@@ -85,8 +85,8 @@ export class AuthenticationService {
 
   }
 
-  isLogin(){
-    if (localStorage.getItem("user") === null){
+  isLogin() {
+    if (localStorage.getItem("user") === null) {
       return false;
     }
     else {
@@ -94,8 +94,8 @@ export class AuthenticationService {
     }
   }
 
-  isAdmin(){
-    if (localStorage.getItem("user") === "admin@admin"){
+  isAdmin() {
+    if (localStorage.getItem("user") === "admin@admin") {
       return true;
     }
     else {
@@ -103,8 +103,8 @@ export class AuthenticationService {
     }
   }
 
-  isCandidat(){
-    if (localStorage.getItem("ut") === "candidat"){
+  isCandidat() {
+    if (localStorage.getItem("ut") === "candidat") {
       return true;
     }
     else {
@@ -112,8 +112,8 @@ export class AuthenticationService {
     }
   }
 
-  isRecruteur(){
-    if (localStorage.getItem("ut") === "recruteur"){
+  isRecruteur() {
+    if (localStorage.getItem("ut") === "recruteur") {
       return true;
     }
     else {
@@ -121,14 +121,14 @@ export class AuthenticationService {
     }
   }
 
-  checkCredentials(){
-    if (localStorage.getItem("user") === null){
+  checkCredentials() {
+    if (localStorage.getItem("user") === null) {
       this._router.navigate(['/login']);
     }
   }
 
-  checkCredentialModerator(){
-    if (localStorage.getItem("user") !== "admin@admin"){
+  checkCredentialModerator() {
+    if (localStorage.getItem("user") !== "admin@admin") {
       this._router.navigate(['/login']);
     }
   }

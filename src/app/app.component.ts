@@ -7,8 +7,10 @@ import {NotificationService} from "./shared/service/notification.service";
 
 
 
+
 @Component({
   selector: 'app-root',
+
   providers: [AuthenticationService],
 
   templateUrl: './app.component.html',
@@ -87,5 +89,6 @@ export class AppComponent {
   isAdmin(){
     return this._service.isAdmin();
   }
+
 
 }

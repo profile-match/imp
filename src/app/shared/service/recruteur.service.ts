@@ -71,7 +71,8 @@ export class RecruteurService {
       .catch(this.handleError);
   }
 
-  getRecruteur(id: number): Observable<Recruteur> {
+  getRecruteur(id
+                 : number): Observable<Recruteur> {
     //const url = `${this.candidatsUrl}/${id}`;
     return this.http.get(this._backendURL.oneRecruteur.replace(':id', id))
       .map( res =>  res.json() )

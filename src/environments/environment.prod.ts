@@ -32,6 +32,7 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
+      allOffers: '/pm-core/rest/recruteur/dossierRecruteur/:id',
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
@@ -41,4 +42,5 @@ export const environment = {
       getCompetences: '/rest/competence/get/:comp'
     }
   }
+
 };

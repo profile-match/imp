@@ -3,21 +3,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-
 import {RouterModule} from "@angular/router";
 import {ChartsModule} from 'ng2-charts/ng2-charts';
-
-// noinspection TypeScriptCheckImport
-
 import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
 import {MdInputModule} from '@angular/material/input';
 import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule } from "@angular/forms";
-
 import './visiteur/moderateur/candidat-search/rxjs-extensions';
-
 import {APP_ROUTES} from './app.routes';
-
 import {AccueilComponent} from './visiteur/accueil/accueil.component';
 import {LoginComponent} from './visiteur/login/login.component';
 import {InscriptionUtilisateurComponent} from "./utilisateur/inscription/inscription-utilisateur.component";
@@ -39,6 +32,9 @@ import {LinguistiquesComponent} from './recruteur/linguistiques/linguistiques.co
 import {FormationComponent} from './recruteur/formation/formation.component';
 import {UpdateComponent} from './recruteur/poste-form/update/update.component';
 import {CertificationComponent} from './recruteur/certification/certification.component';
+import {OffreComponent} from './recruteur/offres/offre.component';
+import {OffreDetailComponent} from './recruteur/offres/offre-detail.component';
+
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {FormComponent} from "./Candidat/form/form.component";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
@@ -50,12 +46,12 @@ import {CompetenceComponent} from "./Candidat/profile/competence/competence.comp
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
 import {FormInvitationComponent} from "./shared/form-invitation"
 
-//services
 import { CandidatService } from './shared/service/candidat.service';
 import { RecruteurService } from "./shared/service/recruteur.service";
 import { MailService } from "./shared/service/mail.service";
 import {NotificationService} from "./shared/service/notification.service";
-import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe'
+import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe';
+
 
 @NgModule({
     declarations: [
@@ -91,9 +87,10 @@ import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe'
       CompetenceComponent,
       ProfileCandidatComponent,
       FormInvitationComponent,
-      CompetenceTypePipe
+      CompetenceTypePipe,
+      OffreComponent,
+      OffreDetailComponent
     ],
-
   imports: [
     BrowserModule,
     FormsModule,
@@ -104,7 +101,7 @@ import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe'
     Ng2AutoCompleteModule,
     ChartsModule,
     MaterialModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [CandidatService,RecruteurService, MailService, NotificationService],
 
@@ -112,5 +109,4 @@ import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe'
 })
 export class AppModule {
 }
-
 

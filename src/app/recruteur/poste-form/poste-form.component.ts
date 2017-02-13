@@ -51,18 +51,18 @@ export class PosteFormComponent implements OnInit {
     this._submit$ = new EventEmitter();
 
 
-    this._poste.reference = "ref";
-    this._poste.intitule = "int";
-    this._poste.indice_salaire = "ind";
-    this._poste.salaire_min = 5;
-    this._poste.salaire_max = 2;
-    this._poste.afficher_moyenne = 0;
-    this._poste.type_contrat = "tc";
-    this._poste.resume = "res";
-    this._poste.point_attention = "pa";
-    this._poste.lieu_travail = "lieut";
-    this._poste.organisation = "orga";
-    this._poste.equipe_concernee = "equipe";
+    this._poste.reference = "";
+    this._poste.intitule = "";
+    this._poste.indice_salaire = "";
+    this._poste.salaire_min;
+    this._poste.salaire_max;
+    this._poste.afficher_moyenne;
+    this._poste.type_contrat = "";
+    this._poste.resume = "";
+    this._poste.point_attention = "";
+    this._poste.lieu_travail = "";
+    this._poste.organisation = "";
+    this._poste.equipe_concernee = "";
     this._poste.savoir_specifications = [];
     this._poste.savoir_faires = [];
     this._poste.savoir_etres = [];
