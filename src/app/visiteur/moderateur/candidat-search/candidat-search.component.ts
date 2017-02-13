@@ -5,9 +5,9 @@ import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
 import {CandidatService} from "../../../shared/service/candidat.service";
-import {Candidat} from "../../../candidat/interfaces/candidat";
 import {ModerateurComponent} from "../moderateur.component";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {candidat} from "../../../Candidat/interfaces/candidat";
 
 @Component({
   selector: 'app-candidat-search',
@@ -21,9 +21,9 @@ export class CandidatSearchComponent implements OnInit {
 
   private _bannir$: EventEmitter<any>;
  // candidats: Observable<Candidat[]>;
-  private _candidats: Candidat[];
-  selectedCandidat: Candidat;
-  selectedC: Candidat;
+  private _candidats: candidat[];
+  selectedCandidat: candidat;
+  selectedC: candidat;
   mod: ModerateurComponent;
   private searchTerms : Subject<string>;
 
@@ -51,11 +51,11 @@ export class CandidatSearchComponent implements OnInit {
       });*/
   }
 
-  get candidats(): Candidat[] {
+  get candidats(): candidat[] {
     return this._candidats;
   }
 
-  set candidats(value: Candidat[]) {
+  set candidats(value: candidat[]) {
     this._candidats = value;
   }
 
@@ -63,7 +63,7 @@ export class CandidatSearchComponent implements OnInit {
     this.candidatSearchService.getCandidats().subscribe(c => this._candidats = c);
   }
 
-  autocompleListFormatter = (data: Candidat) : SafeHtml => {
+  autocompleListFormatter = (data:candidat) : SafeHtml => {
     let html = `<span>${data.nom}</span>`;
     html += `<span> ${data.prenom}</span>`;
     return this._sanitizer.bypassSecurityTrustHtml(html);
@@ -74,7 +74,7 @@ export class CandidatSearchComponent implements OnInit {
     this.searchTerms.next(term);
   }
 
-  goToDetail(candidat: Candidat): void {
+  goToDetail(candidat:candidat): void {
     //	this.mod.selectedCandidat = null;
     this.selectedCandidat = candidat;
   }
@@ -92,7 +92,7 @@ export class CandidatSearchComponent implements OnInit {
    *
    * @param person
    */
-  bannir(candidat: Candidat) {
+  bannir(candidat: candidat) {
     this._bannir$.emit(candidat);
   }
 }

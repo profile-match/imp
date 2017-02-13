@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {OffersService} from '../../shared/offers-service/offers.service';
 import {Poste} from '../interfaces/poste';
-import {Candidat} from '../../candidat/interfaces/candidat';
+
 import {Router} from "@angular/router";
+import {candidat} from "../../Candidat/interfaces/candidat";
 
 @Component({
   selector: 'app-offre',
@@ -14,7 +15,7 @@ import {Router} from "@angular/router";
 export class OffreComponent implements OnInit {
 
   private _selectedOffre: any = {};
-  private _selectedCandidats: Candidat[] = [];
+  private _selectedCandidats: candidat[] = [];
   private _testOffreList: Poste[];
   private _profil: boolean;
   private _candidat: boolean;
@@ -80,7 +81,7 @@ export class OffreComponent implements OnInit {
   }
 
   //Return the list of appliers for the selected offer.
-  get selectedCandidats(): Candidat[] {
+  get selectedCandidats(): candidat[] {
     return this._selectedCandidats;
   }
 

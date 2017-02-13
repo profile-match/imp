@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-import {Candidat} from "../../../candidat/interfaces/candidat";
-import {Comment} from "../../../candidat/interfaces/commentaire";
 import {CandidatService} from "../../../shared/service/candidat.service";
+import {candidat} from "../../../Candidat/interfaces/candidat";
+import {Commentaire} from "../../../Candidat/interfaces/commentaire";
 
 
 @Component({
@@ -12,9 +12,9 @@ import {CandidatService} from "../../../shared/service/candidat.service";
 })
 export class CandidatDetailComponent implements OnInit {
 
-   private _candidat: Candidat;
-   private _comments: Comment[];
-   private _selectedComment: Comment;
+   private _candidat: candidat;
+   private _comments: Commentaire[];
+   private _selectedComment: Commentaire;
   private _bannir$: EventEmitter<any>;
   private _unban$: EventEmitter<any>;
 
@@ -91,10 +91,10 @@ export class CandidatDetailComponent implements OnInit {
   //  this.getComments();
   }
 
-  get comments(): Comment[] {
+  get comments(): Commentaire[] {
     return this._comments;
   }
-  set comments(value: Comment[]) {
+  set comments(value: Commentaire[]) {
     this._comments = value;
   }
 
@@ -102,11 +102,11 @@ export class CandidatDetailComponent implements OnInit {
     this.candidatService.getComments().then(comments => this._comments = comments);
   }
 
-  get candidat(): Candidat {
+  get candidat(): candidat {
     return this._candidat;
   }
 
-  @Input() set candidat(value: Candidat) {
+  @Input() set candidat(value: candidat) {
     this._candidat = value;
   }
 
@@ -118,11 +118,11 @@ export class CandidatDetailComponent implements OnInit {
     this._bannir$ = value;
   }
 
-  public bannir(candidat: Candidat){
+  public bannir(candidat: candidat){
     this._bannir$.emit(candidat);
   }
 
-  public unBan(candidat: Candidat){
+  public unBan(candidat: candidat){
     this._unban$.emit(candidat);
   }
 
@@ -134,7 +134,7 @@ export class CandidatDetailComponent implements OnInit {
     this._unban$ = value;
   }
 
-  public supprimerCom(comment: Comment){
+  public supprimerCom(comment: Commentaire){
     alert("fonctionnalité 'supprimer com' non defini");
   }
 
@@ -142,7 +142,7 @@ export class CandidatDetailComponent implements OnInit {
     this._selectedComment = comment;
   }
 
-  public editerCom(comment: Comment){
+  public editerCom(comment: Commentaire){
     alert("fonctionnalité 'editer com' pour le com : '"+comment.contenu +"' non defini");
   }
 

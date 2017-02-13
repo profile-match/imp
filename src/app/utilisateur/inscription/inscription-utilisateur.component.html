@@ -25,9 +25,14 @@
         </div>
       </div>
 
-      <div style="text-align: center; ">
-        <button type="button" class="btn btn-default" (click)="goBack()">Retour</button>
-        <button type="submit" class="btn btn-success">Valider</button>
+      <div style="margin-left: 25% ">
+        <span class="x_content" class="grow" (click)="goLinkedIn()" (mouseover)="overLinkedinButton()" (mouseleave)="leaveLinkedinButton()">
+          <img  *ngIf="buttonLinkedinStatus()===DEFAULT_STATUS" class="linkedin-button" src="../../../assets/Sign-in-Large---Default.png" alt="portrait">
+          <img  *ngIf="buttonLinkedinStatus()===HOVER_STATUS" class="linkedin-button" src="../../../assets/Sign-in-Large---Hover.png" alt="portrait">
+          <img  *ngIf="buttonLinkedinStatus()===ACTIVATED_STATUS" class="linkedin-button" src="../../../assets/Sign-in-Large---Active.png" alt="portrait">
+        </span>
+        <button style="margin-top: 4px;" type="button" class="btn btn-default" (click)="goBack()">Retour</button>
+        <button style="margin-top: 4px;" type="submit" class="btn btn-success">Valider</button>
       </div>
     </form>
   </div>

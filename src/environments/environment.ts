@@ -1,10 +1,8 @@
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `angular-cli.json`.
-
 export const environment = {
   production: false,
+  header: {
+    json: {'Content-Type': 'application/json'}
+  },
   backend: {
     protocol: 'http',
     host: 'localhost',
@@ -12,6 +10,8 @@ export const environment = {
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
+      postPhotoCandidat: '/rest/candidat/photo/',
+      getPhotoCandidat: '/rest/candidat/photo/:id',
       searchCandidat: '/api/candidats/?name=${:term}',
       bannirCandidat: '/rest/candidat/ban/:id',   //bannir un candidat
       unbanCandidat: '/rest/candidat/unban/:id',
@@ -36,7 +36,20 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
-      allOffers: '/rest/recruteur/dossierRecruteur/:id'
+      allOffers: '/rest/recruteur/dossierRecruteur/:id',
+      creerCandidat: '/rest/candidat/create',
+      modifierCandidat: '/rest/candidat/update',
+      getCandidat: '/rest/candidat/get/:id',
+      linkedinToken: '/rest/linkedin/gettoken/:code/:state',
+      suspendCandidat: '/rest/candidat/suspend/:id',
+      unsuspendCandidat: '/rest/candidat/unsuspend/:id',
+      getCompetences: '/rest/competence/get/:comp',
+      sendMail : '/rest/serviceMail/envoyer'
     }
+  },
+  frontend: {
+    protocol: 'http',
+    host: 'localhost',
+    port: ''
   }
 };

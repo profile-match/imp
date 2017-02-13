@@ -1,5 +1,3 @@
-
-
 export const environment = {
   production: true,
   backend: {
@@ -8,6 +6,8 @@ export const environment = {
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
+      postPhotoCandidat: '/rest/candidat/photo/',
+      getPhotoCandidat: '/rest/candidat/photo/:id',
       searchCandidat: '/api/candidats/?name=${:term}',
       bannirCandidat: '/rest/candidat/ban/:id',   //bannir un candidat
       unbanCandidat: '/rest/candidat/unban/:id',
@@ -17,10 +17,10 @@ export const environment = {
       unBanRecruteur: '/rest/recruteur/unban/:id',
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
-      allPost: '/api/posts',
+      allPost: '/rest/recruteur/allDossier',
       onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
-      allRecruteur: '/api/recruteurs',
-      oneRecruteur: '/api/recruteurs/:id',
+      allRecruteur: '/rest/recruteur/get',
+      oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
       createUser: '/rest/utilisateur/inscrire',
       searchMetier: '/rest/recruteur/completeMetier/:intitule',
@@ -32,7 +32,14 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
-      allOffers: '/pm-core/rest/recruteur/dossierRecruteur/:id'
+      allOffers: '/pm-core/rest/recruteur/dossierRecruteur/:id',
+      creerCandidat: '/rest/candidat/create',
+      modifierCandidat: '/rest/candidat/update',
+      getCandidat: '/rest/candidat/get/:id',
+      linkedinToken: '/rest/linkedin/gettoken/:code/:state',
+      suspendCandidat: '/rest/candidat/suspend/:id',
+      unsuspendCandidat: '/rest/candidat/unsuspend/:id',
+      getCompetences: '/rest/competence/get/:comp'
     }
   }
 
