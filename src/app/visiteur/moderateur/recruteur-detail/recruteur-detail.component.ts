@@ -82,7 +82,7 @@ export class RecruteurDetailComponent implements OnInit {
     this._unban$ = new EventEmitter();
    // this._recruteur = {id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"}
     this._postes = [];
-    this._selectedPost = {id: 1, id_recruteur: 1, date_publication: 12, reference:"ref", intitule:"int", indice_salaire: "ind", salaire_min:5, salaire_max:2, afficher_moyenne: 0, type_contrat: "tc", resume: "res", point_attention: "pa", lieu_travail: "lieut", organisation: "orga", equipe_concernee: "equipe", savoir_specifications:[], savoir_faires: [], savoir_etres:[], metiers:[], fonctionnelles: [], techniques: [], langues: [], formations: [], certifications: []};
+    this._selectedPost = {id: 1, id_recruteur: 1, date_publication: 12, reference:"ref", intitule:"int", indice_salaire: "ind", salaire_min:5, salaire_max:2, afficher_moyenne: 0, type_contrat: "tc", resume: "res", point_attention: "pa", lieu_travail: "lieut", organisation: "orga", equipe_concernee: "equipe", savoir_specifications:[], savoir_faires: [], savoir_etres:[], metiers:[], fonctionnelles: [], techniques: [], langues: [], formations: [], certifications: [], listeCandidat: []};
   }
 
   ngOnInit() {

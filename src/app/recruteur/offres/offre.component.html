@@ -1,0 +1,48 @@
+<div class="container body">
+  <div class="main_container">
+
+    <ul class="nav nav-pills">
+      <li role="presentation" (click)="setProfil()" [class.active]="profil"><a>Votre profil</a></li>
+      <li role="presentation" (click)="setOffres()" [class.active]="offres"><a>Vos offres</a></li>
+      <li role="presentation" (click)="setCandidat()" [class.active]="candidat"><a>Rechercher un candidat</a></li>
+    </ul>
+    <div *ngIf="profil">
+    </div>
+    <div *ngIf="candidat">
+    </div>
+    <div class="x_panel title overflow_hidden" *ngIf="testOffreList.length > 0 && offres">
+      <div class="row">
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3"><h4>Selectionnez une offre</h4>
+          <select size="20" multiple class="form-control" id="sel1" style="width: 200px">
+            <option *ngFor="let offre of testOffreList" (click)="selectedOffre = offre">
+              {{offre.intitule}}
+            </option>
+          </select>
+        </div>
+        <app-offre-detail></app-offre-detail>
+      </div>
+    </div>
+    <div class="x_panel title overflow_hidden" *ngIf="testOffreList.length == 0 && offres">
+      <div class="alert alert-warning" role="alert">
+        <a class="alert-link">Vous n'avez pas encore créé d'offre à pourvoir</a>
+      </div>
+      <div>
+        <a routerLink="/addPost">
+          <button type="button" class="btn btn-round btn-primary">
+            Créer une nouvelle offre
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import {Savoir} from "./savoir";
+import {Candidat} from "../../candidat/interfaces/candidat";
 export interface Poste {
   id: number,
   id_recruteur: number,
@@ -23,7 +24,8 @@ export interface Poste {
   techniques: Savoir[],
   langues: Savoir[],
   certifications: Savoir[],
-  formations: Savoir[]
+  formations: Savoir[],
+  listeCandidat: Candidat[]
   // signale: boolean
 
 }

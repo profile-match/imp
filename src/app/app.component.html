@@ -4,6 +4,7 @@
 <div class="nav_menu">
   <nav class="navbar navbar-default" role="navigation">
     <span class="navbar nav_title" style="border: 0;">
+
         <a routerLink="/accueil" class="site_title"><i class="fa fa-paw"></i> <span>iMatchProfile!</span></a>
     </span>
 
@@ -24,7 +25,7 @@
     <div *ngIf="isCandidat()">
 
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="#">Vos offres</a></li>
+        <li><a routerLink="offres">Vos offres</a></li>
         <li><a href="#">Nouvelle offre</a></li>
         <li><a href="#">Parcourir les candidats</a></li>
       </ul>
@@ -40,7 +41,6 @@
           </a>
         </li>
       </ul>
-
     </div>
 
     <!-- si l'utlisateur connecté est un recruteur-->

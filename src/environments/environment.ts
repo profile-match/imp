@@ -36,6 +36,7 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
+      allOffers: '/rest/recruteur/dossierRecruteur/:id'
     }
   }
 };

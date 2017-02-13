@@ -1,4 +1,5 @@
 import {RouterModule, Routes} from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
 
 // APP COMPONENTS
 
@@ -8,6 +9,7 @@ import {ModerateurComponent} from "./visiteur/moderateur/moderateur.component";
 import {PosteFormComponent} from './recruteur/poste-form/poste-form.component';
 import {LoginComponent} from "./visiteur/login/login.component";
 import {InscriptionUtilisateurComponent} from "./utilisateur/inscription/inscription-utilisateur.component";
+import { OffreComponent } from './recruteur/offres/offre.component';
 
 const ROUTES: Routes = [
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
@@ -16,7 +18,8 @@ const ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inscription-utilisateur', component: InscriptionUtilisateurComponent},
   {path: 'addPost', component: PosteFormComponent},
-  {path: 'editPost/:id', component: UpdateComponent}
+  {path: 'editPost/:id', component: UpdateComponent},
+  {path: 'dashboardRecruteur', component: OffreComponent }
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

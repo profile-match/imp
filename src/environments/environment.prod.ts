@@ -1,4 +1,5 @@
 
+
 export const environment = {
   production: true,
   backend: {
@@ -31,6 +32,8 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
+      allOffers: '/pm-core/rest/recruteur/dossierRecruteur/:id'
     }
   }
+
 };
