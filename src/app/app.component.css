@@ -34,6 +34,7 @@ body {
 }
 .dialog-modal.active {
   visibility: visible;
+  z-index: 999;
 }
 
 section {
