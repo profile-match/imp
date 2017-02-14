@@ -32,15 +32,21 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
-      allOffers: '/pm-core/rest/recruteur/dossierRecruteur/:id',
+      allOffers: '/rest/recruteur/dossierRecruteur/:id',
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
       linkedinToken: '/rest/linkedin/gettoken/:code/:state',
       suspendCandidat: '/rest/candidat/suspend/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
-      getCompetences: '/rest/competence/get/:comp'
+      getCompetences: '/rest/competence/get/:comp',
+      sendMail : '/rest/serviceMail/envoyer'
     }
+  },
+  frontend: {
+    protocol: 'http',
+    host: 'localhost',
+    port: ''
   }
 
 };
