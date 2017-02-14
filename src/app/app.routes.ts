@@ -1,6 +1,5 @@
 import {CreerProfileCandidatComponent} from "./Candidat/creer-profile-candidat/creer-profile-candidat.component";
 import {RouterModule, Routes} from '@angular/router';
-import {ModuleWithProviders} from '@angular/core';
 
 // APP COMPONENTS
 
@@ -15,6 +14,7 @@ import {InscriptionLinkedinComponent} from "./utilisateur/inscription-linkedin/i
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
+import {ListCandidatPosteComponent} from "./visiteur/list-candidat-poste/list-candidat-poste.component";
 
 const ROUTES: Routes = [
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
@@ -30,7 +30,8 @@ const ROUTES: Routes = [
   {path: 'candidat/:id', component: DashboardCandidatComponent},
   {path: 'inscription-linkedin', component: InscriptionLinkedinComponent},
   {path: 'candidat/profile/:id', component: ProfileCandidatComponent},
-  {path: 'dashboardRecruteur', component: OffreComponent}
+  {path: 'dashboardRecruteur', component: OffreComponent},
+  {path: 'listCandidatPoste', component: ListCandidatPosteComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);
