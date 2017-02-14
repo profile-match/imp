@@ -4,10 +4,6 @@ import {MailService} from "./shared/service/mail.service";
 import {Observable} from "rxjs";
 import {NotificationService} from "./shared/service/notification.service";
 
-
-
-
-
 @Component({
   selector: 'app-root',
 

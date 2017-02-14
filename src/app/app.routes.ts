@@ -24,7 +24,6 @@ const ROUTES: Routes = [
   {path: 'inscription-utilisateur', component: InscriptionUtilisateurComponent},
   {path: 'addPost', component: PosteFormComponent},
   {path: 'editPost/:id', component: UpdateComponent},
-  {path: '', redirectTo: 'createCandidat', pathMatch: 'full'},
   {path: 'createCandidat', component: CreerProfileCandidatComponent},
   {path: 'editCandidat/:id', component: UpdateProfileCandidatComponent},
   {path: 'candidat/:id', component: DashboardCandidatComponent},
