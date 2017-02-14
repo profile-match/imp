@@ -75,9 +75,9 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
   goLinkedIn(): void{
       this.activeLinkedinButton();
-      let url = environment.frontend.protocol+"%3A%2F%2F"+environment.frontend.host
-      if(environment.frontend.port != ''){
-        url += "%3A"+environment.backend.port;
+      let url = environment.frontend.protocol+"%3A%2F%2F"+environment.frontend.host;
+      if(environment.frontend.port != ""){
+        url += "%3A"+environment.frontend.port;
       }
       window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
         "response_type=code&" +

@@ -50,6 +50,6 @@ export const environment = {
   frontend: {
     protocol: 'http',
     host: 'localhost',
-    port: ''
+    port: '4200'
   }
 };
