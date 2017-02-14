@@ -45,7 +45,7 @@ export const environment = {
   },
   frontend: {
     protocol: 'http',
-    host: 'localhost',
+    host: 'imp.bober.ovh',
     port: ''
   }
 
