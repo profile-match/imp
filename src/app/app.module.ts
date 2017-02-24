@@ -33,8 +33,6 @@ import {FormationComponent} from './recruteur/formation/formation.component';
 import {UpdateComponent} from './recruteur/poste-form/update/update.component';
 import {CertificationComponent} from './recruteur/certification/certification.component';
 import {OffreComponent} from './recruteur/offres/offre.component';
-import {OffreDetailComponent} from './recruteur/offres/offre-detail.component';
-
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {FormComponent} from "./Candidat/form/form.component";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
@@ -96,7 +94,6 @@ import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-co
       FormInvitationComponent,
       CompetenceTypePipe,
       OffreComponent,
-      OffreDetailComponent,
       CardCondidatComponent,
       ListCandidatPosteComponent,
       FilterCandidatPipe,
