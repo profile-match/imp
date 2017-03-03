@@ -42,6 +42,7 @@ export const environment = {
       getCandidat: '/rest/candidat/get/:id',
       linkedinToken: '/rest/linkedin/gettoken/:code/:state',
       suspendCandidat: '/rest/candidat/suspend/:id',
+      deletePoste: '/rest/recruteur/deleteDossier/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
       sendMail : '/rest/serviceMail/envoyer'

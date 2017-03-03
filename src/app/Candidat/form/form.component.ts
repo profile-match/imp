@@ -6,6 +6,7 @@ import {CandidatService} from "../../shared/service/candidat.service";
 import {competence} from "../interfaces/competence";
 import {formation} from "../interfaces/formation";
 import {candidat} from "../interfaces/candidat";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'form-candidat',
@@ -45,7 +46,7 @@ export class FormComponent implements OnInit {
   private _urlPhoto: string;
   private _isUploading:boolean;
 
-  constructor(private _candidatService: CandidatService) {
+  constructor(private _candidatService: CandidatService, private router: Router) {
 
     this._isUpdateMode = false;
     this.isUploading = false;
@@ -81,6 +82,7 @@ export class FormComponent implements OnInit {
   onSubmit() {
     console.log(this.candidat);
     this._profile$.emit(this.candidat);
+    this.router.navigate(['/candidat/profile/:'+this.candidat._id]);
   }
 
   setSex(b: boolean) {
