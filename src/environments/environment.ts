@@ -26,7 +26,8 @@ export const environment = {
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
-      createUser: '/rest/utilisateur/inscrire',
+      createUserCand: '/rest/utilisateur/inscrireCand', //create candidat
+      createUserRec: '/rest/utilisateur/inscrireRec', //create recruteur
       searchMetier: '/rest/recruteur/completeMetier/:intitule',
       searchFonctionnelle: '/rest/recruteur/completeFonctionnelle/:intitule',
       searchTechnique: '/rest/recruteur/completeTechnique/:intitule',

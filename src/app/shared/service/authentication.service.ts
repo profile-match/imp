@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
 import {candidat} from "../../Candidat/interfaces/candidat";
+import {Utilisateur} from "../../utilisateur/utilisateur";
 
 export class User {
   constructor(public email: string,
@@ -18,6 +19,9 @@ var users = [
 
 @Injectable()
 export class AuthenticationService {
+
+  private _users:Utilisateur[];
+
   // private property to store candidats value
   private _candidats: candidat[];
   // private property to store recruteurs value
@@ -28,6 +32,7 @@ export class AuthenticationService {
   constructor(private _http: Http, private _router: Router) {
     this._candidats = [];
     this._recruteurs = [];
+    this._users = [];
 
     this._backendURL = {};
     // build backend base url
@@ -46,6 +51,10 @@ export class AuthenticationService {
     this._http.get(this._backendURL.allRecruteur)
       .map(res => res.json())
       .subscribe((rec: any[]) => this._recruteurs = rec);
+
+    this._http.get(this._backendURL.allUser)
+      .map(res => res.json())
+      .subscribe((us: any[]) => this._users = us);
   }
 
   logout() {
@@ -54,32 +63,57 @@ export class AuthenticationService {
     this._router.navigate(['/accueil']);
   }
 
-  login(user: User) {
+  existUser(user: Utilisateur){
+    var authenticatedUser = this._users.find(r => r.email === user.email);
+    if (authenticatedUser) {
+      return true;
+    }
+    return false;
+  }
+
+
+  login(user: Utilisateur) {
+
+    this._http.get(this._backendURL.allCandidat)
+      .map(res => res.json())
+      .subscribe((candidats: any[]) => this._candidats = candidats);
+
+    this._http.get(this._backendURL.allRecruteur)
+      .map(res => res.json())
+      .subscribe((rec: any[]) => this._recruteurs = rec);
+
+    this._http.get(this._backendURL.allUser)
+      .map(res => res.json())
+      .subscribe((us: any[]) => this._users = us);
 
     var authenticatedCandidat = this._candidats.find(c => c.email === user.email);
     var authenticatedRecruteur = this._recruteurs.find(r => r.email === user.email);
+
+    var authenticatedUser = this._users.find(r => r.email === user.email);
     var authenticatedModerator = users.find(u => u.email === user.email);
 
-    if (authenticatedModerator && authenticatedModerator.password === user.password) {
+    if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
       localStorage.setItem("user", user.email);
       this._router.navigate(['/moderateur']);
 
       return true;
     }
-    else if (authenticatedCandidat && authenticatedCandidat.nom === user.password) {
-      localStorage.setItem("user", authenticatedCandidat.id.toString());
-      localStorage.setItem("ut", "candidat");
-      console.log("id cand : " + localStorage.getItem("user"))
-      this._router.navigate(['/addPost']);
+    else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
+      if(authenticatedCandidat) {
+        localStorage.setItem("user", authenticatedCandidat.id.toString());
+        localStorage.setItem("ut", "candidat");
+        console.log("id cand : " + localStorage.getItem("user"));
+        this._router.navigate(['/addPost']);
 
-      return true;
-    }
-    else if (authenticatedRecruteur && authenticatedRecruteur.nom === user.password) {
-      localStorage.setItem("user", authenticatedRecruteur.id.toString());
-      localStorage.setItem("ut", "recruteur");
-      this._router.navigate(['/accueil']);
+        return true;
+      }
+      else if(authenticatedRecruteur) {
+        localStorage.setItem("user", authenticatedRecruteur.id.toString());
+        localStorage.setItem("ut", "recruteur");
+        this._router.navigate(['/accueil']);
 
-      return true;
+        return true;
+      }
     }
     return false;
 

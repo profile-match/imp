@@ -21,7 +21,7 @@ const ROUTES: Routes = [
   {path: 'accueil', component: AccueilComponent},
   {path: 'moderateur', component: ModerateurComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'inscription-utilisateur', component: InscriptionUtilisateurComponent},
+  {path: 'inscription-utilisateur/:id', component: InscriptionUtilisateurComponent},
   {path: 'addPost', component: PosteFormComponent},
   {path: 'editPost/:id', component: UpdateComponent},
   {path: 'createCandidat', component: CreerProfileCandidatComponent},

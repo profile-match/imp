@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location }  from '@angular/common';
 import {AuthenticationService, User} from '../../shared/service/authentication.service'
 import {Subject} from "rxjs";
+import {Utilisateur} from "../../utilisateur/utilisateur";
 
 
 @Component({
@@ -12,10 +13,13 @@ import {Subject} from "rxjs";
 })
 export class LoginComponent implements OnInit {
 
-  public user = new User('','');
+  public user:Utilisateur;// = new User('','');
+
   public errorMsg = '';
 
-  constructor(private location: Location, private _service:AuthenticationService ) {}
+  constructor(private location: Location, private _service:AuthenticationService ) {
+    this.user= {id:null, email:'', motdepasse:''};
+  }
 
   login(a :any) {
     if(!this._service.login(this.user)){
