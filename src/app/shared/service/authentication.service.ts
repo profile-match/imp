@@ -64,6 +64,10 @@ export class AuthenticationService {
   }
 
   existUser(user: Utilisateur){
+    this._http.get(this._backendURL.allUser)
+      .map(res => res.json())
+      .subscribe((us: any[]) => this._users = us);
+
     var authenticatedUser = this._users.find(r => r.email === user.email);
     if (authenticatedUser) {
       return true;
