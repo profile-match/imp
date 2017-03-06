@@ -1,0 +1,36 @@
+<div class="title_right">
+  <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+
+<!--
+    <div class="input-group">
+
+      <input #searchBox id="search-box" type="text" class="form-control" (keyup)="search(searchBox.value)" placeholder="Search for..."/>
+      <div>
+        <div *ngFor="let candidat of candidats | async"
+             [class.selected]="candidat === selectedCandidat"
+             (click)="goToDetail(candidat)"  >
+          {{candidat.name}}
+        </div>
+      </div>
+      <span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go!</button>
+						</span>
+    </div>
+-->
+    <div class="input-group">
+<!--
+      <md-input ng2-auto-complete
+                style="width:100%"
+                id="search-box"
+                [(ngModel)]="selectedCandidat"
+                [source]="candidats"
+                (click)="goToDetail()"
+                [list-formatter]="autocompleListFormatter"
+                placeholder="Search for Candidat ..." align="end">
+      </md-input>
+-->
+    </div>
+
+  </div>
+</div>
+<app-candidat-detail [candidat]="selectedCandidat" (personBannir)="bannir($event)"></app-candidat-detail>

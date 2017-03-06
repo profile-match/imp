@@ -1,0 +1,36 @@
+.ng-valid { border-color: green; }
+.ng-invalid { border-color: red; }
+
+.ng-normal { border-color: lightgray; }
+
+.editor-wrapper-verysmall {
+  min-height: 80px;
+  max-height: 150px;
+  background-color: white;
+  border-collapse: separate;
+  border: 1px solid #ccc;
+  padding: 4px;
+  box-sizing: content-box;
+  box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  overflow: scroll;
+  outline: none
+}
+.editor-wrapper-small {
+  min-height: 150px;
+  background-color: white;
+  border-collapse: separate;
+  border: 1px solid #ccc;
+  padding: 4px;
+  box-sizing: content-box;
+  box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  overflow: scroll;
+  outline: none
+}
