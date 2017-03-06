@@ -71,7 +71,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
       .subscribe();
 
     if(this._id == 1){  //recruteur
-      this._selectedG=='R';
+      this._selectedG='R';
       this.genders = [
         { value: 'C', display: 'candidat' },
         { value: 'R', display: 'recruteur' }
@@ -79,10 +79,10 @@ export class InscriptionUtilisateurComponent implements OnInit {
       ];
     }
     else if(this._id == 2){ //candidat
-      this._selectedG=='C';
+      this._selectedG='C';
       this.genders = [
-        { value: 'R', display: 'candidat' },
-        { value: 'C', display: 'recruteur' }
+        { value: 'R', display: 'recruteur' },
+        { value: 'C', display: 'candidat' }
       ];
     }
     else{
@@ -91,7 +91,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
         { value: 'C', display: 'candidat' },
         { value: 'R', display: 'recruteur' }
       ];
-      this._selectedG=='R'
+      this._selectedG='R'
     }
 
   }
