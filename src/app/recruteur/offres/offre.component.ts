@@ -123,7 +123,10 @@ export class OffreComponent implements OnInit {
 
   redirectEdition(id:any){
     this.router.navigate(['/editPost/'+id]);
+  }
 
+  redirectMatch(idDos: any, idCand: any){
+    this.router.navigate(['/matchingPost/:iddossier/:idcandidat'.replace(':iddossier',idDos).replace(':idcandidat',idCand)]);
   }
 
 }
