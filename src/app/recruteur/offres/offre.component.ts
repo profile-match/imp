@@ -130,7 +130,7 @@ export class OffreComponent implements OnInit {
   }
 
   redirectCandidat(id:any){
-    this.router.navigate(['/candidat/profile/:'+id]);
+    this.router.navigate(['/candidat/profile/'+id]);
   }
 
   clotureJob(id:any){
