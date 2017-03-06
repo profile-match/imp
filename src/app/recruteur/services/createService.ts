@@ -41,7 +41,11 @@ export class createService {
         .map((res: Response) => res.json());
   }
 
+    delete(id:any): any {
 
+    return this._http.delete(this._backendURL.deletePoste.replace(':id', id), this._options());
+
+    }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

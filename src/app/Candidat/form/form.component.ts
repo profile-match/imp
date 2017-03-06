@@ -6,6 +6,8 @@ import {CandidatService} from "../../shared/service/candidat.service";
 import {competence} from "../interfaces/competence";
 import {formation} from "../interfaces/formation";
 import {candidat} from "../interfaces/candidat";
+import {Router} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'form-candidat',
@@ -45,7 +47,7 @@ export class FormComponent implements OnInit {
   private _urlPhoto: string;
   private _isUploading:boolean;
 
-  constructor(private _candidatService: CandidatService) {
+  constructor(private _candidatService: CandidatService, private router: Router) {
 
     this._isUpdateMode = false;
     this.isUploading = false;
@@ -81,6 +83,7 @@ export class FormComponent implements OnInit {
   onSubmit() {
     console.log(this.candidat);
     this._profile$.emit(this.candidat);
+    this.router.navigate(['/candidat/profile/:'+this.candidat._id]);
   }
 
   setSex(b: boolean) {
@@ -211,6 +214,9 @@ export class FormComponent implements OnInit {
     if (record.model && record.candidat.currentValue) {
       this._candidat = record.candidat.currentValue;
     }
+
+    const datePipe = new DatePipe(this._candidat.naissance);
+    this._candidat.naissance = datePipe.transform(this._candidat.naissance, 'yyyy-MM-dd');
   }
 
   get candidat(): any {

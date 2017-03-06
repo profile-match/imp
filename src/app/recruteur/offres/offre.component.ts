@@ -4,18 +4,21 @@ import {Poste} from '../interfaces/poste';
 
 import {Router} from "@angular/router";
 import {candidat} from "../../Candidat/interfaces/candidat";
+import {createService} from "../services/createService";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-offre',
   templateUrl: './offre.component.html',
   styleUrls: ['./offre.component.css'],
-  providers: [OffersService]
+  providers: [OffersService,createService]
 })
 
 export class OffreComponent implements OnInit {
 
   private _selectedOffre: Poste;
   private _testOffreList: Poste[];
+  private temp: Poste[];
   private _profil: boolean;
   private _candidat: boolean;
   private _offres: boolean;
@@ -26,7 +29,7 @@ export class OffreComponent implements OnInit {
   private post: Poste;
 
 
-  constructor(private offreService: OffersService, private router: Router) {
+  constructor(private offreService: OffersService, private createService: createService, private router: Router) {
     this._profil = true;
     this._candidat = false;
     this._offres = false;
@@ -127,6 +130,18 @@ export class OffreComponent implements OnInit {
 
   redirectMatch(idDos: any, idCand: any){
     this.router.navigate(['/matchingPost/:iddossier/:idcandidat'.replace(':iddossier',idDos).replace(':idcandidat',idCand)]);
+  }
+
+  redirectCandidat(id:any){
+    this.router.navigate(['/candidat/profile/:'+id]);
+  }
+
+  clotureJob(id:any){
+    console.log(id);
+    this.createService.delete(id).subscribe();
+
+
+
   }
 
 }

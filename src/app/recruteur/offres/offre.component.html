@@ -71,7 +71,7 @@
           <div class="row">
             <div class="x_content" style="margin-top: 12px; margin-bottom: 12px;">
               <button type="button" class="btn btn-round btn-default" (click)="redirectEdition(selectedOffre.id)">Editer</button> <!-- lien vers editPost-->
-              <button type="button" class="btn btn-round btn-default"><a routerLink="/offres">Clôturer</a></button>
+              <button type="button" class="btn btn-round btn-default" (click)="clotureJob(selectedOffre.id)">Clôturer</button>
             </div>
           </div>
           <div class="row">
@@ -102,7 +102,7 @@
                         <tbody>
                         <tr *ngFor="let cand of listeCand(); let i = index;">
                           <th scope="row">{{i+1}}</th>
-                          <td>{{cand.nom}}</td>
+                          <td  (click) ="redirectCandidat(cand.id)">"{{cand.nom}}</td>
                           <td>{{cand.prenom}}</td>
                           <td>{{cand.email}}</td>
                           <td>

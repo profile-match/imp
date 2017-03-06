@@ -14,6 +14,7 @@
         <div class="col-md-4 col-sm-4 col-xs-4">
           <input type="email" id="email" [value]="email" [(ngModel)]="email" required="required" name="email" class="form-control col-md-7 col-xs-12">
         </div>
+        <span>{{errorMsg}}</span>
       </div>
 
       <div class="form-group">
@@ -22,6 +23,23 @@
 
           <input type="password" id="motdepasse" [value]="motdepasse" [(ngModel)]="motdepasse" required="required" name="motdepasse" class="form-control col-md-7 col-xs-12">
 
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Gender</label>
+        <div *ngFor="let gender of genders">
+          <label *ngIf="this._id==0">
+            <input type="radio" id="gender" name="gender" [(ngModel)]="_selectedG"
+                   [value]="gender.value">
+            {{gender.display}}
+          </label>
+
+          <label *ngIf="this._id!=0">
+            <input type="radio" id="gender2" name="gender" [(ngModel)]="_selectedG"
+                   [value]="gender.value" disabled="disabled">
+            {{gender.display}}
+          </label>
         </div>
       </div>
 

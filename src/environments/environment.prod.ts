@@ -32,6 +32,7 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
+      deletePoste: 'rest/recruteur/deleteDossier/:id',
       allOffers: '/rest/recruteur/dossierRecruteur/:id',
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
