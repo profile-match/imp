@@ -36,7 +36,8 @@ export class createService {
   }
 
 
-    create(dossier): Observable<Poste> {
+    create(dossier: Poste): Observable<Poste> {
+     dossier.id_recruteur = Number(localStorage.getItem("user"));
       return this._http.post(this._backendURL.addPoste, (dossier), this._options())
         .map((res: Response) => res.json());
   }

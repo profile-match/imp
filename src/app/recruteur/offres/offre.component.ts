@@ -74,6 +74,9 @@ export class OffreComponent implements OnInit {
 
   }
 
+
+
+
   redirect(candidatID:any){
 
 //TODO redirecte vers la page de matching avec l'id
