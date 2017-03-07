@@ -41,9 +41,7 @@ export class ProfileCandidatComponent implements OnInit {
   }
 
   goEditProfil(){
-
-    this._router.navigate(['/editCandidat']);
-
+    this._router.navigate(['/editCandidat/']);
   }
 
   get candidat(): any {

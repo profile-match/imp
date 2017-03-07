@@ -15,7 +15,7 @@ export class UpdateProfileCandidatComponent implements OnInit {
 
   private _id : string;
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _candidatService: CandidatService) {
+  constructor(private _router: Router, private _candidatService: CandidatService) {
     this.id = "";
     this.candidat = {};
   }
