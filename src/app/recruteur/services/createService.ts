@@ -41,9 +41,15 @@ export class createService {
         .map((res: Response) => res.json());
   }
 
-    delete(id:any): any {
+    delete(id:any): Observable<Poste[]> {
 
-    return this._http.delete(this._backendURL.deletePoste.replace(':id', id), this._options());
+    return this._http.delete(this._backendURL.deletePoste.replace(':id', id), this._options()).map(
+      (res:Response) =>
+
+        res.json() as Poste[]
+
+
+    );
 
     }
 

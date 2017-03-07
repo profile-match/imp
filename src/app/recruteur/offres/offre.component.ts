@@ -18,6 +18,7 @@ export class OffreComponent implements OnInit {
 
   private _selectedOffre: Poste;
   private _testOffreList: Poste[];
+  private _dialogStatusInvitation = 'inactive';
   private temp: Poste[];
   private _profil: boolean;
   private _candidat: boolean;
@@ -125,18 +126,27 @@ export class OffreComponent implements OnInit {
   }
 
   redirectEdition(id:any){
+
     this.router.navigate(['/editPost/'+id]);
 
   }
 
   redirectCandidat(id:any){
-    this.router.navigate(['/candidat/profile/:'+id]);
+
+    this.router.navigate(['/candidat/profile/'+id]);
   }
 
   clotureJob(id:any){
-    console.log(id);
+
     this.createService.delete(id).subscribe();
 
+
+    for(let p of this._testOffreList)
+    {
+      if(p.id == this.selectedOffre.id)
+      this._testOffreList.splice(this._testOffreList.indexOf(p), 1);
+    }
+    this._selectedOffre = this._testOffreList[0];
 
 
   }

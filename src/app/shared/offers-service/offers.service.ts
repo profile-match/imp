@@ -32,7 +32,6 @@ export class OffersService {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     //if (localStorage.getItem("user") != null && localStorage.getItem("ut") == "recruteur") {
       //localStorage.setItem("user","1");
-    console.log("sdfsdfsd");
       return this.http.get(this._backendURL.allOffers.replace(':id', 1))
         .map((res: Response) =>   res.json()
 
