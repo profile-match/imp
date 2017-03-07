@@ -7,6 +7,7 @@ import {competence} from "../interfaces/competence";
 import {formation} from "../interfaces/formation";
 import {candidat} from "../interfaces/candidat";
 import {Router} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'form-candidat',
@@ -213,6 +214,9 @@ export class FormComponent implements OnInit {
     if (record.model && record.candidat.currentValue) {
       this._candidat = record.candidat.currentValue;
     }
+
+    const datePipe = new DatePipe(this._candidat.naissance);
+    this._candidat.naissance = datePipe.transform(this._candidat.naissance, 'yyyy-MM-dd');
   }
 
   get candidat(): any {

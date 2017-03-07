@@ -10,6 +10,7 @@ export interface candidat {
   "banned": number;
   "loisirs": string;
   "nom": string;
+  "naissance":string;
   "isMale" : boolean;
   "suspended": boolean;
   "photo": string;
