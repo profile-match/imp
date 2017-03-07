@@ -46,7 +46,8 @@ export const environment = {
       deletePoste: '/rest/recruteur/deleteDossier/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
-      sendMail : '/rest/serviceMail/envoyer'
+      sendMail : '/rest/serviceMail/envoyer',
+      getCv : '/rest/candidat/cv/:id'
     }
   },
   frontend: {

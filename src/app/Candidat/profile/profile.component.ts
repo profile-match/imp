@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
 import {formation} from "../interfaces/formation";
 import {competence} from "../interfaces/competence";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap'
-import {ActivatedRoute} from "@angular/router";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
+import {ActivatedRoute, Router} from "@angular/router";
 import {experiencePro} from "../interfaces/experiencePro";
 
 @Component({
@@ -21,7 +21,7 @@ export class ProfileCandidatComponent implements OnInit {
   private _urlPhoto: string;
   private _onglet: string;
 
-  constructor(private _route: ActivatedRoute, private _candidatService: CandidatService) {
+  constructor(private _route: ActivatedRoute, private _candidatService: CandidatService, private _router: Router) {
     this._dialogStatus = 'inactive';
     this.candidat = {};
     this._id = "";
@@ -29,17 +29,20 @@ export class ProfileCandidatComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._route.params
-      .map((params: any) => params.id)
-      .subscribe((id: string) => {
-        this._id = id;
-      });
-
-    this._candidatService.getCandidat(this._id).subscribe(
-      (candidat: candidat) => {
+    if (localStorage.getItem("user") === null) {
+      return false;
+    }
+    else {
+      this._candidatService.getCandidat(localStorage.getItem("user")).subscribe((candidat: candidat) => {
         this._candidat = candidat;
         this._urlPhoto = this._candidatService.getPhotoUrl(candidat.photo);
       });
+    }
+  }
+
+  goEditProfil(){
+
+    this._router.navigate(['/editCandidat']);
 
   }
 

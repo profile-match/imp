@@ -107,7 +107,7 @@ export class AuthenticationService {
         localStorage.setItem("user", authenticatedCandidat.id.toString());
         localStorage.setItem("ut", "candidat");
         console.log("id cand : " + localStorage.getItem("user"));
-        this._router.navigate(['/addPost']);
+        this._router.navigate(['/candidat/']);
 
         return true;
       }
