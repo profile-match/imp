@@ -1,0 +1,27 @@
+<section>
+  <md-card>
+    <md-card-title>
+      <span>Signaler un mauvais comportement</span>
+    </md-card-title>
+
+    <md-card-content>
+      <form [formGroup]="form">
+        <md-input-container>
+          <label>Titre</label>
+          <md-input></md-input>
+        </md-input-container>
+
+
+        <md-input-container>
+          <label>Description</label>
+          <textarea></textarea>
+        </md-input-container>
+      </form>
+    </md-card-content>
+
+    <md-card-actions align="end">
+      <button type="button" class="btn btn-default" >Annuler</button>
+      <button type="submit" class="btn btn-success" >Envoyer</button>
+    </md-card-actions>
+  </md-card>
+</section>
