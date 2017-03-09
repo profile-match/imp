@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Gender</label>
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Type</label>
         <div *ngFor="let gender of genders">
           <label *ngIf="this._id==0">
             <input type="radio" id="gender" name="gender" [(ngModel)]="_selectedG"
