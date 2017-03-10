@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-matching',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _location: Location) {
+  }
 
   ngOnInit() {
   }
 
+  backClicked() {
+    this._location.back();
+  }
+
+  linkCandidat(){
+    //TODO cloturer l'offre et ajouter le candidat en tant que candidat embauché
+
+  }
 }
