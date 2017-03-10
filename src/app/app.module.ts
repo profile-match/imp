@@ -57,6 +57,7 @@ import {CardPosteComponent} from "./recruteur/card-poste/card-poste.component";
 import {FilterPoste} from "./recruteur/filtrer-poste-pipe/filter-poste.pipe";
 import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-count.pipe";
 import { MatchingComponent } from './recruteur/matching/matching.component';
+import { AvisComponent } from './recruteur/avis/avis.component';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { MatchingComponent } from './recruteur/matching/matching.component';
       CardPosteComponent,
       FilterPoste,
       FiltrerPosteCount,
-      MatchingComponent
+      MatchingComponent,
+      AvisComponent
     ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap'
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
 
@@ -15,7 +15,7 @@ export class UpdateProfileCandidatComponent implements OnInit {
 
   private _id : string;
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _candidatService: CandidatService) {
+  constructor(private _router: Router, private _candidatService: CandidatService) {
     this.id = "";
     this.candidat = {};
   }
@@ -24,11 +24,12 @@ export class UpdateProfileCandidatComponent implements OnInit {
    * OnInit implementation
    */
   ngOnInit() {
-    this._route.params
-      .map((params: any) => params.id)
-      .subscribe((id: string) => this.id = id);
-
-    this._candidatService.getCandidat(this.id).subscribe((candidat: candidat) => this._candidat = candidat);
+    if (localStorage.getItem("user") === null) {
+      return false;
+    }
+    else {
+      this._candidatService.getCandidat(localStorage.getItem("user")).subscribe((candidat: candidat) => this._candidat = candidat);
+    }
   }
 
   updateCandidat(c: candidat) {

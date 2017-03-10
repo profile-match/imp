@@ -7,7 +7,7 @@ import {competence} from "../interfaces/competence";
 import {formation} from "../interfaces/formation";
 import {candidat} from "../interfaces/candidat";
 import {Router} from "@angular/router";
-import {DatePipe} from "@angular/common";
+import {DatePipe, Location} from "@angular/common";
 
 @Component({
   selector: 'form-candidat',
@@ -47,7 +47,7 @@ export class FormComponent implements OnInit {
   private _urlPhoto: string;
   private _isUploading:boolean;
 
-  constructor(private _candidatService: CandidatService, private router: Router) {
+  constructor(private _candidatService: CandidatService, private router: Router, private _location: Location) {
 
     this._isUpdateMode = false;
     this.isUploading = false;
@@ -80,10 +80,14 @@ export class FormComponent implements OnInit {
     return this._profile$;
   }
 
+  GoBack(){
+    this._location.back();
+  }
+
   onSubmit() {
     console.log(this.candidat);
     this._profile$.emit(this.candidat);
-    this.router.navigate(['/candidat/profile/:'+this.candidat._id]);
+    this.router.navigate(['/candidat/profile/']);
   }
 
   setSex(b: boolean) {

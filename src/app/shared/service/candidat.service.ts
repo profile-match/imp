@@ -33,6 +33,11 @@ export class CandidatService {
     return new RequestOptions({headers: headers});
   }
 
+  getCv(id:number): Observable<any> {
+    return this.http.get(this._backendURL.getCv.replace(':id', id))
+      .map((res) => {});
+  }
+
   uploadPhoto(c: FileList): Observable<string> {
     let formData: FormData = new FormData();
     formData.append('filedata', c[0], c[0].name);
