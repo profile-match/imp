@@ -58,10 +58,12 @@ import {FilterPoste} from "./recruteur/filtrer-poste-pipe/filter-poste.pipe";
 import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-count.pipe";
 import { MatchingComponent } from './recruteur/matching/matching.component';
 import { AvisComponent } from './recruteur/avis/avis.component';
+import { ProfileLinkedinComponent } from './Candidat/profile-linkedin/profile-linkedin.component';
 
 
 @NgModule({
     declarations: [
+      ProfileLinkedinComponent,
       AppComponent,
       PosteFormComponent,
       AccueilComponent,
@@ -104,7 +106,8 @@ import { AvisComponent } from './recruteur/avis/avis.component';
       FilterPoste,
       FiltrerPosteCount,
       MatchingComponent,
-      AvisComponent
+      AvisComponent,
+      ProfileLinkedinComponent
     ],
   imports: [
     BrowserModule,

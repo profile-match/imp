@@ -7,6 +7,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
 import {ActivatedRoute, Router} from "@angular/router";
 import {experiencePro} from "../interfaces/experiencePro";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-profile-candidat',
@@ -146,4 +147,21 @@ export class ProfileCandidatComponent implements OnInit {
   setOnglet(onglet: string) {
     this._onglet = onglet;
   }
+
+  goLinkedIn(): void{
+    //this.activeLinkedinButton();
+    let url = environment.frontend.protocol+"%3A%2F%2F"+environment.frontend.host;
+    if(environment.frontend.port != ""){
+      url += "%3A"+environment.frontend.port;
+
+    }
+    window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
+      "response_type=code&" +
+      "client_id=7868doeuipinun&" +
+      "redirect_uri="+url+"%2Fsynchronisation-linkedin&" +
+      "state=987654321&" +
+      "scope=r_basicprofile&" +
+      "_id="+this._id;
+  }
+
 }

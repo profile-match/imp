@@ -15,6 +15,7 @@ import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
 import {ListCandidatPosteComponent} from "./visiteur/list-candidat-poste/list-candidat-poste.component";
 import {MatchingComponent} from "./recruteur/matching/matching.component";
+import {ProfileLinkedinComponent} from "./Candidat/profile-linkedin/profile-linkedin.component";
 
 const ROUTES: Routes = [
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const ROUTES: Routes = [
   {path: 'editCandidat', component: UpdateProfileCandidatComponent},
   {path: 'candidat', component: DashboardCandidatComponent},
   {path: 'inscription-linkedin', component: InscriptionLinkedinComponent},
+  {path: 'synchronisation-linkedin', component: ProfileLinkedinComponent},
   {path: 'candidat/profile', component: ProfileCandidatComponent},
   {path: 'dashboardRecruteur', component: OffreComponent},
   {path: 'listCandidatPoste', component: ListCandidatPosteComponent},
