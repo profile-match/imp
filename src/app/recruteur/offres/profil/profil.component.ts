@@ -17,7 +17,6 @@ export class ProfilComponent implements OnInit {
   private _isUpdateMode: boolean;
 
   private _formMdp: FormGroup;
-  private _modelMdp : any ;
   private isUploading : boolean ;
   public _urlPhoto : string;
 
@@ -27,11 +26,6 @@ export class ProfilComponent implements OnInit {
 
     this.isUploading = false;
     this._formMdp = this._buildForm();
-    this._modelMdp  = {
-      password: '',
-      newPassword: '',
-      passwordConfirm: ''
-    }
 
   }
 
@@ -86,9 +80,9 @@ export class ProfilComponent implements OnInit {
 
 
   updateInfos(){
-    console.log(this._data);
     this._serviceRecruteur.updateInfos(this._data).subscribe( (res : any) => {
       this._notificationService.addNotification(res.message, res.success);
+      this._isUpdateMode = false;
     });
   }
 
@@ -103,6 +97,7 @@ export class ProfilComponent implements OnInit {
 
     this._serviceRecruteur.updateMdp(data).subscribe((data2: any) => {
       this._notificationService.addNotification(data2.message, data2.success);
+
     });
   }
 
