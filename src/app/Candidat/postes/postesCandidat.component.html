@@ -22,7 +22,6 @@
            aria-describedby="datatable_info">
       <thead>
       <tr role="row">
-        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 40px;"></th>
         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Entreprise</th>
         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Poste</th>
         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" style="width: 262px;">Lieu</th>
@@ -32,7 +31,6 @@
       <tbody>
 
       <tr role="row" class="odd" *ngFor="let poste of postes;let i=index" >
-        <td *ngIf="i<=upperIndex && i>=lowerIndex"><i class="fa fa-google" style="font-size: 1.5em;"></i></td>
         <td *ngIf="i<=upperIndex && i>=lowerIndex">{{poste.intitule}}</td>
         <td *ngIf="i<=upperIndex && i>=lowerIndex">{{poste.type_de_contrat}}</td>
         <td *ngIf="i<=upperIndex && i>=lowerIndex">{{poste.lieu_de_travail}}</td>
