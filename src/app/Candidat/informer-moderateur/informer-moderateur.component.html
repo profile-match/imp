@@ -1,0 +1,24 @@
+<md-card class="md-whiteframe-2dp">
+  <md-card-title>
+    <span>Signaler un mauvais comportement</span>
+  </md-card-title>
+  <md-card-content align="center">
+    <form [formGroup]="form">
+      <!--<md-input-container>-->
+        <label>Titre:</label>
+        <input formControlName="titre" name="titre" [(ngModel)]="signalement.titre"><br/>
+      <!--</md-input-container>-->
+
+
+      <!--<md-input-container>-->
+        <label>Description:</label>
+        <textarea name="description" formControlName="description" [(ngModel)]="signalement.description"></textarea>
+      <!--</md-input-container>-->
+    </form>
+  </md-card-content>
+
+  <md-card-actions align="center">
+    <button type="button" class="btn btn-default" (click)="cancel()">Annuler</button>
+    <button type="submit" class="btn btn-success" (click)="submit()" >Envoyer</button>
+  </md-card-actions>
+</md-card>

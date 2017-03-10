@@ -58,6 +58,7 @@ import {FilterPoste} from "./recruteur/filtrer-poste-pipe/filter-poste.pipe";
 import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-count.pipe";
 import { MatchingComponent } from './recruteur/matching/matching.component';
 import { AvisComponent } from './recruteur/avis/avis.component';
+import { InformerModerateurComponent } from './Candidat/informer-moderateur/informer-moderateur.component';
 
 
 @NgModule({
@@ -104,7 +105,8 @@ import { AvisComponent } from './recruteur/avis/avis.component';
       FilterPoste,
       FiltrerPosteCount,
       MatchingComponent,
-      AvisComponent
+      AvisComponent,
+      InformerModerateurComponent
     ],
   imports: [
     BrowserModule,
