@@ -6,7 +6,7 @@ export const environment = {
   backend: {
     protocol: 'http',
     host: 'localhost',
-    port: '8080',
+    port:'8080',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',

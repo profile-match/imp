@@ -1,8 +1,12 @@
 export const environment = {
   production: true,
+  header: {
+    json: {'Content-Type': 'application/json'}
+  },
   backend: {
-    protocol: 'https',
+    protocol: 'http',
     host: 'pm-core.bober.ovh',
+    port:'8080',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
@@ -58,5 +62,4 @@ export const environment = {
     host: 'imp.bober.ovh',
     port: ''
   }
-
 };
