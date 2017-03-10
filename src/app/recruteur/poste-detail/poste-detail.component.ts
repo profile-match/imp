@@ -33,22 +33,22 @@ export class PosteDetailComponent implements OnInit {
       salaire_min: 0,
       salaire_max: 0,
       afficher_moyenne: 0,
-      type_contrat: '',
-      resume: '',
-      point_attention: '',
-      lieu_travail: '',
-      organisation: '',
-      equipe_concernee: '',
+      type_contrat: 'jjvjv',
+      resume: 'jgcgfjblk',
+      point_attention: 'qergaerf',
+      lieu_travail: 'zreger',
+      organisation: 'sdgsrg',
+      equipe_concernee: 'sdgdrg',
 
-      savoir_specifications: [],
-      savoir_faires: [],
-      savoir_etres: [],
-      metiers: [],
-      fonctionnelles: [],
-      techniques: [],
-      langues: [],
-      certifications: [],
-      formations: []
+      savoir_specifications: ['dsfsef','qfqef'],
+      savoir_faires: ['sfSEF','Sfs'],
+      savoir_etres: ['qsgqrg','sGQSD'],
+      metiers: ['S<GFS','QFSDBD'],
+      fonctionnelles: ['sdv','qsf'],
+      techniques: ['sd','sdf'],
+      langues: ['sef','sdvv'],
+      certifications: ['QSEV','QDFV'],
+      formations: ['S','E']
     }
 
     this._poste =  this._poste_vide ;
