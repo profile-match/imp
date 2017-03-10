@@ -11,6 +11,7 @@ export const environment = {
       searchCandidat: '/api/candidats/?name=${:term}',
       bannirCandidat: '/rest/candidat/ban/:id',   //bannir un candidat
       unbanCandidat: '/rest/candidat/unban/:id',
+      deleteCandidat: '/rest/candidat/delete/:id',
       nbFemelle: '/rest/candidat/getnbfemelle',
       nbMale: '/rest/candidat/getnbmale',
       banRecruteur: '/rest/recruteur/ban/:id',  //bannir un recruteur
@@ -18,10 +19,11 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/rest/recruteur/allDossier',
-      onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
+      onePost: '/rest/recruteur/dossierRecruteur/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
+      oneUser: '/rest/utilisateur/getUtilisateur',
       createUserCand: '/rest/utilisateur/inscrireCand', //create candidat
       createUserRec: '/rest/utilisateur/inscrireRec', //create recruteur
       searchMetier: '/rest/recruteur/completeMetier/:intitule',
@@ -43,7 +45,12 @@ export const environment = {
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
       sendMail : '/rest/serviceMail/envoyer',
-      getCv : '/rest/candidat/cv/:id'
+      getCv : '/rest/candidat/cv/:id',
+      createAvis : '/rest/recruteur/avis',
+      updateCandPost :'/rest/candidat/update/:id',
+      updateRecruteur : '/rest/recruteur/update',
+      updateMdpRecruteur : '/rest/recruteur/updateMdp',
+      getPhoto: '/rest/candidat/photo/:id'
     }
   },
   frontend: {
