@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import {environment} from "../../../environments/environment";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {Commentaire} from "../../Candidat/interfaces/commentaire";
+import {signalementCandidat} from "../../Candidat/interfaces/signalementCandidat";
 
 @Injectable()
 export class CandidatService {
@@ -172,6 +173,11 @@ export class CandidatService {
   unSuspend(candidat: candidat): Observable<candidat> {
     return this.http.get(this._backendURL.unsuspendCandidat.replace(':id', candidat.id))
       .map(res => res.json());
+  }
+
+  signalementCandidat(signalement: signalementCandidat): Observable<any> {
+    return this.http.post(this._backendURL.sendSignalement, JSON.stringify(signalement), this._options())
+      .map((res) => res.json());
   }
 
 }

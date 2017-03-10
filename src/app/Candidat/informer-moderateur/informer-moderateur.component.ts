@@ -15,7 +15,7 @@ export class InformerModerateurComponent implements OnInit {
   private _submit:EventEmitter<any>;
   private _cancel:EventEmitter<any>;
 
-  constructor() {
+  constructor(private _candidatService:CandidatService) {
     this._signalement.description = "";
     this._signalement.titre = "";
     this._submit = new EventEmitter();
@@ -55,7 +55,7 @@ export class InformerModerateurComponent implements OnInit {
   }
 
   submit(){
-    this._submit.emit(console.log(this._signalement));
+    this._candidatService.signalementCandidat(this._signalement);
   }
 
   private _buildForms(): FormGroup {

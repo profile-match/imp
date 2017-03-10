@@ -29,7 +29,7 @@ const ROUTES: Routes = [
   {path: 'editCandidat', component: UpdateProfileCandidatComponent},
   {path: 'candidat', component: DashboardCandidatComponent},
   {path: 'inscription-linkedin', component: InscriptionLinkedinComponent},
-  {path: 'candidat/profile', component: ProfileCandidatComponent},
+    {path: 'candidat/profile', component: ProfileCandidatComponent},
   {path: 'dashboardRecruteur', component: OffreComponent},
   {path: 'listCandidatPoste', component: ListCandidatPosteComponent},
   {path: 'matchingPost/:iddossier/:idcandidat', component: MatchingComponent},
