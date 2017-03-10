@@ -60,6 +60,7 @@ import { MatchingComponent } from './recruteur/matching/matching.component';
 import { AvisComponent } from './recruteur/avis/avis.component';
 import { RechercherOffresComponent } from './Candidat/rechercher-offres/rechercher-offres.component';
 import { CardOffreComponent } from './shared/card-offre/card-offre.component';
+import { ProfilComponent } from './recruteur/offres/profil/profil.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { CardOffreComponent } from './shared/card-offre/card-offre.component';
       MatchingComponent,
       AvisComponent,
       RechercherOffresComponent,
-      CardOffreComponent
+      CardOffreComponent,
+      ProfilComponent
     ],
   imports: [
     BrowserModule,

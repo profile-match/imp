@@ -22,10 +22,13 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/rest/recruteur/allDossier',
-      onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
+
+      onePost: '/rest/recruteur/dossierRecruteur/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
+
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
+      oneUser: '/rest/utilisateur/getUtilisateur',
       createUserCand: '/rest/utilisateur/inscrireCand', //create candidat
       createUserRec: '/rest/utilisateur/inscrireRec', //create recruteur
       searchMetier: '/rest/recruteur/completeMetier/:intitule',
@@ -41,15 +44,23 @@ export const environment = {
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
-      linkedinToken: '/rest/linkedin/gettoken/:code/:state',
+      linkedinToken: '/rest/linkedin/gettoken/:code/:state/:genre',
       suspendCandidat: '/rest/candidat/suspend/:id',
       deletePoste: '/rest/recruteur/deleteDossier/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
       sendMail : '/rest/serviceMail/envoyer',
       getCv : '/rest/candidat/cv/:id',
-      createAvis : '/rest/recruteur/avis'
-    }
+      createAvis : '/rest/recruteur/avis',
+
+      updateCandPost :'/rest/candidat/update/:id',
+
+
+      updateRecruteur : '/rest/recruteur/update',
+      updateMdpRecruteur : '/rest/recruteur/updateMdp',
+      getPhoto: '/rest/candidat/photo/:id',
+}
+
   },
   frontend: {
     protocol: 'http',

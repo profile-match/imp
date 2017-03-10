@@ -45,6 +45,7 @@ export class FormInvitationComponent implements OnInit {
   }
 
   submit(mails : any){
+    console.log("mail 1 +"+ mails);
     this._submit$.emit(mails);
   }
 

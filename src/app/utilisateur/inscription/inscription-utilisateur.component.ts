@@ -63,9 +63,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
   }
 
   ngOnInit() {
-/*     this.http.get(this._backendURL.allUser)
-      .map( res =>  res.json() )
-       .subscribe(us => this.users = us);*/
+
     this._route.params
       .map((params: any) => this._id=params.id)
       .subscribe();
@@ -114,8 +112,8 @@ export class InscriptionUtilisateurComponent implements OnInit {
         else
           this.http.post("http://" + environment.backend.host + ":" + environment.backend.port + "/rest/utilisateur/inscrireRec", this._utilisateur, requestOptions).subscribe();
 
-      //  this._service.login(this._utilisateur);
-        this._router.navigate(['/login']);
+        this._service.login(this._utilisateur);
+      //  this._router.navigate(['/login']);
       }
     }
 
@@ -129,10 +127,17 @@ export class InscriptionUtilisateurComponent implements OnInit {
       if(environment.frontend.port != ""){
         url += "%3A"+environment.frontend.port;
       }
+      let param = "?genre=";
+      if(this._selectedG == 'C'){
+        param += "C";
+      }else{
+        param += "R";
+      }
+
       window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
         "response_type=code&" +
         "client_id=7868doeuipinun&" +
-        "redirect_uri="+url+"%2Finscription-linkedin&" +
+        "redirect_uri="+url+"%2Finscription-linkedin"+param+"&" +
         "state=987654321&" +
         "scope=r_emailaddress";
   }
