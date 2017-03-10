@@ -1,0 +1,9 @@
+/* mouse over link */
+a:hover {
+  color: darkblue;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}

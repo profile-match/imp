@@ -1,0 +1,520 @@
+<div class="x_panel">
+
+  <div class="page-title">
+    <div class="title_left">
+      <h3 *ngIf="enModification">Modification du poste {{poste.intitule}}</h3>
+      <h3 *ngIf="!enModification">Nouveau poste à pourvoir</h3>
+    </div>
+  </div>
+
+  <form novalidate #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left" >
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Caractéristique du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+
+      <div class="item form-group bad" >
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="reference">Reference <span
+          class="required">*</span>
+        </label>
+
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="reference" [value]="reference" [(ngModel)]="poste.reference" required="required"
+                 name="reference" class="form-control col-md-7 col-xs-12" #reference="ngModel">
+        </div>
+        <span class="alert" *ngIf="reference.dirty && reference.errors?.required">Remplissez ce champ</span>
+
+      </div>
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="intitule">Intitule <span class="required">*</span>
+        </label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="intitule" [value]="intitule" [(ngModel)]="poste.intitule" required #intitule="ngModel"
+                 name="intitule" class="form-control col-md-7 col-xs-12">
+
+        </div>
+        <span class="alert" *ngIf="intitule.dirty && intitule.errors?.required">Remplissez ce champ</span>
+      </div>
+
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="indice_salaire">Indice grille salaire
+        </label>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+          <input type="text" id="indice_salaire" [value]="indice_salaire" [(ngModel)]="poste.indice_salaire"
+                 required="required"
+                 name="indice_salaire" class="form-control col-md-7 col-xs-12" #indice="ngModel">
+
+        </div>
+
+        <span title="Cette information permet d’indiquer le niveau où se situe le salaire du poste
+à pourvoir dans la grille de salaires au sein de l’entreprise"><img style="margin-top: 7px;"
+                                                                    src="./assets/information.png"
+                                                                    height="20" width="20"/></span>
+
+        <span class="alert" *ngIf="indice.dirty && indice.errors?.required">Remplissez ce champ</span>
+
+         </div>
+
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salaire_min">Salaire Minimun Annuel <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+          <input type="text" id="salaire_min" style="text-align:center;" [value]="salaire_min"
+                 [(ngModel)]="poste.salaire_min" name="salaire_min" required #salaire_min="ngModel"
+                 class="form-control col-md-7 col-xs-12">
+            </div>
+        <span class="alert" *ngIf="salaire_min.dirty && salaire_min.errors?.required">Remplissez ce champ</span>
+
+      </div>
+
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salaire_max">Salaire Maximum Annuel <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+          <input type="text" style="text-align:center;" id="salaire_max" [value]="salaire_max"
+                 [(ngModel)]="poste.salaire_max" name="salaire_max" required #salaire_max="ngModel"
+                 class="form-control col-md-7 col-xs-12">
+             </div>
+        <span class="alert" *ngIf="salaire_max.dirty && salaire_max.errors?.required">Remplissez ce champ</span>
+
+      </div>
+
+      <label style="position: relative; left: 6%;">Cocher pour afficher la moyenne du salaire min et max
+      </label>
+      <div class="icheckbox_flat-green form-group" [class.checked]="isChecked" (click)="getClass()"
+           style="margin-left: 7%">
+
+        <div>
+          <input type="checkbox" checked="checked" style="opacity:0; cursor: pointer; ">
+        </div>
+      </div>
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_contrat">Type de contrat <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="type_contrat" style="text-align:center;" [value]="type_contrat"
+                 [(ngModel)]="poste.type_contrat" name="type_contrat" required #type_contrat="ngModel"
+                 class="form-control col-md-7 col-xs-12">
+           </div>
+        <span class="alert" *ngIf="type_contrat.dirty && type_contrat.errors?.required">Remplissez ce champ</span>
+
+      </div>
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Résumé synthétique du poste <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-5 col-sm-5 col-xs-5">
+          <div id="resume" (input)="poste.resume=$event.target.textContent" [textContent]="poste.resume"
+               class="editor-wrapper-small placeholderText" contenteditable="true"></div>
+
+        </div>
+      </div>
+
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="point_attention">Point d'attention
+        </label>
+        <div class="col-md-5 col-sm-5 col-xs-5">
+          <div id="point_attention" (input)="poste.point_attention=$event.target.textContent"
+               [textContent]="poste.point_attention"
+               class="editor-wrapper-verysmall placeholderText" contenteditable="true">
+          </div>
+        </div>
+        <span title="Cette information permet de donner de l’information à retenir dans le cadre
+      du poste à pouvoir"><img style="margin-top: 7px;" src="./assets/information.png"
+                               height="20" width="20"/></span>
+      </div>
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Contexte du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lieu_travail">Lieu de travail <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="lieu_travail" [value]="lieu_travail"
+                 [(ngModel)]="poste.lieu_travail  " name="lieu_travail" required #lieu="ngModel"
+                 class="form-control col-md-7 col-xs-12">
+          </div>
+        <span class="alert "*ngIf="lieu.dirty && lieu.errors?.required">Remplissez ce champ</span>
+
+      </div>
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="organisation">Organisation <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="organisation" [value]="organisation"
+                 [(ngModel)]="poste.organisation  " name="organisation" required #organisation="ngModel"
+                 class="form-control col-md-7 col-xs-12">
+        </div>
+        <span class="alert "*ngIf="organisation.dirty && organisation.errors?.required">Remplissez ce champ</span>
+
+      </div>
+
+      <div class="item form-group bad">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="equipe_concernee">Equipe Concernée <span
+          class="required">*</span>
+        </label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="text" id="equipe_concernee" [value]="equipe_concernee"
+                 [(ngModel)]="poste.equipe_concernee" name="equipe_concernee" required #equipe="ngModel"
+                 class="form-control col-md-7 col-xs-12">
+        </div>
+        <span class="alert "*ngIf="equipe.dirty && equipe.errors?.required">Remplissez ce champ</span>
+
+      </div>
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Capacités et compétences du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir-faire</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputfaire [(ngModel)]="inputSavoirFaire" name="inputSavoirFaire" id="tags_2" type="text"
+                   class="tags form-control ng-normal">
+            <select #selectfaire class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" type="button" (click)="onEnterFaire(inputfaire.value,selectfaire.value)"
+                    class="btn btn-success"
+                    style="margin-left: 20px;">
+              Ajouter
+            </button>
+          </div>
+          <div id="tags_2_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-savoirFaire [savoir]="savoir" (savoirFaireDelete)="deleteFaire($event)"
+                             *ngFor="let savoir of savoirAddFaire">
+            </ng2-savoirFaire>
+            <div id="tags_2_addTag"><input id="tags_2_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir-être</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputetre [(ngModel)]="inputSavoirEtre" name="inputSavoirEtre" id="tags_3" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterEtre(inputetre.value,selectetre.value)">
+            <select #selectetre class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterEtre(inputetre.value,selectetre.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_3_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-savoirEtre [savoir]="savoir" (savoirEtreDelete)="deleteEtre($event)"
+                            *ngFor="let savoir of savoirAddEtre">
+            </ng2-savoirEtre>
+            <div id="tags_3_addTag"><input id="tags_3_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Savoir spécifiques</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputspe [(ngModel)]="inputSavoirSpe" name="inputSavoirSpe" id="tags_1" type="text"
+                   class="tags form-control ng-normal" (keyup.enter)="onEnterSpe(inputspe.value,selectspe.value)">
+            <select #selectspe class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterSpe(inputspe.value,selectspe.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-savoirSpe [savoir]="savoir" (savoirSpeDelete)="deleteSpe($event)" *ngFor="let savoir of savoirAddSpe">
+            </ng2-savoirSpe>
+            <div id="tags_1_addTag"><input id="tags_1_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Capacités et compétences du poste</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Métier</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+
+
+            <input #inputmetier [(ngModel)]="inputMetier" name="inputMetier" id="tags_4" type="text"
+                   class="tags form-control ng-normal"
+                   list="metiersAuto"
+                   (keyup)="autoComplete(inputmetier.value,'metier')"
+                   (keyup.enter)="onEnterMetier(inputmetier.value,selectmetier.value)">
+            <datalist id="metiersAuto">
+              <option *ngFor="let metier of metiers">
+                {{metier.intitule}}
+              </option>
+            </datalist>
+            <select #selectmetier class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterMetier(inputmetier.value,selectmetier.value)" class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_4_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-metier [metier]="metier" (metierDelete)="deleteMetier($event)" *ngFor="let metier of metierAdd">
+            </ng2-metier>
+            <div id="tags_4_addTag"><input id="tags_4_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Fonctionnelle</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputfonctionnelle [(ngModel)]="inputFonctionnelle" name="inputFonctionnelle" id="tags_5"
+                   type="text"
+                   list="fontionAuto"
+                   class="tags form-control ng-normal"
+                   (keyup)="autoComplete(inputfonctionnelle.value,'fonctionnelle')"
+                   (keyup.enter)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)">
+            <datalist id="fontionAuto">
+              <option *ngFor="let functionnelle of fonctionnelles">
+                {{functionnelle.intitule}}
+              </option>
+            </datalist>
+            <select #selectfonctionnelle class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterFonctionnelle(inputfonctionnelle.value,selectfonctionnelle.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_5_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-fonctionnelle [savoir]="savoir" (fonctionnelleDelete)="deleteFonctionnelle($event)"
+                               *ngFor="let savoir of fonctionnelleAdd">
+            </ng2-fonctionnelle>
+            <div id="tags_5_addTag"><input id="tags_5_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Technique</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputtechnique [(ngModel)]="inputTechnique" name="inputTechnique" id="tags_6" type="text"
+                   class="tags form-control ng-normal"
+                   list="technoAuto"
+                   (keyup)="autoComplete(inputtechnique.value,'technique')"
+                   (keyup.enter)="onEnterTechnique(inputtechnique.value,selecttechnique.value)">
+            <datalist id="technoAuto">
+              <option *ngFor="let technique of techniques">
+                {{technique.intitule}}
+              </option>
+            </datalist>
+            <select #selecttechnique class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterTechnique(inputtechnique.value,selecttechnique.value)"
+                    class="btn btn-success"
+                    style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_6_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-technique [savoir]="savoir" (techniqueDelete)="deleteTechnique($event)"
+                           *ngFor="let savoir of techniqueAdd">
+            </ng2-technique>
+            <div id="tags_6_addTag"><input id="tags_6_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Linguistiques</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputlinguistiques [(ngModel)]="inputLinguistiques" name="inputLinguistiques" id="tags_7"
+                   type="text"
+                   list="langueAuto"
+                   class="tags form-control ng-normal"
+                   (keyup)="autoComplete(inputlinguistiques.value,'linguistique')"
+                   (keyup.enter)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)">
+            <datalist id="langueAuto">
+              <option *ngFor="let langue of langues">
+                {{langue.intitule}}
+              </option>
+            </datalist>
+            <select #selectlinguistiques class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterLinguistiques(inputlinguistiques.value,selectlinguistiques.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_7_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-linguistiques [savoir]="savoir" (linguistiquesDelete)="deleteLinguistiques($event)"
+                               *ngFor="let savoir of linguistiquesAdd">
+            </ng2-linguistiques>
+            <div id="tags_7_addTag"><input id="tags_7_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="x_panel title overflow_hidden">
+      <div class="x_title">
+        <h2>Formations et certifications</h2>
+        <div class="clearfix">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Formation</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputformation [(ngModel)]="inputFormation" name="inputFormation" id="tags_8" type="text"
+                   class="tags form-control ng-normal"
+                   list="formationAuto"
+                   (keyup)="autoComplete(inputformation.value,'formation')"
+                   (keyup.enter)="onEnterFormation(inputformation.value,selectformation.value)">
+            <datalist id="formationAuto">
+              <option *ngFor="let formation of formations">
+                {{formation.intitule}}
+              </option>
+            </datalist>
+            <select #selectformation class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterFormation(inputformation.value,selectformation.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_8_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-formation [savoir]="savoir" (formationDelete)="deleteFormation($event)"
+                           *ngFor="let savoir of formationAdd">
+            </ng2-formation>
+            <div id="tags_8_addTag"><input id="tags_8_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Certification</label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+          <div style="display: flex;">
+            <input #inputcertification [(ngModel)]="inputCertification" name="inputCertification" id="tags_9"
+                   type="text"
+                   list="certifAuto"
+                   class="tags form-control ng-normal"
+                   (keyup)="autoComplete(inputcertification.value,'certification')"
+                   (keyup.enter)="onEnterCertification(inputcertification.value,selectcertification.value)">
+            <datalist id="certifAuto">
+              <option *ngFor="let certification of certifications">
+                {{certification.intitule}}
+              </option>
+            </datalist>
+            <select #selectcertification class="form-control" style="width: 35%; margin-left: 3%">
+              <option value="2">Obligatoire</option>
+              <option value="1">Plus</option>
+              <option value="0">N/A</option>
+            </select>
+            <button type="button" (click)="onEnterCertification(inputcertification.value,selectcertification.value)"
+                    class="btn btn-success" style="margin-left: 20px;">Ajouter
+            </button>
+          </div>
+          <div id="tags_9_tagsinput" class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <ng2-certification [savoir]="savoir" (certificationDelete)="deleteCertification($event)"
+                               *ngFor="let savoir of certificationAdd">
+            </ng2-certification>
+            <div id="tags_9_addTag"><input id="tags_9_tag" value="" data-default="add a tag"
+                                           style="color: rgb(102, 102, 102); width: 72px;"></div>
+
+            <div class="tags_clear"></div>
+          </div>
+          <div style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div style="text-align: center; ">
+    <button type="button" class="btn btn-primary" (click)="cancel()">Retour</button>
+    <button type="submit" class="btn btn-success" (click)="submit()" [disabled]="!f.valid" [routerLink]="['/dashboardRecruteur']">Valider</button>
+  </div>
+
+</div>

@@ -1,0 +1,91 @@
+<div class="x_panel">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="x_title">
+        <h1>{{_candidatName}} {{_candidatFName}}</h1>
+        <span *ngIf="_candidatSuspended" style="color:red">
+          Ce compte a été suspendu
+        </span>
+      </div>
+      <div class="row" *ngIf="!_candidatSuspended">
+        <div class="col-md-5">
+          <div class="row">
+            <label>Adresse postale : </label> {{_candidatAddress}}
+          </div>
+          <div class="row">
+            <label>Adresse e-mail : </label> {{_candidatEmail}}
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <label>Téléphone fixe : </label> {{_candidatPhoneFix}}
+          </div>
+          <div class="row">
+            <label>Téléphone portable : </label> {{_candidatPhoneMobile}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <img *ngIf="candidat.photo" style="border:1px solid #e6e9ed;" src="{{urlPhoto}}" class="img-circle" style="width:auto;height:150px;"
+           align="right">
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+
+  <div class="x_content" *ngIf="!_candidatSuspended">
+    <div class="x_title">
+      <h3>Profil</h3>
+    </div>
+
+    <div class="col-md-12">
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab1" class="nav nav-tabs bar_tabs" role="tablist">
+          <li role="presentation" class="active" (click)="setOnglet('comp')">
+            <a id="home-tab" role="tab" data-toggle="tab"
+               aria-expanded="true">Compétences</a>
+          </li>
+          <li role="presentation" class="active" (click)="setOnglet('exp')">
+            <a role="tab" id="profile-tab" data-toggle="tab"
+               aria-expanded="true">Expériences</a>
+          </li>
+          <li role="presentation" class="active" (click)="setOnglet('forma')">
+            <a role="tab" id="profile-tab2" data-toggle="tab"
+               aria-expanded="true">Formations</a>
+          </li>
+        </ul>
+        <div id="myTabContent1" class="tab-content" *ngIf="onglet == 'comp'">
+          <div role="tabpanel" class="tab-pane fade active in" id="skills-tab" aria-labelledby="home-tab">
+            <app-competence [competences]="_candidatCompetences"></app-competence>
+          </div>
+        </div>
+        <div id="myTabContent2" class="tab-content" *ngIf="onglet == 'exp'">
+          <div role="tabpanel" class="tab-pane fade active in" id="experience-tab" aria-labelledby="profile-tab">
+            <app-experience [experiences]="_candidatExperiences"></app-experience>
+          </div>
+        </div>
+        <div id="myTabContent3" class="tab-content" *ngIf="onglet == 'forma'">
+          <div role="tabpanel" class="tab-pane fade active in" id="formation-tab" aria-labelledby="profile-tab2">
+            <app-formation-candidat [formations]="_candidatFormations"></app-formation-candidat>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="x_content">
+    <div class="x_title">
+      <h3>Options du compte</h3>
+    </div>
+    <div class="row">
+      <button class="btn btn-default" type="submit">Modifier mes informations</button>
+      <button class="btn btn-default" type="submit">Changer mon mot de passe</button>
+      <button class="btn btn-default" type="submit" *ngIf="!_candidatSuspended" (click)="suspendCandidat(candidat)" >Suspendre mon compte</button>
+      <button class="btn btn-default" type="submit" *ngIf="_candidatSuspended" (click)="unsuspendCandidat(candidat)" >Rétablir mon compte</button>
+      <button class="btn btn-default" type="submit">Supprimer mon compte</button>
+    </div>
+  </div>
+
+</div>
+

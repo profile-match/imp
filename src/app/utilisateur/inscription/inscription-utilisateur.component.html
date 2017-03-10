@@ -1,0 +1,57 @@
+<div class="x_panel">
+
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Créer un compte utilisateur</h3>
+    </div>
+  </div>
+
+  <div class="x_content">
+    <form (ngSubmit)="onSubmit()" id="inscription_candidat_form" data-parsley-validate class="form-horizontal form-label-left">
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Adresse e-mail : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <input type="email" id="email" [value]="email" [(ngModel)]="email" required="required" name="email" class="form-control col-md-7 col-xs-12">
+        </div>
+        <span>{{errorMsg}}</span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="motdepasse">Mot de passe : <span class="required">*</span></label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+
+          <input type="password" id="motdepasse" [value]="motdepasse" [(ngModel)]="motdepasse" required="required" name="motdepasse" class="form-control col-md-7 col-xs-12">
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Gender</label>
+        <div *ngFor="let gender of genders">
+          <label *ngIf="this._id==0">
+            <input type="radio" id="gender" name="gender" [(ngModel)]="_selectedG"
+                   [value]="gender.value">
+            {{gender.display}}
+          </label>
+
+          <label *ngIf="this._id!=0">
+            <input type="radio" id="gender2" name="gender" [(ngModel)]="_selectedG"
+                   [value]="gender.value" disabled="disabled">
+            {{gender.display}}
+          </label>
+        </div>
+      </div>
+
+      <div style="margin-left: 25% ">
+        <span class="x_content" class="grow" (click)="goLinkedIn()" (mouseover)="overLinkedinButton()" (mouseleave)="leaveLinkedinButton()">
+          <img  *ngIf="buttonLinkedinStatus()===DEFAULT_STATUS" class="linkedin-button" src="../../../assets/Sign-in-Large---Default.png" alt="portrait">
+          <img  *ngIf="buttonLinkedinStatus()===HOVER_STATUS" class="linkedin-button" src="../../../assets/Sign-in-Large---Hover.png" alt="portrait">
+          <img  *ngIf="buttonLinkedinStatus()===ACTIVATED_STATUS" class="linkedin-button" src="../../../assets/Sign-in-Large---Active.png" alt="portrait">
+        </span>
+        <button style="margin-top: 4px;" type="button" class="btn btn-default" (click)="goBack()">Retour</button>
+        <button style="margin-top: 4px;" type="submit" class="btn btn-success">Valider</button>
+      </div>
+    </form>
+  </div>
+</div>

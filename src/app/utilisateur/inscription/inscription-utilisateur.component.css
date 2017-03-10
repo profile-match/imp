@@ -1,0 +1,16 @@
+img {
+}
+.linkedin-button{
+  width: 169px;
+  height: 32px;
+  background: url('../../../assets/Sign-in-Large---Default.png') left top no-repeat;
+}
+
+.linkedin-button:hover {
+  background: url('../../../assets/Sign-in-Large---Hover.png') left top no-repeat;
+}
+
+.linkedin-button:active {
+  background: url('../../../assets/Sign-in-Large---Active.png') left top no-repeat;
+}
+

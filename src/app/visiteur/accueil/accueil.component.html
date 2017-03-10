@@ -1,0 +1,120 @@
+
+
+		        <!-- page content -->
+        <div class="x_content" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+
+        <!--    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" *ngFor="let menu of menuList">
+              <span class="count_top"><i class="fa fa-user"></i> {{menu.name}}</span>
+              <div class="count">{{menu.value}}</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{menu.croissance}}% </i> From last Week</span>
+            </div> -->
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total candidats</span>
+              <div class="count">{{candidats.length}}</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total recruteurs</span>
+              <div class="count">{{recruteurs.length}}</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-pencil"></i> Nombres postes à pouvoir</span>
+              <div class="count">{{postes.length}}</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-comments"></i> Total Commentaires</span>
+              <div class="count">{{comments.length}}</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Female</span>
+              <div class="count">{{_nbFemelle}}</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Man</span>
+              <div class="count">{{_nbMale}}</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+				<br>
+                <h1 ALIGN="CENTER">Because find relevent candidates is not a game of CHANCE!</h1>
+				<br>
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+
+
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <div class="row">
+
+			<!-- bouton je suis candidat -->
+			<a routerLink="/inscription-utilisateur/2">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320" >
+                <div class="x_title">
+                  <h2>Je suis à la recherche d'un emploi</h2>
+
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content" class="grow pic">
+					        <img src="../../../assets/candidat2.jpg" alt="portrait">
+                </div>
+              </div>
+            </div>
+			</a>
+			<!-- /bouton je suis candidat -->
+
+			<!-- données pour les lieux d'activité-->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+
+				  <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div ALIGN="CENTER"><a [routerLink]="['/listCandidatPoste']" class="blue"><h3>>> Visiter le site <<</h3></a></div>
+			  <br>
+            </div>
+			<!-- /données pour les lieux d'activité-->
+
+			<!-- bouton je suis recruteur -->
+			<a routerLink="/inscription-utilisateur/1">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                  <h2>Je suis à la recherche d'un employé</h2>
+
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content" class="grow pic">
+					        <img src="../../../assets/recruteur2.png" alt="portrait" >
+                </div>
+              </div>
+            </div>
+			</a>
+            <router-outlet></router-outlet>
+			<!-- /bouton je suis recruteur -->
+
+          </div>
+
+        </div>
+        <!-- /page content -->
+
