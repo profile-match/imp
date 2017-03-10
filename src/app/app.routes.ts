@@ -15,6 +15,7 @@ import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
 import {ListCandidatPosteComponent} from "./visiteur/list-candidat-poste/list-candidat-poste.component";
 import {MatchingComponent} from "./recruteur/matching/matching.component";
+import {RechercherOffresComponent} from "./Candidat/rechercher-offres/rechercher-offres.component";
 
 const ROUTES: Routes = [
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
@@ -24,14 +25,14 @@ const ROUTES: Routes = [
   {path: 'inscription-utilisateur/:id', component: InscriptionUtilisateurComponent},
   {path: 'addPost', component: PosteFormComponent},
   {path: 'editPost/:id', component: UpdateComponent},
-  //{path: 'createCandidat', component: CreerProfileCandidatComponent},
   {path: 'editCandidat', component: UpdateProfileCandidatComponent},
   {path: 'candidat', component: DashboardCandidatComponent},
   {path: 'inscription-linkedin', component: InscriptionLinkedinComponent},
   {path: 'candidat/profile', component: ProfileCandidatComponent},
   {path: 'dashboardRecruteur', component: OffreComponent},
   {path: 'listCandidatPoste', component: ListCandidatPosteComponent},
-  {path: 'matchingPost/:iddossier/:idcandidat', component: MatchingComponent}
+  {path: 'matchingPost/:iddossier/:idcandidat', component: MatchingComponent},
+  {path:'candidat/offres', component: RechercherOffresComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);
