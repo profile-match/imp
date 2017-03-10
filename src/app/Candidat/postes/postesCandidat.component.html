@@ -31,7 +31,7 @@
       </thead>
       <tbody>
 
-      <tr role="row" class="odd" *ngFor="let poste of lespostes;let i=index" >
+      <tr role="row" class="odd" *ngFor="let poste of postes;let i=index" >
         <td *ngIf="i<=upperIndex && i>=lowerIndex"><i class="fa fa-google" style="font-size: 1.5em;"></i></td>
         <td *ngIf="i<=upperIndex && i>=lowerIndex">{{poste.intitule}}</td>
         <td *ngIf="i<=upperIndex && i>=lowerIndex">{{poste.type_de_contrat}}</td>
