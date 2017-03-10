@@ -3,6 +3,7 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
+import {Poste} from "../../recruteur/interfaces/poste";
 
 @Injectable()
 export class OffersService {
@@ -37,6 +38,13 @@ export class OffersService {
 
         );
     //}
+  }
+
+  postebyId(id:any): Observable<Poste> {
+    return this.http.get(this._backendURL.getPost.replace(':id', id))
+      .map((res: Response) =>   res.json()
+
+      );
   }
 
   /**

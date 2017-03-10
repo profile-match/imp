@@ -6,11 +6,33 @@
       <li role="presentation" (click)="setOffres()" [class.active]="offres"><a>Vos offres</a></li>
       <li role="presentation" (click)="setCandidat()" [class.active]="candidat"><a>Rechercher un candidat</a></li>
     </ul>
+
     <div *ngIf="profil">
       <div class="ln_solid"></div>
       <app-profil></app-profil>
     </div>
     <div *ngIf="candidat">
+    <br/>
+      <div  class="container" >
+        <div class="col-sm-6"  >
+          <div class="">
+            <div class=" form-group top_search">
+              <div class="input-group">
+                <input type="text" class="form-control"  ngModel #search="ngModel" placeholder="Recherche de candidat" >
+                <span class="input-group-btn">
+             <button class="btn btn-default" type="button"><i class="fa fa-filter"></i></button>
+          </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <h2>  {{listCandidat | filterCandidatCount: search.value}} candidats trouvés </h2>
+          </div>
+
+          <app-card-condidat   *ngFor="let candidatItem of listCandidat | filterCandidat: search.value " [candidat]="candidatItem" (submit)="marchestp($event)"   ></app-card-condidat>
+
+        </div>
+      </div>
     </div>
     <div class="x_panel title overflow_hidden" *ngIf="testOffreList.length > 0 && offres">
       <div class="row">

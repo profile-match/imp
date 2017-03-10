@@ -9,6 +9,8 @@ import {forEach} from "@angular/router/src/utils/collection";
 import {Avis} from "../interfaces/avis";
 import {Recruteur} from "../interfaces/recruteur";
 import {RecruteurService} from "../../shared/service/recruteur.service";
+import {CandidatService} from "../../shared/service/candidat.service";
+import {duo} from "../../Candidat/interfaces/duo";
 
 @Component({
   selector: 'app-offre',
@@ -18,6 +20,7 @@ import {RecruteurService} from "../../shared/service/recruteur.service";
 })
 
 export class OffreComponent implements OnInit {
+
 
   private _selectedOffre: Poste;
   private _testOffreList: Poste[];
@@ -34,8 +37,11 @@ export class OffreComponent implements OnInit {
   private cand3: candidat;
   private cand4: candidat;
   private post: Poste;
+  private _listCandidat:any[];
+  private candidatselect: candidat;
 
-  constructor(private recruteurService: RecruteurService,private offreService: OffersService, private createService: createService, private router: Router) {
+
+  constructor(private candidatService: CandidatService,private recruteurService: RecruteurService,private offreService: OffersService, private createService: createService, private router: Router) {
     this._profil = true;
     this._candidat = false;
     this._offres = false;
@@ -49,6 +55,7 @@ export class OffreComponent implements OnInit {
     this.cand = null;
     this.avis.description = "";
     this.avis.note = 0;
+    this._listCandidat = [];
   }
 
 
@@ -78,6 +85,8 @@ export class OffreComponent implements OnInit {
   ngOnInit() {
     this.offreService.fetch().subscribe((offers: any[]) =>  { this._testOffreList = offers;
                                                               this._selectedOffre = offers[0];
+      this.candidatService.getCandidats().subscribe(candidats => this._listCandidat = candidats);
+
     });
 console.log(this._dialogStatusAvis);
   }
@@ -205,6 +214,13 @@ console.log(this._dialogStatusAvis);
 
   }
 
+  marchestp(test:duo){
+    console.log(JSON.stringify(test.candidat));
+    console.log(test.poste.id);
+    this.candidatService.updateCandidatPost(test.candidat,test.poste.id).subscribe();
+  }
+
+
   get recruteur(): Recruteur {
     return this._recruteur;
   }
@@ -212,5 +228,16 @@ console.log(this._dialogStatusAvis);
   set recruteur(value: Recruteur) {
     this._recruteur = value;
   }
+
+  get listCandidat(): any[] {
+    return this._listCandidat;
+  }
+
+  set listCandidat(value: any[]) {
+    this._listCandidat = value;
+  }
+
+
+
 
 }

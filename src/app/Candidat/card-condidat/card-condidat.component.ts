@@ -1,6 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
+import {Poste} from "../../recruteur/interfaces/poste";
+import {OffersService} from "../../shared/offers-service/offers.service";
+import {duo} from "../interfaces/duo";
+
 
 @Component({
   selector: 'app-card-condidat',
@@ -9,12 +13,28 @@ import {CandidatService} from "../../shared/service/candidat.service";
 
 })
 export class CardCondidatComponent implements OnInit {
+
+
   private _candidat:candidat;
   private _photo:string;
-  private _hasPhoto:boolean
+  private _hasPhoto:boolean;
+  private _selectedOffre: Poste;
+  private _testOffreList: Poste[];
+  private _cancel$: EventEmitter<any>;
+  private _submit$: EventEmitter<any>;
+  private _duo: duo;
 
-  constructor( private _candidatService: CandidatService) {
-     this.candidat = {}
+
+
+
+  constructor(private offreService: OffersService, private _candidatService: CandidatService) {
+     this.candidat = { };
+    this._cancel$ = new EventEmitter();
+    this._submit$ = new EventEmitter();
+    this.duo = {
+      candidat : this.candidat,
+      poste : this.selectedOffre};
+
     }
 
 
@@ -63,6 +83,11 @@ export class CardCondidatComponent implements OnInit {
 
   ngOnInit() {
     this.photo = this._candidatService.getPhotoUrl(this.candidat.photo);
+    this.offreService.fetch().subscribe((offers: any[]) =>  {
+      this._testOffreList = offers;
+      this._selectedOffre = offers[0];
+
+    });
   }
 
 
@@ -73,6 +98,51 @@ export class CardCondidatComponent implements OnInit {
   set photo(value: string) {
     this._photo = value;
   }
+  get selectedOffre(): Poste {
+    return this._selectedOffre;
+  }
+
+  set selectedOffre(value: Poste) {
+    this._selectedOffre = value;
+  }
+  get testOffreList(): Poste[] {
+    return this._testOffreList;
+  }
+
+  set testOffreList(value: Poste[]) {
+    this._testOffreList = value;
+  }
+
+ submit(){
+
+   this.offreService.postebyId(this.selectedOffre).subscribe((res:Poste) => {
+
+     this._duo.candidat = this.candidat;
+     this._duo.poste = res;
+     this._submit$.emit(this._duo);
+
+   }
+ );
+
+ }
+
+
+  @Output('cancel') get cancel$(): EventEmitter<any> {
+    return this._cancel$;
+  }
+
+  @Output('submit') get submit$(): EventEmitter<any> {
+    return this._submit$;
+  }
+
+  get duo(): duo {
+    return this._duo;
+  }
+
+  set duo(value: duo) {
+    this._duo = value;
+  }
 
 
 }
+

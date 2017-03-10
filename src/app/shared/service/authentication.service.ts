@@ -70,7 +70,9 @@ export class AuthenticationService {
   existUser(user: Utilisateur){
     this._http.get(this._backendURL.allUser)
       .map(res => res.json())
-      .subscribe((us: any[]) => this._users = us);
+      .subscribe((us: any[]) => {
+      this._users = us;
+      });
 
     var authenticatedUser = this._users.find(r => r.email === user.email);
     if (authenticatedUser) {
@@ -92,8 +94,8 @@ export class AuthenticationService {
        // if (res.status === 200) {
           return res.json();
         //}
-      }).subscribe((c : Utilisateur) => {
-        authenticatedUser = c;
+      }).subscribe((u : Utilisateur) => {
+        authenticatedUser = u;
         //console.log("user : "+authenticatedUser);
 
         var authenticatedRecruteur;
@@ -109,8 +111,8 @@ export class AuthenticationService {
                 }
               }).subscribe(d =>  {
               authenticatedCandidat = d;
-              console.log("candidat : " +authenticatedCandidat.id);
-
+              console.log("candidat avant : " +authenticatedCandidat.id);
+              console.log("recruteur avant : " +authenticatedRecruteur.id);
 
               var authenticatedModerator = users.find(u => u.email === user.email);
 
@@ -129,7 +131,7 @@ export class AuthenticationService {
 
                   return true;
                 }
-                else if(authenticatedRecruteur.id!=-1) {
+                else if(authenticatedRecruteur.id != -1) {
                   localStorage.setItem("user", authenticatedRecruteur.id.toString());
                   localStorage.setItem("ut", "recruteur");
                   console.log("id rec : " + localStorage.getItem("user"));
