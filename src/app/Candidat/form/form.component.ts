@@ -6,6 +6,9 @@ import {CandidatService} from "../../shared/service/candidat.service";
 import {competence} from "../interfaces/competence";
 import {formation} from "../interfaces/formation";
 import {candidat} from "../interfaces/candidat";
+import {Router} from "@angular/router";
+import {DatePipe, Location} from "@angular/common";
+import {certificationCandidat} from "../interfaces/CertificationCandidat";
 
 @Component({
   selector: 'form-candidat',
@@ -22,6 +25,7 @@ export class FormComponent implements OnInit {
   private _candidat: candidat;
 
   private _compet: string;
+  private _certif: string;
 
   private _formation1: string;
   private _formation2: string;
@@ -45,7 +49,7 @@ export class FormComponent implements OnInit {
   private _urlPhoto: string;
   private _isUploading:boolean;
 
-  constructor(private _candidatService: CandidatService) {
+  constructor(private _candidatService: CandidatService, private router: Router, private _location: Location) {
 
     this._isUpdateMode = false;
     this.isUploading = false;
@@ -56,6 +60,7 @@ export class FormComponent implements OnInit {
     this.candidat.experiencePro = [];
     this.candidat.formation = [];
     this.candidat.competence = [];
+    this.candidat.certifications = [];
     this._propositions_competences = [];
 
     this.clearFormationForm();
@@ -64,12 +69,21 @@ export class FormComponent implements OnInit {
     this.comp_select = "0";
   }
 
+  ngOnChanges(record) {
+    if (record.model && record.candidat.currentValue) {
+      this._candidat = record.candidat.currentValue;
+    }
+
+    const datePipe = new DatePipe(this._candidat.naissance);
+    this._candidat.naissance = datePipe.transform(this._candidat.naissance, 'yyyy-MM-dd');
+  }
+
   onChange(event) {
     this.isUploading = true;
     let files = event.srcElement.files;
     this._candidatService.uploadPhoto(files).subscribe((id_photo: string) => {
       this.candidat.photo = id_photo;
-      this._urlPhoto = this._candidatService.getPhotoUrl(this.candidat.photo)
+      this._urlPhoto = this._candidatService.getPhotoUrl(this.candidat.photo);
       this.isUploading = false;
     });
   }
@@ -78,13 +92,12 @@ export class FormComponent implements OnInit {
     return this._profile$;
   }
 
-  onSubmit() {
-    console.log(this.candidat);
-    this._profile$.emit(this.candidat);
+  GoBack(){
+    this._location.back();
   }
 
-  setSex(b: boolean) {
-    this.candidat.isMale = b;
+  onSubmit() {
+    this._profile$.emit(this.candidat);
   }
 
   addCompetence(competence: string, type: string) {
@@ -114,10 +127,35 @@ export class FormComponent implements OnInit {
     this.propositions_competences = [];
   }
 
+  addCertification(certif: string) {
+    const cert = {
+      "certification": certif
+    };
+
+    let b = true;
+
+    console.log(this.candidat.certifications);
+
+    for (let c of this.candidat.certifications) {
+      if (cert.certification === c.certification && cert.certification != "") {
+        b = false;
+      }
+    }
+
+    if (b) {
+      this.candidat.certifications.push(cert);
+      this.certif = "";
+    }
+  }
+
+  deleteCertif(certif: certificationCandidat) {
+    this.candidat.certifications.splice(this.candidat.certifications.indexOf(certif), 1);
+    this.propositions_competences = [];
+  }
+
   addFormation() {
 
-    if (this.formation1 != "" && this.formation2 != "" && this.formation3 != "" &&
-      this.formation4 != "" && this.formation5 != "") {
+    if (this.formation1 != "") {
 
       const formation = {
         "intitule_de_formation": this.formation1,
@@ -140,8 +178,7 @@ export class FormComponent implements OnInit {
 
   addExperience() {
 
-    if (this.experience1 != "", this.experience2 != "", this.experience3 != "", this.experience4 != "",
-      this.experience5 != "", this.experience6 != "", this.experience7 != "", this.experience8 != "") {
+    if (this.experience1 != "") {
 
       const experiencePro = {
         "intitule_de_poste": this.experience1,
@@ -207,11 +244,6 @@ export class FormComponent implements OnInit {
    *
    * @param record
    */
-  ngOnChanges(record) {
-    if (record.model && record.candidat.currentValue) {
-      this._candidat = record.candidat.currentValue;
-    }
-  }
 
   get candidat(): any {
     return this._candidat;
@@ -251,6 +283,10 @@ export class FormComponent implements OnInit {
 
   set formation5(value: string) {
     this._formation5 = value;
+  }
+
+  setSex(b: boolean) {
+    this.candidat.isMale = b;
   }
 
   get formation4(): string {
@@ -374,4 +410,11 @@ export class FormComponent implements OnInit {
     this._isUploading = value;
   }
 
+  get certif(): string {
+    return this._certif;
+  }
+
+  set certif(value: string) {
+    this._certif = value;
+  }
 }

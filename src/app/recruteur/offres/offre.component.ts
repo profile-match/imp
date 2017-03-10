@@ -4,53 +4,53 @@ import {Poste} from '../interfaces/poste';
 
 import {Router} from "@angular/router";
 import {candidat} from "../../Candidat/interfaces/candidat";
+import {createService} from "../services/createService";
+import {forEach} from "@angular/router/src/utils/collection";
+import {Avis} from "../interfaces/avis";
+import {Recruteur} from "../interfaces/recruteur";
+import {RecruteurService} from "../../shared/service/recruteur.service";
 
 @Component({
   selector: 'app-offre',
   templateUrl: './offre.component.html',
   styleUrls: ['./offre.component.css'],
-  providers: [OffersService]
+  providers: [OffersService,createService]
 })
 
 export class OffreComponent implements OnInit {
 
-  private _selectedOffre: any = {};
-  private _selectedCandidats: candidat[] = [];
+  private _selectedOffre: Poste;
   private _testOffreList: Poste[];
+  private _dialogStatusAvis:boolean;
+  private temp: Poste[];
   private _profil: boolean;
   private _candidat: boolean;
   private _offres: boolean;
+  private _selectedCandidat: candidat;
+  private avis = <Avis>{};
+  private _recruteur = <Recruteur>{};
+  private cand: candidat;
+  private cand2: candidat;
+  private cand3: candidat;
+  private cand4: candidat;
+  private post: Poste;
 
-
-  constructor(private offreService: OffersService, private router: Router) {
+  constructor(private recruteurService: RecruteurService,private offreService: OffersService, private createService: createService, private router: Router) {
     this._profil = true;
     this._candidat = false;
     this._offres = false;
-    this._selectedOffre.reference = "";
-    this._selectedOffre.intitule = "";
-    this._selectedOffre.indice_salaire = "";
-    this._selectedOffre.salaire_min = 0;
-    this._selectedOffre.salaire_max = 0;
-    this._selectedOffre.afficher_moyenne = 0;
-    this._selectedOffre.type_contrat = "";
-    this._selectedOffre.resume = "";
-    this._selectedOffre.point_attention = "";
-    this._selectedOffre.lieu_travail = "";
-    this._selectedOffre.organisation = "";
-    this._selectedOffre.equipe_concernee = "";
-    this._selectedOffre.savoir_specifications = [];
-    this._selectedOffre.savoir_faires = [];
-    this._selectedOffre.savoir_etres = [];
-    this._selectedOffre.metiers = [];
-    this._selectedOffre.fonctionnelles = [];
-    this._selectedOffre.techniques = [];
-    this._selectedOffre.langues = [];
-    this._selectedOffre.formations = [];
-    this._selectedOffre.certifications = [];
-    this._selectedOffre.listeCandidat = [];
     this._testOffreList = [];
-
+    this._dialogStatusAvis =  false;
+    this._selectedOffre = {id:0, id_recruteur: 0,date_publication: 20161206,
+      reference:"", intitule:"", indice_salaire:"",salaire_min:10,salaire_max:10,afficher_moyenne:0,
+      type_contrat:"",resume:"",point_attention:"",lieu_travail:"",organisation:"",equipe_concernee:"",
+      savoir_specifications:[],savoir_faires:[],savoir_etres:[],metiers:[],fonctionnelles:[], techniques:[],
+      langues:[], formations:[],certifications:[], listeCandidat:[]};
+    this.cand = null;
+    this.avis.description = "";
+    this.avis.note = 0;
   }
+
 
   setProfil(){
     this._profil = true;
@@ -70,24 +70,30 @@ export class OffreComponent implements OnInit {
     this._offres = true;
   }
 
-  set selectedOffre(offre: Poste) {
-    this._selectedOffre = offre;
-    this._selectedCandidats = offre.listeCandidat;
-  }
-
   //Return the offer which was selected by the user, recruiter, in this case.
   get selectedOffre(): Poste {
     return this._selectedOffre;
   }
 
-  //Return the list of appliers for the selected offer.
-  get selectedCandidats(): candidat[] {
-    return this._selectedCandidats;
+  ngOnInit() {
+    this.offreService.fetch().subscribe((offers: any[]) =>  { this._testOffreList = offers;
+                                                              this._selectedOffre = offers[0];
+    });
+console.log(this._dialogStatusAvis);
   }
 
-  ngOnInit() {
-    this.offreService.fetch().subscribe((offers: any[]) => this._testOffreList = offers);
-    this.offreService.fetch().subscribe((offers: any[]) => this._selectedOffre = offers[0]);
+  redirect(candidatID:any){
+
+//TODO redirecte vers la page de matching avec l'id
+  }
+
+
+  selectePoste(poste : Poste){
+    this._selectedOffre = poste;
+  }
+
+  consolelog(value: any){
+    console.log(JSON.stringify(value));
   }
 
   get testOffreList(): Poste[] {
@@ -97,7 +103,6 @@ export class OffreComponent implements OnInit {
   set testOffreList(value: Poste[]) {
     this._testOffreList = value;
   }
-
 
   get profil(): boolean {
     return this._profil;
@@ -119,7 +124,93 @@ export class OffreComponent implements OnInit {
     return this._offres;
   }
 
+  listeCand():candidat[]{
+    return this._selectedOffre.listeCandidat;
+  }
+
   set offres(value: boolean) {
     this._offres = value;
   }
+
+  redirectEdition(id:any){
+
+    this.router.navigate(['/editPost/'+id]);
+  }
+
+  redirectMatch(idDos: any, idCand: any){
+    this.router.navigate(['/matchingPost/:iddossier/:idcandidat'.replace(':iddossier',idDos).replace(':idcandidat',idCand)]);
+  }
+
+  redirectCandidat(id:any){
+
+  this. _selectedCandidat = id;
+  }
+
+  clotureJob(id:any){
+
+    this.createService.delete(id).subscribe();
+
+
+    for(let p of this._testOffreList)
+    {
+      if(p.id == this.selectedOffre.id)
+      this._testOffreList.splice(this._testOffreList.indexOf(p), 1);
+    }
+    this._selectedOffre = this._testOffreList[0];
+
+
+  }
+
+  showAvis(cand:candidat){
+    this.cand = cand;
+    this._dialogStatusAvis = true;
+  }
+
+  get selectedCandidat(): candidat {
+    return this._selectedCandidat;
+  }
+
+  set selectedCandidat(value: candidat) {
+    this._selectedCandidat = value;
+  }
+
+  get dialogStatusAvis(): boolean {
+    return this._dialogStatusAvis;
+  }
+
+  set dialogStatusAvis(value: boolean) {
+    this._dialogStatusAvis = value;
+  }
+
+  hideDialog(){
+    this._dialogStatusAvis = false;
+  }
+
+  submit(avis:any){
+   console.log(avis);
+
+   this.avis.description = avis.description;
+   this.avis.note = avis.note;
+   this.recruteurService.getActualRecruteur().subscribe((rec: any) => {
+
+     this.avis.recruteur = rec;
+     console.log(this.avis.recruteur);
+     this.avis.candidat = this.cand;
+
+     this.createService.createAvis(this.avis).subscribe();
+
+   });
+   this.hideDialog();
+
+
+  }
+
+  get recruteur(): Recruteur {
+    return this._recruteur;
+  }
+
+  set recruteur(value: Recruteur) {
+    this._recruteur = value;
+  }
+
 }

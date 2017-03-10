@@ -1,6 +1,9 @@
 import {experiencePro} from "./experiencePro";
 import {formation} from "./formation";
 import {competence} from "./competence";
+import {certificationCandidat} from "./CertificationCandidat";
+import {Poste} from "../../recruteur/interfaces/poste";
+
 /**
  * Created by antoine on 20/01/17.
  */
@@ -10,6 +13,7 @@ export interface candidat {
   "banned": number;
   "loisirs": string;
   "nom": string;
+  "naissance":string;
   "isMale" : boolean;
   "suspended": boolean;
   "photo": string;
@@ -20,4 +24,6 @@ export interface candidat {
   "experiencePro": experiencePro[];
   "formation": formation[];
   "competence":competence[];
+  "certifications":certificationCandidat[];
+  "listDossier": Poste[];
 }

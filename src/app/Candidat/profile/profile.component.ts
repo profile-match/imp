@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from "@angular/core";
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
 import {formation} from "../interfaces/formation";
 import {competence} from "../interfaces/competence";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap'
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {experiencePro} from "../interfaces/experiencePro";
+import {AuthenticationService} from "../../shared/service/authentication.service";
 
 @Component({
   selector: 'app-profile-candidat',
@@ -15,41 +17,46 @@ import {experiencePro} from "../interfaces/experiencePro";
 })
 export class ProfileCandidatComponent implements OnInit {
 
+
+
   private _candidat: candidat;
   private _dialogModal: string;
   private _id: string;
   private _urlPhoto: string;
   private _onglet: string;
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _candidatService: CandidatService) {
-    this._dialogModal = 'inactive';
+  constructor(private _service:AuthenticationService,private _route: ActivatedRoute, private _candidatService: CandidatService, private _router: Router) {
+    this._dialogStatus = 'inactive';
+
     this.candidat = {};
     this._id = "";
     this._onglet = "comp";
   }
 
   ngOnInit() {
-    this._route.params
-      .map((params: any) => params.id)
-      .subscribe((id: string) => {
-        this._id = id;
-      });
-
-    this._candidatService.getCandidat(this._id).subscribe(
-      (candidat: candidat) => {
+    if (localStorage.getItem("user") === null) {
+      return false;
+    }
+    else {
+      this._candidatService.getCandidat(localStorage.getItem("user")).subscribe((candidat: candidat) => {
         this._candidat = candidat;
         this._urlPhoto = this._candidatService.getPhotoUrl(candidat.photo);
       });
+    }
+  }
 
+  goEditProfil(){
+    this._router.navigate(['/editCandidat/']);
+  }
+
+  @Input() set candidat(candidat: any) {
+    this._candidat = candidat;
   }
 
   get candidat(): any {
     return this._candidat;
   }
 
-  set candidat(candidat: any) {
-    this._candidat = candidat;
-  }
 
   get _candidatName(): string {
     return this._candidat.nom;
@@ -146,9 +153,17 @@ export class ProfileCandidatComponent implements OnInit {
     this._onglet = onglet;
   }
 
+
   deleteCandidat(c: candidat){
     this._candidatService.delete(c).subscribe();
     this._router.navigate(['accueil']);
   }
+
+
+  set dialogStatus(value: string) {
+    this._dialogStatus = value;
+  }
+
+
 
 }

@@ -32,15 +32,10 @@ export class OffersService {
     const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
     //if (localStorage.getItem("user") != null && localStorage.getItem("ut") == "recruteur") {
       //localStorage.setItem("user","1");
-      return this.http.get(this._backendURL.allOffers.replace(':id', 1))
-        .map((res: Response) => {
-          if (res.status === 200) {
-            return res.json();
-          }
-          else {
-            return [];
-          }
-        });
+      return this.http.get(this._backendURL.allOffers.replace(':id', localStorage.getItem("user")))
+        .map((res: Response) =>   res.json()
+
+        );
     //}
   }
 

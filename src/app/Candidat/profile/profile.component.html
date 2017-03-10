@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-md-10">
       <div class="x_title">
-        <h1>{{_candidatName}} {{_candidatFName}}</h1>
+        <h1>{{_candidatName}} {{_candidatFName}} <button (click)="goEditProfil()" class="btn btn-default" >Modifier mon profil</button></h1>
         <span *ngIf="_candidatSuspended" style="color:red">
           Ce compte a été suspendu
         </span>
+
       </div>
       <div class="row" *ngIf="!_candidatSuspended">
         <div class="col-md-5">
@@ -79,6 +80,7 @@
       <h3>Options du compte</h3>
     </div>
     <div class="row">
+      <button class="btn btn-default" >Générer un CV</button>
       <button class="btn btn-default" type="submit">Modifier mes informations</button>
       <button class="btn btn-default" type="submit">Changer mon mot de passe</button>
       <button class="btn btn-default" type="submit" *ngIf="!_candidatSuspended" (click)="suspendCandidat(candidat)" >Suspendre mon compte</button>

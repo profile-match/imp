@@ -62,6 +62,7 @@ export class AccueilComponent implements OnInit {
         this.candidatService.getNbMale().subscribe(m => this._nbMale = m);
     }
 
+
   ngOnInit(): void {
     this.getCandidats();
     this.getnbFemelle();

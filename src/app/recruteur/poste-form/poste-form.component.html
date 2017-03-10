@@ -87,16 +87,6 @@
 
       </div>
 
-      <label style="position: relative; left: 6%;">Cocher pour afficher la moyenne du salaire min et max
-      </label>
-      <div class="icheckbox_flat-green form-group" [class.checked]="isChecked" (click)="getClass()"
-           style="margin-left: 7%">
-
-        <div>
-          <input type="checkbox" checked="checked" style="opacity:0; cursor: pointer; ">
-        </div>
-      </div>
-
       <div class="item form-group bad">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_contrat">Type de contrat <span
           class="required">*</span>
@@ -514,7 +504,7 @@
 
   <div style="text-align: center; ">
     <button type="button" class="btn btn-primary" (click)="cancel()">Retour</button>
-    <button type="submit" class="btn btn-success" (click)="submit()" [disabled]="!f.valid">Valider</button>
+    <button type="submit" class="btn btn-success" (click)="submit()" [disabled]="!f.valid" [routerLink]="['/dashboardRecruteur']">Valider</button>
   </div>
 
 </div>

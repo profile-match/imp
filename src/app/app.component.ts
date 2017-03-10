@@ -3,10 +3,7 @@ import {AuthenticationService} from "./shared/service/authentication.service";
 import {MailService} from "./shared/service/mail.service";
 import {Observable} from "rxjs";
 import {NotificationService} from "./shared/service/notification.service";
-
-
-
-
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +19,7 @@ export class AppComponent {
   private _timer ;
   private _notification : any ;
 
-  constructor(private _service:AuthenticationService, private _mailService : MailService, private _notificationService : NotificationService) {
+  constructor(private _service:AuthenticationService, private _mailService : MailService, private _notificationService : NotificationService, private _router: Router) {
 
     this._dialogStatusInvitation = 'inactive';
     this._notification = {};
@@ -34,6 +31,17 @@ export class AppComponent {
         this._notification = res;
       });
 
+  }
+
+  goToProfil(){
+
+    this._router.navigate(['/candidat/profile']);
+
+  }
+
+  goToRecruteur(){
+
+    this._router.navigate(['/dashboardRecruteur']);
   }
 
   sendMail(mail : any){

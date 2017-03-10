@@ -11,34 +11,28 @@
               <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{menu.croissance}}% </i> From last Week</span>
             </div> -->
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total candidats</span>
+              <span class="count_top"><i class="fa fa-user"></i>Candidats</span>
               <div class="count">{{candidats.length}}</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total recruteurs</span>
+              <span class="count_top"><i class="fa fa-user"></i>Recruteurs</span>
               <div class="count">{{recruteurs.length}}</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-pencil"></i> Nombres postes à pouvoir</span>
+              <span class="count_top"><i class="fa fa-pencil"></i>Postes à pouvoir</span>
               <div class="count">{{postes.length}}</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-comments"></i> Total Commentaires</span>
+              <span class="count_top"><i class="fa fa-comments"></i>Commentaires</span>
               <div class="count">{{comments.length}}</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Female</span>
+              <span class="count_top"><i class="fa fa-user"></i>Femmes</span>
               <div class="count">{{_nbFemelle}}</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Man</span>
+              <span class="count_top"><i class="fa fa-user"></i>Hommes</span>
               <div class="count">{{_nbMale}}</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
           </div>
           <!-- /top tiles -->
@@ -65,7 +59,7 @@
           <div class="row">
 
 			<!-- bouton je suis candidat -->
-			<a href="form_candidat.html">
+			<a routerLink="/inscription-utilisateur/2">
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320" >
                 <div class="x_title">
@@ -90,17 +84,17 @@
               <br>
               <br>
               <br>
-              <div ALIGN="CENTER" class="morph pic"><a href="recherche.html" class="blue"><h3>>> Visiter le site <<</h3></a></div>
+              <div ALIGN="CENTER"><a [routerLink]="['/listCandidatPoste']" class="blue"><h3>>> Visiter le site <<</h3></a></div>
 			  <br>
             </div>
 			<!-- /données pour les lieux d'activité-->
 
 			<!-- bouton je suis recruteur -->
-			<a routerLink="/poste-form">
+			<a routerLink="/inscription-utilisateur/1">
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                  <h2>Je suis à la recherche d'un employé</h2>
+                  <h2>Je suis à la recherche d'un candidat</h2>
 
                   <div class="clearfix"></div>
                 </div>

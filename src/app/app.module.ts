@@ -33,8 +33,6 @@ import {FormationComponent} from './recruteur/formation/formation.component';
 import {UpdateComponent} from './recruteur/poste-form/update/update.component';
 import {CertificationComponent} from './recruteur/certification/certification.component';
 import {OffreComponent} from './recruteur/offres/offre.component';
-import {OffreDetailComponent} from './recruteur/offres/offre-detail.component';
-
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {FormComponent} from "./Candidat/form/form.component";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
@@ -51,6 +49,15 @@ import { RecruteurService } from "./shared/service/recruteur.service";
 import { MailService } from "./shared/service/mail.service";
 import {NotificationService} from "./shared/service/notification.service";
 import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe';
+import {CardCondidatComponent} from "./Candidat/card-condidat/card-condidat.component";
+import {ListCandidatPosteComponent} from "./visiteur/list-candidat-poste/list-candidat-poste.component";
+import {FilterCandidatPipe} from "./Candidat/filter-candidat-pipe/filter-candidat.pipe";
+import {FilterCandidatCountPipe} from "./Candidat/filter-candidat-pipe/filter-candidat-count.pipe";
+import {CardPosteComponent} from "./recruteur/card-poste/card-poste.component";
+import {FilterPoste} from "./recruteur/filtrer-poste-pipe/filter-poste.pipe";
+import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-count.pipe";
+import { MatchingComponent } from './recruteur/matching/matching.component';
+import { AvisComponent } from './recruteur/avis/avis.component';
 
 
 @NgModule({
@@ -89,7 +96,15 @@ import { CompetenceTypePipe } from './Candidat/profile/competence-type.pipe';
       FormInvitationComponent,
       CompetenceTypePipe,
       OffreComponent,
-      OffreDetailComponent
+      CardCondidatComponent,
+      ListCandidatPosteComponent,
+      FilterCandidatPipe,
+      FilterCandidatCountPipe,
+      CardPosteComponent,
+      FilterPoste,
+      FiltrerPosteCount,
+      MatchingComponent,
+      AvisComponent
     ],
   imports: [
     BrowserModule,

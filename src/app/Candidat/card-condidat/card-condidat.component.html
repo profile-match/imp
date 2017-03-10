@@ -1,0 +1,25 @@
+<div class=" col-xs-12 profile_details">
+  <div class="well profile_view">
+    <div class="col-sm-12">
+      <div class="left col-xs-7">
+        <h2>{{nom}} {{prenom}}</h2>
+
+        <ul>
+          <li class="brief">{{PremiereFormation}}</li>
+          <li class="brief">{{PremiereExperience}}</li>
+          <li class="brief">{{PremiereCompetence}}</li>
+        </ul>
+      </div>
+      <div class="right col-xs-5 text-center">
+          <img *ngIf="hasPhoto" src="{{photo}}" alt="" class="img-circle img-responsive" style="width: 80%;" >
+      </div>
+    </div>
+    <div class="col-xs-12 bottom text-center">
+      <div class="col-xs-12 col-sm-6 emphasis">
+
+      </div>
+
+    </div>
+  </div>
+</div>
+

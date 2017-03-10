@@ -1,6 +1,4 @@
-import {CreerProfileCandidatComponent} from "./Candidat/creer-profile-candidat/creer-profile-candidat.component";
 import {RouterModule, Routes} from '@angular/router';
-import {ModuleWithProviders} from '@angular/core';
 
 // APP COMPONENTS
 
@@ -15,22 +13,25 @@ import {InscriptionLinkedinComponent} from "./utilisateur/inscription-linkedin/i
 import {UpdateProfileCandidatComponent} from "./Candidat/update-profile-candidat/update-profile-candidat.component";
 import {DashboardCandidatComponent} from "./Candidat/dashboard/dashboardCandidat.component";
 import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
+import {ListCandidatPosteComponent} from "./visiteur/list-candidat-poste/list-candidat-poste.component";
+import {MatchingComponent} from "./recruteur/matching/matching.component";
 
 const ROUTES: Routes = [
   {path: '', redirectTo: '/accueil', pathMatch: 'full'},
   {path: 'accueil', component: AccueilComponent},
   {path: 'moderateur', component: ModerateurComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'inscription-utilisateur', component: InscriptionUtilisateurComponent},
+  {path: 'inscription-utilisateur/:id', component: InscriptionUtilisateurComponent},
   {path: 'addPost', component: PosteFormComponent},
   {path: 'editPost/:id', component: UpdateComponent},
-  {path: '', redirectTo: 'createCandidat', pathMatch: 'full'},
-  {path: 'createCandidat', component: CreerProfileCandidatComponent},
-  {path: 'editCandidat/:id', component: UpdateProfileCandidatComponent},
-  {path: 'candidat/:id', component: DashboardCandidatComponent},
+  //{path: 'createCandidat', component: CreerProfileCandidatComponent},
+  {path: 'editCandidat', component: UpdateProfileCandidatComponent},
+  {path: 'candidat', component: DashboardCandidatComponent},
   {path: 'inscription-linkedin', component: InscriptionLinkedinComponent},
-  {path: 'candidat/profile/:id', component: ProfileCandidatComponent},
-  {path: 'dashboardRecruteur', component: OffreComponent}
+  {path: 'candidat/profile', component: ProfileCandidatComponent},
+  {path: 'dashboardRecruteur', component: OffreComponent},
+  {path: 'listCandidatPoste', component: ListCandidatPosteComponent},
+  {path: 'matchingPost/:iddossier/:idcandidat', component: MatchingComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

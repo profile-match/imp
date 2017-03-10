@@ -2,8 +2,11 @@ import { Component, OnInit, Renderer, ElementRef } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import { Location }  from '@angular/common';
 import {environment} from "../../../environments/environment";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {Utilisateur} from "../utilisateur";
+import {CandidatService} from "../../shared/service/candidat.service";
+import {candidat} from "../../Candidat/interfaces/candidat";
+import {AuthenticationService} from '../../shared/service/authentication.service'
 
 @Component({
   selector: 'app-inscription-utilisateur',
@@ -33,11 +36,21 @@ export class InscriptionUtilisateurComponent implements OnInit {
   private _backendURL: any;
   private candidatsUrl = 'api/candidats';  // URL to web api
 
-  constructor(private http: Http, private _router: Router, private location: Location, private _el: ElementRef, private _rd: Renderer) {
+  private _id: number;
+  private _candidat: candidat;
+
+  public genders = [];
+  public errorMsg = '';
+
+  private _selectedG: string;
+
+  constructor(private _service:AuthenticationService, private _candidatService: CandidatService, private _route: ActivatedRoute, private http: Http, private _router: Router, private location: Location, private _el: ElementRef, private _rd: Renderer) {
     this._backendURL = {};
     this._buttonLinkedinStatus = this.DEFAULT_STATUS;
     this.users = [{  id:1, email:'string', motdepasse:'string' }];
     this._utilisateur = {  id:1, email:'string', motdepasse:'string' };
+    this._id =0;
+    this._selectedG = 'R';
 
     // build backend base url
     let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
@@ -50,9 +63,37 @@ export class InscriptionUtilisateurComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.http.get(this._backendURL.allUser)
+/*     this.http.get(this._backendURL.allUser)
       .map( res =>  res.json() )
-       .subscribe(us => this.users = us);
+       .subscribe(us => this.users = us);*/
+    this._route.params
+      .map((params: any) => this._id=params.id)
+      .subscribe();
+
+    if(this._id == 1){  //recruteur
+      this._selectedG='R';
+      this.genders = [
+        { value: 'C', display: 'candidat' },
+        { value: 'R', display: 'recruteur' }
+
+      ];
+    }
+    else if(this._id == 2){ //candidat
+      this._selectedG='C';
+      this.genders = [
+        { value: 'R', display: 'recruteur' },
+        { value: 'C', display: 'candidat' }
+      ];
+    }
+    else{
+      this._id = 0;
+      this.genders = [
+        { value: 'C', display: 'candidat' },
+        { value: 'R', display: 'recruteur' }
+      ];
+      this._selectedG='R'
+    }
+
   }
 
   onSubmit(): void {
@@ -60,13 +101,22 @@ export class InscriptionUtilisateurComponent implements OnInit {
   }
 
   inscrireUtilisateur() {
-    this._utilisateur.email = this.email;
-    this._utilisateur.motdepasse = this.motdepasse;
+      this._utilisateur.email = this.email;
+      this._utilisateur.motdepasse = this.motdepasse;
 
-    const requestOptions = { headers: new Headers({'Content-Type': 'application/json'})};
-    this.http.post("http://"+environment.backend.host+":"+environment.backend.port+"/rest/utilisateur/inscrire", this._utilisateur , requestOptions)
-      .subscribe();
-    this._router.navigate(['/accueil']);
+      if(this._service.existUser(this._utilisateur)){
+        this.errorMsg = 'Utilisateur existant';
+      }
+      else {
+        const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
+        if (this._selectedG == 'C')
+          this.http.post("http://" + environment.backend.host + ":" + environment.backend.port + "/rest/utilisateur/inscrireCand", this._utilisateur, requestOptions).subscribe();
+        else
+          this.http.post("http://" + environment.backend.host + ":" + environment.backend.port + "/rest/utilisateur/inscrireRec", this._utilisateur, requestOptions).subscribe();
+
+      //  this._service.login(this._utilisateur);
+        this._router.navigate(['/login']);
+      }
     }
 
   goBack(): void {
@@ -75,14 +125,14 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
   goLinkedIn(): void{
       this.activeLinkedinButton();
-      let url = environment.frontend.protocol+"%3A%2F%2F"+environment.frontend.host
-      if(environment.frontend.port != ''){
-        url += "%3A"+environment.backend.port;
+      let url = environment.frontend.protocol+"%3A%2F%2F"+environment.frontend.host;
+      if(environment.frontend.port != ""){
+        url += "%3A"+environment.frontend.port;
       }
       window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
         "response_type=code&" +
         "client_id=7868doeuipinun&" +
-        "redirect_uri="+url+"%2Fhome%2Finscription-linkedin&" +
+        "redirect_uri="+url+"%2Finscription-linkedin&" +
         "state=987654321&" +
         "scope=r_emailaddress";
   }
