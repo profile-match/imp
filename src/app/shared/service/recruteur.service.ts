@@ -88,7 +88,7 @@ export class RecruteurService {
   }
 
   updateInfos(data : Recruteur) : Observable<any>{
-
+    console.log(data);
     return this.http.put(this._backendURL.updateRecruteur, JSON.stringify(data), this._options())
       .map((res: Response) => {
         if (res.status === 200) {

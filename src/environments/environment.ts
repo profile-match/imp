@@ -53,10 +53,7 @@ export const environment = {
       sendMail : '/rest/serviceMail/envoyer',
       getCv : '/rest/candidat/cv/:id',
       createAvis : '/rest/recruteur/avis',
-
       updateCandPost :'/rest/candidat/update/:id',
-
-
       updateRecruteur : '/rest/recruteur/update',
       updateMdpRecruteur : '/rest/recruteur/updateMdp',
       getPhoto: '/rest/candidat/photo/:id',
