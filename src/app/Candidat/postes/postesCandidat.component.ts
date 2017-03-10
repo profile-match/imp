@@ -1,7 +1,8 @@
 import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {poste} from "../interfaces/post-cdd";
+
 import {LES_POSTES} from "../postes/postes.mock"
 import {candidat} from "../interfaces/candidat";
+import {Poste} from "../../recruteur/interfaces/poste";
 
 @Component({
   selector: 'app-postes-candidat',
@@ -10,8 +11,8 @@ import {candidat} from "../interfaces/candidat";
 })
 export class PostesCandidatComponent implements OnInit {
 
-  private _postes : poste[];
-  private _displayPostes : poste[];
+  private _postes : Poste[];
+  private _displayPostes : Poste[];
   private _page : number;
   private _increment : number;
   private _candidat : candidat;
@@ -91,7 +92,7 @@ export class PostesCandidatComponent implements OnInit {
     return this._displayPostes.length;
   }
 
-  get lespostes(): poste[]{
+  get lespostes(): Poste[]{
     return this._displayPostes;
   }
 
@@ -111,8 +112,8 @@ export class PostesCandidatComponent implements OnInit {
     var find: boolean;
     find = false;
     if (this._postes[index].intitule.toLowerCase().includes(this._search.toLowerCase())
-      || this._postes[index].type_de_contrat.toLowerCase().includes(this._search.toLowerCase())
-      || this._postes[index].lieu_de_travail.toLowerCase().includes(this._search.toLowerCase())) {
+      || this._postes[index].type_contrat.toLowerCase().includes(this._search.toLowerCase())
+      || this._postes[index].lieu_travail.toLowerCase().includes(this._search.toLowerCase())) {
       find = true;
     }
     return find;
@@ -130,7 +131,7 @@ export class PostesCandidatComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._postes = LES_POSTES;
+    //this._postes = LES_POSTES;
     this.updateList();
   }
 

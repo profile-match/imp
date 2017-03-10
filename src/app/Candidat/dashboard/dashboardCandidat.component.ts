@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-dashboard-candidat',
@@ -19,6 +20,13 @@ export class DashboardCandidatComponent implements OnInit {
     this._backendURL = {};
     this.id = "";
     this.candidat = {};
+    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
+    if (environment.backend.port) {
+      baseUrl += `:${environment.backend.port}`;
+    }
+
+    // build all backend urls
+    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
 
   }
 
