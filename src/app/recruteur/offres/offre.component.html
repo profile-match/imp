@@ -7,6 +7,8 @@
       <li role="presentation" (click)="setCandidat()" [class.active]="candidat"><a>Rechercher un candidat</a></li>
     </ul>
     <div *ngIf="profil">
+      <div class="ln_solid"></div>
+      <app-profil></app-profil>
     </div>
     <div *ngIf="candidat">
     </div>

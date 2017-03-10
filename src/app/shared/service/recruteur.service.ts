@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http} from "@angular/http";
+import {Headers, Http, RequestOptions, Response } from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Poste} from "../../recruteur/interfaces/poste";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
@@ -79,8 +79,68 @@ export class RecruteurService {
       .catch(this.handleError);
   }
 
+  updateInfos(data : Recruteur) : Observable<any>{
+
+    return this.http.put(this._backendURL.updateRecruteur, JSON.stringify(data), this._options())
+      .map((res: Response) => {
+        if (res.status === 200) {
+          return {
+            "success": "success",
+            "message": "modifications réussies"
+          };
+        }
+        else {
+          return {
+            "success": "error",
+            "message": "modifications échouées"
+          };
+        }
+      });
+
+  }
+
+  updateMdp( data : any) : Observable<any>{
+
+    return this.http.put(this._backendURL.updateMdpRecruteur, JSON.stringify(data),  this._options())
+      .map((res: Response) => {
+        if (res.status === 200) {
+          return {"success" : "success",
+          "message" : res.text()
+          };
+        }
+        else {
+          return {"success" : "error",
+            "message" : res.text()
+          };
+        }
+      });
+
+  }
+
+
+
+  getPhotoUrl(id:string):string{
+    return this._backendURL.getPhotoCandidat.replace(':id', id);
+  }
+
+  uploadPhoto(c: FileList): Observable<string> {
+    let formData: FormData = new FormData();
+    formData.append('filedata', c[0], c[0].name);
+    let headers = new Headers();
+    headers.set('Content-Type', 'multipart/form-data');
+    return this.http.post(this._backendURL.postPhotoCandidat, formData, new RequestOptions())
+      .map((res) => res.json());
+
+  }
+
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
+  }
+
+  private _options(headerList: Object = {}): RequestOptions {
+    const headers = new Headers(Object.assign({'Content-Type': 'application/json'}, headerList));
+    return new RequestOptions({headers: headers});
   }
 }
