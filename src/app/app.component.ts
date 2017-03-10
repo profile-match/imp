@@ -44,6 +44,10 @@ export class AppComponent {
     this._router.navigate(['/dashboardRecruteur']);
   }
 
+  goToDashboard(){
+    this._router.navigate(['/candidat']);
+  }
+
   sendMail(mail : any){
     this._mailService.envoyerMail(mail)
       .subscribe( (res : any) => {

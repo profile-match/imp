@@ -30,6 +30,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <li><a (click)="goToDashboard()"><i class="fa fa-home" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
         <li><a (click)="goToProfil()"><i class="fa fa-male" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
         <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
