@@ -5,6 +5,7 @@ import {formation} from "../interfaces/formation";
 import {competence} from "../interfaces/competence";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {experiencePro} from "../interfaces/experiencePro";
 import {AuthenticationService} from "../../shared/service/authentication.service";
@@ -19,13 +20,14 @@ export class ProfileCandidatComponent implements OnInit {
 
 
   private _candidat: candidat;
-  private _dialogStatus: string;
+  private _dialogModal: string;
   private _id: string;
   private _urlPhoto: string;
   private _onglet: string;
 
-  constructor(private _service:AuthenticationService,private _route: ActivatedRoute, private _candidatService: CandidatService, private _router: Router) {
-    this._dialogStatus = 'inactive';
+  constructor(private _service:AuthenticationService, private _route: ActivatedRoute, private _candidatService: CandidatService, private _router: Router) {
+    this._dialogModal = 'inactive';
+
     this.candidat = {};
     this._id = "";
     this._onglet = "comp";
@@ -118,16 +120,16 @@ export class ProfileCandidatComponent implements OnInit {
       });
   }
 
-  get dialogStatus(): string {
-    return this._dialogStatus
+  get modalStatus(): string {
+    return this._dialogModal
   }
 
-  showDialog() {
-    this._dialogStatus = 'active';
+  showModal() {
+    this._dialogModal = 'active';
   }
 
-  hideDialog() {
-    this._dialogStatus = 'inactive';
+  hideModal() {
+    this._dialogModal = 'inactive';
   }
 
   get urlPhoto(): string {
@@ -150,9 +152,10 @@ export class ProfileCandidatComponent implements OnInit {
   setOnglet(onglet: string) {
     this._onglet = onglet;
   }
-  set dialogStatus(value: string) {
-    this._dialogStatus = value;
-  }
 
+  deleteCandidat(c: candidat){
+    this._candidatService.delete(c).subscribe();
+    this._service.logout();
+  }
 
 }
