@@ -22,7 +22,8 @@ export const environment = {
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
-      createUser: '/rest/utilisateur/inscrire',
+      createUserCand: '/rest/utilisateur/inscrireCand', //create candidat
+      createUserRec: '/rest/utilisateur/inscrireRec', //create recruteur
       searchMetier: '/rest/recruteur/completeMetier/:intitule',
       searchFonctionnelle: '/rest/recruteur/completeFonctionnelle/:intitule',
       searchTechnique: '/rest/recruteur/completeTechnique/:intitule',
@@ -32,16 +33,17 @@ export const environment = {
       addPoste: '/rest/recruteur/create',
       putPoste: '/rest/recruteur/updateDossier',
       getPost: '/rest/recruteur/dossier/:id',
-      deletePoste: 'rest/recruteur/deleteDossier/:id',
       allOffers: '/rest/recruteur/dossierRecruteur/:id',
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
       linkedinToken: '/rest/linkedin/gettoken/:code/:state',
       suspendCandidat: '/rest/candidat/suspend/:id',
+      deletePoste: '/rest/recruteur/deleteDossier/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
-      sendMail : '/rest/serviceMail/envoyer'
+      sendMail : '/rest/serviceMail/envoyer',
+      getCv : '/rest/candidat/cv/:id'
     }
   },
   frontend: {

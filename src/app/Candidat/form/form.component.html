@@ -450,6 +450,24 @@
       </div>
     </div>
     <!-- ############################################################################################################# -->
+    <h3>Certifications</h3>
+    <hr>
+    <div class="form-group">
+
+      <div>
+        <input #certif name="certif" value=""/>
+        <button type="button" (click)="addCertification(certif.value)">Ajouter la certification</button>
+      </div>
+
+      <div class="tagsinput" style="width: auto; min-height: 100px; height: 100px;">
+            <span class="tag_ng" *ngFor="let certif of candidat.certifications">
+              <span class="tag_ng">{{certif.certification}}</span>
+              <a (click)="deleteCertif(certif)" style="cursor: pointer;" title="Supprimer">x</a>
+            </span>
+        <div class="tags_clear"></div>
+      </div>
+    </div>
+    <!-- ############################################################################################################# -->
     <h3>Competences</h3>
     <hr>
     <div class="form-group">
@@ -459,7 +477,7 @@
                data-default="add a tag"
                [(ngModel)]="compet"
                (keyup)="autoCompleteCompetences(comp.value)"
-               (keyup.enter)="addCompetence(comp.value)">
+               (keyup.enter)="addCompetence(comp.value)"/>
         <datalist id="CompetenceAuto">
           <option *ngFor="let propositions_competence of propositions_competences">
             {{propositions_competence}}
@@ -487,7 +505,7 @@
     <div class="form-group">
       <div class="col-md-offset-3 col-md-9">
         <input type="submit" class="btn btn-success" value="Enregistrer" />
-        <input type="reset" class="btn btn-primary" (click)="GoBack()" value="Annuler"/>
+        <input type="button" class="btn btn-primary" (click)="GoBack()" value="Annuler"/>
       </div>
     </div>
   </form>
