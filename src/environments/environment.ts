@@ -22,10 +22,11 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/rest/recruteur/allDossier',
-      onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
+      onePost: '/rest/recruteur/dossierRecruteur/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur dossierRecruteur/
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
+      oneUser: '/rest/utilisateur/getUtilisateur',
       createUserCand: '/rest/utilisateur/inscrireCand', //create candidat
       createUserRec: '/rest/utilisateur/inscrireRec', //create recruteur
       searchMetier: '/rest/recruteur/completeMetier/:intitule',
