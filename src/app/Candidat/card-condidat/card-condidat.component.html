@@ -16,8 +16,13 @@
       </div>
     </div>
     <div class="col-xs-12 bottom text-center">
-      <div class="col-xs-12 col-sm-6 emphasis">
+      <div class="text-center">
 
+        <button (click)="submit()">Associer à ce dossier </button>
+
+        <select [(ngModel)]="selectedOffre" name="offre">
+        <option *ngFor="let c of testOffreList" [value]="c.id">{{c.intitule}}</option>
+      </select>
       </div>
 
     </div>

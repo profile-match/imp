@@ -22,7 +22,7 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/rest/recruteur/allDossier',
-      onePost: '/rest/recruteur/allDossier/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
+      onePost: '/rest/recruteur/dossierRecruteur/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
@@ -48,7 +48,8 @@ export const environment = {
       getCompetences: '/rest/competence/get/:comp',
       sendMail : '/rest/serviceMail/envoyer',
       getCv : '/rest/candidat/cv/:id',
-      createAvis : '/rest/recruteur/avis'
+      createAvis : '/rest/recruteur/avis',
+      updateCandPost :'/rest/candidat/update/:id'
     }
   },
   frontend: {
