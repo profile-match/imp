@@ -1,7 +1,6 @@
 import {experiencePro} from "./experiencePro";
 import {formation} from "./formation";
 import {competence} from "./competence";
-
 import {certificationCandidat} from "./CertificationCandidat";
 import {Poste} from "../../recruteur/interfaces/poste";
 
@@ -27,4 +26,6 @@ export interface candidat {
   "competence":competence[];
   "certifications":certificationCandidat[];
   "listDossier":Poste[];
+
+
 }

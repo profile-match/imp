@@ -7,7 +7,7 @@ export class FilterCandidatCountPipe implements PipeTransform {
 
   transform(items: any[], args: any[]): any {
 
-    if(args !==null){
+    if(args){
       return items.filter(function( item ) {
         return item.nom.toString().toLowerCase().indexOf(args.toString().toLowerCase())!== -1
           || item.prenom.toString().toLowerCase().indexOf(args.toString().toLowerCase())!== -1

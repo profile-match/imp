@@ -29,6 +29,7 @@ export class AppComponent {
     this._notificationService.changeEmitted$.subscribe(
       (res : any ) => {
         this._notification = res;
+        this._timer = Observable.timer(6000).subscribe(_ => this.closeNotif()) ;
       });
 
   }
@@ -37,6 +38,15 @@ export class AppComponent {
 
     this._router.navigate(['/candidat/profile']);
 
+  }
+
+  goToRecruteur(){
+
+    this._router.navigate(['/dashboardRecruteur']);
+  }
+
+  goToDashboard(){
+    this._router.navigate(['/candidat']);
   }
 
   sendMail(mail : any){
@@ -48,7 +58,6 @@ export class AppComponent {
         } else{
           this._notificationService.addNotification("erreur lors de l'envoie du message ", "error");
         }
-        this._timer = Observable.timer(6000).subscribe(_ => this.closeNotif()) ;
       });
     this.hideDialog();
   }
