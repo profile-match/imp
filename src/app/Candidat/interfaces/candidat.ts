@@ -1,6 +1,7 @@
 import {experiencePro} from "./experiencePro";
 import {formation} from "./formation";
 import {competence} from "./competence";
+
 /**
  * Created by antoine on 20/01/17.
  */
