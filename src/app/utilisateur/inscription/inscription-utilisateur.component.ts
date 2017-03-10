@@ -99,6 +99,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
   }
 
   inscrireUtilisateur() {
+      this._service.update();
       this._utilisateur.email = this.email;
       this._utilisateur.motdepasse = this.motdepasse;
 

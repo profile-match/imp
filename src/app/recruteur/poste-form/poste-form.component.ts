@@ -44,6 +44,9 @@ export class PosteFormComponent implements OnInit {
   private _certifications: Savoir[];
   private _techniques: Savoir[];
 
+  private _detailHidden: any;
+  private _detailDisabled: any;
+
 
   constructor(private _createService: createService, private _AutocompletionService: AutocompletionService) {
 
@@ -94,8 +97,26 @@ export class PosteFormComponent implements OnInit {
     this._result = '';
     this._isChecked = false;
     this._enModification = false;
+    this._detailHidden= "visible";
+    this._detailDisabled=false;
   }
 
+
+  get detailHidden(): any {
+    return this._detailHidden;
+  }
+
+  @Input() set detailHidden(value: any) {
+    this._detailHidden = value;
+  }
+
+  get detailDisabled(): any {
+    return this._detailDisabled;
+  }
+
+  @Input() set detailDisabled(value: any) {
+    this._detailDisabled = value;
+  }
 
   get metiers(): Savoir[] {
     return this._metiers;

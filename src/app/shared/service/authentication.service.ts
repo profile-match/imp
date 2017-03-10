@@ -73,12 +73,15 @@ export class AuthenticationService {
       .subscribe((us: any[]) => {
       this._users = us;
       });
-
     var authenticatedUser = this._users.find(r => r.email === user.email);
+
     if (authenticatedUser) {
       return true;
     }
-    return false;
+    else {
+        return false;
+      }
+
   }
 
 
@@ -111,8 +114,6 @@ export class AuthenticationService {
                 }
               }).subscribe(d =>  {
               authenticatedCandidat = d;
-              console.log("candidat avant : " +authenticatedCandidat.id);
-              console.log("recruteur avant : " +authenticatedRecruteur.id);
 
               var authenticatedModerator = users.find(u => u.email === user.email);
 

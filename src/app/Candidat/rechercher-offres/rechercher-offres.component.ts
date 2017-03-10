@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {RecruteurService} from "../../shared/service/recruteur.service";
 import {Poste} from "../../recruteur/interfaces/poste";
-import {duo} from "../interfaces/duo";
 import {CandidatService} from "../../shared/service/candidat.service";
 import {candidat} from "../interfaces/candidat";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-rechercher-offres',
@@ -14,21 +14,16 @@ export class RechercherOffresComponent implements OnInit {
 
   private _listpostes : Poste[];
 
-  constructor(private recruteurService:RecruteurService,private _candidatService: CandidatService) {
+  constructor(private recruteurService:RecruteurService,private _candidatService: CandidatService, private _router: Router) {
     this.listpostes = [];
   }
 
   Postuler(p: Poste){
-
-    let candidatT:candidat;
-
-    if (localStorage.getItem("user") === null) {
-      this._candidatService.getCandidat(localStorage.getItem("user")).subscribe((candidat: candidat) => candidatT = candidat);
-      let d:duo;
-      d = {
-        'candidat':candidatT,
-        'poste':p
-      }
+    if (localStorage.getItem("user") !== null) {
+      this._candidatService.getCandidat(localStorage.getItem("user")).subscribe((candidat: candidat) => {
+        this._candidatService.updateCandidatPost(candidat, p.id).subscribe();
+        this._router.navigate(['/candidat/']);
+      });
     }
   }
 
