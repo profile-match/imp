@@ -25,8 +25,8 @@ export class ProfileCandidatComponent implements OnInit {
   private _urlPhoto: string;
   private _onglet: string;
 
-  constructor(private _service:AuthenticationService,private _route: ActivatedRoute, private _candidatService: CandidatService, private _router: Router) {
-    this._dialogStatus = 'inactive';
+  constructor(private _service:AuthenticationService, private _route: ActivatedRoute, private _candidatService: CandidatService, private _router: Router) {
+    this._dialogModal = 'inactive';
 
     this.candidat = {};
     this._id = "";
@@ -153,17 +153,9 @@ export class ProfileCandidatComponent implements OnInit {
     this._onglet = onglet;
   }
 
-
   deleteCandidat(c: candidat){
     this._candidatService.delete(c).subscribe();
     this._router.navigate(['accueil']);
   }
-
-
-  set dialogStatus(value: string) {
-    this._dialogStatus = value;
-  }
-
-
 
 }
