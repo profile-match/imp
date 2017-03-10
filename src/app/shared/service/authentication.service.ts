@@ -93,61 +93,58 @@ export class AuthenticationService {
           return res.json();
         //}
       }).subscribe((c : Utilisateur) => {
-      authenticatedUser = c;
-      console.log("user : "+authenticatedUser);
+        authenticatedUser = c;
+        //console.log("user : "+authenticatedUser);
+
+        var authenticatedRecruteur;
+        this._http.get(this._backendURL.oneRecruteur.replace(':id', authenticatedUser.id))
+          .map( res =>  res.json() )
+          .subscribe((c : Utilisateur) => {
+            authenticatedRecruteur =c;
+            var authenticatedCandidat;
+            this._http.get(this._backendURL.getCandidat.replace(':id', authenticatedUser.id))
+              .map(res => {
+                if (res.status === 200) {
+                  return res.json();
+                }
+              }).subscribe(d =>  {
+              authenticatedCandidat = d;
+              console.log("candidat : " +authenticatedCandidat.id);
 
 
+              var authenticatedModerator = users.find(u => u.email === user.email);
 
-
-      var authenticatedRecruteur;// = this._recruteurs.find(r => r.email === user.email);
-      this._http.get(this._backendURL.oneRecruteur.replace(':id', authenticatedUser.id))
-        .map( res =>  res.json() )
-        .subscribe((c : Utilisateur) => {
-          authenticatedRecruteur =c;
-          var authenticatedCandidat;
-          this._http.get(this._backendURL.getCandidat.replace(':id', authenticatedUser.id))
-            .map(res => {
-              if (res.status === 200) {
-                return res.json();
-              }
-            }).subscribe(d =>  {
-            authenticatedCandidat = d;
-            console.log("candidat : " +authenticatedCandidat.id);
-
-
-            var authenticatedModerator = users.find(u => u.email === user.email);
-
-            if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
-              localStorage.setItem("user", user.email);
-              this._router.navigate(['/moderateur']);
-
-              return true;
-            }
-            else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
-              if(authenticatedCandidat.id != -1) {
-                localStorage.setItem("user", authenticatedCandidat.id.toString());
-                localStorage.setItem("ut", "candidat");
-                console.log("id cand : " + localStorage.getItem("user"));
-                this._router.navigate(['/candidat/']);
+              if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
+                localStorage.setItem("user", user.email);
+                this._router.navigate(['/moderateur']);
 
                 return true;
               }
-              else if(authenticatedRecruteur.id!=-1) {
-                localStorage.setItem("user", authenticatedRecruteur.id.toString());
-                localStorage.setItem("ut", "recruteur");
-                console.log("id rec : " + localStorage.getItem("user"));
-                this._router.navigate(['/accueil']);
+              else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
+                if(authenticatedCandidat.id != -1) {
+                  localStorage.setItem("user", authenticatedCandidat.id.toString());
+                  localStorage.setItem("ut", "candidat");
+                  console.log("id cand : " + localStorage.getItem("user"));
+                  this._router.navigate(['/candidat/']);
 
-                return true;
+                  return true;
+                }
+                else if(authenticatedRecruteur.id!=-1) {
+                  localStorage.setItem("user", authenticatedRecruteur.id.toString());
+                  localStorage.setItem("ut", "recruteur");
+                  console.log("id rec : " + localStorage.getItem("user"));
+                  this._router.navigate(['/accueil']);
+
+                  return true;
+                }
               }
-            }
-            return false;
+              return false;
+            });
+
+
           });
 
-
-        });
-
-    });
+      });
   }
 
   isLogin() {
