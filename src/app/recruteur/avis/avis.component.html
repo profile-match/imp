@@ -1,0 +1,21 @@
+<md-card>
+
+  <md-card-title>
+    <span>Lache t coms je ren </span>
+  </md-card-title>
+
+  <md-card-content>
+    <form  [formGroup]="form">
+
+      <p>  </p>
+
+    </form>
+  </md-card-content>
+
+  <md-card-actions align="end">
+    <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
+    <button type="submit" class="btn btn-success" (click)="submit(form.value)">Valider</button>
+  </md-card-actions>
+
+
+</md-card>
