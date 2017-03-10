@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http} from "@angular/http";
+import {Headers, Http, Response} from "@angular/http";
 import {environment} from "../../../environments/environment";
 import {Poste} from "../../recruteur/interfaces/poste";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
@@ -77,6 +77,13 @@ export class RecruteurService {
     return this.http.get(this._backendURL.oneRecruteur.replace(':id', id))
       .map( res =>  res.json() )
       .catch(this.handleError);
+  }
+
+  getActualRecruteur(): Observable<any> {
+    return this.http.get(this._backendURL.oneRecruteur.replace(':id', localStorage.getItem("user")))
+      .map((res: Response) =>   res.json()
+
+      );
   }
 
   private handleError(error: any): Promise<any> {

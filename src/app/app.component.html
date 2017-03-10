@@ -4,7 +4,7 @@
   <nav class="navbar navbar-default" role="navigation">
     <span class="navbar nav_title" style="border: 0;">
 
-        <a routerLink="/accueil" class="site_title"><i class="fa fa-paw"></i> <span>iMatchProfile!</span></a>
+        <a routerLink="/accueil" class="site_title"><i class="fa fa-users"></i> <span>IMatchProfile</span></a>
     </span>
     <!-- si l'utlisateur n'est pas connecté -->
     <div *ngIf="!login()">
@@ -30,9 +30,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
         <li><a (click)="goToProfil()"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
-        <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
         <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
             <span class=" fa fa-angle-right"></span>
@@ -57,9 +55,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
         <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
-        <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
         <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
             <span class=" fa fa-angle-right"></span>

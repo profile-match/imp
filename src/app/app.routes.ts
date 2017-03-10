@@ -31,7 +31,7 @@ const ROUTES: Routes = [
   {path: 'candidat/profile', component: ProfileCandidatComponent},
   {path: 'dashboardRecruteur', component: OffreComponent},
   {path: 'listCandidatPoste', component: ListCandidatPosteComponent},
-  {path: 'matchingPost', component: MatchingComponent}
+  {path: 'matchingPost/:iddossier/:idcandidat', component: MatchingComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);
