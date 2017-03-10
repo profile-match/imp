@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {CandidatService} from "../../../shared/service/candidat.service";
 import { ToasterService} from 'angular2-toaster';
+import {candidat} from "../../../Candidat/interfaces/candidat";
 
 
 @Component({
@@ -47,7 +48,7 @@ export class GestionAvisCandidatsComponent implements OnInit {
     this.candidatService.getCandidats().subscribe(candidats => this._data = candidats);
   }
 
-  delete(avis,element){
+  delete(avis,cand,element){
 
     var avisDeleted=element.target.innerHTML.toString();
     if(avisDeleted.indexOf("Supprimer")> -1){
@@ -55,6 +56,10 @@ export class GestionAvisCandidatsComponent implements OnInit {
       element.target.innerHTML="Supprimé";
       this.toasterService.pop('success', 'Information:', "L'avis est supprimé !");
 
+      var index = this.data.indexOf(cand, 0);
+      if (index > -1) {
+        this.data.splice(index, 1);
+      }
       // this.candidatService.bannir(candidat).subscribe(data => this._data = data);
     }
 

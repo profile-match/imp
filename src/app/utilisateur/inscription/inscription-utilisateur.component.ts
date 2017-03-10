@@ -112,8 +112,9 @@ export class InscriptionUtilisateurComponent implements OnInit {
         else
           this.http.post("http://" + environment.backend.host + ":" + environment.backend.port + "/rest/utilisateur/inscrireRec", this._utilisateur, requestOptions).subscribe();
 
+
+        this._router.navigate(['/login']);
         this._service.login(this._utilisateur);
-      //  this._router.navigate(['/login']);
       }
     }
 
