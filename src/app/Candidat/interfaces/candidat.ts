@@ -25,5 +25,7 @@ export interface candidat {
   "formation": formation[];
   "competence":competence[];
   "certifications":certificationCandidat[];
-  "listDossier": Poste[];
+  "listDossier":Poste[];
+
+
 }

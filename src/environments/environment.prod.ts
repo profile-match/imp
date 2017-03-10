@@ -37,7 +37,7 @@ export const environment = {
       creerCandidat: '/rest/candidat/create',
       modifierCandidat: '/rest/candidat/update',
       getCandidat: '/rest/candidat/get/:id',
-      linkedinToken: '/rest/linkedin/gettoken/:code/:state',
+      linkedinToken: '/rest/linkedin/gettoken/:code/:state/:genre',
       suspendCandidat: '/rest/candidat/suspend/:id',
       deletePoste: '/rest/recruteur/deleteDossier/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',

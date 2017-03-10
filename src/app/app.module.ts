@@ -58,6 +58,8 @@ import {FilterPoste} from "./recruteur/filtrer-poste-pipe/filter-poste.pipe";
 import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-count.pipe";
 import { MatchingComponent } from './recruteur/matching/matching.component';
 import { AvisComponent } from './recruteur/avis/avis.component';
+import { RechercherOffresComponent } from './Candidat/rechercher-offres/rechercher-offres.component';
+import { CardOffreComponent } from './shared/card-offre/card-offre.component';
 import { ProfilComponent } from './recruteur/offres/profil/profil.component';
 
 
@@ -106,6 +108,8 @@ import { ProfilComponent } from './recruteur/offres/profil/profil.component';
       FiltrerPosteCount,
       MatchingComponent,
       AvisComponent,
+      RechercherOffresComponent,
+      CardOffreComponent,
       ProfilComponent
     ],
   imports: [
