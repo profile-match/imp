@@ -1,8 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {candidat} from "../interfaces/candidat";
 import {CandidatService} from "../../shared/service/candidat.service";
-import {competence} from "../interfaces/competence";
-
 
 @Component({
   selector: 'app-card-condidat',
@@ -13,6 +11,7 @@ import {competence} from "../interfaces/competence";
 export class CardCondidatComponent implements OnInit {
   private _candidat:candidat;
   private _photo:string;
+  private _hasPhoto:boolean
 
   constructor( private _candidatService: CandidatService) {
      this.candidat = {}
@@ -21,6 +20,18 @@ export class CardCondidatComponent implements OnInit {
 
   get candidat(): any {
     return this._candidat;
+  }
+
+  get nom(): string{
+    return this.candidat.nom || "N/A";
+  }
+
+  get prenom(): string{
+    return this.candidat.prenom || "N/A";
+  }
+
+  get hasPhoto(): boolean{
+    return this.candidat.photo;
   }
 
   get PremiereCompetence():string{
