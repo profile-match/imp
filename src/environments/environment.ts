@@ -49,8 +49,11 @@ export const environment = {
       getCompetences: '/rest/competence/get/:comp',
       sendMail : '/rest/serviceMail/envoyer',
       getCv : '/rest/candidat/cv/:id',
-      createAvis : '/rest/recruteur/avis'
-    }
+      createAvis : '/rest/recruteur/avis',
+      updateRecruteur : '/rest/recruteur/update',
+      updateMdpRecruteur : '/rest/recruteur/updateMdp',
+      getPhoto: '/rest/candidat/photo/:id',
+}
   },
   frontend: {
     protocol: 'http',
