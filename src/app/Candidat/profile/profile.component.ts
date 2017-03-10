@@ -155,7 +155,7 @@ export class ProfileCandidatComponent implements OnInit {
 
   deleteCandidat(c: candidat){
     this._candidatService.delete(c).subscribe();
-    this._router.navigate(['accueil']);
+    this._service.logout();
   }
 
 }
