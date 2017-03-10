@@ -59,7 +59,10 @@ import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-co
 import { MatchingComponent } from './recruteur/matching/matching.component';
 import { AvisComponent } from './recruteur/avis/avis.component';
 import { ProfilComponent } from './recruteur/offres/profil/profil.component';
-
+import { GestionAvisCandidatsComponent } from './visiteur/moderateur/gestion-avis-candidats/gestion-avis-candidats.component';
+import { DataTableModule } from 'angular2-datatable';
+import { ToasterModule } from 'angular2-toaster';
+import {DataFilterPipe} from "./visiteur/moderateur/gestion-avis-candidats/data-filter.pipe";
 
 @NgModule({
     declarations: [
@@ -106,7 +109,9 @@ import { ProfilComponent } from './recruteur/offres/profil/profil.component';
       FiltrerPosteCount,
       MatchingComponent,
       AvisComponent,
-      ProfilComponent
+      ProfilComponent,
+      GestionAvisCandidatsComponent,
+      DataFilterPipe
     ],
   imports: [
     BrowserModule,
@@ -118,7 +123,9 @@ import { ProfilComponent } from './recruteur/offres/profil/profil.component';
     Ng2AutoCompleteModule,
     ChartsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTableModule,
+    ToasterModule
   ],
   providers: [CandidatService,RecruteurService, MailService, NotificationService],
 

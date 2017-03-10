@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <toaster-container></toaster-container>
+    <div class="col-xs-6">
+      <label class="label-control">Pagination:</label>
+      <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+        <option [ngValue]="1">1</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="25">25</option>
+      </select>
+    </div>
+
+    <div class="col-xs-6">
+      <label class="label-control">Rechercher un candidat :</label>
+      <input class="form-control input-sm"  ngModel #filterQuery="ngModel"/>
+    </div>
+  </div>
+  <br/>
+  <table class="table table-striped" [mfData]="data | dataFilter : filterQuery.value   " #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]='nom' >
+    <thead>
+    <tr>
+      <th style="width: 25%">
+        <mfDefaultSorter by="nom">Nom</mfDefaultSorter>
+
+      </th>
+      <th style="width: 25%">
+        <mfDefaultSorter by="prenom">Prénom</mfDefaultSorter>
+      </th>
+      <th style="width: 40%">
+        <mfDefaultSorter by="email">Avis</mfDefaultSorter>
+      </th>
+      <th style="width: 10% ; color:blue;">
+
+      </th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let item of mf.data">
+
+    <tr  *ngFor="let avi of item.avis  ">
+
+      <td  >{{item.nom}}</td>
+      <td  >{{item.prenom}}</td>
+      <td >{{avi.description.substring(0, 20)}}...<span   style="cursor:pointer ;text-decoration:underline;" (click)='readMore($event)'>read more!</span></td>
+      <td hidden >{{avi.description}}  <span style="cursor:pointer;text-decoration:underline;" (click)='readLess($event)'>read less!</span></td>
+      <td>
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-remove" (click)="delete(avi,$event)" >Supprimer</span>
+        </button>
+      </td>
+
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr *ngIf="mf.data.length==0" align="center">
+      <td colspan="4">
+        Aucun candidat trouvé
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <mfBootstrapPaginator></mfBootstrapPaginator>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
