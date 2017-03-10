@@ -18,13 +18,13 @@
       <div class="col-sm-2">
 
         <div class="panel panel-default">
-          <div class="panel-heading">27 offres d'emplois</div>
+          <div class="panel-heading">{{nbPoste}} offres d'emplois</div>
           <div class="panel-body">
             <p>
               <!-- p style="text-align: justify" -->
               En recherche d'emploi ? <br/>
-              27 offres d'emplois correspondent à votre profil, qu'attendez vous pour postuler ? <br/>
-              N'hésitez pas les amis ! <br/>
+              {{nbPoste}} offres d'emplois n'attendent que vous ! <br/>
+              N'hésitez pas ! <br/>
             </p>
           </div>
           <div class="panel-footer">
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="false">
     <div class="x_title">
       <h2>Message :</h2>
       <div class="clearfix"></div>

@@ -30,7 +30,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="goToProfil()"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+        <li><a (click)="goToProfil()"><i class="fa fa-male" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
         <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
             <span class=" fa fa-angle-right"></span>
@@ -49,13 +49,8 @@
     <!-- si l'utlisateur connecté est un recruteur-->
     <div *ngIf="isRecruteur()">
 
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="/dashboardRecruteur">Votre espace</a></li>
-
-      </ul>
-
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
+        <li><a (click)="goToRecruteur()"><i class="fa fa-male" style="font-size: 1.5em; cursor: pointer; cursor: hand;"></i></a></li>
         <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
             <span class=" fa fa-angle-right"></span>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChildren} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CandidatService} from "../../shared/service/candidat.service";
 import {RecruteurService} from "../../shared/service/recruteur.service";
 
@@ -8,7 +8,7 @@ import {RecruteurService} from "../../shared/service/recruteur.service";
   styleUrls: ['./list-candidat-poste.component.css']
 })
 export class ListCandidatPosteComponent implements OnInit {
-  @ViewChildren('someVar') filteredItems;
+
   private _listCandidat:any[];
 
   private _listpostes : any[];
