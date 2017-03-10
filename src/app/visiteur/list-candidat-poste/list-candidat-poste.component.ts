@@ -39,12 +39,4 @@ export class ListCandidatPosteComponent implements OnInit {
     this.candidatService.getCandidats().subscribe(candidats => this._listCandidat = candidats);
     this.recruteur.getPosts().subscribe(p => this._listpostes = p);
   }
-
-
-
-
-
-
-
-
 }

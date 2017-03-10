@@ -1,0 +1,18 @@
+<div  class="container" >
+  <div class="col-sm-6"  >
+    <div class="">
+      <div class=" form-group top_search">
+        <div class="input-group">
+          <input type="text" class="form-control"  ngModel #searchposte="ngModel" placeholder="Recherche de Poste" >
+          <span class="input-group-btn">
+             <button class="btn btn-default" type="button"><i class="fa fa-filter"></i></button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <h2> {{listpostes | filtrerPosteCount: searchposte.value}} postes trouvés </h2>
+    </div>
+    <app-card-offre *ngFor="let pos of listpostes | filterPoste: searchposte.value" (postuler)="Postuler($event)" [poste]="pos"></app-card-offre>
+  </div>
+</div>

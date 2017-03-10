@@ -11,9 +11,12 @@ import {environment} from "../../../environments/environment";
 export class InscriptionLinkedinComponent implements OnInit {
 
   private _backendURL: any;
+  private _code: string;
+  private _genre: string;
+  private _state: string;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private _http: Http) {
+  constructor(private activatedRoute: ActivatedRoute, private _router: Router, private _http: Http) {
     this._backendURL = {};
 
     // build backend base url
@@ -27,45 +30,27 @@ export class InscriptionLinkedinComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._http.get(this._backendURL.linkedinToken.replace(':code',this.getCode(location.href)).replace(':state', this.getState(location.href)))
-      .subscribe();
-  }
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this._code = params['code'];
+      this._genre = params['genre'];
+      this._state = params['state'];
+    });
 
-  getCode(chaine:string):string{
-    var record = false;
-    var rep = "";
-    for (var char of chaine) {
-      // is it me you're looking for?
-      if(record){
-        if(char === '&')
-          return rep;
-        rep += char;
-      }
-      if(char === '=')
-        record = true;
-    }
-    return rep;
-  }
+    this._http.get(this._backendURL.linkedinToken.replace(':code',this._code).replace(':state', this._state).replace(':genre', this._genre))
+      .map(res => {
 
-  getState(chaine:string):string{
-    var record = false;
-    var first = true;
-    var rep = "";
-    for (var char of chaine) {
-      // is it me you're looking for?
-      if(first){
-        if(char === '&')
-          first = false;
-      }else{
-        if(record){
-          rep += char;
+        console.log("text: "+ res.text());
+        if (res.status === 200) {
+          var id = res.text();
+          localStorage.setItem("user", id);
+          if(this._genre=="C"){
+            localStorage.setItem("ut", "candidat");
+            this._router.navigate(['/editCandidat']);
+          }else{
+            localStorage.setItem("ut", "recruteur");
+            this._router.navigate(['/dashboardRecruteur']);
+          }
         }
-        if(char === '=')
-          record = true;
-      }
-
-    }
-    return rep;
+      }).subscribe();
   }
-
 }

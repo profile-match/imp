@@ -127,10 +127,17 @@ export class InscriptionUtilisateurComponent implements OnInit {
       if(environment.frontend.port != ""){
         url += "%3A"+environment.frontend.port;
       }
+      let param = "?genre=";
+      if(this._selectedG == 'C'){
+        param += "C";
+      }else{
+        param += "R";
+      }
+
       window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
         "response_type=code&" +
         "client_id=7868doeuipinun&" +
-        "redirect_uri="+url+"%2Finscription-linkedin&" +
+        "redirect_uri="+url+"%2Finscription-linkedin"+param+"&" +
         "state=987654321&" +
         "scope=r_emailaddress";
   }
