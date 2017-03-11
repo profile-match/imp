@@ -16,6 +16,7 @@ import {ProfileCandidatComponent} from "./Candidat/profile/profile.component";
 import {ListCandidatPosteComponent} from "./visiteur/list-candidat-poste/list-candidat-poste.component";
 import {MatchingComponent} from "./recruteur/matching/matching.component";
 import {PosteDetailComponent} from "./recruteur/poste-detail/poste-detail.component";
+import {ConnexionLinkedinComponent} from "./utilisateur/connexion-linkedin/connexion-linkedin.component";
 
 import {GestionAvisCandidatsComponent} from "./visiteur/moderateur/gestion-avis-candidats/gestion-avis-candidats.component";
 
@@ -41,7 +42,8 @@ const ROUTES: Routes = [
   {path: 'GestionAvisCandidats', component: GestionAvisCandidatsComponent },
 
   {path:'candidat/offres', component: RechercherOffresComponent},
-  {path:'posteDetail/:id', component: PosteDetailComponent}
+  {path:'posteDetail/:id', component: PosteDetailComponent},
+  {path:'connexion-linkedin', component: ConnexionLinkedinComponent}
 
 ];
 
