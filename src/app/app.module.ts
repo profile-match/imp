@@ -66,6 +66,7 @@ import { DataTableModule } from 'angular2-datatable';
 import { ToasterModule } from 'angular2-toaster';
 import {DataFilterPipe} from "./visiteur/moderateur/gestion-avis-candidats/data-filter.pipe";
 import { PosteDetailComponent } from './recruteur/poste-detail/poste-detail.component';
+import { ConnexionLinkedinComponent } from './utilisateur/connexion-linkedin/connexion-linkedin.component';
 
 @NgModule({
     declarations: [
@@ -118,7 +119,8 @@ import { PosteDetailComponent } from './recruteur/poste-detail/poste-detail.comp
       RechercherOffresComponent,
       CardOffreComponent,
       ProfilComponent,
-      PosteDetailComponent
+      PosteDetailComponent,
+      ConnexionLinkedinComponent
 
     ],
   imports: [

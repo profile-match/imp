@@ -43,7 +43,8 @@ export const environment = {
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
       sendMail : '/rest/serviceMail/envoyer',
-      getCv : '/rest/candidat/cv/:id'
+      getCv : '/rest/candidat/cv/:id',
+      linkedinConnexion : '/rest/linkedin/connexion/:code/:state'
     }
   },
   frontend: {
