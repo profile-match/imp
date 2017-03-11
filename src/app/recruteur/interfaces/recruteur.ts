@@ -1,12 +1,20 @@
+import {Avis} from "./avis";
 /**
  * Created by umut on 17/01/2017.
  */
 export interface Recruteur {
   "id": number;
-  "idEntreprise": number;
+  "isMale": number;
   "email": string;
-  "banned": number;
+  "isBanned": number;
   "nom": string;
   "photo": string;
   "prenom": string;
+  "telfix": string;
+  "telperso": string;
+  "adresse": string;
+
 }
+
+
+

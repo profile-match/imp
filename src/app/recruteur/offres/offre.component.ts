@@ -41,7 +41,7 @@ export class OffreComponent implements OnInit {
   private candidatselect: candidat;
 
 
-  constructor(private candidatService: CandidatService,private recruteurService: RecruteurService,private offreService: OffersService, private createService: createService, private router: Router) {
+  constructor(private candidatService: CandidatService,private recruteurService: RecruteurService,private offreService: OffersService, private createService: createService, private router: Router,) {
     this._profil = true;
     this._candidat = false;
     this._offres = false;
@@ -217,7 +217,9 @@ console.log(this._dialogStatusAvis);
   marchestp(test:duo){
     console.log(JSON.stringify(test.candidat));
     console.log(test.poste.id);
-    this.candidatService.updateCandidatPost(test.candidat,test.poste.id).subscribe();
+
+    this.candidatService.updateCandidatPost(test.candidat,test.poste.id).subscribe(res => this.router.navigate(['/dashboardRecruteur']));
+
   }
 
 

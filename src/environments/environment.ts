@@ -6,7 +6,7 @@ export const environment = {
   backend: {
     protocol: 'http',
     host: 'localhost',
-    port: '8080',
+    port:'8080',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
@@ -23,9 +23,7 @@ export const environment = {
       allComment: '/api/commentaires',
       oneComment: '/api/commentaires/:id',
       allPost: '/rest/recruteur/allDossier',
-
       onePost: '/rest/recruteur/dossierRecruteur/:idRecruteur', //retourne les dossiers de poste a pouvoir pour un recruteur
-
       allRecruteur: '/rest/recruteur/get',
       oneRecruteur: '/rest/recruteur/get/:id',
       allUser: '/rest/utilisateur/get',
@@ -53,15 +51,12 @@ export const environment = {
       sendMail : '/rest/serviceMail/envoyer',
       getCv : '/rest/candidat/cv/:id',
       createAvis : '/rest/recruteur/avis',
-
       updateCandPost :'/rest/candidat/update/:id',
-
-
       updateRecruteur : '/rest/recruteur/update',
       updateMdpRecruteur : '/rest/recruteur/updateMdp',
       getPhoto: '/rest/candidat/photo/:id',
+      linkedinConnexion : '/rest/linkedin/connexion/:code/:state'
 }
-
   },
   frontend: {
     protocol: 'http',

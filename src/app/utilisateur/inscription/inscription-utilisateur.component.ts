@@ -27,8 +27,8 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
 
   public buttonLinkedinStatus():number{
-  return this._buttonLinkedinStatus;
-}
+    return this._buttonLinkedinStatus;
+  }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
