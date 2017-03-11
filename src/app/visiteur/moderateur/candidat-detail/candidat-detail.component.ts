@@ -2,6 +2,8 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {CandidatService} from "../../../shared/service/candidat.service";
 import {candidat} from "../../../Candidat/interfaces/candidat";
 import {Commentaire} from "../../../Candidat/interfaces/commentaire";
+import {jsonpFactory} from "@angular/http/src/http_module";
+import {AuthenticationService} from "../../../shared/service/authentication.service";
 
 
 @Component({
@@ -61,7 +63,7 @@ export class CandidatDetailComponent implements OnInit {
 
   // Pie
   public pieChartLabels:string[] = ['unsafe', 'safe'];
-  public pieChartData:number[] = [300, 500];
+  public pieChartData:number[] = [0, 1];
   public pieChartColors:any[] = [{backgroundColor:["#EE0000", "#66E21A"]}];
   public pieChartType:string = 'pie';
   public pieChartOption:any = { size: {
@@ -79,7 +81,7 @@ export class CandidatDetailComponent implements OnInit {
     hoverBorderColor: 'rgb(30, 218, 0)'
                               }];
 
-  constructor(private candidatService: CandidatService) {
+  constructor(private candidatService: CandidatService, private _service:AuthenticationService) {
     this._bannir$ = new EventEmitter();
     this._unban$ = new EventEmitter();
     this._comments = [];
@@ -108,6 +110,10 @@ export class CandidatDetailComponent implements OnInit {
 
   @Input() set candidat(value: candidat) {
     this._candidat = value;
+    if(value) {
+      var s = this._service.currentUser(value.id).safe;
+      this.pieChartData = [1000-s, s];
+    }
   }
 
   @Output('personBannir') get bannir$(): EventEmitter<any> {

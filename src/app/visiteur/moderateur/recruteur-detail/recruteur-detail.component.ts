@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Recruteur} from "../../../recruteur/interfaces/recruteur";
 import {Poste} from "../../../recruteur/interfaces/poste";
 import {RecruteurService} from "../../../shared/service/recruteur.service";
+import {AuthenticationService} from "../../../shared/service/authentication.service";
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -59,7 +60,7 @@ export class RecruteurDetailComponent implements OnInit {
 
   // Pie
   public pieChartLabels:string[] = ['unsafe', 'safe'];
-  public pieChartData:number[] = [300, 500];
+  public pieChartData:number[] = [0, 1];
   public pieChartColors:any[] = [{backgroundColor:["#EE0000", "#66E21A"]}];
   public pieChartType:string = 'pie';
   public pieChartOption:any = { size: {
@@ -77,7 +78,7 @@ export class RecruteurDetailComponent implements OnInit {
     hoverBorderColor: 'rgb(30, 218, 0)'
   }];
 
-  constructor(private recruteurService: RecruteurService) {
+  constructor(private recruteurService: RecruteurService, private _service:AuthenticationService) {
     this._bannir$ = new EventEmitter();
     this._unban$ = new EventEmitter();
    // this._recruteur = {id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"}
@@ -101,6 +102,10 @@ export class RecruteurDetailComponent implements OnInit {
 
   @Input() set recruteur(value: Recruteur) {
     this._recruteur = value;
+    if(value) {
+      var s = this._service.currentUser(value.id).safe;
+      this.pieChartData = [1000-s, s];
+    }
   }
 
   @Output('bannirRecruteur') get bannir$(): EventEmitter<any> {

@@ -18,12 +18,23 @@ export class LoginComponent implements OnInit {
   public errorMsg = '';
 
   constructor(private location: Location, private _service:AuthenticationService ) {
-    this.user= {id:null, email:'', motdepasse:''};
+    this.user= {id:null, email:'', motdepasse:'', type:'', safe:1000};
   }
 
   login(a :any) {
-    if(!this._service.login(this.user)){
+
+   // this.wait(1500);
+  //  alert("retour log : "+this._service.testlog(this.user));
+    this._service.login(this.user)
+    if(!this._service.testlog(this.user))
       this.errorMsg = 'Failed to login';
+  }
+
+  wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
     }
   }
 
