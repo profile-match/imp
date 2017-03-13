@@ -1,0 +1,14 @@
+.linkedin-button{
+  width: 41px;
+  height: 41px;
+  background: url('../../../assets/Connect-Large---Default.png') left top no-repeat;
+}
+
+.linkedin-button:hover {
+  background: url('../../../assets/Connect-Large---Hover.png') left top no-repeat;
+}
+
+.linkedin-button:active {
+  background: url('../../../assets/Connect-Large---Active.png') left top no-repeat;
+}
+

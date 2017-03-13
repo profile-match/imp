@@ -23,9 +23,7 @@ export class ModerateurComponent implements OnInit {
   constructor(private _service:AuthenticationService,
               private candidatService: CandidatService, private recruteurService: RecruteurService) {
     this.candidats = [];
-    this.recruteurs = [
-      {  id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"}
-    ];
+    this.recruteurs = [];
    // this.selectedRecruteur = {  id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"};
   }
 
