@@ -5,7 +5,6 @@ import {environment} from "../../../environments/environment";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {Utilisateur} from "../../utilisateur/utilisateur";
-import {Observable} from "rxjs";
 
 export class User {
   constructor(public email: string,
@@ -72,37 +71,28 @@ export class AuthenticationService {
     this._http.get(this._backendURL.allUser)
       .map(res => res.json())
       .subscribe((us: any[]) => {
-      this._users = us;
+        this._users = us;
       });
-    var authenticatedUser = this._users.find(r => r.email === user.email);
-    if (authenticatedUser) {
-      return true;
-    }
-    else {
-        return false;
-    }
+    let authenticatedUser = this._users.find(r => r.email === user.email);
+    return authenticatedUser;
 
   }
 
-  testlog(user: Utilisateur){
+  testlog(user: Utilisateur):boolean{
     this._http.get(this._backendURL.allUser)
       .map(res => res.json())
       .subscribe((us: any[]) => {
         this._users = us;
       });
-    var authenticatedUser = this._users.find(r => r.email === user.email);
+    let authenticatedUser = this._users.find(r => r.email === user.email);
 
-    var authenticatedModerator = users.find(u => u.email === user.email);
+    let authenticatedModerator = users.find(u => u.email === user.email);
 
     if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
       return true;
     }
-    else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
-      return true;
-    }
-    else {
-      return false;
-    }
+
+    return authenticatedUser && authenticatedUser.motdepasse === user.motdepasse;
   }
 
   currentUser(idC:number) {
@@ -118,81 +108,59 @@ export class AuthenticationService {
 
     this.update();
 
-    var authenticatedUser : Utilisateur;
+    let authenticatedUser : Utilisateur;
     const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
     this._http
       .put(this._backendURL.oneUser, user, requestOptions)
       .map(res => {
-       // if (res.status === 200) {
-          return res.json();
-        //}
+        return res.json();
       }).subscribe((u : Utilisateur) => {
-        authenticatedUser = u;
+      authenticatedUser = u;
 
-        var authenticatedModerator = users.find(u => u.email === user.email);
+      let authenticatedModerator = users.find(u => u.email === user.email);
 
-        if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
-          localStorage.setItem("user", user.email);
-          this._router.navigate(['/moderateur']);
+      if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
+        localStorage.setItem("user", user.email);
+        this._router.navigate(['/moderateur']);
+
+        return true;
+      }
+      else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
+        if(authenticatedUser.type == "C") {
+          localStorage.setItem("user", authenticatedUser.id.toString());
+          localStorage.setItem("ut", "candidat");
+          console.log("id cand : " + localStorage.getItem("user"));
+          this._router.navigate(['/candidat/']);
 
           return true;
         }
-        else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
-          if(authenticatedUser.type == "C") {
-            localStorage.setItem("user", authenticatedUser.id.toString());
-            localStorage.setItem("ut", "candidat");
-            console.log("id cand : " + localStorage.getItem("user"));
-            this._router.navigate(['/candidat/']);
+        else if(authenticatedUser.type == "R") {
+          localStorage.setItem("user", authenticatedUser.id.toString());
+          localStorage.setItem("ut", "recruteur");
+          console.log("id rec : " + localStorage.getItem("user"));
+          this._router.navigate(['/accueil']);
 
-            return true;
-          }
-          else if(authenticatedUser.type == "R") {
-            localStorage.setItem("user", authenticatedUser.id.toString());
-            localStorage.setItem("ut", "recruteur");
-            console.log("id rec : " + localStorage.getItem("user"));
-            this._router.navigate(['/accueil']);
-
-            return true;
-          }
+          return true;
         }
-        return false;
-      });
+      }
+      return false;
+    });
   }
 
   isLogin() {
-    if (localStorage.getItem("user") === null) {
-      return false;
-    }
-    else {
-      return true;
-    }
+    return localStorage.getItem("user") !== null;
   }
 
   isAdmin() {
-    if (localStorage.getItem("user") === "admin@admin") {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return localStorage.getItem("user") === "admin@admin";
   }
 
   isCandidat() {
-    if (localStorage.getItem("ut") === "candidat") {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return localStorage.getItem("ut") === "candidat";
   }
 
   isRecruteur() {
-    if (localStorage.getItem("ut") === "recruteur") {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return localStorage.getItem("ut") === "recruteur";
   }
 
   checkCredentials() {

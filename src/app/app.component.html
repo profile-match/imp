@@ -72,9 +72,6 @@
     <div *ngIf="isAdmin()">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-envelope-o" style="font-size: 1.5em;"></i></a></li>
-        <li><a href="#"><i class="fa fa-male" style="font-size: 1.5em;"></i></a></li>
-        <li><a href="#"><i class="fa fa-angle-double-down" style="font-size: 1.5em;"></i></a></li>
         <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
           <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
             <span class=" fa fa-angle-right"></span>
@@ -88,27 +85,11 @@
           </a>
         </li>
       </ul>
-
     </div>
-
   </nav>
 </div>
 <!-- /top navigation -->
 
-
-<!-- dialogue de confirmation inviter une personne à créer un compte  -->
-<!--<div *ngIf=" notification === true" [ngSwitch]="typeNotification">
-
-    <div *ngSwitchCase="'success'" class="alert alert-success alert-dismissable center" (click)="closeNotif()">
-      <a class="close" data-dismiss="alert" aria-label="close" >×</a>
-      Message envoyé !
-    </div>
-
-    <div *ngSwitchCase="'error'" class="alert alert-danger alert-dismissable center">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-      {{message}}
-    </div>
-</div>-->
 <div *ngIf=" notification.message" class="alert alert-success alert-dismissable center"  (click)="closeNotif()"
      [class.alert-success]="notification.type==='success'"
      [class.alert-danger]="notification.type==='error'">
