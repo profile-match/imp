@@ -45,6 +45,10 @@ export class ProfileCandidatComponent implements OnInit {
     }
   }
 
+  genererCV(){
+    this._candidatService.getCv(Number(localStorage.getItem("user")), this._candidat.nom);
+  }
+
   goEditProfil(){
     this._router.navigate(['/editCandidat/']);
   }

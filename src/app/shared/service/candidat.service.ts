@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions} from '@angular/http';
+import {Headers, Http, RequestOptions, ResponseContentType, Response} from '@angular/http';
 import {Observable}      from 'rxjs';
+import * as FileSaver from "file-saver";
 
 
 import 'rxjs/add/operator/toPromise';
@@ -33,9 +34,20 @@ export class CandidatService {
     return new RequestOptions({headers: headers});
   }
 
-  getCv(id:number): Observable<any> {
-    return this.http.get(this._backendURL.getCv.replace(':id', id))
-      .map((res) => {});
+  getCv(id:number, filename:string): any {
+    return this.http.get(this._backendURL.getCv.replace(':id',id),
+          { responseType: ResponseContentType.Blob })
+      .map((res:Response) => res.blob())
+      .subscribe(
+        data => {
+          console.log(data);
+          let blob = new Blob([data], {type: 'application/pdf'});
+          console.log(blob);
+          FileSaver.saveAs(blob, filename+".pdf");
+        },
+        err => console.error(err),
+        () => console.log('done')
+      );
   }
 
   uploadPhoto(c: FileList): Observable<string> {
