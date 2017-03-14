@@ -3,6 +3,7 @@ import {Poste}    from '../interfaces/poste';
 import {Savoir} from "../interfaces/savoir";
 import {createService} from "../services/createService";
 import {AutocompletionService} from "../services/autocompletion.service";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-poste-form',
@@ -48,7 +49,7 @@ export class PosteFormComponent implements OnInit {
   private _detailDisabled: any;
 
 
-  constructor(private _createService: createService, private _AutocompletionService: AutocompletionService) {
+  constructor(private _location: Location,private _createService: createService, private _AutocompletionService: AutocompletionService) {
 
     this._cancel$ = new EventEmitter();
     this._submit$ = new EventEmitter();
@@ -195,7 +196,7 @@ export class PosteFormComponent implements OnInit {
   }
 
   cancel() {
-    this._cancel$.emit();
+    this._location.back();
   }
 
   submit() {
