@@ -5,6 +5,7 @@ import {RecruteurService} from "../../../shared/service/recruteur.service";
 import {Recruteur} from "../../interfaces/recruteur";
 import {CustomValidators} from "./custom-validators";
 import {NotificationService} from "../../../shared/service/notification.service";
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-profil',
@@ -20,7 +21,7 @@ export class ProfilComponent implements OnInit {
   private isUploading : boolean ;
   public _urlPhoto : string;
 
-  constructor(private _serviceRecruteur : RecruteurService, private _notificationService : NotificationService) {
+  constructor(private _serviceRecruteur : RecruteurService, private _notificationService : NotificationService, private _md5: Md5) {
     this._data = {} ;
     this._isUpdateMode = false ;
 
@@ -91,8 +92,8 @@ export class ProfilComponent implements OnInit {
 
     var data = {
       "email" : this._data.email,
-      "oldMDP" : model.password,
-      "newMDP" : model.passwords.newPassword
+      "oldMDP" : Md5.hashStr(model.password),
+      "newMDP" : Md5.hashStr(model.passwords.newPassword)
     }
 
     this._serviceRecruteur.updateMdp(data).subscribe((data2: any) => {

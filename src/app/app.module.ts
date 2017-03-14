@@ -9,6 +9,8 @@ import {Ng2AutoCompleteModule} from 'ng2-auto-complete';
 import {MdInputModule} from '@angular/material/input';
 import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule } from "@angular/forms";
+import { Md5 } from 'ts-md5/dist/md5';
+
 import './visiteur/moderateur/candidat-search/rxjs-extensions';
 import {APP_ROUTES} from './app.routes';
 import {AccueilComponent} from './visiteur/accueil/accueil.component';
@@ -137,7 +139,7 @@ import { ConnexionLinkedinComponent } from './utilisateur/connexion-linkedin/con
     DataTableModule,
     ToasterModule
   ],
-  providers: [CandidatService,RecruteurService, MailService, NotificationService],
+  providers: [CandidatService,RecruteurService, MailService, NotificationService, Md5],
 
   bootstrap: [AppComponent]
 })
