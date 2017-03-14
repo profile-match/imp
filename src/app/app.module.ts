@@ -67,6 +67,7 @@ import { ToasterModule } from 'angular2-toaster';
 import {DataFilterPipe} from "./visiteur/moderateur/gestion-avis-candidats/data-filter.pipe";
 import { PosteDetailComponent } from './recruteur/poste-detail/poste-detail.component';
 import { ConnexionLinkedinComponent } from './utilisateur/connexion-linkedin/connexion-linkedin.component';
+import {OffersService} from "./shared/offers-service/offers.service";
 
 @NgModule({
     declarations: [
@@ -137,7 +138,7 @@ import { ConnexionLinkedinComponent } from './utilisateur/connexion-linkedin/con
     DataTableModule,
     ToasterModule
   ],
-  providers: [CandidatService,RecruteurService, MailService, NotificationService],
+  providers: [CandidatService,RecruteurService, MailService, NotificationService, OffersService],
 
   bootstrap: [AppComponent]
 })
