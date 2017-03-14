@@ -81,8 +81,6 @@
     </div>
     <div class="row">
       <button class="btn btn-default" >Générer un CV</button>
-      <button class="btn btn-default" type="submit">Modifier mes informations</button>
-      <button class="btn btn-default" type="submit">Changer mon mot de passe</button>
       <button class="btn btn-default" type="submit" *ngIf="!_candidatSuspended" (click)="suspendCandidat(candidat)" >Suspendre mon compte</button>
       <button class="btn btn-default" type="submit" *ngIf="_candidatSuspended" (click)="unsuspendCandidat(candidat)" >Rétablir mon compte</button>
       <button class="btn btn-default" type="submit" (click)="showModal()">Supprimer mon compte</button>
