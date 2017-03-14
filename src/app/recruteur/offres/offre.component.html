@@ -114,22 +114,16 @@
                           <th>Nom</th>
                           <th>Prénom</th>
                           <th>Email</th>
-                          <th>Matching</th>
+
                           <th>Avis</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr *ngFor="let cand of listeCand(); let i = index;"   >
                           <th scope="row">{{i+1}}</th>
-                          <td  (click) ="redirectCandidat(cand.id)"  >"{{cand.nom}}</td>
+                          <td  (click) ="redirectCandidat(cand.id)"  >{{cand.nom}}</td>
                           <td>{{cand.prenom}}</td>
                           <td>{{cand.email}}</td>
-                          <td>
-
-                            <button type="button" class="btn btn-primary" (click)="redirectMatch(selectedOffre.id,cand.id)">Matcher
-                            </button>
-
-                          </td>
                           <td> <button  *ngIf="!dialogStatusAvis"  type="button" (click)="showAvis(cand)"  class="btn btn-primary">Ajouter avis</button></td>
 
 
