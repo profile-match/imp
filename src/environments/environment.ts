@@ -6,7 +6,7 @@ export const environment = {
   backend: {
     protocol: 'http',
     host: 'localhost',
-    port:'8080',
+    port: '8080',
     endpoints: {
       allCandidat: '/rest/candidat/get',//'/api/candidats',
       oneCandidat: '/rest/candidat/get/:id',
@@ -48,15 +48,19 @@ export const environment = {
       deletePoste: '/rest/recruteur/deleteDossier/:id',
       unsuspendCandidat: '/rest/candidat/unsuspend/:id',
       getCompetences: '/rest/competence/get/:comp',
-      sendMail : '/rest/serviceMail/envoyer',
-      getCv : '/rest/candidat/cv/:id',
-      createAvis : '/rest/recruteur/avis',
-      updateCandPost :'/rest/candidat/update/:id',
-      updateRecruteur : '/rest/recruteur/update',
-      updateMdpRecruteur : '/rest/recruteur/updateMdp',
+      sendMail: '/rest/serviceMail/envoyer',
+      getCv: '/rest/candidat/cv/:id',
+      matchingDossierCandidatComp: '/rest/match/dossierCandidatComp/:iddossier/:idcandidat',
+      matchingDossierCandidatCert: '/rest/match/dossierCandidatCert/:iddossier/:idcandidat',
+      matchingDossierCandidatForm: '/rest/match/dossierCandidatForm/:iddossier/:idcandidat',
+      matchingDossier: '/rest/match/dossier/:iddossier/:borneinf/:bornesup',
+      createAvis: '/rest/recruteur/avis',
+      updateCandPost: '/rest/candidat/update/:id',
+      updateRecruteur: '/rest/recruteur/update',
+      updateMdpRecruteur: '/rest/recruteur/updateMdp',
       getPhoto: '/rest/candidat/photo/:id',
-      linkedinConnexion : '/rest/linkedin/connexion/:code/:state'
-}
+      linkedinConnexion: '/rest/linkedin/connexion/:code/:state'
+    }
   },
   frontend: {
     protocol: 'http',

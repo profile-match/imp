@@ -114,7 +114,7 @@
                           <th>Nom</th>
                           <th>Prénom</th>
                           <th>Email</th>
-
+                          <th>Matcher</th>
                           <th>Avis</th>
                         </tr>
                         </thead>
@@ -124,9 +124,8 @@
                           <td  (click) ="redirectCandidat(cand.id)"  >{{cand.nom}}</td>
                           <td>{{cand.prenom}}</td>
                           <td>{{cand.email}}</td>
+                          <td> <button type="button" (click)="redirectMatch(selectedOffre.id,cand.id)"  class="btn btn-primary">Matcher</button></td>
                           <td> <button  *ngIf="!dialogStatusAvis"  type="button" (click)="showAvis(cand)"  class="btn btn-primary">Ajouter avis</button></td>
-
-
 
                         </tr>
                         </tbody>
