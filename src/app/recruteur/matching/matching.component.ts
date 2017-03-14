@@ -39,6 +39,7 @@ export class MatchingComponent implements OnInit {
       suspended: true,
       photo: '',
       prenom: '',
+      avis:[],
       adresse: '',
       telfix: '',
       telperso: '',
