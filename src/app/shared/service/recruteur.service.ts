@@ -26,6 +26,19 @@ export class RecruteurService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[k] = `${baseUrl}${environment.backend.endpoints[k]}`);
   }
 
+  matchingDossierCandidat(iddossier: number, idcandidat: number): Observable<any[]> {
+    return this.http.get(this._backendURL.allPost.replace(':iddossier', iddossier).replace(':idcandidat',idcandidat))
+      .map(response => response.json())
+      .catch(this.handleError);
+  }
+
+  matchingDossier(iddossier: number, borneinf: number, bornesup:number): Observable<any[]> {
+    return this.http.get(this._backendURL.allPost.replace(':iddossier', iddossier).replace(':borneinf',borneinf).replace(':bornesup',bornesup))
+      .map(response => response.json())
+      .catch(this.handleError);
+  }
+
+
   getPosts(): Observable<Poste[]> {
     return this.http.get(this._backendURL.allPost)
       .map(response => response.json())
