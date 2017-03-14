@@ -10,7 +10,7 @@ import { Headers, BaseRequestOptions,
 
 import {ResponseOptions} from '@angular/http';
 import {MockBackend, MockConnection} from '@angular/http/testing';
-import {Candidat} from "../../candidat/interfaces/candidat";
+import {candidat} from "../../candidat/interfaces/candidat";
 
 
 describe('CandidatService', () => {
@@ -65,7 +65,7 @@ describe('CandidatService', () => {
         candidatService = getTestBed().get(CandidatService);
         expect(candidatService).toBeDefined();
 
-        candidatService.getCandidats().subscribe((candidats: Candidat[]) => {
+        candidatService.getCandidats().subscribe((candidats: candidat[]) => {
           console.log("1er : "+candidats[0]);
           expect(candidats.length).toBeDefined();
           expect(candidats.length).toEqual(1);
@@ -151,10 +151,10 @@ describe('CandidatService', () => {
         }
       );
 
-      let candidat: Candidat;
+      let candidat: candidat;
       candidat = {
-        id: 3, adresse: "8 route", email: "b@b.gmail.com", banned: 0, loisirs: "sport", nom: "martin", photo: "null", prenom: "jean",
-        telfix:"03", telperso:"06",experiencePro: "exp", formation: "form", competence: null
+        id: 3, email: "b@b.gmail.com", banned: 0, loisirs: "sport", nom: "martin", naissance:"", isMale: true, suspended: false, photo: "",prenom: "jean",
+        adresse: "8 route", telfix:"03", telperso:"06",experiencePro: null, formation: null, competence: null, certifications: null, listDossier: null, avis:null
       };
       console.log("candidat avant : " + candidat.id);
 

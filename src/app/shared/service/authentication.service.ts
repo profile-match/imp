@@ -6,6 +6,7 @@ import {Recruteur} from "../../recruteur/interfaces/recruteur";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {Utilisateur} from "../../utilisateur/utilisateur";
 import { Md5 } from 'ts-md5/dist/md5';
+import {NotificationService} from "../../shared/service/notification.service";
 
 export class User {
   constructor(public email: string,
@@ -30,7 +31,7 @@ export class AuthenticationService {
   // private property to store all backend URLs
   private _backendURL: any;
 
-  constructor(private _http: Http, private _router: Router, private _md5: Md5) {
+  constructor(private _notificationService : NotificationService, private _http: Http, private _router: Router, private _md5: Md5) {
     this._candidats = [];
     this._recruteurs = [];
     this._users = [];
@@ -132,20 +133,40 @@ export class AuthenticationService {
       }
       else if (authenticatedUser && authenticatedUser.motdepasse === userHash.toString()) {
         if(authenticatedUser.type == "C") {
-          localStorage.setItem("user", authenticatedUser.id.toString());
-          localStorage.setItem("ut", "candidat");
-          console.log("id cand : " + localStorage.getItem("user"));
-          this._router.navigate(['/candidat/']);
+          return this._http.get(this._backendURL.getCandidat.replace(':id', authenticatedUser.id))
+            .map(res => {
+              if (res.status === 200) {
+                return res.json();
+              }
+            }).subscribe(c => {
+              if(c.banned==0){
+                localStorage.setItem("user", authenticatedUser.id.toString());
+                localStorage.setItem("ut", "candidat");
+              //  console.log("id cand : " + localStorage.getItem("user"));
+                this._router.navigate(['/candidat/']);
 
-          return true;
+                return true;
+              }
+              else
+                this._notificationService.addNotification("vous êtes banni par le moderateur!!", "error");
+
+            });
         }
         else if(authenticatedUser.type == "R") {
-          localStorage.setItem("user", authenticatedUser.id.toString());
-          localStorage.setItem("ut", "recruteur");
-          console.log("id rec : " + localStorage.getItem("user"));
-          this._router.navigate(['/accueil']);
+          return this._http.get(this._backendURL.oneRecruteur.replace(':id', authenticatedUser.id))
+            .map( res =>  { if (res.status === 200) { return res.json(); } })
+            .subscribe(r => {
+              if(r.banned==0) {
+                localStorage.setItem("user", authenticatedUser.id.toString());
+                localStorage.setItem("ut", "recruteur");
+                //  console.log("id rec : " + localStorage.getItem("user"));
+                this._router.navigate(['/accueil']);
 
-          return true;
+                return true;
+              }
+              else
+                this._notificationService.addNotification("vous êtes banni par le moderateur!!", "error");
+            });
         }
       }
       return false;
