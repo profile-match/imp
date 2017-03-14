@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import {environment} from "../../../environments/environment";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {Commentaire} from "../../Candidat/interfaces/commentaire";
+import {Avis} from "../../recruteur/interfaces/avis";
 
 @Injectable()
 export class CandidatService {
@@ -135,6 +136,11 @@ export class CandidatService {
 
   getCandidats(): Observable<candidat[]> {
     return this.http.get(this._backendURL.allCandidat)
+      .map(res => res.json());
+  }
+
+  getAllAvis(): Observable<Avis[]> {
+    return this.http.get(this._backendURL.allAvis)
       .map(res => res.json());
   }
 

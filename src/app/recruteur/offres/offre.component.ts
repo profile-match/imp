@@ -146,9 +146,7 @@ console.log(this._dialogStatusAvis);
     this.router.navigate(['/editPost/'+id]);
   }
 
-  redirectMatch(idDos: any, idCand: any){
-    this.router.navigate(['/matchingPost/:iddossier/:idcandidat'.replace(':iddossier',idDos).replace(':idcandidat',idCand)]);
-  }
+
 
   redirectCandidat(id:any){
 
@@ -215,8 +213,7 @@ console.log(this._dialogStatusAvis);
   }
 
   marchestp(test:duo){
-    console.log(JSON.stringify(test.candidat));
-    console.log(test.poste.id);
+
 
     this.candidatService.updateCandidatPost(test.candidat,test.poste.id).subscribe(res => this.router.navigate(['/dashboardRecruteur']));
 

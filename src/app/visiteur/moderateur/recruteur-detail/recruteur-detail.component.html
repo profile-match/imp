@@ -9,7 +9,10 @@
     <div class="title_left">
       <!-- menu profile quick info -->
       <div class="profile">
-        <div class="profile_pic">
+        <div class="profile_pic" *ngIf="!recruteur.photo">
+          <img src="../../../assets/visitor.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_pic" *ngIf="recruteur.photo">
           <img src={{recruteurService.getPhotoUrl(recruteur.photo)}} alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
@@ -17,7 +20,7 @@
           <h2 style="color: black;"><b>{{recruteur.nom}}</b></h2>
 
           <br />
-          <a (click)="signaler()">signaler</a>
+         <!-- <a (click)="signaler()">signaler</a> -->
           <span *ngIf="recruteur.banned"><h3 style="color: #e90000">Utilisateur banni</h3></span>
         </div>
       </div>
@@ -35,7 +38,30 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="x_panel">
 
-        <app-gestion-avis-candidats></app-gestion-avis-candidats>
+        <table class="table table-striped">
+          <thead>
+          Avis
+          <tr>
+            <td>Nom candidat</td>
+            <td>descritpion</td>
+            <td>Note</td>
+          </tr>
+
+          </thead>
+          <tbody *ngFor="let cand of _candidats">
+
+          <tr *ngFor="let avi of cand.avis  ">
+
+                <td *ngIf="recruteur.id === avi.recruteur.id">{{cand.nom}}</td>
+                <td *ngIf="recruteur.id === avi.recruteur.id">{{avi.description.substring(0, 20)}}...<span   style="cursor:pointer ;text-decoration:underline;" (click)='readMore($event)'>read more!</span></td>
+                <td hidden *ngIf="recruteur.id === avi.recruteur.id">{{avi.description}}  <span style="cursor:pointer;text-decoration:underline;" (click)='readLess($event)'>read less!</span></td>
+                <td  *ngIf="recruteur.id === avi.recruteur.id">{{avi.note}}</td>
+          </tr>
+
+          </tbody>
+          <tfoot></tfoot>
+        </table>
+
         <!-- graphe d'activite ******
         <div class="x_title">
           <h2>Activité sur offres/commentaires <small>Sessions</small></h2>
@@ -85,21 +111,6 @@
       <div class="x_panel">
         <div class="x_title">
           <h2>credibilité de l'utilisateur <small>Sessions</small></h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Settings 1</a>
-                </li>
-                <li><a href="#">Settings 2</a>
-                </li>
-              </ul>
-            </li>
-            <li><a class="close-link"><i class="fa fa-close"></i></a>
-            </li>
-          </ul>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
