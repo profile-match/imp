@@ -3,6 +3,7 @@ import {formation} from "./formation";
 import {competence} from "./competence";
 import {certificationCandidat} from "./CertificationCandidat";
 import {Poste} from "../../recruteur/interfaces/poste";
+import {Avis} from "../../recruteur/interfaces/avis";
 
 /**
  * Created by antoine on 20/01/17.
@@ -26,6 +27,6 @@ export interface candidat {
   "competence":competence[];
   "certifications":certificationCandidat[];
   "listDossier":Poste[];
-
+  "avis":Avis[];
 
 }

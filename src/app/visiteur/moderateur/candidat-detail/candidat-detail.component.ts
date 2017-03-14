@@ -4,6 +4,7 @@ import {candidat} from "../../../Candidat/interfaces/candidat";
 import {Commentaire} from "../../../Candidat/interfaces/commentaire";
 import {jsonpFactory} from "@angular/http/src/http_module";
 import {AuthenticationService} from "../../../shared/service/authentication.service";
+import {ToasterService} from "angular2-toaster";
 
 
 @Component({
@@ -19,7 +20,18 @@ export class CandidatDetailComponent implements OnInit {
    private _selectedComment: Commentaire;
   private _bannir$: EventEmitter<any>;
   private _unban$: EventEmitter<any>;
+  private toasterService: ToasterService;
 
+  private _rowsOnPage = 1;
+
+
+  get rowsOnPage(): number {
+    return this._rowsOnPage;
+  }
+
+  set rowsOnPage(value: number) {
+    this._rowsOnPage = value;
+  }
 
   // lineChart
   public lineChartData:Array<any> = [
@@ -81,9 +93,10 @@ export class CandidatDetailComponent implements OnInit {
     hoverBorderColor: 'rgb(30, 218, 0)'
                               }];
 
-  constructor(private candidatService: CandidatService, private _service:AuthenticationService) {
+  constructor(private candidatService: CandidatService, private _service:AuthenticationService, toasterService: ToasterService) {
     this._bannir$ = new EventEmitter();
     this._unban$ = new EventEmitter();
+    this.toasterService = toasterService;
     this._comments = [];
   //  this._candidat = {id: 11, email: 'nice', isBanned:0, loisirs: 'ni', nom: "test", photo:"", prenom: 'Mr. Nice', experiencePro: 'd', formation:'d', competence:[]};
     this._selectedComment = {id: 1, idCandidat: 11, contenu: 'null', signale: true};
@@ -168,5 +181,35 @@ export class CandidatDetailComponent implements OnInit {
   public chartHovered(e:any):void {
     console.log(e);
   }
+
+
+  delete(avis,cand,element){
+
+    var avisDeleted=element.target.innerHTML.toString();
+    if(avisDeleted.indexOf("Supprimer")> -1){
+
+      element.target.innerHTML="Supprimé";
+      this.toasterService.pop('success', 'Information:', "L'avis est supprimé !");
+
+     // var index = this.data.indexOf(cand, 0);
+     // if (index > -1) {
+     //   this.data.splice(index, 1);
+     // }
+      // this.candidatService.bannir(candidat).subscribe(data => this._data = data);
+    }
+
+
+
+  }
+
+  readMore(element){
+
+    element.target.parentNode.hidden=true;
+    element.target.parentNode.nextElementSibling.hidden=false;
+  }
+
+  readLess(element){
+    element.target.parentNode.hidden=true;
+    element.target.parentNode.previousElementSibling.hidden=false;  }
 
 }

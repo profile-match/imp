@@ -3,6 +3,8 @@ import {Recruteur} from "../../../recruteur/interfaces/recruteur";
 import {Poste} from "../../../recruteur/interfaces/poste";
 import {RecruteurService} from "../../../shared/service/recruteur.service";
 import {AuthenticationService} from "../../../shared/service/authentication.service";
+import {CandidatService} from "../../../shared/service/candidat.service";
+import {candidat} from "../../../Candidat/interfaces/candidat";
 
 @Component({
   selector: 'app-recruteur-detail',
@@ -14,6 +16,7 @@ export class RecruteurDetailComponent implements OnInit {
 
   private _recruteur: Recruteur;
   private _postes: Poste[];
+  private _candidats: candidat[];
   private _bannir$: EventEmitter<any>;
   private _unban$: EventEmitter<any>;
   private _selectedPost: Poste;
@@ -78,16 +81,18 @@ export class RecruteurDetailComponent implements OnInit {
     hoverBorderColor: 'rgb(30, 218, 0)'
   }];
 
-  constructor(private recruteurService: RecruteurService, private _service:AuthenticationService) {
+  constructor(private recruteurService: RecruteurService, private _service:AuthenticationService, private candidatService: CandidatService) {
     this._bannir$ = new EventEmitter();
     this._unban$ = new EventEmitter();
    // this._recruteur = {id: 1,idEntreprise: 1, email: "string", banned: 0, nom: "string", photo : "null", prenom: "string"}
     this._postes = [];
     this._selectedPost = {id: 1, id_recruteur: 1, date_publication: 12, reference:"ref", intitule:"int", indice_salaire: "ind", salaire_min:5, salaire_max:2, afficher_moyenne: 0, type_contrat: "tc", resume: "res", point_attention: "pa", lieu_travail: "lieut", organisation: "orga", equipe_concernee: "equipe", savoir_specifications:[], savoir_faires: [], savoir_etres:[], metiers:[], fonctionnelles: [], techniques: [], langues: [], formations: [], certifications: [], listeCandidat: []};
+    this._candidats=[];
   }
 
   ngOnInit() {
     this.getPosts();
+    this.candidatService.getCandidats().subscribe(candidats => this._candidats = candidats);
   }
 
   getPosts(): void {
@@ -168,4 +173,13 @@ export class RecruteurDetailComponent implements OnInit {
   public chartHovered(e:any):void {
     console.log(e);
   }
+
+  readMore(element){
+    element.target.parentNode.hidden=true;
+    element.target.parentNode.nextElementSibling.hidden=false;
+  }
+
+  readLess(element){
+    element.target.parentNode.hidden=true;
+    element.target.parentNode.previousElementSibling.hidden=false;  }
 }

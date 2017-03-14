@@ -44,11 +44,11 @@
             <div style="width:220px;height:150px;line-height:3em;overflow:auto;padding:5px;">
 
               <ul class="recruteurs">
-                <li *ngFor="let recruteur of recruteurs"
+                <li *ngFor="let recruteur of recruteurs; let i = index"
                   [class.selected]="recruteur === selectedRecruteur"
                   (click)="onSelectRecruteur(recruteur)">
-                  <span *ngIf="recruteur.banned" class="badge" style="background-color: red">{{recruteur.id}}</span>
-                  <span *ngIf="!recruteur.banned" class="badge" style="background-color: green">{{recruteur.id}}</span>{{recruteur.nom}}
+                  <span *ngIf="recruteur.banned" class="badge" style="background-color: red">{{i}}</span>
+                  <span *ngIf="!recruteur.banned" class="badge" style="background-color: green">{{i}}</span>{{recruteur.nom}}
                 </li>
               </ul>
             </div>
