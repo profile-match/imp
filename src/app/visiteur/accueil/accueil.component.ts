@@ -7,6 +7,7 @@ import {Poste} from "../../recruteur/interfaces/poste";
 import {Http} from "@angular/http";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {Commentaire} from "../../Candidat/interfaces/commentaire";
+import {Avis} from "../../recruteur/interfaces/avis";
 
 @Component({
     selector: 'app-accueil',
@@ -21,6 +22,7 @@ export class AccueilComponent implements OnInit {
     private recruteurs: Recruteur[];
     private postes: Poste[];
     private comments: Commentaire[];
+    private avis: Avis[];
 
     private _nbMale: number;
     private _nbFemelle: number;
@@ -29,6 +31,7 @@ export class AccueilComponent implements OnInit {
 
     constructor(private http: Http, private candidatService: CandidatService, private recruteurService: RecruteurService) {
         this.candidats = [];
+        this.avis = [];
         this.recruteurs = [];
         this.postes = [];
         this.comments = [];
@@ -39,7 +42,7 @@ export class AccueilComponent implements OnInit {
 
     getCandidats(): void {
         this.candidatService.getCandidats().subscribe(candidats => this.candidats = candidats);
-        console.log(JSON.stringify(this.candidats));
+        //console.log(JSON.stringify(this.candidats));
     }
 
     getComments(): void {
@@ -62,6 +65,9 @@ export class AccueilComponent implements OnInit {
         this.candidatService.getNbMale().subscribe(m => this._nbMale = m);
     }
 
+    getNbAvis(): void {
+      this.candidatService.getAllAvis().subscribe(a => this.avis = a);
+    }
 
   ngOnInit(): void {
     this.getCandidats();
@@ -69,6 +75,7 @@ export class AccueilComponent implements OnInit {
     this.getnbMale();
     this.getRecruteurs();
     this.getPostes();
+    this.getNbAvis();
  /*   this.getComments();
     this.setMenuList();*/
   }

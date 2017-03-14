@@ -60,7 +60,8 @@ export const environment = {
       updateMdpRecruteur: '/rest/recruteur/updateMdp',
       getPhoto: '/rest/candidat/photo/:id',
       linkedinConnexion: '/rest/linkedin/connexion/:code/:state',
-      login: '/rest/utilisateur/connexion/:email/:hashe'
+      login: '/rest/utilisateur/connexion/:email/:hashe',
+      allAvis: '/rest/candidat/get/avis'
     }
   },
   frontend: {
