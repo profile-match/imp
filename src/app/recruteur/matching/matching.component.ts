@@ -104,12 +104,13 @@ export class MatchingComponent implements OnInit {
   }
 
   backClicked() {
-    this._location.back();
+
   }
 
   linkCandidat() {
     //TODO cloturer l'offre et ajouter le candidat en tant que candidat embauché
-
+    this._serviceCandidat.updateCandidatPost(this.cand,this.dossier.id).subscribe(res =>   this._location.back());
+    this._location.back();
   }
 
   get serviceCandidat(): CandidatService {

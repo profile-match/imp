@@ -4,6 +4,7 @@ import {CandidatService} from "../../shared/service/candidat.service";
 import {Poste} from "../../recruteur/interfaces/poste";
 import {OffersService} from "../../shared/offers-service/offers.service";
 import {duo} from "../interfaces/duo";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class CardCondidatComponent implements OnInit {
 
 
 
-  constructor(private offreService: OffersService, private _candidatService: CandidatService) {
+  constructor(private offreService: OffersService, private _candidatService: CandidatService,private router: Router) {
      this.candidat = { };
     this._cancel$ = new EventEmitter();
     this._submit$ = new EventEmitter();
@@ -98,11 +99,11 @@ export class CardCondidatComponent implements OnInit {
   set photo(value: string) {
     this._photo = value;
   }
-  get selectedOffre(): Poste {
+  get selectedOffre(): any {
     return this._selectedOffre;
   }
 
-  set selectedOffre(value: Poste) {
+  set selectedOffre(value: any) {
     this._selectedOffre = value;
   }
   get testOffreList(): Poste[] {
@@ -141,6 +142,10 @@ export class CardCondidatComponent implements OnInit {
 
   set duo(value: duo) {
     this._duo = value;
+  }
+
+  redirectMatch(){
+    this.router.navigate(['/matchingPost/:iddossier/:idcandidat'.replace(':iddossier',this.selectedOffre).replace(':idcandidat',this.candidat.id)]);
   }
 
 
