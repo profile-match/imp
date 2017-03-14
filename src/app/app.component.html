@@ -23,12 +23,6 @@
     <!-- si l'utlisateur connecté est un candidat-->
     <div *ngIf="isCandidat()">
 
-      <ul class="nav navbar-nav navbar-left">
-        <li><a routerLink="offres">Vos offres</a></li>
-        <li><a href="#">Nouvelle offre</a></li>
-        <li><a href="#">Parcourir les candidats</a></li>
-      </ul>
-
       <ul class="nav navbar-nav navbar-right">
         <li><a (click)="goToDashboard()"><i class="fa fa-home" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
         <li><a (click)="goToProfil()"><i class="fa fa-male" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
