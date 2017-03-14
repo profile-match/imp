@@ -8,7 +8,9 @@
     <form novalidate [formGroup]="form">
 
       <p [class.errors]="form.controls.email.dirty && form.controls.email.invalid">
-<!--        <md-input placeholder="Email" style="width:100%" formControlName="email" required name="email" type="email"></md-input>-->
+
+        <input type="text" placeholder="Email" style="width:100%" formControlName="email" required name="email" type="email"/>
+
 
         <span *ngIf="form.controls.email.dirty && form.controls.email.errors?.required">champ obligatoire</span>
         <span *ngIf="form.controls.email.dirty && form.controls.email.errors?.mailErreur"><br>mail invalide</span>

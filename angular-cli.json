@@ -28,7 +28,8 @@
         "../node_modules/gentelella/vendors/select2/dist/css/select2.min.css",
         "../node_modules/gentelella/vendors/switchery/dist/switchery.min.css",
         "../node_modules/gentelella/vendors/starrr/dist/starrr.css",
-        "../node_modules/gentelella/build/css/custom.min.css"
+        "../node_modules/gentelella/build/css/custom.min.css",
+        "../node_modules/angular2-toaster/toaster.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.bundle.js"
@@ -36,7 +37,8 @@
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "docker": "environments/environment.docker.ts"
       }
     }
   ],

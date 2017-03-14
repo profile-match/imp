@@ -1,0 +1,148 @@
+<div class = "row" style="margin-bottom:5px">
+
+  <div style="text-align:center">
+
+<div class="loader" *ngIf="isUploading">
+  <svg class="circular">
+    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+  </svg>
+</div>
+<img *ngIf="!isUploading" src="{{urlPhoto}}" class="img-circle" style="width:auto;height:150px;"/>
+
+  </div>
+</div>
+
+<div class = "row">
+  <!--informations personnelles -->
+
+  <div class="col-xs-12 col-sm-6 col-md-7 col-lg-5 col-lg-offset-2">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><i class="fa fa-bars"></i> Infos personnelles</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" style="display: block;">
+
+
+        <form novalidate #f="ngForm" id="poste_form" data-parsley-validate class="form-horizontal form-lpars-left" >
+
+
+          <!--nom et prénom-->
+          <div class="item form-group row" >
+            <div class="col-xs-5 col-sm-5  col-md-5 col-lg-3" [ngClass]="{bad: nom.dirty && nom.errors?.required}">
+              <input type="text" placeholder="nom" id="nom" name="nom" [(ngModel)]="data.nom" required="required" class="form-control has-feedback-left"
+                     [attr.readonly]="!update ? true : null" #nom="ngModel">
+              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-5 col-sm-5  col-md-5 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" [ngClass]="{bad: prenom.dirty && prenom.errors?.required}">
+              <input type="text" placeholder="prénom" id="prenom" name="prenom" [(ngModel)]="data.prenom" required="required" class="form-control"
+                     [attr.readonly]="!update ? true : null" #prenom="ngModel">
+              <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <!--tel fixe et portable-->
+          <div class="item form-group row" >
+            <div class="col-xs-5 col-sm-5  col-md-5 col-lg-3" [ngClass]="{bad: telfix.dirty && telfix.errors?.required}">
+              <input type="text" placeholder="tel fixe" id="telfixe" name="telfix" [(ngModel)]="data.telfix" required="required" class="form-control has-feedback-left"
+                     [attr.readonly]="!update ? true : null"  #telfix="ngModel">
+              <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-5 col-sm-5  col-md-5 col-lg-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" [ngClass]="{bad: telperso.dirty && telperso.errors?.required}">
+              <input type="text" placeholder="tel portable" id="telperso" name="telperso" [(ngModel)]="data.telperso" required="required" class="form-control"
+                     [attr.readonly]="!update ? true : null"  #telperso="ngModel">
+              <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <!--mail-->
+          <div class="item form-group row" [ngClass]="{bad: email.dirty && email.errors?.required}">
+            <div class="col-xs-7 col-sm-7  col-md-7 col-lg-7">
+              <input type="text" placeholder="email" id="email" name="email" [(ngModel)]="data.email" required="required" class="form-control has-feedback-left"
+                     [attr.readonly]=true #email="ngModel">
+              <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <span class="col-xs-4 col-sm-4  col-md-4 col-lg-4 alert" *ngIf="email.dirty && email.errors?.required">Remplissez ce champ</span>
+          </div>
+
+          
+        <div class="form-group">
+          <label class="col-md-3 control-label">Photo de profil</label>
+          <div class="col-md-4">
+            <input type="file" (change)="onChange($event)" [disabled]="!update "/>
+            <br/>
+          </div>
+        </div>
+
+        </form>
+
+        <div class="ln_solid"></div>
+
+
+        <div [ngSwitch]="update">
+          <div *ngSwitchCase="true" style="text-align: right">
+            <button type="button" class="btn btn-primary" (click)="modifier()">Retour</button>
+            <button type="submit" class="btn btn-success" [disabled]="!f.valid" (click)="updateInfos()" >enregistrer</button>
+          </div>
+          <div *ngSwitchCase="false" style="text-align: right">
+            <button type="button" class="btn btn-primary" (click)="modifier()">modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--changer mdp -->
+  <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><i class="fa fa-bars"></i> modifier mot de passe</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" style="display: block;">
+
+        <form novalidate [formGroup]="formMdp" class="form-horizontal form-lpars-left">
+
+          <div class="item form-group " [ngClass]="{bad: formMdp.controls.password.dirty && formMdp.controls.password.errors?.required}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mdp">Ancien mot de passe </label>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <input type="password" id="mdp" placeholder="" formControlName="password" required name="password" class="form-control col-md-7 col-xs-12">
+            </div>
+            <span class="col-xs-4 col-sm-4  col-md-4 col-lg-4 alert" *ngIf="formMdp.controls.password.dirty && formMdp.controls.password.errors?.required">Remplissez ce champ</span>
+          </div>
+
+          <div class="item form-group" formGroupName="passwords" [ngClass]="{bad: formMdp.controls.passwords.controls.newPassword.dirty && formMdp.controls.passwords.controls.newPassword.errors?.required}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="newPassword">Nouveau mot de passe </label>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <input type="password" id="newPassword" placeholder="" formControlName="newPassword" required name="newPassword" class="form-control col-md-7 col-xs-12">
+            </div>
+            <span class="col-xs-4 col-sm-4  col-md-4 col-lg-4 alert" *ngIf="formMdp.controls.passwords.controls.newPassword.dirty && formMdp.controls.passwords.controls.newPassword.errors?.required">Remplissez ce champ</span>
+          </div>
+
+          <div class="item form-group" formGroupName="passwords" [ngClass]="{bad: formMdp.controls.passwords.errors?.passwordsEqual}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="passwordConfirm">Confirmation </label>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <input type="password" id="passwordConfirm" placeholder="" formControlName="passwordConfirm" required name="passwordConfirm" class="form-control col-md-7 col-xs-12">
+            </div>
+            <span class="col-xs-4 col-sm-4  col-md-4 col-lg-4 alert" *ngIf="formMdp.controls.passwords.errors?.passwordsEqual">les 2 mdp sont différents</span>
+          </div>
+        </form>
+
+        <div class="ln_solid"></div>
+        <div style="text-align: right">
+          <button type="button" class="btn btn-success"  (click)="save(formMdp.value)" [disabled]="!formMdp.valid">enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
 import {candidat} from "../interfaces/candidat";
@@ -15,7 +15,7 @@ export class UpdateProfileCandidatComponent implements OnInit {
 
   private _id : string;
 
-  constructor(private _router: Router, private _candidatService: CandidatService) {
+  constructor(private router: Router, private _candidatService: CandidatService) {
     this.id = "";
     this.candidat = {};
   }
@@ -34,10 +34,8 @@ export class UpdateProfileCandidatComponent implements OnInit {
 
   updateCandidat(c: candidat) {
     this._candidatService.updateCandidat(c).subscribe();
-  }
-
-  cancel() {
-    this._router.navigate(['/']);
+    this.router.navigateByUrl('/dummy', { skipLocationChange: true });
+    this.router.navigate(['/candidat/profile/']);
   }
 
   get candidat(): any {

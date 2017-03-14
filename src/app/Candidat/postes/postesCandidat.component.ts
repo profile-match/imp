@@ -1,7 +1,6 @@
-import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {poste} from "../interfaces/post-cdd";
-import {LES_POSTES} from "../postes/postes.mock"
+import {Component, OnInit, Input} from '@angular/core';
 import {candidat} from "../interfaces/candidat";
+import {Poste} from "../../recruteur/interfaces/poste";
 
 @Component({
   selector: 'app-postes-candidat',
@@ -10,8 +9,8 @@ import {candidat} from "../interfaces/candidat";
 })
 export class PostesCandidatComponent implements OnInit {
 
-  private _postes : poste[];
-  private _displayPostes : poste[];
+  private _postes : Poste[];
+  private _displayPostes : Poste[];
   private _page : number;
   private _increment : number;
   private _candidat : candidat;
@@ -21,8 +20,76 @@ export class PostesCandidatComponent implements OnInit {
     this._search = "";
     this._postes = [];
     this._displayPostes = [];
-    this._page = 1; // Le numero de page commance a 1
+    this._page = 1; // Le numero de page commence a 1
     this._increment = 10;
+  }
+
+  @Input() set candidat(candidat: candidat) {
+    this._candidat = candidat;
+    if(candidat.listDossier)
+      this._postes = candidat.listDossier;
+    this.updateList();
+  }
+
+  ngOnChanges(record) {
+    if (record.model && record.candidat.currentValue) {
+      this._candidat = record.candidat.currentValue;
+      this._postes = record.candidat.currentValue.listDossier;
+      this.updateList();
+    }
+  }
+
+  get pages(): number[] {
+    var pages = [];
+    for (var i = 0; i < this.maxPage; i++) {
+      pages[i] = i+1;
+    }
+    return pages;
+  }
+
+  isSearch(index: number): boolean {
+    var find: boolean;
+    find = false;
+    if (this._postes[index].intitule.toLowerCase().includes(this._search.toLowerCase())
+      || this._postes[index].type_contrat.toLowerCase().includes(this._search.toLowerCase())
+      || this._postes[index].lieu_travail.toLowerCase().includes(this._search.toLowerCase())) {
+      find = true;
+    }
+    return find;
+  }
+
+  updateList() {
+    this._displayPostes = [];
+    var j: number = 0;
+    for (let i = 0; i < this._postes.length; i++) {
+      if (this.isSearch(i)) {
+        this._displayPostes[j] = this._postes[i];
+        j++;
+      }
+    }
+  }
+
+  ngOnInit() {
+  }
+
+  get candidat(): candidat {
+    return this._candidat;
+  }
+
+  get postes(): Poste[] {
+    return this._postes;
+  }
+
+  set postes(value: Poste[]) {
+    this._postes = value;
+  }
+
+  get displayPostes(): any[] {
+    return this._displayPostes;
+  }
+
+  set displayPostes(value: any[]) {
+    this._displayPostes = value;
   }
 
   get search(): string {
@@ -91,47 +158,8 @@ export class PostesCandidatComponent implements OnInit {
     return this._displayPostes.length;
   }
 
-  get lespostes(): poste[]{
+  get lespostes(): Poste[]{
     return this._displayPostes;
-  }
-
-  @Input() set candidat(candidat: candidat) {
-    this._candidat = candidat;
-  }
-
-  get pages(): number[] {
-    var pages = [];
-    for (var i = 0; i < this.maxPage; i++) {
-      pages[i] = i+1;
-    }
-    return pages;
-  }
-
-  isSearch(index: number): boolean {
-    var find: boolean;
-    find = false;
-    if (this._postes[index].intitule.toLowerCase().includes(this._search.toLowerCase())
-      || this._postes[index].type_de_contrat.toLowerCase().includes(this._search.toLowerCase())
-      || this._postes[index].lieu_de_travail.toLowerCase().includes(this._search.toLowerCase())) {
-      find = true;
-    }
-    return find;
-  }
-
-  updateList() {
-    this._displayPostes = [];
-    var j: number = 0;
-    for (let i = 0; i < this._postes.length; i++) {
-      if (this.isSearch(i)) {
-        this._displayPostes[j] = this._postes[i];
-        j++;
-      }
-    }
-  }
-
-  ngOnInit() {
-    this._postes = LES_POSTES;
-    this.updateList();
   }
 
 }

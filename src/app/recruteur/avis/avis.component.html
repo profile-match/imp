@@ -1,20 +1,27 @@
 <md-card>
 
   <md-card-title>
-    <span>Lache t coms je ren </span>
+    <span>Ajoutez un avis sur ce candidat </span>
   </md-card-title>
 
-  <md-card-content>
-    <form  [formGroup]="form">
+  Notez ce candidat :
+  <select [(ngModel)]="avis.note" name="note">
+    <option *ngFor="let c of valeurs" [value]="c.name">{{c.name}}</option>
+  </select>
 
-      <p>  </p>
+
+  <md-card-content>
+    <form>
+
+       Description :  <input [(ngModel)]="avis.description" name="description" style="width:100%" type="email">
+
 
     </form>
   </md-card-content>
 
   <md-card-actions align="end">
     <button type="button" class="btn btn-default" (click)="cancel()">Retour</button>
-    <button type="submit" class="btn btn-success" (click)="submit(form.value)">Valider</button>
+    <button type="submit" class="btn btn-success" (click)="submit()">Valider</button>
   </md-card-actions>
 
 

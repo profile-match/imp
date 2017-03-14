@@ -27,8 +27,8 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
 
   public buttonLinkedinStatus():number{
-  return this._buttonLinkedinStatus;
-}
+    return this._buttonLinkedinStatus;
+  }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -47,8 +47,8 @@ export class InscriptionUtilisateurComponent implements OnInit {
   constructor(private _service:AuthenticationService, private _candidatService: CandidatService, private _route: ActivatedRoute, private http: Http, private _router: Router, private location: Location, private _el: ElementRef, private _rd: Renderer) {
     this._backendURL = {};
     this._buttonLinkedinStatus = this.DEFAULT_STATUS;
-    this.users = [{  id:1, email:'string', motdepasse:'string' }];
-    this._utilisateur = {  id:1, email:'string', motdepasse:'string' };
+    this.users = [{  id:1, email:'string', motdepasse:'string', type:'', safe:1000 }];
+    this._utilisateur = {  id:1, email:'string', motdepasse:'string', type:'', safe:1000 };
     this._id =0;
     this._selectedG = 'R';
 
@@ -63,9 +63,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
   }
 
   ngOnInit() {
-/*     this.http.get(this._backendURL.allUser)
-      .map( res =>  res.json() )
-       .subscribe(us => this.users = us);*/
+
     this._route.params
       .map((params: any) => this._id=params.id)
       .subscribe();
@@ -103,19 +101,22 @@ export class InscriptionUtilisateurComponent implements OnInit {
   inscrireUtilisateur() {
       this._utilisateur.email = this.email;
       this._utilisateur.motdepasse = this.motdepasse;
-
       if(this._service.existUser(this._utilisateur)){
         this.errorMsg = 'Utilisateur existant';
       }
       else {
         const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
-        if (this._selectedG == 'C')
+        if (this._selectedG == 'C'){
+          this._utilisateur.type = "C";
           this.http.post("http://" + environment.backend.host + ":" + environment.backend.port + "/rest/utilisateur/inscrireCand", this._utilisateur, requestOptions).subscribe();
-        else
+        }
+        else{
+          this._utilisateur.type = "R";
           this.http.post("http://" + environment.backend.host + ":" + environment.backend.port + "/rest/utilisateur/inscrireRec", this._utilisateur, requestOptions).subscribe();
-
-      //  this._service.login(this._utilisateur);
+        }
+        this._service.update();
         this._router.navigate(['/login']);
+        this._service.login(this._utilisateur);
       }
     }
 
@@ -129,10 +130,17 @@ export class InscriptionUtilisateurComponent implements OnInit {
       if(environment.frontend.port != ""){
         url += "%3A"+environment.frontend.port;
       }
+      let param = "?genre=";
+      if(this._selectedG == 'C'){
+        param += "C";
+      }else{
+        param += "R";
+      }
+
       window.location.href="https://www.linkedin.com/oauth/v2/authorization?" +
         "response_type=code&" +
         "client_id=7868doeuipinun&" +
-        "redirect_uri="+url+"%2Finscription-linkedin&" +
+        "redirect_uri="+url+"%2Finscription-linkedin"+param+"&" +
         "state=987654321&" +
         "scope=r_emailaddress";
   }

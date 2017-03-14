@@ -58,7 +58,15 @@ import {FilterPoste} from "./recruteur/filtrer-poste-pipe/filter-poste.pipe";
 import {FiltrerPosteCount} from "./recruteur/filtrer-poste-pipe/filtrer-poste-count.pipe";
 import { MatchingComponent } from './recruteur/matching/matching.component';
 import { AvisComponent } from './recruteur/avis/avis.component';
-
+import { RechercherOffresComponent } from './Candidat/rechercher-offres/rechercher-offres.component';
+import { CardOffreComponent } from './shared/card-offre/card-offre.component';
+import { ProfilComponent } from './recruteur/offres/profil/profil.component';
+import { GestionAvisCandidatsComponent } from './visiteur/moderateur/gestion-avis-candidats/gestion-avis-candidats.component';
+import { DataTableModule } from 'angular2-datatable';
+import { ToasterModule } from 'angular2-toaster';
+import {DataFilterPipe} from "./visiteur/moderateur/gestion-avis-candidats/data-filter.pipe";
+import { PosteDetailComponent } from './recruteur/poste-detail/poste-detail.component';
+import { ConnexionLinkedinComponent } from './utilisateur/connexion-linkedin/connexion-linkedin.component';
 
 @NgModule({
     declarations: [
@@ -104,7 +112,16 @@ import { AvisComponent } from './recruteur/avis/avis.component';
       FilterPoste,
       FiltrerPosteCount,
       MatchingComponent,
-      AvisComponent
+      AvisComponent,
+      ProfilComponent,
+      GestionAvisCandidatsComponent,
+      DataFilterPipe,
+      RechercherOffresComponent,
+      CardOffreComponent,
+      ProfilComponent,
+      PosteDetailComponent,
+      ConnexionLinkedinComponent
+
     ],
   imports: [
     BrowserModule,
@@ -116,7 +133,9 @@ import { AvisComponent } from './recruteur/avis/avis.component';
     Ng2AutoCompleteModule,
     ChartsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTableModule,
+    ToasterModule
   ],
   providers: [CandidatService,RecruteurService, MailService, NotificationService],
 
