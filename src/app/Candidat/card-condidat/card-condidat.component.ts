@@ -5,6 +5,7 @@ import {Poste} from "../../recruteur/interfaces/poste";
 import {OffersService} from "../../shared/offers-service/offers.service";
 import {duo} from "../interfaces/duo";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../shared/service/authentication.service";
 
 
 @Component({
@@ -28,15 +29,19 @@ export class CardCondidatComponent implements OnInit {
 
 
 
-  constructor(private offreService: OffersService, private _candidatService: CandidatService,private router: Router) {
-     this.candidat = { };
+  constructor(private _AuthService:AuthenticationService, private offreService: OffersService, private _candidatService: CandidatService,private router: Router) {
+    this.candidat = { };
     this._cancel$ = new EventEmitter();
     this._submit$ = new EventEmitter();
     this.duo = {
       candidat : this.candidat,
       poste : this.selectedOffre};
 
-    }
+  }
+
+  isRecruteur():boolean{
+    return this._AuthService.isRecruteur();
+  }
 
 
   get candidat(): any {
@@ -78,7 +83,7 @@ export class CardCondidatComponent implements OnInit {
     return "N/A";
   }
 
- @Input() set candidat(value: any) {
+  @Input() set candidat(value: any) {
     this._candidat = value;
   }
 
@@ -114,18 +119,18 @@ export class CardCondidatComponent implements OnInit {
     this._testOffreList = value;
   }
 
- submit(){
+  submit(){
 
-   this.offreService.postebyId(this.selectedOffre).subscribe((res:Poste) => {
+    this.offreService.postebyId(this.selectedOffre).subscribe((res:Poste) => {
 
-     this._duo.candidat = this.candidat;
-     this._duo.poste = res;
-     this._submit$.emit(this._duo);
+        this._duo.candidat = this.candidat;
+        this._duo.poste = res;
+        this._submit$.emit(this._duo);
 
-   }
- );
+      }
+    );
 
- }
+  }
 
 
   @Output('cancel') get cancel$(): EventEmitter<any> {

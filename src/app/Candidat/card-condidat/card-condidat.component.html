@@ -14,7 +14,7 @@
           <img *ngIf="hasPhoto" src="{{photo}}" alt="" class="img-circle img-responsive" style="width: 80%;" >
       </div>
     </div>
-    <div class="col-xs-12 bottom text-center">
+    <div *ngIf="isRecruteur()" class="col-xs-12 bottom text-center">
       <div class="text-center">
 
         <button (click)="submit()" class="btn btn-primary">Associer à ce dossier </button>
