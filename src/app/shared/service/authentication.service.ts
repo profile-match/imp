@@ -115,13 +115,11 @@ export class AuthenticationService {
     let authenticatedUser : Utilisateur;
     const requestOptions = {headers: new Headers({'Content-Type': 'application/json'})};
     this._http
-      .put(this._backendURL.oneUser, user, requestOptions)
+      .get(this._backendURL.login.replace(':email', user.email).replace(':hashe', Md5.hashStr(user.motdepasse)))
       .map(res => {
         return res.json();
       }).subscribe((u : Utilisateur) => {
       authenticatedUser = u;
-
-      let userHash = Md5.hashStr(user.motdepasse);
 
       let authenticatedModerator = users.find(u => u.email === user.email);
 
@@ -131,7 +129,7 @@ export class AuthenticationService {
 
         return true;
       }
-      else if (authenticatedUser && authenticatedUser.motdepasse === userHash.toString()) {
+      else if (authenticatedUser) {
         if(authenticatedUser.type == "C") {
           return this._http.get(this._backendURL.getCandidat.replace(':id', authenticatedUser.id))
             .map(res => {

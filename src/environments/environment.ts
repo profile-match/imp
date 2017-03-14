@@ -59,7 +59,8 @@ export const environment = {
       updateRecruteur: '/rest/recruteur/update',
       updateMdpRecruteur: '/rest/recruteur/updateMdp',
       getPhoto: '/rest/candidat/photo/:id',
-      linkedinConnexion: '/rest/linkedin/connexion/:code/:state'
+      linkedinConnexion: '/rest/linkedin/connexion/:code/:state',
+      login: '/rest/utilisateur/connexion/:email/:hashe'
     }
   },
   frontend: {
