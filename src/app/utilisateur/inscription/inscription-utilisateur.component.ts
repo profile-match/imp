@@ -7,6 +7,7 @@ import {Utilisateur} from "../utilisateur";
 import {CandidatService} from "../../shared/service/candidat.service";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {AuthenticationService} from '../../shared/service/authentication.service'
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-inscription-utilisateur',
@@ -44,7 +45,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
   private _selectedG: string;
 
-  constructor(private _service:AuthenticationService, private _candidatService: CandidatService, private _route: ActivatedRoute, private http: Http, private _router: Router, private location: Location, private _el: ElementRef, private _rd: Renderer) {
+  constructor(private _md5: Md5, private _service:AuthenticationService, private _candidatService: CandidatService, private _route: ActivatedRoute, private http: Http, private _router: Router, private location: Location, private _el: ElementRef, private _rd: Renderer) {
     this._backendURL = {};
     this._buttonLinkedinStatus = this.DEFAULT_STATUS;
     this.users = [{  id:1, email:'string', motdepasse:'string', type:'', safe:1000 }];
@@ -100,7 +101,7 @@ export class InscriptionUtilisateurComponent implements OnInit {
 
   inscrireUtilisateur() {
       this._utilisateur.email = this.email;
-      this._utilisateur.motdepasse = this.motdepasse;
+      this._utilisateur.motdepasse = Md5.hashStr(this.motdepasse).toString();
       if(this._service.existUser(this._utilisateur)){
         this.errorMsg = 'Utilisateur existant';
       }

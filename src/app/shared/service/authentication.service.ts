@@ -5,6 +5,7 @@ import {environment} from "../../../environments/environment";
 import {Recruteur} from "../../recruteur/interfaces/recruteur";
 import {candidat} from "../../Candidat/interfaces/candidat";
 import {Utilisateur} from "../../utilisateur/utilisateur";
+import { Md5 } from 'ts-md5/dist/md5';
 
 export class User {
   constructor(public email: string,
@@ -29,7 +30,7 @@ export class AuthenticationService {
   // private property to store all backend URLs
   private _backendURL: any;
 
-  constructor(private _http: Http, private _router: Router) {
+  constructor(private _http: Http, private _router: Router, private _md5: Md5) {
     this._candidats = [];
     this._recruteurs = [];
     this._users = [];
@@ -92,7 +93,9 @@ export class AuthenticationService {
       return true;
     }
 
-    return authenticatedUser && authenticatedUser.motdepasse === user.motdepasse;
+    let userHash = Md5.hashStr(user.motdepasse);
+
+    return authenticatedUser && authenticatedUser.motdepasse === userHash.toString();
   }
 
   currentUser(idC:number) {
@@ -117,6 +120,8 @@ export class AuthenticationService {
       }).subscribe((u : Utilisateur) => {
       authenticatedUser = u;
 
+      let userHash = Md5.hashStr(user.motdepasse);
+
       let authenticatedModerator = users.find(u => u.email === user.email);
 
       if (authenticatedModerator && authenticatedModerator.password === user.motdepasse) {
@@ -125,7 +130,7 @@ export class AuthenticationService {
 
         return true;
       }
-      else if (authenticatedUser && authenticatedUser.motdepasse === user.motdepasse) {
+      else if (authenticatedUser && authenticatedUser.motdepasse === userHash.toString()) {
         if(authenticatedUser.type == "C") {
           localStorage.setItem("user", authenticatedUser.id.toString());
           localStorage.setItem("ut", "candidat");

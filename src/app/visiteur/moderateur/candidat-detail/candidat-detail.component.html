@@ -8,7 +8,10 @@
     <div class="title_left">
       <!-- menu profile quick info -->
       <div class="profile">
-        <div class="profile_pic">
+        <div class="profile_pic" *ngIf="!candidat.photo">
+          <img src="../../../assets/visitor.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_pic" *ngIf="candidat.photo">
           <img src={{candidatService.getPhotoUrl(candidat.photo)}} alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
@@ -37,7 +40,32 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="x_panel">
 
-      <app-gestion-avis-candidats></app-gestion-avis-candidats>
+
+
+        <table class="table table-striped">
+          <thead>
+          Avis
+          <tr>
+            <td>descritpion</td>
+            <td>Note</td>
+            <td>Nom du recruteur</td>
+          </tr>
+
+          </thead>
+          <tbody>
+
+          <tr  *ngFor="let avi of candidat.avis  ">
+
+            <td >{{avi.description.substring(0, 20)}}...<span   style="cursor:pointer ;text-decoration:underline;" (click)='readMore($event)'>read more!</span></td>
+            <td hidden >{{avi.description}}  <span style="cursor:pointer;text-decoration:underline;" (click)='readLess($event)'>read less!</span></td>
+            <td  >{{avi.note}}</td>
+            <td  >{{avi.recruteur.nom}}</td>
+
+          </tr>
+          </tbody>
+          <tfoot></tfoot>
+        </table>
+     <!-- <app-gestion-avis-candidats></app-gestion-avis-candidats>
         <!-- graphe d'activite ******
           <div class="x_title">
             <h2>Activité sur offres/commentaires <small>Sessions</small></h2>
@@ -88,21 +116,6 @@
       <div class="x_panel">
         <div class="x_title">
           <h2>credibilité de l'utilisateur <small>Sessions</small></h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Settings 1</a>
-                </li>
-                <li><a href="#">Settings 2</a>
-                </li>
-              </ul>
-            </li>
-            <li><a class="close-link"><i class="fa fa-close"></i></a>
-            </li>
-          </ul>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -144,10 +157,6 @@
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
-          <p class="text-muted font-13 m-b-30">
-            DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-          </p>
-
 
           <!-- ajout -->
         <!--   <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
