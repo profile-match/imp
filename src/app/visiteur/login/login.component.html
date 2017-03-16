@@ -1,0 +1,43 @@
+<div>
+
+  <div class="x_panel">
+    <div class="page-title">
+      <div class="title_left">
+        <h1>Connexion à votre compte</h1>
+      </div>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="login(f.value)">
+
+      <div class="form-group">
+
+        <input [(ngModel)]="user.email" name="email" id="email"
+               type="email" class="form-control" placeholder="Email" required>
+      </div>
+
+      <div class="form-group">
+
+        <input [(ngModel)]="user.motdepasse" name="password" id="password"
+               type="password" class="form-control" placeholder="Mot de passe" required>
+
+      </div>
+      <div>
+        <span>{{errorMsg}}</span>
+        <button class="btn waves-effect waves-light"
+                type="submit" name="action">Se connecter
+        </button>
+        <button type="button" class="btn waves-effect waves-light" (click)="goBack()">Retour</button>
+        <button type="button" class="btn waves-effect waves-light" routerLink="/inscription-utilisateur/0">S'inscrire
+        </button>
+        <br>
+        <span class="x_content" class="grow" (click)="goLinkedIn()" (mouseover)="overLinkedinButton()" (mouseleave)="leaveLinkedinButton()">
+          <img  *ngIf="buttonLinkedinStatus()===DEFAULT_STATUS" class="linkedin-button" src="../../../assets/Connect-Large---Default.png" alt="portrait">
+          <img  *ngIf="buttonLinkedinStatus()===HOVER_STATUS" class="linkedin-button" src="../../../assets/Connect-Large---Hover.png" alt="portrait">
+          <img  *ngIf="buttonLinkedinStatus()===ACTIVATED_STATUS" class="linkedin-button" src="../../../assets/Connect-Large---Active.png" alt="portrait">
+        </span>
+      </div>
+    </form>
+
+  </div>
+</div>
+

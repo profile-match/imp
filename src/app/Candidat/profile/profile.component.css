@@ -1,0 +1,17 @@
+.dialog-modal {
+  top: 25%;
+  left: 25%;
+  /*margin-right: -50%;*/
+  position: absolute;
+  z-index:1000;
+  /*height: 100%;*/
+  /*width: 100%;*/
+  background: lightgray;
+  display: flex;
+  flex-basis: auto;
+  visibility: hidden;
+  color: black;
+}
+.dialog-modal.active {
+  visibility: visible;
+}

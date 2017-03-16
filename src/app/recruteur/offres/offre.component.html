@@ -1,0 +1,172 @@
+<div class="container body">
+  <div class="main_container">
+
+    <ul class="nav nav-pills">
+      <li role="presentation" (click)="setProfil()" [class.active]="profil"><a>Votre profil</a></li>
+      <li role="presentation" (click)="setOffres()" [class.active]="offres"><a>Vos offres</a></li>
+      <li role="presentation" (click)="setCandidat()" [class.active]="candidat"><a>Rechercher un candidat</a></li>
+    </ul>
+
+    <div *ngIf="profil">
+      <div class="ln_solid"></div>
+      <app-profil></app-profil>
+    </div>
+    <div *ngIf="candidat">
+    <br/>
+      <div  class="container" >
+        <div class="col-sm-6"  >
+          <div class="">
+            <div class=" form-group top_search">
+              <div class="input-group">
+                <input type="text" class="form-control"  ngModel #search="ngModel" placeholder="Recherche de candidat" >
+                <span class="input-group-btn">
+             <button class="btn btn-default" type="button"><i class="fa fa-filter"></i></button>
+          </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <h2>  {{listCandidat | filterCandidatCount: search.value}} candidats trouvés </h2>
+          </div>
+
+          <app-card-condidat   *ngFor="let candidatItem of listCandidat | filterCandidat: search.value " [candidat]="candidatItem" (submit)="marchestp($event)"   ></app-card-condidat>
+
+        </div>
+      </div>
+    </div>
+    <div class="x_panel title overflow_hidden" *ngIf="testOffreList.length > 0 && offres">
+      <div class="row">
+        <div class="col-lg-3"><h4>Selectionnez une offre</h4>
+          <select size="20" multiple class="form-control" id="sel1" style="width: 200px">
+            <option *ngFor="let offre of testOffreList" (click)="selectePoste(offre)">
+              {{offre.intitule}}
+            </option>
+          </select>
+        </div>
+        <div class="col-lg-9">
+          <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="col-lg-2">
+              <b>Poste :</b>
+            </div>
+            <div class="col-lg-2">
+                {{selectedOffre.intitule}}
+            </div>
+          </div>
+          <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="col-lg-2">
+              <b>Lieu de poste :</b>
+            </div>
+            <div class="col-lg-2">
+              {{selectedOffre.lieu_travail}}
+            </div>
+          </div>
+          <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="col-lg-2">
+              <b>Contrat :</b>
+            </div>
+            <div class="col-lg-2">
+              {{selectedOffre.type_contrat}}
+            </div>
+          </div>
+          <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="col-lg-2">
+              <b>Discription :</b>
+            </div>
+            <div class="col-lg-7">
+              {{selectedOffre.resume}}
+            </div>
+          </div>
+          <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="col-lg-5">
+              <a [routerLink]="['/posteDetail/'+selectedOffre.id]">
+                <i class="fa fa-info-cicle"></i>Plus d'informations</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="x_content" style="margin-top: 12px; margin-bottom: 12px;">
+              <button type="button" class="btn btn-round btn-default" (click)="redirectEdition(selectedOffre.id)">Editer</button> <!-- lien vers editPost-->
+              <button type="button" class="btn btn-round btn-default" (click)="clotureJob(selectedOffre.id)">Clôturer</button>
+              <span *ngIf="dialogStatusAvis">
+                          <app-avis (submit)="submit($event)" (cancel)="hideDialog()">
+                          </app-avis>
+                          </span>
+            </div>
+          </div>
+          <div class="row">
+          </div>
+          <div class="">
+            <div class="x_title">
+              <h2>Postulants
+                <small>Postulants</small>
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+
+                    <div *ngIf="listeCand().length > 0">
+                      <table id="datatable" class="table table-hover">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nom</th>
+                          <th>Prénom</th>
+                          <th>Email</th>
+
+                          <th>Avis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let cand of listeCand(); let i = index;"   >
+                          <th scope="row">{{i+1}}</th>
+                          <td  (click) ="redirectCandidat(cand.id)"  >{{cand.nom}}</td>
+                          <td>{{cand.prenom}}</td>
+                          <td>{{cand.email}}</td>
+                          <td> <button  *ngIf="!dialogStatusAvis"  type="button" (click)="showAvis(cand)"  class="btn btn-primary">Ajouter avis</button></td>
+
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div *ngIf="listeCand().length == 0">
+                      Aucun candidat n'a postulé pour cette offre.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <a routerLink="/addPost">
+              <button type="button" class="btn btn-round btn-primary"> <!-- router link vers addPost-->
+                Créer une nouvelle offre
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="x_panel title overflow_hidden" *ngIf="testOffreList.length == 0 && offres">
+      <div class="alert alert-warning" role="alert">
+        <a class="alert-link">Vous n'avez pas encore créé d'offre à pourvoir</a>
+      </div>
+      <div>
+        <a routerLink="/addPost">
+          <button type="button" class="btn btn-round btn-primary">
+            Créer une nouvelle offre
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="id01" class="modal">
+
+
+</div>
+
+
+</div>

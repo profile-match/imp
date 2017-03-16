@@ -1,0 +1,116 @@
+<!-- top navigation -->
+
+<div class="nav_menu">
+  <nav class="navbar navbar-default" role="navigation">
+    <span class="navbar nav_title" style="border: 0;">
+
+        <a routerLink="/accueil" class="site_title"><i class="fa fa-users"></i> <span>IMatchProfile</span></a>
+    </span>
+    <!-- si l'utlisateur n'est pas connecté -->
+    <div *ngIf="!login()">
+      <ul class="nav navbar-nav navbar-right">
+
+        <!-- mettre partie si connecté en tant recruteur -->
+        <!-- bouton inviter pour inviter une personne à créer un compte -->
+        <li>
+          <a routerLink="/login" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se connecter
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- si l'utlisateur connecté est un candidat-->
+    <div *ngIf="isCandidat()">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a (click)="goToDashboard()"><i class="fa fa-home" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
+        <li><a (click)="goToProfil()"><i class="fa fa-male" style="font-size: 1.5em;  cursor: pointer; cursor: hand; "></i></a></li>
+        <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se deconnecter
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- si l'utlisateur connecté est un recruteur-->
+    <div *ngIf="isRecruteur()">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a (click)="goToRecruteur()"><i class="fa fa-male" style="font-size: 1.5em; cursor: pointer; cursor: hand;"></i></a></li>
+        <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se deconnecter
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- si l'utlisateur connecté est l'admin-->
+    <div *ngIf="isAdmin()">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li (click)="showDialog()"  *ngIf="isCandidat() || isRecruteur() || isAdmin()">
+          <a  class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+            <span class=" fa fa-angle-right"></span>
+            Inviter
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class=" fa fa-angle-right"></span>
+            Se deconnecter
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- /top navigation -->
+
+<div *ngIf=" notification.message" class="alert alert-success alert-dismissable center"  (click)="closeNotif()"
+     [class.alert-success]="notification.type==='success'"
+     [class.alert-danger]="notification.type==='error'">
+      <a class="close" data-dismiss="alert" aria-label="close" >×</a>
+      {{notification.message}}
+</div>
+<!-- ################"  -->
+
+
+<router-outlet>
+</router-outlet>
+
+<!-- footer content -->
+<footer>
+  <div class="pull-right">
+    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+  </div>
+  <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->
+
+
+
+<!--  inviter une personne à créer un compte  -->
+
+<section class="dialog-modal" [ngClass]="{ 'active': dialogStatusInvitation === 'active' }" >
+  <app-form-invitation (cancel)="hideDialog()" (submit)="sendMail($event)"></app-form-invitation>
+</section>
+
+<!-- ################"  -->
